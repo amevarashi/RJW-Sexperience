@@ -33,7 +33,12 @@ namespace RJWSexperience
                     else lust = __result.RecordRandomizer(VariousDefOf.Lust, Configurations.AvgLust, Configurations.MaxLustDeviation, float.MinValue);
 
                     int sexableage = 0;
-                    int minsexage = (int)(__result.RaceProps.lifeExpectancy * Configurations.MinSexablePercent);
+                    int minsexage = 0;
+                    if (Configurations.MinSexableFromLifestage)
+                        minsexage = (int)__result.RaceProps.lifeStageAges.Find(x => x.def.reproductive).minAge;
+                    else
+                        minsexage = (int)(__result.RaceProps.lifeExpectancy * Configurations.MinSexablePercent);
+
                     if (__result.ageTracker.AgeBiologicalYears > minsexage)
                     {
                         sexableage = __result.ageTracker.AgeBiologicalYears - minsexage;

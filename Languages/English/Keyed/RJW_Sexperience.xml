@@ -79,8 +79,8 @@
   <RSOption_9_Desc>Set minimum sexable age.&#10;This value is not related to RJW's minimum sex age. Only used for generating records.</RSOption_9_Desc>
   <RSOption_10_Label>Virgin ratio</RSOption_10_Label>
   <RSOption_10_Desc>Set probability of virgin regardless of age.</RSOption_10_Desc>
-  <RSOption_11_Label></RSOption_11_Label>
-  <RSOption_11_Desc> </RSOption_11_Desc>
+  <RSOption_MinSexableFromLifestage_Label>Minimum sexable age from life stages</RSOption_MinSexableFromLifestage_Label>
+  <RSOption_MinSexableFromLifestage_Desc>Only used for generating records. Get minimum sexable age from the first reproductive life stage. Works better for races with a long lifespan</RSOption_MinSexableFromLifestage_Desc>
 
   <Vaginal>Vaginal</Vaginal>
   <Anal>Anal</Anal>

@@ -22,6 +22,7 @@ namespace RJWSexperience
         public const bool SlavesBeenRapedExpDefault = true;
         public const bool EnableStatRandomizerDefault = true;
         public const float LustLimitDefault = 500f/3f;
+        public const bool MinSexableFromLifestageDefault = true;
         public const float MinSexablePercentDefault = 0.2f;
         public const float VirginRatioDefault = 0.01f;
 
@@ -33,6 +34,7 @@ namespace RJWSexperience
         public static bool SlavesBeenRapedExp = SlavesBeenRapedExpDefault;
         public static bool EnableRecordRandomizer = EnableStatRandomizerDefault;
         public static float LustLimit = LustLimitDefault;
+        public static bool MinSexableFromLifestage = MinSexableFromLifestageDefault;
         public static float MinSexablePercent = MinSexablePercentDefault;
         public static float VirginRatio = VirginRatioDefault;
 
@@ -48,6 +50,7 @@ namespace RJWSexperience
             SlavesBeenRapedExp = SlavesBeenRapedExpDefault;
             EnableRecordRandomizer = EnableStatRandomizerDefault;
             LustLimit = LustLimitDefault;
+            MinSexableFromLifestage = MinSexableFromLifestageDefault;
             MinSexablePercent = MinSexablePercentDefault;
             VirginRatio = VirginRatioDefault;
         }
@@ -62,6 +65,7 @@ namespace RJWSexperience
             Scribe_Values.Look(ref SlavesBeenRapedExp, "SlavesBeenRapedExp", SlavesBeenRapedExp, true);
             Scribe_Values.Look(ref EnableRecordRandomizer, "EnableRecordRandomizer", EnableRecordRandomizer, true);
             Scribe_Values.Look(ref LustLimit, "LustLimit", LustLimit, true);
+            Scribe_Values.Look(ref MinSexableFromLifestage, "MinSexableFromLifestage", MinSexableFromLifestage, true);
             Scribe_Values.Look(ref MinSexablePercent, "MinSexablePercent", MinSexablePercent, true);
             Scribe_Values.Look(ref VirginRatio, "VirginRatio", VirginRatio, true);
             Scribe_Values.Look(ref SelectionLocked, "SelectionLocked", SelectionLocked, true);
@@ -86,6 +90,8 @@ namespace RJWSexperience
 
         public override void DoSettingsWindowContents(Rect inRect)
         {
+            const float lineHeight = 24f;
+
             int Adjuster;
             float fAdjuster;
             Rect outRect = new Rect(0f, 30f, inRect.width, inRect.height - 30f);
@@ -97,51 +103,48 @@ namespace RJWSexperience
             listmain.Gap(20f);
 
 
-            LabelwithTextfield(listmain.GetRect(24f), Keyed.Option_2_Label + " x" + Configurations.LustEffectPower, Keyed.Option_2_Desc, ref Configurations.LustEffectPower, 0f, 100f);
+            LabelwithTextfield(listmain.GetRect(lineHeight), Keyed.Option_2_Label + " x" + Configurations.LustEffectPower, Keyed.Option_2_Desc, ref Configurations.LustEffectPower, 0f, 100f);
             Adjuster = (int)(Configurations.LustEffectPower * 1000);
-            //listmain.Label(Keyed.Option_2_Label + " x" + Configurations.LustEffectPower , -1, Keyed.Option_2_Desc);
             Adjuster = (int)listmain.Slider(Adjuster, 0, 2000);
             Configurations.LustEffectPower = (float)Adjuster / 1000;
 
             fAdjuster = Configurations.LustLimit * 3;
-            LabelwithTextfield(listmain.GetRect(24f), Keyed.Option_8_Label + " " + fAdjuster, Keyed.Option_8_Desc, ref fAdjuster, 0, 10000f);
+            LabelwithTextfield(listmain.GetRect(lineHeight), Keyed.Option_8_Label + " " + fAdjuster, Keyed.Option_8_Desc, ref fAdjuster, 0, 10000f);
             fAdjuster = (int)listmain.Slider(fAdjuster, 0, 1000);
             Configurations.LustLimit = fAdjuster / 3;
 
             listmain.CheckboxLabeled(Keyed.Option_1_Label, ref Configurations.EnableRecordRandomizer, Keyed.Option_1_Desc);
             if (Configurations.EnableRecordRandomizer)
             {
-                Listing_Standard section = listmain.BeginSection(24f*13f);
+                Listing_Standard section = listmain.BeginSection(lineHeight * 14f);
 
-
-                LabelwithTextfield(section.GetRect(24f), Keyed.Option_3_Label + " " + Configurations.MaxLustDeviation, Keyed.Option_3_Label, ref Configurations.MaxLustDeviation, 0f, 2000f);
+                LabelwithTextfield(section.GetRect(lineHeight), Keyed.Option_3_Label + " " + Configurations.MaxLustDeviation, Keyed.Option_3_Label, ref Configurations.MaxLustDeviation, 0f, 2000f);
                 Adjuster = (int)Configurations.MaxLustDeviation;
-                //listmain.Label(Keyed.Option_3_Label + " " + Configurations.MaxLustDeviation, -1, Keyed.Option_3_Desc);
                 Adjuster = (int)section.Slider(Adjuster, 0, 2000);
                 Configurations.MaxLustDeviation = Adjuster;
 
-                LabelwithTextfield(section.GetRect(24f), Keyed.Option_4_Label + " " + Configurations.AvgLust, Keyed.Option_4_Desc, ref Configurations.AvgLust, -1000f, 1000f);
+                LabelwithTextfield(section.GetRect(lineHeight), Keyed.Option_4_Label + " " + Configurations.AvgLust, Keyed.Option_4_Desc, ref Configurations.AvgLust, -1000f, 1000f);
                 Adjuster = (int)Configurations.AvgLust;
-                //listmain.Label(Keyed.Option_4_Label + " " + Configurations.AvgLust, -1, Keyed.Option_4_Desc);
                 Adjuster = (int)section.Slider(Adjuster, -1000, 1000);
                 Configurations.AvgLust = Adjuster;
 
 
-                LabelwithTextfield(section.GetRect(24f), Keyed.Option_5_Label + " " + Configurations.MaxSexCountDeviation, Keyed.Option_5_Desc, ref Configurations.MaxSexCountDeviation, 0f, 2000f);
+                LabelwithTextfield(section.GetRect(lineHeight), Keyed.Option_5_Label + " " + Configurations.MaxSexCountDeviation, Keyed.Option_5_Desc, ref Configurations.MaxSexCountDeviation, 0f, 2000f);
                 Adjuster = (int)Configurations.MaxSexCountDeviation;
-                //listmain.Label(Keyed.Option_5_Label + " " + Configurations.MaxSexCountDeviation, -1, Keyed.Option_5_Desc);
                 Adjuster = (int)section.Slider(Adjuster, 0, 2000);
                 Configurations.MaxSexCountDeviation = Adjuster;
 
-                LabelwithTextfield(section.GetRect(24f), Keyed.Option_6_Label + " " + Configurations.SexPerYear, Keyed.Option_6_Desc, ref Configurations.SexPerYear, 0f, 2000f);
+                LabelwithTextfield(section.GetRect(lineHeight), Keyed.Option_6_Label + " " + Configurations.SexPerYear, Keyed.Option_6_Desc, ref Configurations.SexPerYear, 0f, 2000f);
                 Adjuster = (int)Configurations.SexPerYear;
-                //listmain.Label(Keyed.Option_6_Label + " " + Configurations.SexPerYear, -1, Keyed.Option_6_Desc);
                 Adjuster = (int)section.Slider(Adjuster, 0, 2000);
                 Configurations.SexPerYear = Adjuster;
 
-                SliderOption(section.GetRect(48f), Keyed.Option_9_Label + " " + Configurations.MinSexablePercent*100 + "%   " + ThingDefOf.Human.race.lifeExpectancy * Configurations.MinSexablePercent + "years", Keyed.Option_9_Desc, ref Configurations.MinSexablePercent, 0, 1, 1000f);
-                SliderOption(section.GetRect(48f), Keyed.Option_10_Label + " " + Configurations.VirginRatio*100 + "%" , Keyed.Option_10_Desc, ref Configurations.VirginRatio, 0, 1, 1000f);
+                section.CheckboxLabeled(Keyed.Option_MinSexableFromLifestage_Label, ref Configurations.MinSexableFromLifestage, Keyed.Option_MinSexableFromLifestage_Desc);
 
+                if (!Configurations.MinSexableFromLifestage)
+                    SliderOption(section.GetRect(lineHeight * 2f), Keyed.Option_9_Label + " " + Configurations.MinSexablePercent*100 + "%   " + ThingDefOf.Human.race.lifeExpectancy * Configurations.MinSexablePercent + "years", Keyed.Option_9_Desc, ref Configurations.MinSexablePercent, 0, 1, 1000f);
+
+                SliderOption(section.GetRect(lineHeight * 2f), Keyed.Option_10_Label + " " + Configurations.VirginRatio*100 + "%" , Keyed.Option_10_Desc, ref Configurations.VirginRatio, 0, 1, 1000f);
 
                 section.CheckboxLabeled(Keyed.Option_7_Label, ref Configurations.SlavesBeenRapedExp, Keyed.Option_7_Desc);
 
