@@ -307,10 +307,10 @@ namespace RJWSexperience.Ideology
             
 
             Ideo ideo = context.Inputs.Initiator.Ideo;
-            if (ideo != null) PreceptSextype(ideo, context.Inputs.Initiator.GetStatValue(xxx.sex_drive_stat), __result, 0, interaction);
+            if (ideo != null) PreceptSextype(ideo, context.Inputs.Initiator.GetStatValue(xxx.sex_drive_stat), ref __result, 0, interaction);
 
             ideo = context.Inputs.Partner.Ideo;
-            if (!context.Inputs.IsRape && ideo != null) PreceptSextype(ideo, context.Inputs.Partner.GetStatValue(xxx.sex_drive_stat), __result, 1, interaction);
+            if (!context.Inputs.IsRape && ideo != null) PreceptSextype(ideo, context.Inputs.Partner.GetStatValue(xxx.sex_drive_stat), ref __result, 1, interaction);
 
         }
 
@@ -321,7 +321,7 @@ namespace RJWSexperience.Ideology
             "Fisting",
         };
 
-        public static void PreceptSextype(Ideo ideo, float sexdrive, float result, int offset, InteractionWithExtension interaction)
+        public static void PreceptSextype(Ideo ideo, float sexdrive, ref float result, int offset, InteractionWithExtension interaction)
         {
             float mult = 8.0f * Math.Max(0.3f, 1 / Math.Max(0.01f, sexdrive));
             if ((interaction.Extension.rjwSextype == "Vaginal")
