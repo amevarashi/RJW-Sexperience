@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Ideology\GoodwillSituationWorker_MemeCompatibility.cs" />
     <Compile Include="Harmony.cs" />
+    <Compile Include="Ideology\Keyed.cs" />
     <Compile Include="Ideology\PreceptDef_RequirementExtended.cs" />
     <Compile Include="Ideology\Rituals\JobGiver_GangbangConsensual.cs" />
     <Compile Include="Ideology\Rituals\LordJob_Rituals.cs" />
@@ -75,13 +76,6 @@
     <Compile Include="Ideology\StatParts.cs" />
     <Compile Include="Ideology\Utility.cs" />
     <Compile Include="VariousDefOf.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RJWSexperience\RJWSexperience.csproj">
-      <Project>{9c728e06-573b-4b04-a07f-acbf60cb424d}</Project>
-      <Name>RJWSexperience</Name>
-      <Private>False</Private>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

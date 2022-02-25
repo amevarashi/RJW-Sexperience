@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RimWorld;
+﻿using RimWorld;
 using Verse;
 
 namespace RJWSexperience.Ideology
@@ -15,7 +10,7 @@ namespace RJWSexperience.Ideology
 	}
 
 	public static class HETag
-    {
+	{
 		public const string Incestous = "[Incestuos]";
 		public const string BeenRaped = "[BeenRaped]";
 		public const string Rape = "[Rape]";
@@ -23,57 +18,39 @@ namespace RJWSexperience.Ideology
 		public const string NotSpouse = "[NotSpouse]";
 
 		public static string Gender(Pawn pawn) => "[" + pawn.gender + "]";
-
-		
-
-    }
+	}
 
 	public class PreceptComp_SelfTookThoughtTagged : PreceptComp_SelfTookMemoryThought
 	{
 		public string tag;
 		public bool exclusive = false;
-		//public RecordDef recordDef;
-		//public float? recordoffset;
 
 		public PreceptComp_SelfTookThoughtTagged() { }
 
 		public override void Notify_MemberTookAction(HistoryEvent ev, Precept precept, bool canApplySelfTookThoughts)
 		{
 			if (tag != null)
-            {
+			{
 				if (ev.args.TryGetArg(HistoryEventArgsNamesCustom.Tag, out string tags))
 				{
-					if (tags.ContainAll(tag.Replace(" ","").Split(',')) ^ exclusive)
-                    {
+					if (IdeoUtility.ContainAll(tags, tag.Replace(" ", "").Split(',')) ^ exclusive)
+					{
 						TookThought(ev, precept, canApplySelfTookThoughts);
-						//if (ev.args.TryGetArg(HistoryEventArgsNames.Doer, out Pawn pawn))
-                        //{
-						//	AdjustRecord(pawn);
-                        //}
 					}
 				}
 				else if (exclusive)
 				{
 					TookThought(ev, precept, canApplySelfTookThoughts);
-					//if (ev.args.TryGetArg(HistoryEventArgsNames.Doer, out Pawn pawn))
-					//{
-					//	AdjustRecord(pawn);
-					//}
 				}
 			}
-            else
-            {
+			else
+			{
 				TookThought(ev, precept, canApplySelfTookThoughts);
-				//if (ev.args.TryGetArg(HistoryEventArgsNames.Doer, out Pawn pawn))
-				//{
-				//	AdjustRecord(pawn);
-				//}
 			}
-
 		}
 
 		protected virtual void TookThought(HistoryEvent ev, Precept precept, bool canApplySelfTookThoughts)
-        {
+		{
 			if (ev.def != this.eventDef || !canApplySelfTookThoughts)
 			{
 				return;
@@ -102,22 +79,10 @@ namespace RJWSexperience.Ideology
 				arg.needs.mood.thoughts.memories.TryGainMemory(thought_Memory, partner);
 			}
 		}
-
-
-		//protected void AdjustRecord(Pawn pawn)
-        //{
-		//	if (recordDef != null)
-        //    {
-		//		pawn.records.AddTo(recordDef, recordoffset ?? 1f);
-        //    }
-        //}
-
 	}
 
-
-
 	public class PreceptComp_KnowsMemoryThoughtTagged : PreceptComp_KnowsMemoryThought
-    {
+	{
 		public string tag;
 		public bool exclusive = false;
 		public bool applyonpartner = false;
@@ -125,19 +90,19 @@ namespace RJWSexperience.Ideology
 		public PreceptComp_KnowsMemoryThoughtTagged() { }
 
 		public override void Notify_MemberWitnessedAction(HistoryEvent ev, Precept precept, Pawn member)
-        {
+		{
 			if (!applyonpartner)
-            {
+			{
 				if (ev.args.TryGetArg(HistoryEventArgsNamesCustom.Partner, out Pawn pawn))
-                {
+				{
 					if (pawn == member) return;
-                }
-            }
+				}
+			}
 			if (tag != null)
-            {
+			{
 				if (ev.args.TryGetArg(HistoryEventArgsNamesCustom.Tag, out string tags))
 				{
-					if (tags.ContainAll(tag.Replace(" ", "").Split(',')) ^ exclusive) base.Notify_MemberWitnessedAction(ev, precept, member);
+					if (IdeoUtility.ContainAll(tags, tag.Replace(" ", "").Split(',')) ^ exclusive) base.Notify_MemberWitnessedAction(ev, precept, member);
 				}
 				else if (exclusive)
 				{
@@ -145,10 +110,9 @@ namespace RJWSexperience.Ideology
 				}
 			}
 			else
-            {
+			{
 				base.Notify_MemberWitnessedAction(ev, precept, member);
-            }
-        }
-    }
-
+			}
+		}
+	}
 }

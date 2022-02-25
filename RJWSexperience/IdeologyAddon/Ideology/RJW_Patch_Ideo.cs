@@ -7,8 +7,6 @@ using HarmonyLib;
 using rjw;
 using RimWorld;
 using Verse;
-using UnityEngine;
-using SexperienceDefOf = RJWSexperience.VariousDefOf;
 using rjw.Modules.Interactions.Internals.Implementation;
 using rjw.Modules.Interactions.Contexts;
 using rjw.Modules.Interactions.Objects;
@@ -177,7 +175,7 @@ namespace RJWSexperience.Ideology
         public static void AfterSexHuman(Pawn human, Pawn partner, bool usedCondom, bool rape, bool isCoreLovin, xxx.rjwSextype sextype, bool isHumanReceiving = false)
         {
             string tag = "";
-            if (human.IsIncest(partner))
+            if (IdeoUtility.IsIncest(human, partner))
             {
                 tag += HETag.Incestous;
             }
@@ -358,7 +356,7 @@ namespace RJWSexperience.Ideology
                 Ideo ideo = fucker.Ideo;
                 if (ideo != null)
                 {
-                    if (fucker.IsIncest(fucked))
+                    if (IdeoUtility.IsIncest(fucker, fucked))
                     {
                         if (ideo.HasPrecept(VariousDefOf.Incestuos_IncestOnly)) __result *= 2.0f;
                         else if (!fucker.relations?.DirectRelationExists(PawnRelationDefOf.Spouse, fucked) ?? false)
