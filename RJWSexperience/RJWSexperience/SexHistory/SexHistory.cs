@@ -758,19 +758,16 @@ namespace RJWSexperience
             totalsexhad++;
             if (props.isRape)
             {
-                RJWUtility.DetermineGiversAndReceivers(props, out Pawn giver, out Pawn receiver);
-
-                if (partner == giver)
+                if (partner == props.interactionInitiator)
                 {
                     rapedme++;
                 }
-                else if (partner == receiver)
+                else if (partner == props.interactionRecipient)
                 {
                     raped++;
                 }
             }
             recentsextickabs = GenTicks.TicksAbs;
-            
         }
 
         public void RecordSatisfaction(SexProps props, float satisfaction)
