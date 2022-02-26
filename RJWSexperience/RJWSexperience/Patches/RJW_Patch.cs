@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HarmonyLib;
 using rjw;
+using rjw.Modules.Interactions.Enums;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -100,30 +101,42 @@ namespace RJWSexperience
     {
         public static void Postfix(SexProps props)
         {
-            Pawn pawn = props.pawn;
-            Pawn partner = props.partner;
-            xxx.rjwSextype sextype = props.sexType;
-            Pawn giver = null;
-            Pawn receiver = null;
+            TryFeedCum(props);
+        }
 
-            if (Genital_Helper.has_penis_fertile(pawn))
+        private static void TryFeedCum(SexProps props)
+        {
+            if (!Genital_Helper.has_penis_fertile(props.pawn))
+                return;
+
+            if (!PawnsPenisIsInPartnersMouth(props))
+                return;
+
+            props.partner.AteCum(props.pawn.GetCumVolume(), true);
+        }
+
+        private static bool PawnsPenisIsInPartnersMouth(SexProps props)
+        {
+            var interaction = rjw.Modules.Interactions.Helpers.InteractionHelper.GetWithExtension(props.dictionaryKey);
+
+            if (props.pawn == props.interactionInitiator)
             {
-                giver = pawn;
-                receiver = partner;
+                if (!interaction.DominantHasTag(GenitalTag.CanPenetrate) && !interaction.DominantHasFamily(GenitalFamily.Penis))
+                    return false;
+                var requirement = interaction.SelectorExtension.submissiveRequirement;
+                if (!requirement.mouth && !requirement.beak && !requirement.mouthORbeak)
+                    return false;
             }
-            else if (Genital_Helper.has_penis_fertile(partner))
+            else
             {
-                giver = partner;
-                receiver = pawn;
+                if (!interaction.SubmissiveHasTag(GenitalTag.CanPenetrate) && !interaction.SubmissiveHasFamily(GenitalFamily.Penis))
+                    return false;
+                var requirement = interaction.SelectorExtension.dominantRequirement;
+                if (!requirement.mouth && !requirement.beak && !requirement.mouthORbeak)
+                    return false;
             }
-    
-            if (receiver != null && (
-                sextype == xxx.rjwSextype.Oral ||
-                sextype == xxx.rjwSextype.Fellatio ||
-                sextype == xxx.rjwSextype.Sixtynine))
-            {
-                receiver.AteCum(giver.GetCumVolume(), true);
-            }
+
+            return true;
         }
     }
 
