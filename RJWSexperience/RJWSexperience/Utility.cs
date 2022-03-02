@@ -10,7 +10,6 @@ using UnityEngine;
 
 namespace RJWSexperience
 {
-
     public static class Utility
     {
         public static System.Random random = new System.Random(Environment.TickCount);
@@ -46,44 +45,8 @@ namespace RJWSexperience
             records.AddTo(record, value - recordval);
         }
 
-        
-        public static float RecordRandomizer(this Pawn pawn, RecordDef record, float avg, float dist, float min = 0, float max = float.MaxValue)
-        {
-            float value = Mathf.Clamp(RandGaussianLike(avg - dist,avg + dist),min,max);
-            float recordvalue = pawn.records.GetValue(record);
-            pawn.records.AddTo(record, value - recordvalue);
-
-            return value;
-        }
-
-        public static int RecordRandomizer(this Pawn pawn, RecordDef record, int avg, int dist, int min = 0, int max = int.MaxValue)
-        {
-            int value = (int)Mathf.Clamp(RandGaussianLike(avg - dist, avg + dist), min, max);
-            int recordvalue = pawn.records.GetAsInt(record);
-            pawn.records.AddTo(record, value - recordvalue);
-
-            return value;
-        }
-
-        public static float LustFactor(this Pawn pawn)
-        {
-            float lust = pawn.records.GetValue(VariousDefOf.Lust) * Configurations.LustEffectPower;
-            if (lust < 0)
-            {
-                lust = Mathf.Exp((lust + 200f * Mathf.Log(10f)) / 100f) - 100f;
-            }
-            else
-            {
-                lust = Mathf.Sqrt(100f*(lust + 25f)) - 50f;
-            }
-            
-            return 1 + lust / 100f;
-        }
-
-
         public static T GetAdjacentBuilding<T>(this Pawn pawn) where T : Building 
         {
-
             if (pawn.Spawned)
             {
                 EdificeGrid edifice = pawn.Map.edificeGrid;
@@ -96,7 +59,6 @@ namespace RJWSexperience
             }
             return null;
         }
-
 
         public static float GetCumVolume(this Pawn pawn)
         {
@@ -112,10 +74,8 @@ namespace RJWSexperience
             if (part == null) part = hediffs?.FindAll((Hediff hed) => hed.def.defName.ToLower().Contains("ovipositorm")).InRandomOrder().FirstOrDefault()?.TryGetComp<CompHediffBodyPart>();
             if (part == null) part = hediffs?.FindAll((Hediff hed) => hed.def.defName.ToLower().Contains("tentacle")).InRandomOrder().FirstOrDefault()?.TryGetComp<CompHediffBodyPart>();
 
-
             return pawn.GetCumVolume(part);
         }
-
 
         public static float GetCumVolume(this Pawn pawn, CompHediffBodyPart part)
         {
@@ -134,10 +94,8 @@ namespace RJWSexperience
             return res;
         }
 
-
         public static float Normalization(this float num, float min, float max)
         {
-
             return (num - min)/(max - min);
         }
 
@@ -152,89 +110,9 @@ namespace RJWSexperience
             {
                 if (Configurations.EnableRecordRandomizer && pawn != null && xxx.is_human(pawn))
                 {
-                    int avgsex = -500;
-                    bool isvirgin = Rand.Chance(Configurations.VirginRatio);
-                    int totalsex = 0;
-                    int totalbirth = 0;
-                    int deviation = (int)Configurations.MaxSexCountDeviation;
-                    if (pawn.story != null)
-                    {
-                        float lust;
-                        if (xxx.is_nympho(pawn)) lust = pawn.RecordRandomizer(VariousDefOf.Lust, Configurations.AvgLust, Configurations.MaxLustDeviation, 0);
-                        else lust = pawn.RecordRandomizer(VariousDefOf.Lust, Configurations.AvgLust, Configurations.MaxLustDeviation, float.MinValue);
-
-                        int sexableage = 0;
-                        int minsexage = (int)(pawn.RaceProps.lifeExpectancy * Configurations.MinSexablePercent);
-                        if (pawn.ageTracker.AgeBiologicalYears > minsexage)
-                        {
-                            sexableage = pawn.ageTracker.AgeBiologicalYears - minsexage;
-                            avgsex = (int)(sexableage * Configurations.SexPerYear * pawn.LustFactor());
-                        }
-
-
-                        if (pawn.relations != null && pawn.gender == Gender.Female)
-                        {
-                            totalbirth += pawn.relations.ChildrenCount;
-                            totalsex += totalbirth;
-                            pawn.records?.AddTo(xxx.CountOfSexWithHumanlikes, totalbirth);
-                            pawn.records?.SetTo(xxx.CountOfBirthHuman, totalbirth);
-                            if (totalbirth > 0) isvirgin = false;
-                        }
-                        if (!isvirgin)
-                        {
-                            if (xxx.is_rapist(pawn))
-                            {
-                                if (xxx.is_zoophile(pawn))
-                                {
-                                    if (pawn.Has(Quirk.ChitinLover)) totalsex += pawn.RecordRandomizer(xxx.CountOfRapedInsects, avgsex, deviation);
-                                    else totalsex += pawn.RecordRandomizer(xxx.CountOfRapedAnimals, avgsex, deviation);
-                                }
-                                else totalsex += pawn.RecordRandomizer(xxx.CountOfRapedHumanlikes, avgsex, deviation);
-                                avgsex /= 8;
-                            }
-
-                            if (xxx.is_zoophile(pawn))
-                            {
-                                if (pawn.Has(Quirk.ChitinLover)) totalsex += pawn.RecordRandomizer(xxx.CountOfRapedInsects, avgsex, deviation);
-                                else totalsex += pawn.RecordRandomizer(xxx.CountOfSexWithAnimals, avgsex, deviation);
-                                avgsex /= 10;
-                            }
-                            else if (xxx.is_necrophiliac(pawn))
-                            {
-                                totalsex += pawn.RecordRandomizer(xxx.CountOfSexWithCorpse, avgsex, deviation);
-                                avgsex /= 4;
-                            }
-
-                            if (pawn.IsSlave)
-                            {
-                                totalsex += pawn.RecordRandomizer(xxx.CountOfBeenRapedByAnimals, Rand.Range(-50, 10), Rand.Range(0, 10) * sexableage);
-                                totalsex += pawn.RecordRandomizer(xxx.CountOfBeenRapedByHumanlikes, 0, Rand.Range(0, 100) * sexableage);
-                            }
-
-
-                            totalsex += pawn.RecordRandomizer(xxx.CountOfSexWithHumanlikes, avgsex, deviation);
-
-                            if (totalsex > 0) pawn.records.AddTo(VariousDefOf.SexPartnerCount, Math.Max(1, Rand.Range(0, totalsex / 7)));
-                        }
-                    }
-                    pawn.records?.SetTo(xxx.CountOfSex, totalsex);
-                    RJWUtility.GenerateSextypeRecords(pawn, totalsex);
+                    RecordRandomizer.Randomize(pawn);
                 }
-                if (pawn.story?.traits != null)
-                {
-                    if (pawn.IsVirgin())
-                    {
-                        int degree = 0;
-                        if (pawn.gender == Gender.Female) degree = 2;
-                        Trait virgin = new Trait(VariousDefOf.Virgin, degree, true);
-                        pawn.story.traits.GainTrait(virgin);
-                    }
-                    else if (pawn.gender == Gender.Female && Rand.Chance(0.05f))
-                    {
-                        Trait virgin = new Trait(VariousDefOf.Virgin, 1, true);
-                        pawn.story.traits.GainTrait(virgin);
-                    }
-                }
+                pawn.AddVirginTrait();
             }
             else
             {

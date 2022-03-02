@@ -35,10 +35,9 @@ namespace RJWSexperience
         /// </summary>
         public static bool IsVirgin(this Pawn pawn)
         {
-            if (pawn.records.GetValue(VariousDefOf.VaginalSexCount) == 0) return true;
-            return false;
-        }
-        public static bool HasHymen(this Pawn pawn)
+			return pawn.records.GetValue(VariousDefOf.VaginalSexCount) == 0;
+		}
+		public static bool HasHymen(this Pawn pawn)
         {
             Trait virgin = pawn.story?.traits?.GetTrait(VariousDefOf.Virgin);
             if (virgin != null)
@@ -132,10 +131,8 @@ namespace RJWSexperience
 
             DetermineGiversAndReceivers(props, out Pawn giver, out Pawn receiver);
 
-
             if (partner != null)
             {
-
                 switch (sextype)
                 {
                     case xxx.rjwSextype.Vaginal:
@@ -151,7 +148,7 @@ namespace RJWSexperience
                         {
                             IncreaseRecords(giver, receiver, VariousDefOf.OralSexCount, VariousDefOf.BlowjobCount);
                         }
-                        else if (Genital_Helper.has_penis_infertile(receiver) || Genital_Helper.has_penis_infertile(receiver))
+                        else if (Genital_Helper.has_penis_fertile(receiver) || Genital_Helper.has_penis_infertile(receiver))
                         {
                             IncreaseRecords(giver, receiver, VariousDefOf.BlowjobCount, VariousDefOf.OralSexCount);
                         }
@@ -251,90 +248,6 @@ namespace RJWSexperience
             partner.records?.AddTo(recordforpartner, 1);
         }
 
-        public static void GenerateSextypeRecords(Pawn pawn, int totalsex)
-        {
-            float totalweight =
-                RJWPreferenceSettings.vaginal +
-                RJWPreferenceSettings.anal +
-                RJWPreferenceSettings.fellatio +
-                RJWPreferenceSettings.cunnilingus +
-                RJWPreferenceSettings.rimming +
-                RJWPreferenceSettings.double_penetration +
-                RJWPreferenceSettings.breastjob +
-                RJWPreferenceSettings.handjob +
-                RJWPreferenceSettings.mutual_masturbation +
-                RJWPreferenceSettings.fingering +
-                RJWPreferenceSettings.footjob +
-                RJWPreferenceSettings.scissoring +
-                RJWPreferenceSettings.fisting +
-                RJWPreferenceSettings.sixtynine;
-            Gender prefer = pawn.PreferGender();
-            int sex = (int)(totalsex * RJWPreferenceSettings.vaginal / totalweight);
-            totalsex -= sex;
-            pawn.records.AddTo(VariousDefOf.VaginalSexCount, sex);
-
-            sex = (int)(totalsex * RJWPreferenceSettings.anal / totalweight);
-            totalsex -= sex;
-            pawn.records.AddTo(VariousDefOf.AnalSexCount, sex);
-
-            sex = (int)(totalsex * RJWPreferenceSettings.fellatio / totalweight);
-            totalsex -= sex;
-            if (prefer == Gender.Male) pawn.records.AddTo(VariousDefOf.BlowjobCount, sex);
-            else pawn.records.AddTo(VariousDefOf.OralSexCount, sex);
-
-            sex = (int)(totalsex * RJWPreferenceSettings.cunnilingus / totalweight);
-            totalsex -= sex;
-            if (prefer == Gender.Male) pawn.records.AddTo(VariousDefOf.OralSexCount, sex);
-            else pawn.records.AddTo(VariousDefOf.CunnilingusCount, sex);
-
-            sex = (int)(totalsex * RJWPreferenceSettings.rimming / totalweight);
-            totalsex -= sex;
-            pawn.records.AddTo(VariousDefOf.MiscSexualBehaviorCount, sex);
-
-            sex = (int)(totalsex * RJWPreferenceSettings.double_penetration / totalweight) / 2;
-            totalsex -= sex;
-            totalsex -= sex;
-            pawn.records.AddTo(VariousDefOf.VaginalSexCount, sex);
-            pawn.records.AddTo(VariousDefOf.AnalSexCount, sex);
-
-            sex = (int)(totalsex * RJWPreferenceSettings.breastjob / totalweight);
-            totalsex -= sex;
-            pawn.records.AddTo(VariousDefOf.MiscSexualBehaviorCount, sex);
-
-            sex = (int)(totalsex * RJWPreferenceSettings.handjob / totalweight);
-            totalsex -= sex;
-            if (prefer == Gender.Male) pawn.records.AddTo(VariousDefOf.HandjobCount, sex);
-            else pawn.records.AddTo(VariousDefOf.GenitalCaressCount, sex);
-
-            sex = (int)(totalsex * RJWPreferenceSettings.fingering / totalweight);
-            totalsex -= sex;
-            if (prefer == Gender.Female) pawn.records.AddTo(VariousDefOf.FingeringCount, sex);
-            else pawn.records.AddTo(VariousDefOf.GenitalCaressCount, sex);
-
-            sex = (int)(totalsex * RJWPreferenceSettings.mutual_masturbation / totalweight);
-            totalsex -= sex;
-            if (prefer == Gender.Male) pawn.records.AddTo(VariousDefOf.HandjobCount, sex);
-            else pawn.records.AddTo(VariousDefOf.FingeringCount, sex);
-            pawn.records.AddTo(VariousDefOf.GenitalCaressCount, sex);
-
-            sex = (int)(totalsex * RJWPreferenceSettings.footjob / totalweight);
-            totalsex -= sex;
-            pawn.records.AddTo(VariousDefOf.FootjobCount, sex);
-
-            sex = (int)(totalsex * RJWPreferenceSettings.scissoring / totalweight);
-            totalsex -= sex;
-            pawn.records.AddTo(VariousDefOf.MiscSexualBehaviorCount, sex);
-
-            sex = (int)(totalsex * RJWPreferenceSettings.fisting / totalweight);
-            totalsex -= sex;
-            pawn.records.AddTo(VariousDefOf.MiscSexualBehaviorCount, sex);
-
-            pawn.records.AddTo(VariousDefOf.OralSexCount, totalsex);
-            if (prefer == Gender.Male) pawn.records.AddTo(VariousDefOf.BlowjobCount, totalsex);
-            else pawn.records.AddTo(VariousDefOf.CunnilingusCount, totalsex);
-
-        }
-
         public static Gender PreferGender(this Pawn pawn)
         {
             if (pawn.gender == Gender.Male)
@@ -347,18 +260,6 @@ namespace RJWSexperience
                 if (xxx.is_homosexual(pawn)) return Gender.Female;
                 else return Gender.Male;
             }
-        }
-
-        public static bool GetRapist(this SexProps props, out Pawn rapist)
-        {
-            if (!props.isRape)
-            {
-                rapist = null;
-                return false;
-            }
-
-            rapist = props.pawn;
-            return true;
         }
 
         public static bool IsBestiality(this SexProps props)
@@ -426,7 +327,5 @@ namespace RJWSexperience
                 }
             }
         }
-
-
     }
 }
