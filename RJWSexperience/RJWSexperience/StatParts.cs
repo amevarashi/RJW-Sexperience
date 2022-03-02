@@ -1,65 +1,70 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using rjw;
-using RimWorld;
+﻿using RimWorld;
+using System;
+using UnityEngine;
 using Verse;
-
 
 namespace RJWSexperience
 {
-    public class StatPart_Lust : StatPart
-    {
-        public float factor;
+	/// <summary>
+	/// Lust changes SexFrequency stat
+	/// </summary>
+	public class StatPart_Lust : StatPart
+	{
+		public float factor; // Value is loaded from XML
 
-        public override string ExplanationPart(StatRequest req)
-        {
-            Pawn pawn = req.Thing as Pawn;
-            return Keyed.LustStatFactor(String.Format("{0:0.##}", pawn.LustFactor() * factor * 100));
+		public override string ExplanationPart(StatRequest req)
+		{
+			if (req.HasThing && (req.Thing is Pawn pawn))
+			{
+				return Keyed.LustStatFactor(String.Format("{0:0.##}", GetLustFactor(pawn) * factor * 100));
+			}
+			return null;
+		}
 
-        }
+		public override void TransformValue(StatRequest req, ref float val)
+		{
+			if (req.HasThing && (req.Thing is Pawn pawn))
+				val *= GetLustFactor(pawn) * factor;
+		}
 
-        public override void TransformValue(StatRequest req, ref float val)
-        {
-            Pawn pawn = req.Thing as Pawn;
-            if (pawn != null) val *= pawn.LustFactor() * factor;
-        }
+		public static float GetLustFactor(Pawn pawn)
+		{
+			float lust = pawn.records.GetValue(VariousDefOf.Lust) * Configurations.LustEffectPower;
+			if (lust < 0)
+			{
+				lust = Mathf.Exp((lust + 200f * Mathf.Log(10f)) / 100f) - 100f;
+			}
+			else
+			{
+				lust = Mathf.Sqrt(100f * (lust + 25f)) - 50f;
+			}
 
-    }
+			return 1 + lust / 100f;
+		}
+	}
 
+	/// <summary>
+	/// Make slaves more vulnurable
+	/// </summary>
+	public class StatPart_Slave : StatPart
+	{
+		public float factor; // Value is loaded from XML
 
-    public class StatPart_Slave : StatPart
-    {
-        public float factor;
-        public override string ExplanationPart(StatRequest req)
-        {
-            float fact = factor * 100;
-            Pawn pawn = req.Thing as Pawn;
-            if (pawn != null)
-            {
-                if (pawn.IsSlave)
-                {
-                    return Keyed.SlaveStatFactor(String.Format("{0:0.##}", fact));
-                }
-            }
-            return Keyed.SlaveStatFactorDefault;
-        }
+		public override string ExplanationPart(StatRequest req)
+		{
+			if (req.HasThing && ((req.Thing as Pawn)?.IsSlave == true))
+			{
+				return Keyed.SlaveStatFactor(String.Format("{0:0.##}", factor * 100));
+			}
+			return Keyed.SlaveStatFactorDefault;
+		}
 
-        public override void TransformValue(StatRequest req, ref float val)
-        {
-            Pawn pawn = req.Thing as Pawn;
-            if (pawn != null)
-            {
-                if (pawn.IsSlave)
-                {
-                    val *= factor;
-                }
-            }
-
-        }
-    }
-
-
+		public override void TransformValue(StatRequest req, ref float val)
+		{
+			if (req.HasThing && ((req.Thing as Pawn)?.IsSlave == true))
+			{
+				val *= factor;
+			}
+		}
+	}
 }

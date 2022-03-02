@@ -33,9 +33,7 @@ namespace RJWSexperience
         [DebugAction("RJW Sexperience", "Reset lust", false, false, actionType = DebugActionType.ToolMapForPawns, allowedGameStates = AllowedGameStates.PlayingOnMap)]
         private static void ResetLust(Pawn p)
         {
-            float lust;
-            if (xxx.is_nympho(p)) lust = p.RecordRandomizer(VariousDefOf.Lust, Configurations.AvgLust, Configurations.MaxLustDeviation, 0);
-            else lust = p.RecordRandomizer(VariousDefOf.Lust, Configurations.AvgLust, Configurations.MaxLustDeviation, float.MinValue);
+            float lust = RecordRandomizer.RandomizeLust(p);
             MoteMaker.ThrowText(p.TrueCenter(), p.Map, "Lust: " + lust);
         }
 

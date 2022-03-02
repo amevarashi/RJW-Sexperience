@@ -74,6 +74,7 @@
     <Compile Include="Patches\DefInjection.cs" />
     <Compile Include="Patches\GetGizmos.cs" />
     <Compile Include="Recipe_HymenSurgery.cs" />
+    <Compile Include="SexHistory\RecordRandomizer.cs" />
     <Compile Include="RJWUtility.cs" />
     <Compile Include="SexHistory\HistoryUtility.cs" />
     <Compile Include="SexHistory\SexHistory.cs" />
