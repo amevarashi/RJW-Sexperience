@@ -7,7 +7,7 @@ using RimWorld;
 using Verse;
 using rjw;
 using UnityEngine;
-using System.Collections;
+using RJWSexperience.ExtensionMethods;
 
 namespace RJWSexperience
 {
@@ -758,11 +758,11 @@ namespace RJWSexperience
             totalsexhad++;
             if (props.isRape)
             {
-                if (partner == props.interactionInitiator)
+                if (partner == props.GetInteractionInitiator())
                 {
                     rapedme++;
                 }
-                else if (partner == props.interactionRecipient)
+                else if (partner == props.GetInteractionRecipient())
                 {
                     raped++;
                 }

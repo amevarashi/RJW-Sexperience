@@ -10,7 +10,7 @@ using RimWorld;
 using Verse;
 using Verse.AI;
 using UnityEngine;
-
+using RJWSexperience.ExtensionMethods;
 
 namespace RJWSexperience
 {
@@ -119,7 +119,7 @@ namespace RJWSexperience
         {
             var interaction = rjw.Modules.Interactions.Helpers.InteractionHelper.GetWithExtension(props.dictionaryKey);
 
-            if (props.pawn == props.interactionInitiator)
+            if (props.pawn == props.GetInteractionInitiator())
             {
                 if (!interaction.DominantHasTag(GenitalTag.CanPenetrate) && !interaction.DominantHasFamily(GenitalFamily.Penis))
                     return false;
