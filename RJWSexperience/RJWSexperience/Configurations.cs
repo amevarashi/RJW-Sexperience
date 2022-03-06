@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RimWorld;
+﻿using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -12,7 +7,7 @@ using Verse;
 
 namespace RJWSexperience
 {
-    public class Configurations : ModSettings
+	public class Configurations : ModSettings
     {
         public const float MaxInitialLustDefault = 500;
         public const float AvgLustDefault = 0;
@@ -73,12 +68,12 @@ namespace RJWSexperience
         }
     }
 
-    public class RJWSexperience : Mod
+    public class RjwSexperienceMod : Mod
     {
         private readonly Configurations config;
         private static Vector2 scroll;
 
-        public RJWSexperience(ModContentPack content) : base(content)
+        public RjwSexperienceMod(ModContentPack content) : base(content)
         {
             config = GetSettings<Configurations>();
         }

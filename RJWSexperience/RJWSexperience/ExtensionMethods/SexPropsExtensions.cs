@@ -28,5 +28,14 @@ namespace RJWSexperience.ExtensionMethods
 				return props.partner;
 			}
 		}
+
+		public static bool IsBestiality(this SexProps props)
+		{
+			if (props.partner != null)
+			{
+				return props.pawn.IsAnimal() ^ props.partner.IsAnimal();
+			}
+			return false;
+		}
 	}
 }

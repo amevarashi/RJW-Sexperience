@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using rjw;
 using RimWorld;
 using Verse;
-using Verse.AI;
 using UnityEngine;
 using rjw.Modules.Interactions.Objects;
 using rjw.Modules.Interactions.Helpers;
@@ -16,61 +15,9 @@ namespace RJWSexperience
 {
     public static class RJWUtility
     {
-        public static float GetSexStat(this Pawn pawn)
-        {
-            if (xxx.is_human(pawn) && !pawn.Dead)
-            {
-                return pawn.GetStatValue(xxx.sex_stat);
-            }
-            else return 1.0f;
-        }
-
         public static float LustIncrementFactor(float lust)
         {
             return Mathf.Exp(-Mathf.Pow(lust / Configurations.LustLimit, 2));
-        }
-
-        /// <summary>
-        /// If the pawn is virgin, return true.
-        /// </summary>
-        public static bool IsVirgin(this Pawn pawn)
-        {
-			return pawn.records.GetValue(VariousDefOf.VaginalSexCount) == 0;
-		}
-		public static bool HasHymen(this Pawn pawn)
-        {
-            Trait virgin = pawn.story?.traits?.GetTrait(VariousDefOf.Virgin);
-            if (virgin != null)
-            {
-                if (virgin.Degree > 0) return true;
-            }
-            return false;
-        }
-
-        /// <summary>
-        /// If pawn is virgin, lose his/her virginity.
-        /// </summary>
-        public static void PoptheCherry(this Pawn pawn, Pawn partner, SexProps props)
-        {
-            if (props != null && props.sexType == xxx.rjwSextype.Vaginal)
-            {
-                if (pawn.IsVirgin())
-                {
-                    SexPartnerHistory history = pawn.GetPartnerHistory();
-                    if (history != null)
-                    {
-                        history.RecordFirst(partner, props);
-                    }
-                    if (RemoveVirginTrait(pawn, partner, props))
-                    {
-                        if (Configurations.EnableRecordRandomizer) Messages.Message(Keyed.RS_LostVirgin(pawn.LabelShort, partner.LabelShort), MessageTypeDefOf.NeutralEvent, true);
-                    }
-                }
-                else
-                {
-                    RemoveVirginTrait(pawn, partner, props);
-                }
-            }
         }
 
         public static bool RemoveVirginTrait(Pawn pawn, Pawn partner, SexProps props)
@@ -246,86 +193,6 @@ namespace RJWSexperience
         {
             pawn.records?.AddTo(recordforpawn, 1);
             partner.records?.AddTo(recordforpartner, 1);
-        }
-
-        public static Gender PreferGender(this Pawn pawn)
-        {
-            if (pawn.gender == Gender.Male)
-            {
-                if (xxx.is_homosexual(pawn)) return Gender.Male;
-                else return Gender.Female;
-            }
-            else
-            {
-                if (xxx.is_homosexual(pawn)) return Gender.Female;
-                else return Gender.Male;
-            }
-        }
-
-        public static bool IsBestiality(this SexProps props)
-        {
-            if (props.partner != null)
-            {
-                return props.pawn.IsAnimal() ^ props.partner.IsAnimal();
-            }
-            return false;
-        }
-
-        public static Building_CumBucket FindClosestBucket(this Pawn pawn)
-        {
-            List<Building> buckets = pawn.Map.listerBuildings.allBuildingsColonist.FindAll(x => x is Building_CumBucket);
-            Dictionary<Building, float> targets = new Dictionary<Building, float>();
-            if (!buckets.NullOrEmpty()) for (int i = 0; i < buckets.Count; i++)
-                {
-                    if (pawn.CanReach(buckets[i], PathEndMode.ClosestTouch, Danger.None))
-                    {
-                        targets.Add(buckets[i], pawn.Position.DistanceTo(buckets[i].Position));
-                    }
-                }
-            if (!targets.NullOrEmpty())
-            {
-                return (Building_CumBucket)targets.MinBy(x => x.Value).Key;
-            }
-            return null;
-        }
-
-        public static void AteCum(this Pawn pawn, float amount, bool doDrugEffect = false)
-        {
-            pawn.records.AddTo(VariousDefOf.NumofEatenCum, 1);
-            pawn.records.AddTo(VariousDefOf.AmountofEatenCum, amount);
-            if (doDrugEffect) pawn.CumDrugEffect();
-        }
-
-        public static void CumDrugEffect(this Pawn pawn)
-        {
-            Need need = pawn.needs?.TryGetNeed(VariousDefOf.Chemical_Cum);
-            if (need != null) need.CurLevel += VariousDefOf.CumneedLevelOffset;
-            Hediff addictive = HediffMaker.MakeHediff(VariousDefOf.CumTolerance, pawn);
-            addictive.Severity = 0.032f;
-            pawn.health.AddHediff(addictive);
-            Hediff addiction = pawn.health.hediffSet.GetFirstHediffOfDef(VariousDefOf.CumAddiction);
-            if (addiction != null) addiction.Severity += VariousDefOf.CumexistingAddictionSeverityOffset;
-
-            pawn.needs?.mood?.thoughts?.memories?.TryGainMemoryFast(VariousDefOf.AteCum);
-        }
-
-        public static void AddVirginTrait(this Pawn pawn)
-        {
-            if (pawn.story?.traits != null)
-            {
-                if (pawn.IsVirgin())
-                {
-                    int degree = 0;
-                    if (pawn.gender == Gender.Female) degree = 2;
-                    Trait virgin = new Trait(VariousDefOf.Virgin, degree, true);
-                    pawn.story.traits.GainTrait(virgin);
-                }
-                else if (pawn.gender == Gender.Female && Rand.Chance(0.05f))
-                {
-                    Trait virgin = new Trait(VariousDefOf.Virgin, 1, true);
-                    pawn.story.traits.GainTrait(virgin);
-                }
-            }
         }
     }
 }
