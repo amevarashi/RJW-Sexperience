@@ -1,4 +1,5 @@
 ﻿using RimWorld;
+using rjw;
 using RJWSexperience.ExtensionMethods;
 using Verse;
 
@@ -11,8 +12,8 @@ namespace RJWSexperience
 		{
 			Trait virgin = p.story?.traits?.GetTrait(VariousDefOf.Virgin);
 			if (virgin != null) p.story.traits.RemoveTrait(virgin);
-			p.ResetRecord(true);
-			p.ResetRecord(false);
+			ResetRecord(p, true);
+			ResetRecord(p, false);
 			p.AddVirginTrait();
 			MoteMaker.ThrowText(p.TrueCenter(), p.Map, "Records resetted!");
 		}
@@ -20,7 +21,7 @@ namespace RJWSexperience
 		[DebugAction("RJW Sexperience", "Reset pawn's record(virgin)", false, false, actionType = DebugActionType.ToolMapForPawns, allowedGameStates = AllowedGameStates.PlayingOnMap)]
 		private static void ResetRecordsZero(Pawn p)
 		{
-			p.ResetRecord(true);
+			ResetRecord(p, true);
 			p.AddVirginTrait();
 			MoteMaker.ThrowText(p.TrueCenter(), p.Map, "Records resetted!\nVirginified!");
 		}
@@ -55,5 +56,52 @@ namespace RJWSexperience
 			MoteMaker.ThrowText(p.TrueCenter(), p.Map, "Lust: " + p.records.GetValue(VariousDefOf.Lust));
 		}
 
+		private static void ResetRecord(Pawn pawn, bool allzero)
+		{
+			if (!allzero)
+			{
+				if (Configurations.EnableRecordRandomizer && pawn != null && xxx.is_human(pawn))
+				{
+					RecordRandomizer.Randomize(pawn);
+				}
+			}
+			else
+			{
+				pawn.records.SetTo(VariousDefOf.Lust, 0);
+				pawn.records.SetTo(VariousDefOf.NumofEatenCum, 0);
+				pawn.records.SetTo(VariousDefOf.AmountofEatenCum, 0);
+				pawn.records.SetTo(VariousDefOf.VaginalSexCount, 0);
+				pawn.records.SetTo(VariousDefOf.AnalSexCount, 0);
+				pawn.records.SetTo(VariousDefOf.OralSexCount, 0);
+				pawn.records.SetTo(VariousDefOf.BlowjobCount, 0);
+				pawn.records.SetTo(VariousDefOf.CunnilingusCount, 0);
+				pawn.records.SetTo(VariousDefOf.GenitalCaressCount, 0);
+				pawn.records.SetTo(VariousDefOf.HandjobCount, 0);
+				pawn.records.SetTo(VariousDefOf.FingeringCount, 0);
+				pawn.records.SetTo(VariousDefOf.FootjobCount, 0);
+				pawn.records.SetTo(VariousDefOf.MiscSexualBehaviorCount, 0);
+				pawn.records.SetTo(VariousDefOf.SexPartnerCount, 0);
+				pawn.records.SetTo(VariousDefOf.OrgasmCount, 0);
+				pawn.records.SetTo(xxx.CountOfBeenRapedByAnimals, 0);
+				pawn.records.SetTo(xxx.CountOfBeenRapedByHumanlikes, 0);
+				pawn.records.SetTo(xxx.CountOfBeenRapedByInsects, 0);
+				pawn.records.SetTo(xxx.CountOfBeenRapedByOthers, 0);
+				pawn.records.SetTo(xxx.CountOfBirthAnimal, 0);
+				pawn.records.SetTo(xxx.CountOfBirthEgg, 0);
+				pawn.records.SetTo(xxx.CountOfBirthHuman, 0);
+				pawn.records.SetTo(xxx.CountOfFappin, 0);
+				pawn.records.SetTo(xxx.CountOfRapedAnimals, 0);
+				pawn.records.SetTo(xxx.CountOfRapedHumanlikes, 0);
+				pawn.records.SetTo(xxx.CountOfRapedInsects, 0);
+				pawn.records.SetTo(xxx.CountOfRapedOthers, 0);
+				pawn.records.SetTo(xxx.CountOfSex, 0);
+				pawn.records.SetTo(xxx.CountOfSexWithAnimals, 0);
+				pawn.records.SetTo(xxx.CountOfSexWithCorpse, 0);
+				pawn.records.SetTo(xxx.CountOfSexWithHumanlikes, 0);
+				pawn.records.SetTo(xxx.CountOfSexWithInsects, 0);
+				pawn.records.SetTo(xxx.CountOfSexWithOthers, 0);
+				pawn.records.SetTo(xxx.CountOfWhore, 0);
+			}
+		}
 	}
 }
