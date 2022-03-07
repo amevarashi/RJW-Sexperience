@@ -38,7 +38,6 @@ namespace RJWSexperience
             return false;
         }
 
-
         /// <summary>
         /// For ideo patch
         /// </summary>

@@ -1,4 +1,7 @@
-﻿using HarmonyLib;
+﻿extern alias BaseSexperience;
+using BaseSexperience::RJWSexperience.ExtensionMethods;
+using BaseSexperience::RJWSexperience;
+using HarmonyLib;
 using System.Reflection;
 using Verse;
 
@@ -15,11 +18,11 @@ namespace RJWSexperience.Ideology
 			if (ModLister.HasActiveModWithName("RJW Sexperience"))
 			{
 				//Log.Message("[RJWSexperience.Ideology] Found RJWSexperience, patching");
-				harmony.Patch(AccessTools.Method(typeof(ExtensionMethods.PawnExtensions), nameof(ExtensionMethods.PawnExtensions.IsIncest)),
+				harmony.Patch(AccessTools.Method(typeof(PawnExtensions), nameof(PawnExtensions.IsIncest)),
 					prefix: new HarmonyMethod(typeof(Sexperience_Patch_IsIncest), nameof(Sexperience_Patch_IsIncest.Prefix)),
 					postfix: null
 					);
-				harmony.Patch(AccessTools.Method(typeof(RJWSexperience.RJWUtility), nameof(RJWSexperience.RJWUtility.ThrowVirginHIstoryEvent)),
+				harmony.Patch(AccessTools.Method(typeof(RJWUtility), nameof(RJWUtility.ThrowVirginHIstoryEvent)),
 					prefix: null,
 					postfix: new HarmonyMethod(typeof(Sexperience_Patch_ThrowVirginHIstoryEvent), nameof(Sexperience_Patch_ThrowVirginHIstoryEvent.Postfix))
 					);

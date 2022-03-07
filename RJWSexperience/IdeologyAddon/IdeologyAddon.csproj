@@ -84,6 +84,8 @@
     <ProjectReference Include="..\RJWSexperience\RJWSexperience.csproj">
       <Project>{9c728e06-573b-4b04-a07f-acbf60cb424d}</Project>
       <Name>RJWSexperience</Name>
+      <Private>False</Private>
+      <Aliases>BaseSexperience</Aliases>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
