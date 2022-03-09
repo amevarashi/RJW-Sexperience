@@ -532,7 +532,6 @@ namespace RJWSexperience.UI
         /// </summary>
         protected void DrawBaseSexInfoLeft(Rect rect)
         {
-
             Listing_Standard listmain = new Listing_Standard();
             listmain.Begin(rect);
             float p;
@@ -540,13 +539,16 @@ namespace RJWSexperience.UI
             //Sex statistics
             GUI.Label(listmain.GetRect(FONTHEIGHT), " " + Keyed.RS_Statistics, fontstyleleft);
             listmain.Gap(1f);
+            float maxSatisfaction = history.GetBestSextype(out _);
+            if (maxSatisfaction == 0f) maxSatisfaction = BASESAT;
             for (int i = 0; i < Sextype.Length; i++)
             {
                 int sexindex = Sextype[i];
+                float relativeSat = history.GetAVGSat(sexindex) / maxSatisfaction;
                 p = history.GetAVGSat(sexindex) / BASESAT;
                 string label = Keyed.RS_Sex_Info(Keyed.Sextype[sexindex], history.GetSexCount(sexindex).ToString());
                 Rect tmpRect = listmain.GetRect(FONTHEIGHT);
-                FillableBarLabeled(tmpRect,label, p / 2, HistoryUtility.SextypeColor[sexindex], Texture2D.blackTexture, null, Keyed.RS_SAT_AVG(String.Format("{0:P2}", p)));
+                FillableBarLabeled(tmpRect, label, relativeSat, HistoryUtility.SextypeColor[sexindex], Texture2D.blackTexture, null, Keyed.RS_SAT_AVG(String.Format("{0:P2}", p)));
                 if (Mouse.IsOver(tmpRect))
                 {
                     TooltipHandler.TipRegion(tmpRect, Keyed.RS_LastSex.CapitalizeFirst() + ": " + history.SextypeRecentDays(Sextype[i]));
