@@ -32,17 +32,17 @@ namespace RJWSexperience
         public static readonly Texture2D[] SextypeColor = new Texture2D[]
         {
             Texture2D.linearGrayTexture,    //None = 0,
-            SolidColorMaterials.NewSolidColorTexture(0.900f, 0.500f, 0.500f, 1.0f),    //Vaginal = 1,
-            SolidColorMaterials.NewSolidColorTexture(0.529f, 0.313f, 0.113f, 1.0f),    //Anal = 2,
-            SolidColorMaterials.NewSolidColorTexture(0.529f, 0.113f, 0.305f, 1.0f),    //Oral = 3,
-            SolidColorMaterials.NewSolidColorTexture(0.000f, 0.819f, 0.219f, 1.0f),    //Masturbation = 4,
-            SolidColorMaterials.NewSolidColorTexture(0.000f, 0.560f, 0.090f, 1.0f),    //DoublePenetration 
+            SolidColorMaterials.NewSolidColorTexture(0.900f, 0.500f, 0.500f, 1.0f),    //Vaginal = 1, Light Salmon Pink
+            SolidColorMaterials.NewSolidColorTexture(0.529f, 0.313f, 0.113f, 1.0f),    //Anal = 2, Brown
+            SolidColorMaterials.NewSolidColorTexture(0.529f, 0.113f, 0.305f, 1.0f),    //Oral = 3, Purple
+            SolidColorMaterials.NewSolidColorTexture(0.000f, 0.819f, 0.219f, 1.0f),    //Masturbation = 4, Slightly Dark Green
+            SolidColorMaterials.NewSolidColorTexture(0.000f, 0.560f, 0.090f, 1.0f),    //DoublePenetration = 5, Dark Green
             SolidColorMaterials.NewSolidColorTexture(0.839f, 0.850f, 0.505f, 1.0f),    //Boobjob = 6,
             SolidColorMaterials.NewSolidColorTexture(0.858f, 0.886f, 0.113f, 1.0f),    //Handjob = 7,
             SolidColorMaterials.NewSolidColorTexture(0.752f, 0.780f, 0.000f, 1.0f),    //Footjob = 8,
             SolidColorMaterials.NewSolidColorTexture(0.484f, 0.500f, 0.241f, 1.0f),    //Fingering = 9,
-            SolidColorMaterials.NewSolidColorTexture(0.913f, 0.909f, 0.909f, 1.0f),    //Scissoring = 10,
-            SolidColorMaterials.NewSolidColorTexture(0.588f, 0.576f, 0.431f, 1.0f),    //MutualMasturbation
+            SolidColorMaterials.NewSolidColorTexture(0.000f, 0.500f, 0.080f, 1.0f),    //Scissoring = 10, Dark Green
+            SolidColorMaterials.NewSolidColorTexture(0.588f, 0.576f, 0.431f, 1.0f),    //MutualMasturbation = 11,
             SolidColorMaterials.NewSolidColorTexture(0.741f, 0.000f, 0.682f, 1.0f),    //Fisting = 12,
             SolidColorMaterials.NewSolidColorTexture(0.121f, 0.929f, 1.000f, 1.0f),    //MechImplant = 13,
             SolidColorMaterials.NewSolidColorTexture(0.478f, 0.274f, 0.160f, 1.0f),    //Rimming = 14,
