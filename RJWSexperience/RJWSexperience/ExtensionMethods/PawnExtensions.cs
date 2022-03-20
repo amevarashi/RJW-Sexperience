@@ -4,9 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Verse;
-using Verse.AI;
 
-namespace RJWSexperience.ExtensionMethods
+namespace RJWSexperience
 {
 	public static class PawnExtensions
 	{
@@ -136,24 +135,6 @@ namespace RJWSexperience.ExtensionMethods
 				if (xxx.is_homosexual(pawn)) return Gender.Female;
 				else return Gender.Male;
 			}
-		}
-
-		public static Building_CumBucket FindClosestBucket(this Pawn pawn)
-		{
-			List<Building> buckets = pawn.Map.listerBuildings.allBuildingsColonist.FindAll(x => x is Building_CumBucket);
-			Dictionary<Building, float> targets = new Dictionary<Building, float>();
-			if (!buckets.NullOrEmpty()) for (int i = 0; i < buckets.Count; i++)
-				{
-					if (pawn.CanReach(buckets[i], PathEndMode.ClosestTouch, Danger.None))
-					{
-						targets.Add(buckets[i], pawn.Position.DistanceTo(buckets[i].Position));
-					}
-				}
-			if (!targets.NullOrEmpty())
-			{
-				return (Building_CumBucket)targets.MinBy(x => x.Value).Key;
-			}
-			return null;
 		}
 
 		public static void AteCum(this Pawn pawn, float amount, bool doDrugEffect = false)

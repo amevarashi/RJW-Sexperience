@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using rjw;
 using RimWorld;
 using Verse;
+using Verse.AI;
 using UnityEngine;
 using rjw.Modules.Interactions.Objects;
 using rjw.Modules.Interactions.Helpers;
@@ -193,5 +194,25 @@ namespace RJWSexperience
             pawn.records?.AddTo(recordforpawn, 1);
             partner.records?.AddTo(recordforpartner, 1);
         }
+
+        // Moved this method back because of Menstruation
+        public static Building_CumBucket FindClosestBucket(this Pawn pawn)
+        {
+            List<Building> buckets = pawn.Map.listerBuildings.allBuildingsColonist.FindAll(x => x is Building_CumBucket);
+            Dictionary<Building, float> targets = new Dictionary<Building, float>();
+            if (!buckets.NullOrEmpty()) for (int i = 0; i < buckets.Count; i++)
+                {
+                    if (pawn.CanReach(buckets[i], PathEndMode.ClosestTouch, Danger.None))
+                    {
+                        targets.Add(buckets[i], pawn.Position.DistanceTo(buckets[i].Position));
+                    }
+                }
+            if (!targets.NullOrEmpty())
+            {
+                return (Building_CumBucket)targets.MinBy(x => x.Value).Key;
+            }
+            return null;
+        }
+
     }
 }
