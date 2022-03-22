@@ -14,20 +14,19 @@ namespace RJWSexperience
 			if (Find.Selector.NumSelected > 1)
 				return;
 
-			List<Gizmo> gizmoList = __result.ToList();
-
-			AddHistoryGizmo(__instance, ref gizmoList);
-
-			__result = gizmoList;
+			__result = AddHistoryGizmo(__instance, __result);
 		}
 
-		private static void AddHistoryGizmo(Pawn pawn, ref List<Gizmo> gizmos)
+		private static IEnumerable<Gizmo> AddHistoryGizmo(Pawn pawn, IEnumerable<Gizmo> gizmos)
 		{
+			foreach (Gizmo gizmo in gizmos)
+				yield return gizmo;
+
 			SexPartnerHistory history = pawn.GetPartnerHistory();
-			if (history != null) gizmos.Add(CreateHIstoryGizmo(pawn, history));
+			if (history != null) yield return CreateHistoryGizmo(pawn, history);
 		}
 
-		private static Gizmo CreateHIstoryGizmo(Pawn pawn, SexPartnerHistory history)
+		private static Gizmo CreateHistoryGizmo(Pawn pawn, SexPartnerHistory history)
 		{
 			Gizmo gizmo = new Command_Action
 			{
