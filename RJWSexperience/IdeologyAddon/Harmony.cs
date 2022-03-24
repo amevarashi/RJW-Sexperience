@@ -17,7 +17,6 @@ namespace RJWSexperience.Ideology
 
 			if (ModLister.HasActiveModWithName("RJW Sexperience"))
 			{
-				//Log.Message("[RJWSexperience.Ideology] Found RJWSexperience, patching");
 				harmony.Patch(AccessTools.Method(typeof(PawnExtensions), nameof(PawnExtensions.IsIncest)),
 					prefix: new HarmonyMethod(typeof(Sexperience_Patch_IsIncest), nameof(Sexperience_Patch_IsIncest.Prefix)),
 					postfix: null

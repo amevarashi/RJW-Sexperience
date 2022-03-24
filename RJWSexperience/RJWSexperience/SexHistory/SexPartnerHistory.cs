@@ -425,7 +425,6 @@ namespace RJWSexperience
 				preferracepawncache = allpartners.FirstOrDefault(x => x.def == preferracecache);
 			}
 
-			max = 0;
 			for (int i = 0; i < sextypecount.Length; i++)
 			{
 				float avgsat = sextypesat[i] / sextypecount[i];

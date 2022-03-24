@@ -16,10 +16,11 @@ namespace RJWSexperience
 		{
 			if (__instance.Sexprops.sexType != xxx.rjwSextype.Masturbation && !(__instance is JobDriver_Masturbate))
 			{
-				if (__instance.Sexprops.isRape)
+				if (__instance.Sexprops.isRape && __instance.Sexprops.isReceiver)
 				{
 					__instance.pawn?.skills?.Learn(VariousDefOf.SexSkill, 0.05f, true);
 				}
+				else
 				{
 					__instance.pawn?.skills?.Learn(VariousDefOf.SexSkill, 0.35f, true);
 				}
@@ -82,12 +83,15 @@ namespace RJWSexperience
 
 			if (props.sexType != xxx.rjwSextype.Masturbation || props.partner != null)
 			{
-				lustDelta = Mathf.Clamp((satisfaction - base_sat_per_fuck) * RJWUtility.LustIncrementFactor(lust ?? 0), -0.5f, 0.5f); // If the sex is satisfactory, lust grows up. Declines at the opposite.
+				lustDelta = Mathf.Clamp((satisfaction - base_sat_per_fuck) * RJWUtility.LustIncrementFactor((float)lust), -0.5f, 0.5f); // If the sex is satisfactory, lust grows up. Declines at the opposite.
 			}
 			else
 			{
-				lustDelta = Mathf.Clamp(satisfaction * satisfaction * RJWUtility.LustIncrementFactor(lust ?? 0), 0, 0.5f); // Masturbation always increases lust.
+				lustDelta = Mathf.Clamp(satisfaction * satisfaction * RJWUtility.LustIncrementFactor((float)lust), 0, 0.5f); // Masturbation always increases lust.
 			}
+
+			if (lustDelta == 0)
+				return;
 
 			rjw.Modules.Shared.Logs.LogManager.GetLogger<RjwSexperienceMod>().Message($"{props.pawn.NameShortColored}'s lust changed by {lustDelta} (from {lust})");
 			props.pawn.records.AddTo(VariousDefOf.Lust, lustDelta);
@@ -178,7 +182,6 @@ namespace RJWSexperience
 		}
 	}
 
-
 	[HarmonyPatch(typeof(WorkGiver_CleanSelf), "JobOnThing")]
 	public static class RJW_Patch_CleanSelf_JobOnThing
 	{
@@ -192,27 +195,44 @@ namespace RJWSexperience
 				return false;
 			}
 
-
 			return true;
 		}
 	}
 
-	[HarmonyPatch(typeof(JobGiver_Masturbate), "TryGiveJob")]
-	public static class RJW_Patch_Masturabte_TryGiveJob
+	[HarmonyPatch(typeof(CasualSex_Helper), nameof(CasualSex_Helper.FindSexLocation))]
+	public static class RJW_Patch_CasualSex_Helper_FindSexLocation
 	{
-		public static void Postfix(Pawn pawn, ref Job __result)
+		/// <summary>
+		/// If masturbation and current map has a bucket, return location near the bucket
+		/// </summary>
+		/// <param name="pawn"></param>
+		/// <param name="partner"></param>
+		/// <param name="__result"></param>
+		/// <returns></returns>
+		public static bool Prefix(Pawn pawn, Pawn partner, ref IntVec3 __result)
 		{
-			if (RJWPreferenceSettings.FapEverywhere && (pawn.Faction?.IsPlayer ?? false) && __result != null)
+			if (partner != null)
+				return true; // Not masturbation
+
+			Log.Message($"CasualSex_Helper.FindSexLocation for {pawn.NameShortColored}");
+
+			if (!pawn.Faction?.IsPlayer ?? true)
 			{
-				Building_CumBucket bucket = pawn.FindClosestBucket();
-				if (bucket != null)
-				{
-					__result.Clear();
-					__result = JobMaker.MakeJob(xxx.Masturbate, null, null, bucket.RandomAdjacentCell8Way());
-				}
+				Log.Message("Not player faction");
+				return true;
 			}
 
+			Building_CumBucket bucket = pawn.FindClosestBucket();
+
+			if (bucket == null)
+			{
+				Log.Message("Bucket not found");
+				return true;
+			}
+
+			__result = bucket.RandomAdjacentCell8Way();
+			Log.Message($"Bucket location: {__result}");
+			return false;
 		}
 	}
-
 }

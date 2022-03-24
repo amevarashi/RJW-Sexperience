@@ -70,6 +70,7 @@
     <Compile Include="DebugAction.cs" />
     <Compile Include="ExtensionMethods\PawnExtensions.cs" />
     <Compile Include="ExtensionMethods\SexPropsExtensions.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Harmony.cs" />
     <Compile Include="IngestionOutcomeDoers.cs" />
     <Compile Include="JobDrivers.cs" />

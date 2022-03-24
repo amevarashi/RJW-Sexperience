@@ -17,7 +17,7 @@ namespace RJWSexperience
         public RecordDef recordDef;
         public List<float> minimumValueforStage = new List<float>();
         public float increment;
-    } 
+    }
 
     /// <summary>
     /// Thought class using record.
@@ -54,18 +54,6 @@ namespace RJWSexperience
             }
         }
 
-        public override void ExposeData()
-        {
-            base.ExposeData();
-        }
-
-
-
-        public override void ThoughtInterval()
-        {
-            base.ThoughtInterval();
-        }
-
         public override bool TryMergeWithExistingMemory(out bool showBubble)
         {
             ThoughtHandler thoughts = pawn.needs.mood.thoughts;
@@ -81,11 +69,6 @@ namespace RJWSexperience
             }
             showBubble = true;
             return false;
-        }
-
-        public override void Init()
-        {
-            base.Init();
         }
 
         protected virtual void Merged()

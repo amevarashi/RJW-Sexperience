@@ -7,7 +7,7 @@ using Verse;
 namespace RJWSexperience
 {
 	[HarmonyPatch(typeof(Pawn), "GetGizmos")]
-	public class Pawn_GetGizmos
+	public static class Pawn_GetGizmos
 	{
 		public static void Postfix(ref IEnumerable<Gizmo> __result, Pawn __instance)
 		{

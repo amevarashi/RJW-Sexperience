@@ -32,8 +32,6 @@ namespace RJWSexperience.Ideology
         {
             if (pawn.IsPrisonerOfColony || pawn.IsSlaveOfColony) return true;
             if (pawn.IsSubmissive()) return true;
-            //if ((pawn.Ideo?.HasMeme(MemeDefOf.FemaleSupremacy) ?? false) && pawn.gender != Gender.Female) return true;
-            //else if ((pawn.Ideo?.HasMeme(MemeDefOf.MaleSupremacy) ?? false) && pawn.gender != Gender.Male) return true;
             if (pawn.IsDesignatedComfort() || (pawn.guilt != null && pawn.guilt.IsGuilty) || (pawn.apparel != null && pawn.apparel.PsychologicallyNude)) return true;
             return false;
         }
@@ -99,11 +97,11 @@ namespace RJWSexperience.Ideology
 
         public static bool CanBeBreeder(Pawn animal, Precept_Ritual precept)
         {
-            if (precept != null)
-            {
-                if (precept.ideo.HasPrecept(VariousDefOf.Bestiality_OnlyVenerated) && !precept.ideo.IsVeneratedAnimal(animal)) return false;
-            }
-            if (!xxx.can_rape(animal)) return false;
+			if (precept != null && precept.ideo.HasPrecept(VariousDefOf.Bestiality_OnlyVenerated) && !precept.ideo.IsVeneratedAnimal(animal))
+			{
+				return false;
+			}
+			if (!xxx.can_rape(animal)) return false;
             return true;
         }
 

@@ -44,12 +44,11 @@ namespace RJWSexperience
             int num = (int)storedcum;
 
             cum.stackCount = num;
-            if (cum.stackCount > 0)
-            {
-                if (!GenPlace.TryPlaceThing(cum, PositionHeld, Map, ThingPlaceMode.Direct, out Thing res))
-                    FilthMaker.TryMakeFilth(PositionHeld, Map, VariousDefOf.FilthCum, num);
-            }
-            storedcum -= num;
+			if (cum.stackCount > 0 && !GenPlace.TryPlaceThing(cum, PositionHeld, Map, ThingPlaceMode.Direct, out Thing res))
+			{
+				FilthMaker.TryMakeFilth(PositionHeld, Map, VariousDefOf.FilthCum, num);
+			}
+			storedcum -= num;
         }
 
     }

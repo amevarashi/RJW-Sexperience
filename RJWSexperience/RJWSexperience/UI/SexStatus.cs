@@ -180,7 +180,6 @@ namespace RJWSexperience.UI
             if (partnerList.NullOrEmpty()) return;
             switch (mode)
             {
-                case PartnerOrderMode.Normal:
                 default:
                     partnerList = history?.PartnerList;
                     break;
@@ -328,10 +327,6 @@ namespace RJWSexperience.UI
                         FillableBarLabeled(infoRect3, Keyed.RS_Sex_Info(Keyed.RS_Interspecies, history.InterspeciesCount.ToString()), history.InterspeciesCount / 100f, Texture2D.linearGrayTexture, Texture2D.blackTexture);
                     }
                 }
-                else
-                {
-                    //GUI.Label(infoRect1, Keyed.RS_Normal + " ", fontstyleright);
-                }
             }
             else
             {
@@ -452,10 +447,6 @@ namespace RJWSexperience.UI
                 listmain.Gap(1f);
             }
 
-
-            //listmain.GetRect(FONTHEIGHT);
-            //listmain.Gap(1f);
-
             p = history.RapedCount;
             tmp = listmain.GetRect(FONTHEIGHT);
             if (p < history.BeenRapedCount)
@@ -483,10 +474,6 @@ namespace RJWSexperience.UI
             {
                 TooltipHandler.TipRegion(tmp, RJWUIUtility.GetStatExplanation(pawn, xxx.sex_satisfaction, pawn.Dead ? 0 : pawn.GetStatValue(xxx.sex_satisfaction)));
             }
-
-            //p = pawn.GetStatValue(xxx.vulnerability_stat);
-            //FillableBarLabeled(listmain.GetRect(FONTHEIGHT), String.Format(xxx.vulnerability_stat.LabelCap.CapitalizeFirst() + ": {0:P2}", p), p / 2, HistoryUtility.Khorne, Texture2D.blackTexture, xxx.vulnerability_stat.description);
-            //listmain.Gap(1f);
 
             SkillRecord skill = pawn.skills?.GetSkill(VariousDefOf.SexSkill);
             p = skill?.Level ?? 0;

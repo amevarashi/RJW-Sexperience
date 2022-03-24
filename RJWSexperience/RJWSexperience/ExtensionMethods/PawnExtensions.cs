@@ -90,11 +90,7 @@ namespace RJWSexperience
 		public static bool HasHymen(this Pawn pawn)
 		{
 			Trait virgin = pawn.story?.traits?.GetTrait(VariousDefOf.Virgin);
-			if (virgin != null)
-			{
-				if (virgin.Degree > 0) return true;
-			}
-			return false;
+			return virgin?.Degree > 0;
 		}
 
 		/// <summary>
@@ -107,13 +103,10 @@ namespace RJWSexperience
 				if (pawn.IsVirgin())
 				{
 					SexPartnerHistory history = pawn.GetPartnerHistory();
-					if (history != null)
-					{
-						history.RecordFirst(partner, props);
-					}
+					history?.RecordFirst(partner, props);
 					if (RJWUtility.RemoveVirginTrait(pawn, partner, props))
 					{
-						if (Configurations.EnableRecordRandomizer) Messages.Message(Keyed.RS_LostVirgin(pawn.LabelShort, partner.LabelShort), MessageTypeDefOf.NeutralEvent, true);
+						Messages.Message(Keyed.RS_LostVirgin(pawn.LabelShort, partner.LabelShort), MessageTypeDefOf.NeutralEvent, true);
 					}
 				}
 				else

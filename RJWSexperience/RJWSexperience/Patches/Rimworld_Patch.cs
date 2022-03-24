@@ -23,7 +23,7 @@ namespace RJWSexperience
 	}
 
 	[HarmonyPatch(typeof(FloatMenuMakerMap), "AddHumanlikeOrders")]
-	public class HumanlikeOrder_Patch
+	public static class HumanlikeOrder_Patch
 	{
 		public static void Postfix(Vector3 clickPos, Pawn pawn, List<FloatMenuOption> opts)
 		{

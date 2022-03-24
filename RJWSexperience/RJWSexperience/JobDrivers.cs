@@ -59,7 +59,6 @@ namespace RJWSexperience
             cleaning.WithProgressBar(TargetIndex.A, () => progress/CleaningTime);
 
             yield return cleaning;
-            yield break;
         }
 
         protected void CleaningInit()

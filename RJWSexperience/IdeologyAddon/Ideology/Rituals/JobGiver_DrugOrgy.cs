@@ -64,7 +64,6 @@ namespace RJWSexperience.Ideology
 
 		protected override IEnumerable<Toil> MakeNewToils()
 		{
-			//ModLog.Message("" + this.GetType().ToString() + "::MakeNewToils() called");
 			setup_ticks();
 			var PartnerJob = VariousDefOf.GettinDrugSex;
 
@@ -73,19 +72,6 @@ namespace RJWSexperience.Ideology
 			this.FailOn(() => pawn.Drafted);
 			this.FailOn(() => Partner == null);
 			yield return Toils_Goto.GotoThing(iTarget, PathEndMode.OnCell);
-
-
-			//Toil findQuickieSpot = new Toil();
-			//findQuickieSpot.defaultCompleteMode = ToilCompleteMode.PatherArrival;
-			//findQuickieSpot.initAction = delegate
-			//{
-			//	var spot = Partner.Position.RandomAdjacentCell8Way();
-			//	pawn.pather.StartPath(spot, PathEndMode.OnCell);
-			//	Partner.jobs.StopAll();         //sometimes errors with stuff like vomiting
-			//	Job job = JobMaker.MakeJob(JobDefOf.GotoMindControlled, spot);
-			//	Partner.jobs.StartJob(job, JobCondition.InterruptForced);
-			//};
-			//yield return findQuickieSpot;
 
 			Toil WaitForPartner = new Toil();
 			WaitForPartner.defaultCompleteMode = ToilCompleteMode.Delay;
@@ -167,8 +153,6 @@ namespace RJWSexperience.Ideology
 		{
 			setup_ticks();
 			parteners.Add(Partner);// add job starter, so this wont fail, before Initiator starts his job
-								   //--ModLog.Message("JobDriver_GettinLoved::MakeNewToils is called");
-								   //ModLog.Message("" + Partner.CurJob.def);
 
 			// More/less hearts based on opinion.
 			if (pawn.relations.OpinionOf(Partner) < 0)
@@ -195,9 +179,6 @@ namespace RJWSexperience.Ideology
 			get_loved.defaultCompleteMode = ToilCompleteMode.Never;
 			get_loved.socialMode = RandomSocialMode.Off;
 			get_loved.handlingFacing = true;
-			//get_loved.initAction = delegate
-			//{
-			//};
 			get_loved.tickAction = delegate
 			{
 			};
@@ -229,14 +210,10 @@ namespace RJWSexperience.Ideology
 		{
 			setup_ticks();
 
-			//this.FailOn(() => PawnUtility.PlayerForcedJobNowOrSoon(pawn));
 			this.FailOn(() => pawn.health.Downed);
 			this.FailOn(() => pawn.IsBurning());
 			this.FailOn(() => pawn.IsFighting());
 			this.FailOn(() => pawn.Drafted);
-
-
-			//ModLog.Message(" Making new toil for QuickFap.");
 
 			Toil SexToil = Toils_General.Wait(duration);
 			SexToil.handlingFacing = true;

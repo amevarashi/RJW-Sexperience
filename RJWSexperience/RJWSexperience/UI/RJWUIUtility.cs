@@ -82,8 +82,8 @@ namespace RJWSexperience.UI
 		public static string GetStatExplanation(Pawn pawn, StatDef stat, float val)
         {
 			if (!pawn.Dead)
-			return stat.description + "\n" +
-				stat.Worker.GetExplanationFull(StatRequest.For(pawn), ToStringNumberSense.Undefined, val);
+				return stat.description + "\n" +
+					stat.Worker.GetExplanationFull(StatRequest.For(pawn), ToStringNumberSense.Undefined, val);
 			return "Dead".Translate();
         }
 

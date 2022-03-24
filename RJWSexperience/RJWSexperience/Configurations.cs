@@ -2,9 +2,6 @@
 using UnityEngine;
 using Verse;
 
-
-
-
 namespace RJWSexperience
 {
 	public class Configurations : ModSettings
@@ -35,7 +32,7 @@ namespace RJWSexperience
 
         public static bool SelectionLocked = false;
 
-        public static void ResettoDefault()
+        public void ResetToDefault()
         {
             MaxLustDeviation = MaxInitialLustDefault;
             AvgLust = AvgLustDefault;
@@ -52,7 +49,7 @@ namespace RJWSexperience
 
         public override void ExposeData()
         {
-            Scribe_Values.Look(ref MaxLustDeviation, "MaxLustDeviation", MaxLustDeviation, true);
+            Scribe_Values.Look(ref MaxLustDeviation, "MaxLustDeviation", MaxInitialLustDefault, true);
             Scribe_Values.Look(ref AvgLust, "AvgLust", AvgLust, true);
             Scribe_Values.Look(ref MaxSexCountDeviation, "MaxSexCountDeviation", MaxSexCountDeviation, true);
             Scribe_Values.Look(ref LustEffectPower, "LustEffectPower", LustEffectPower, true);
@@ -70,12 +67,13 @@ namespace RJWSexperience
 
     public class RjwSexperienceMod : Mod
     {
-        private readonly Configurations config;
-        private static Vector2 scroll;
+        private Vector2 scroll;
 
-        public RjwSexperienceMod(ModContentPack content) : base(content)
+		public Configurations Settings { get; }
+
+		public RjwSexperienceMod(ModContentPack content) : base(content)
         {
-            config = GetSettings<Configurations>();
+			Settings = GetSettings<Configurations>();
         }
 
         public override string SettingsCategory()
@@ -96,7 +94,6 @@ namespace RJWSexperience
             Widgets.BeginScrollView(outRect, ref scroll, mainRect);
             listmain.Begin(mainRect);
             listmain.Gap(20f);
-
 
             LabelwithTextfield(listmain.GetRect(lineHeight), Keyed.Option_2_Label + " x" + Configurations.LustEffectPower, Keyed.Option_2_Desc, ref Configurations.LustEffectPower, 0f, 100f);
             Adjuster = (int)(Configurations.LustEffectPower * 1000);
@@ -123,7 +120,6 @@ namespace RJWSexperience
                 Adjuster = (int)section.Slider(Adjuster, -1000, 1000);
                 Configurations.AvgLust = Adjuster;
 
-
                 LabelwithTextfield(section.GetRect(lineHeight), Keyed.Option_5_Label + " " + Configurations.MaxSexCountDeviation, Keyed.Option_5_Desc, ref Configurations.MaxSexCountDeviation, 0f, 2000f);
                 Adjuster = (int)Configurations.MaxSexCountDeviation;
                 Adjuster = (int)section.Slider(Adjuster, 0, 2000);
@@ -146,16 +142,14 @@ namespace RJWSexperience
                 listmain.EndSection(section);
             }
 
-
             if (listmain.ButtonText("reset to default"))
             {
-                Configurations.ResettoDefault();
+                Settings.ResetToDefault();
             }
             listmain.End();
             Widgets.EndScrollView();
-
         }
-        
+
         public void LabelwithTextfield(Rect rect, string label, string tooltip, ref float value, float min, float max)
         {
             Rect textfieldRect = new Rect(rect.xMax - 100f, rect.y, 100f, rect.height);
@@ -164,7 +158,6 @@ namespace RJWSexperience
             Widgets.TextFieldNumeric(textfieldRect,ref value, ref valuestr, min, max);
             Widgets.DrawHighlightIfMouseover(rect);
             TooltipHandler.TipRegion(rect, tooltip);
-            
         }
 
         public void SliderOption(Rect doublerect, string label, string tooltip, ref float value, float min, float max, float division)
@@ -175,7 +168,5 @@ namespace RJWSexperience
             Adjuster = (int)Widgets.HorizontalSlider(doublerect.BottomHalf(), Adjuster, 0, division);
             value = (Adjuster / division).Denormalization(min,max);
         }
-
     }
-
 }

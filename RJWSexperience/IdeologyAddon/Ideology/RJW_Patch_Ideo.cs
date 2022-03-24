@@ -30,8 +30,7 @@ namespace RJWSexperience.Ideology
             {
                 if (mainideo.HasPrecept(VariousDefOf.BabyFaction_AlwaysFather))
                 {
-                    Pawn parent = baby.GetFather();
-                    if (parent == null) baby.GetMother();
+                    Pawn parent = baby.GetFather() ?? baby.GetMother();
 
                     ideo = parent.Ideo;
                     return parent.Faction;
@@ -162,7 +161,6 @@ namespace RJWSexperience.Ideology
             bool isCoreLovin = props.isCoreLovin;
             xxx.rjwSextype sextype = props.sexType;
 
-            //Log.Message("Aftersex " + pawn.Label + ": " + sextype);
             if (partner != null)
             {
                 if (xxx.is_human(pawn)) AfterSexHuman(pawn, partner, usedCondom, rape, isCoreLovin, sextype);
@@ -227,12 +225,6 @@ namespace RJWSexperience.Ideology
                     {
                         Find.HistoryEventsManager.RecordEvent(sexevent.TaggedEvent(human, tag + HETag.Gender(human), partner));
                         Find.HistoryEventsManager.RecordEvent(sexevent.TaggedEvent(partner, tag + HETag.Gender(partner), human));
-                        //if (sexevent == VariousDefOf.PromiscuousSex)
-                        //{
-                        //    human.records.AddTo(SexperienceDefOf.Lust, 1.0f* RJWUtility.LustIncrementFactor(human.records.GetValue(SexperienceDefOf.Lust)));
-                        //    partner.records.AddTo(SexperienceDefOf.Lust, 1.0f * RJWUtility.LustIncrementFactor(partner.records.GetValue(SexperienceDefOf.Lust)));
-                        //}
-
                     }
                 }
             }
@@ -302,7 +294,6 @@ namespace RJWSexperience.Ideology
     {
         public static void Postfix(InteractionContext context, InteractionWithExtension interaction, IInteractionRule rule, ref float __result)
         {
-            
 
             Ideo ideo = context.Inputs.Initiator.Ideo;
             if (ideo != null) PreceptSextype(ideo, context.Inputs.Initiator.GetStatValue(xxx.sex_drive_stat), ref __result, 0, interaction);
@@ -312,7 +303,7 @@ namespace RJWSexperience.Ideology
 
         }
 
-        public static List<String> promiscuousSexTypes = new List<String> { 
+        private static readonly List<String> promiscuousSexTypes = new List<String> {
             "DoublePenetration",
             "Scissoring",
             "Sixtynine",
@@ -418,7 +409,6 @@ namespace RJWSexperience.Ideology
         {
             if (!mother.IsAnimal())
             {
-                //baby.SetFactionDirect(baby.GetFactionUsingPrecept());
                 Faction faction = baby.GetFactionUsingPrecept(out Ideo ideo);
                 if (baby.Faction != faction) baby.SetFaction(faction);
                 baby.ideo?.SetIdeo(ideo);

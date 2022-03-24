@@ -48,7 +48,6 @@ namespace RJWSexperience.Ideology
 
 		protected override IEnumerable<Toil> MakeNewToils()
 		{
-			//ModLog.Message("" + this.GetType().ToString() + "::MakeNewToils() called");
 			setup_ticks();
 
 			this.FailOnDespawnedNullOrForbidden(iTarget);
@@ -148,7 +147,6 @@ namespace RJWSexperience.Ideology
 					Job tobed = JobMaker.MakeJob(JobDefOf.Rescue, pawn, Bed);
 					tobed.count = 1;
 					Partner.jobs.jobQueue.EnqueueFirst(tobed);
-					//Log.Message(xxx.get_pawnname(Initiator) + ": job tobed:" + tobed);
 				}
 				else if (pawn.HostileTo(Partner))
 					pawn.health.AddHediff(xxx.submitting);

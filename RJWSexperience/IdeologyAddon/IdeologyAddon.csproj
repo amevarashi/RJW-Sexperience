@@ -57,6 +57,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Ideology\GoodwillSituationWorker_MemeCompatibility.cs" />
     <Compile Include="Harmony.cs" />
     <Compile Include="Ideology\Keyed.cs" />

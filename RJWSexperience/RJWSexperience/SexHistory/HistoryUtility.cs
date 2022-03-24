@@ -20,13 +20,13 @@ namespace RJWSexperience
         public static readonly Texture2D Incest = ContentFinder<Texture2D>.Get("UI/Icon/Incest");
         public static readonly Texture2D Locked = ContentFinder<Texture2D>.Get("UI/Icon/RSLocked");
         public static readonly Texture2D Unlocked = ContentFinder<Texture2D>.Get("UI/Icon/RSUnlocked");
-        public static Texture2D Slaanesh = SolidColorMaterials.NewSolidColorTexture(0.686f, 0.062f, 0.698f, 1.0f);
-        public static Texture2D Khorne = SolidColorMaterials.NewSolidColorTexture(0.415f, 0.0f, 0.003f, 1.0f);
-        public static Texture2D Tzeentch = SolidColorMaterials.NewSolidColorTexture(0.082f, 0.453f, 0.6f, 1.0f);
-        public static Texture2D Nurgle = SolidColorMaterials.NewSolidColorTexture(0.6f, 0.83f, 0.35f, 1.0f);
-        public static Texture2D Partners = SolidColorMaterials.NewSolidColorTexture(0.843f, 0.474f, 0.6f, 1.0f);
-        public static Texture2D TotalSex = SolidColorMaterials.NewSolidColorTexture(0.878f, 0.674f, 0.411f, 1.0f);
-        public static Texture2D Satisfaction = SolidColorMaterials.NewSolidColorTexture(0.325f, 0.815f, 0.729f,1.0f);
+        public static readonly Texture2D Slaanesh = SolidColorMaterials.NewSolidColorTexture(0.686f, 0.062f, 0.698f, 1.0f);
+        public static readonly Texture2D Khorne = SolidColorMaterials.NewSolidColorTexture(0.415f, 0.0f, 0.003f, 1.0f);
+        public static readonly Texture2D Tzeentch = SolidColorMaterials.NewSolidColorTexture(0.082f, 0.453f, 0.6f, 1.0f);
+        public static readonly Texture2D Nurgle = SolidColorMaterials.NewSolidColorTexture(0.6f, 0.83f, 0.35f, 1.0f);
+        public static readonly Texture2D Partners = SolidColorMaterials.NewSolidColorTexture(0.843f, 0.474f, 0.6f, 1.0f);
+        public static readonly Texture2D TotalSex = SolidColorMaterials.NewSolidColorTexture(0.878f, 0.674f, 0.411f, 1.0f);
+        public static readonly Texture2D Satisfaction = SolidColorMaterials.NewSolidColorTexture(0.325f, 0.815f, 0.729f,1.0f);
         public static readonly Color HistoryColor = new Color(0.9f,0.5f,0.5f);
 
         public static readonly Texture2D[] SextypeColor = new Texture2D[]

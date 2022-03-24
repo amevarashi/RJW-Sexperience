@@ -73,13 +73,8 @@ namespace RJWSexperience.Ideology
 				if (dri == null)
 				{
 					Job gettin_raped = JobMaker.MakeJob(PartnerJob, pawn);
-					//Building_Bed Bed = null;
-					//if (Partner.GetPosture() == PawnPosture.LayingInBed)
-					//	Bed = Partner.CurrentBed();
 
 					Partner.jobs.StartJob(gettin_raped, JobCondition.InterruptForced, null, false, true, null);
-					//if (Bed != null)
-					//	(Partner.jobs.curDriver as JobDriver_SexBaseRecieverRaped)?.Set_bed(Bed);
 				}
 			};
 			yield return StartPartnerJob;
@@ -93,17 +88,12 @@ namespace RJWSexperience.Ideology
 			{
 				Partner.pather.StopDead();
 				Partner.jobs.curDriver.asleep = false;
-				//CondomUtility.GetCondomFromRoom(Partner);
-				//Sexprops.usedCondom = CondomUtility.TryUseCondom(Partner);
 
 				if (RJWSettings.DebugRape) ModLog.Message("JobDriver_RapeComfortPawn::MakeNewToils() - reserving prisoner");
-				//pawn.Reserve(Partner, xxx.max_rapists_per_prisoner, 0);
 				Start();
 			};
 			SexToil.tickAction = delegate
 			{
-				//if (pawn.IsHashIntervalTick(ticks_between_hearts))
-				//	ThrowMetaIcon(pawn.Position, pawn.Map, ThingDefOf.Heart);
 				SexTick(pawn, Partner);
 				SexUtility.reduce_rest(Partner, 1);
 				SexUtility.reduce_rest(pawn, 2);
