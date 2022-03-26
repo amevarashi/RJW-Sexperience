@@ -83,11 +83,11 @@ namespace RJWSexperience
 
 			if (props.sexType != xxx.rjwSextype.Masturbation || props.partner != null)
 			{
-				lustDelta = Mathf.Clamp((satisfaction - base_sat_per_fuck) * RJWUtility.LustIncrementFactor((float)lust), -0.5f, 0.5f); // If the sex is satisfactory, lust grows up. Declines at the opposite.
+				lustDelta = Mathf.Clamp((satisfaction - base_sat_per_fuck) * LustIncrementFactor((float)lust), -0.5f, 0.5f); // If the sex is satisfactory, lust grows up. Declines at the opposite.
 			}
 			else
 			{
-				lustDelta = Mathf.Clamp(satisfaction * satisfaction * RJWUtility.LustIncrementFactor((float)lust), 0, 0.5f); // Masturbation always increases lust.
+				lustDelta = Mathf.Clamp(satisfaction * satisfaction * LustIncrementFactor((float)lust), 0, 0.5f); // Masturbation always increases lust.
 			}
 
 			if (lustDelta == 0)
@@ -96,6 +96,12 @@ namespace RJWSexperience
 			rjw.Modules.Shared.Logs.LogManager.GetLogger<RjwSexperienceMod>().Message($"{props.pawn.NameShortColored}'s lust changed by {lustDelta} (from {lust})");
 			props.pawn.records.AddTo(VariousDefOf.Lust, lustDelta);
 		}
+
+		private static float LustIncrementFactor(float lust)
+		{
+			return Mathf.Exp(-Mathf.Pow(lust / Configurations.LustLimit, 2));
+		}
+
 	}
 
 	[HarmonyPatch(typeof(SexUtility), "TransferNutrition")]

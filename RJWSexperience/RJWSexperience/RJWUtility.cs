@@ -16,11 +16,6 @@ namespace RJWSexperience
 {
     public static class RJWUtility
     {
-        public static float LustIncrementFactor(float lust)
-        {
-            return Mathf.Exp(-Mathf.Pow(lust / Configurations.LustLimit, 2));
-        }
-
         public static bool RemoveVirginTrait(Pawn pawn, Pawn partner, SexProps props)
         {
             int degree;

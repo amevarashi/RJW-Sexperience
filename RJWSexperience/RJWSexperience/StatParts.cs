@@ -2,6 +2,7 @@
 using System;
 using UnityEngine;
 using Verse;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RJWSexperience
 {
@@ -10,7 +11,8 @@ namespace RJWSexperience
 	/// </summary>
 	public class StatPart_Lust : StatPart
 	{
-		public float factor; // Value is loaded from XML
+		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
+		public float factor;
 
 		public override string ExplanationPart(StatRequest req)
 		{
@@ -48,7 +50,8 @@ namespace RJWSexperience
 	/// </summary>
 	public class StatPart_Slave : StatPart
 	{
-		public float factor; // Value is loaded from XML
+		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
+		public float factor;
 
 		public override string ExplanationPart(StatRequest req)
 		{

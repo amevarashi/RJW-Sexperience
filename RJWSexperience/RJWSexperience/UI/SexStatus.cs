@@ -58,10 +58,10 @@ namespace RJWSexperience.UI
 
 
         protected Pawn pawn;
-        protected SexHistory selectedPawn;
+        protected SexPartnerHistoryRecord selectedPawn;
         protected SexPartnerHistory history;
         protected CompRJW rjwcomp;
-        protected List<SexHistory> partnerList;
+        protected List<SexPartnerHistoryRecord> partnerList;
         protected PartnerOrderMode orderMode;
 
         private static GUIStyleState fontstylestate = new GUIStyleState() { textColor = Color.white };
@@ -184,13 +184,13 @@ namespace RJWSexperience.UI
                     partnerList = history?.PartnerList;
                     break;
                 case PartnerOrderMode.Recent:
-                    partnerList.Sort(new SexHistory.RecentOrderComparer());
+                    partnerList.Sort(new SexPartnerHistoryRecord.RecentOrderComparer());
                     break;
                 case PartnerOrderMode.Most:
-                    partnerList.Sort(new SexHistory.MostOrderComparer());
+                    partnerList.Sort(new SexPartnerHistoryRecord.MostOrderComparer());
                     break;
                 case PartnerOrderMode.Name:
-                    partnerList.Sort(new SexHistory.NameOrderComparer());
+                    partnerList.Sort(new SexPartnerHistoryRecord.NameOrderComparer());
                     break;
             }
         }
@@ -222,7 +222,7 @@ namespace RJWSexperience.UI
 
         }
 
-        protected void DrawInfoWithPortrait(Rect rect, SexHistory history, string tooltip = "")
+        protected void DrawInfoWithPortrait(Rect rect, SexPartnerHistoryRecord history, string tooltip = "")
         {
             Widgets.DrawMenuSection(rect);
             string str = tooltip;
@@ -271,7 +271,7 @@ namespace RJWSexperience.UI
             }
         }
 
-        protected void DrawSexInfoCard(Rect rect, SexHistory history, string label, string tooltip, string rightlabel = "")
+        protected void DrawSexInfoCard(Rect rect, SexPartnerHistoryRecord history, string label, string tooltip, string rightlabel = "")
         {
             Rect labelRect = new Rect(rect.x, rect.y, rect.width, FONTHEIGHT);
             Rect infoRect = new Rect(rect.x, rect.y + FONTHEIGHT, rect.width, rect.height - FONTHEIGHT);
@@ -579,7 +579,7 @@ namespace RJWSexperience.UI
             listmain.End();
         }
 
-        protected void DrawPartnerList(Rect rect, List<SexHistory> partnerList)
+        protected void DrawPartnerList(Rect rect, List<SexPartnerHistoryRecord> partnerList)
         {
             Rect pawnRect = new Rect(rect.x, rect.y, LISTPAWNSIZE, LISTPAWNSIZE);
             for (int i = 0; i < partnerList.Count; i++)
@@ -603,7 +603,7 @@ namespace RJWSexperience.UI
             }
         }
 
-        protected void DrawPawn(Rect rect, SexHistory history)
+        protected void DrawPawn(Rect rect, SexPartnerHistoryRecord history)
         {
             if (history != null)
             {

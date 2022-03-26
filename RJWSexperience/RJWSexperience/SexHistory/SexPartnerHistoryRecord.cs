@@ -11,7 +11,7 @@ using RJWSexperience.ExtensionMethods;
 
 namespace RJWSexperience
 {
-    public class SexHistory : IExposable
+    public class SexPartnerHistoryRecord : IExposable
     {
         public SexPartnerHistory parent;
         public string partnerID;
@@ -115,9 +115,9 @@ namespace RJWSexperience
             }
         }
 
-        public SexHistory() { }
+        public SexPartnerHistoryRecord() { }
 
-        public SexHistory(Pawn pawn, bool incest = false)
+        public SexPartnerHistoryRecord(Pawn pawn, bool incest = false)
         {
             this.partner = pawn;
             this.namecache = pawn.Label;
@@ -184,25 +184,25 @@ namespace RJWSexperience
             partner = Find.WorldPawns.AllPawnsAliveOrDead.FirstOrDefault(x => x.ThingID.Equals(partnerID));
         }
 
-        public class RecentOrderComparer : IComparer<SexHistory>
+        public class RecentOrderComparer : IComparer<SexPartnerHistoryRecord>
         {
-            public int Compare(SexHistory x, SexHistory y)
+            public int Compare(SexPartnerHistoryRecord x, SexPartnerHistoryRecord y)
             {
                 return y.RecentSexTickAbs.CompareTo(x.RecentSexTickAbs);
             }
         }
 
-        public class MostOrderComparer : IComparer<SexHistory>
+        public class MostOrderComparer : IComparer<SexPartnerHistoryRecord>
         {
-            public int Compare(SexHistory x, SexHistory y)
+            public int Compare(SexPartnerHistoryRecord x, SexPartnerHistoryRecord y)
             {
                 return y.TotalSexCount.CompareTo(x.TotalSexCount);
             }
         }
 
-        public class NameOrderComparer : IComparer<SexHistory>
+        public class NameOrderComparer : IComparer<SexPartnerHistoryRecord>
         {
-            public int Compare(SexHistory x, SexHistory y)
+            public int Compare(SexPartnerHistoryRecord x, SexPartnerHistoryRecord y)
             {
                 return x.Label.CompareTo(y.Label);
             }
