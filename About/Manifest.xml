@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Manifest>
-	<identifier>RJW Sexperience</identifier>
-	<version>1.0.2.3</version>
+	<identifier>RJWSexperience</identifier>
+	<version>1.0.3.0</version>
 	<dependencies>
+		<li>RimJobWorld >= 4.9.5.3</li>
 	</dependencies>
 	<incompatibleWith />
 	<loadAfter>
 	</loadAfter>
 	<suggests>
 	</suggests>
-  <manifestUri>https://raw.githubusercontent.com/moreoreganostodump/RJW-Sexperience/master/About/Manifest.xml</manifestUri>
-  <downloadUri>https://github.com/moreoreganostodump/RJW-Sexperience</downloadUri>
+  <manifestUri>https://raw.githubusercontent.com/amevarashi/RJW-Sexperience/master/About/Manifest.xml</manifestUri>
+  <downloadUri>https://github.com/amevarashi/RJW-Sexperience</downloadUri>
 </Manifest>

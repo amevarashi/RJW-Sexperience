@@ -1,3 +1,18 @@
+Version Beta 1.0.3.0
+ - requires RJW 4.9.5.3 or later
+ - Added option to get minimum sexable age for record randomizer from life stages
+ - Split Ideology addon from base. In theory, addon now can be used without Sexperience. Untested
+ - Fixed rape history recording
+ - Fixed cum eating for futas
+ - Fixed compatibility with VSIE Teaching
+ - Changed Scissoring SextypeColor from white to dark green
+ - Changed sextype bars scaling to max value
+ - Hide history Gizmo when several pawns selected
+ - Optimized history gizmo injection
+ - Changed lust update calculation. Now increment factor only applied if absolute value is increased
+ - Added option for how much lust can change from a single sex act
+ - Fixed cum bucket masturbation error
+
 Version Beta 1.0.2.3
  - fixed scroll was not worked well
  - memory optimizations
