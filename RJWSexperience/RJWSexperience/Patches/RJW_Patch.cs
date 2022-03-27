@@ -81,9 +81,12 @@ namespace RJWSexperience
 
 			float lustDelta;
 
-			if (props.sexType != xxx.rjwSextype.Masturbation || props.partner != null)
+			if (props.sexType != xxx.rjwSextype.Masturbation)
 			{
-				lustDelta = Mathf.Clamp((satisfaction - base_sat_per_fuck) * LustIncrementFactor((float)lust), -0.5f, 0.5f); // If the sex is satisfactory, lust grows up. Declines at the opposite.
+				lustDelta = satisfaction - base_sat_per_fuck;
+				if (Mathf.Sign(lustDelta) == Mathf.Sign((float)lust)) // Only if getting closer to the limit
+					lustDelta *= LustIncrementFactor((float)lust);
+				lustDelta = Mathf.Clamp(lustDelta, -0.5f, 0.5f); // If the sex is satisfactory, lust grows up. Declines at the opposite.
 			}
 			else
 			{
