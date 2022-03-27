@@ -22,7 +22,7 @@ namespace RJWSexperience
 
 				int sexableage = 0;
 				int minsexage = 0;
-				if (Configurations.MinSexableFromLifestage)
+				if (SexperienceMod.Settings.MinSexableFromLifestage)
 					minsexage = (int)pawn.RaceProps.lifeStageAges.Find(x => x.def.reproductive).minAge;
 				else
 					minsexage = (int)(pawn.RaceProps.lifeExpectancy * Configurations.MinSexablePercent);

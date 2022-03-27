@@ -81,6 +81,8 @@
   <RSOption_10_Desc>Set probability of virgin regardless of age.</RSOption_10_Desc>
   <RSOption_MinSexableFromLifestage_Label>Minimum sexable age from life stages</RSOption_MinSexableFromLifestage_Label>
   <RSOption_MinSexableFromLifestage_Desc>Only used for generating records. Get minimum sexable age from the first reproductive life stage. Works better for races with a long lifespan</RSOption_MinSexableFromLifestage_Desc>
+  <RSOption_MaxSingleLustChange_Label>Maximum lust change per sex</RSOption_MaxSingleLustChange_Label>
+  <RSOption_MaxSingleLustChange_Desc>Set how much lust can change from a single sex act</RSOption_MaxSingleLustChange_Desc>
 
   <Vaginal>Vaginal</Vaginal>
   <Anal>Anal</Anal>

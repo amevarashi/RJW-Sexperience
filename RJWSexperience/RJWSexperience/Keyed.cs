@@ -85,6 +85,8 @@ namespace RJWSexperience
 		public static readonly string Option_10_Desc = "RSOption_10_Desc".Translate();
 		public static readonly string Option_MinSexableFromLifestage_Label = "RSOption_MinSexableFromLifestage_Label".Translate();
 		public static readonly string Option_MinSexableFromLifestage_Desc = "RSOption_MinSexableFromLifestage_Desc".Translate();
+		public static readonly string Option_MaxSingleLustChange_Label = "RSOption_MaxSingleLustChange_Label".Translate();
+		public static readonly string Option_MaxSingleLustChange_Desc = "RSOption_MaxSingleLustChange_Desc".Translate();
 
 		public static string Translate(this PartnerOrderMode mode)
 		{

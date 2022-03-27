@@ -86,17 +86,17 @@ namespace RJWSexperience
 				lustDelta = satisfaction - base_sat_per_fuck;
 				if (Mathf.Sign(lustDelta) == Mathf.Sign((float)lust)) // Only if getting closer to the limit
 					lustDelta *= LustIncrementFactor((float)lust);
-				lustDelta = Mathf.Clamp(lustDelta, -0.5f, 0.5f); // If the sex is satisfactory, lust grows up. Declines at the opposite.
+				lustDelta = Mathf.Clamp(lustDelta, -SexperienceMod.Settings.MaxSingleLustChange, SexperienceMod.Settings.MaxSingleLustChange); // If the sex is satisfactory, lust grows up. Declines at the opposite.
 			}
 			else
 			{
-				lustDelta = Mathf.Clamp(satisfaction * satisfaction * LustIncrementFactor((float)lust), 0, 0.5f); // Masturbation always increases lust.
+				lustDelta = Mathf.Clamp(satisfaction * satisfaction * LustIncrementFactor((float)lust), 0, SexperienceMod.Settings.MaxSingleLustChange); // Masturbation always increases lust.
 			}
 
 			if (lustDelta == 0)
 				return;
 
-			rjw.Modules.Shared.Logs.LogManager.GetLogger<RjwSexperienceMod>().Message($"{props.pawn.NameShortColored}'s lust changed by {lustDelta} (from {lust})");
+			rjw.Modules.Shared.Logs.LogManager.GetLogger<SexperienceMod>().Message($"{props.pawn.NameShortColored}'s lust changed by {lustDelta} (from {lust})");
 			props.pawn.records.AddTo(VariousDefOf.Lust, lustDelta);
 		}
 
