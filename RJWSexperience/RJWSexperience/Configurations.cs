@@ -19,55 +19,68 @@ namespace RJWSexperience
 		public const float MinSexablePercentDefault = 0.2f;
 		public const float VirginRatioDefault = 0.01f;
 
-		private float maxSingleLustChange = MaxSingleLustChangeDefault;
+		private float maxLustDeviation = MaxInitialLustDefault;
+		private float avgLust = AvgLustDefault;
+		private float maxSexCountDeviation = MaxSexCountDeviationDefault;
+		private float lustEffectPower = LustEffectPowerDefault;
+		private float sexPerYear = SexPerYearDefault;
+		private bool slavesBeenRapedExp = SlavesBeenRapedExpDefault;
+		private bool enableRecordRandomizer = EnableStatRandomizerDefault;
+		private float lustLimit = LustLimitDefault;
 		private bool minSexableFromLifestage = MinSexableFromLifestageDefault;
+		private float minSexablePercent = MinSexablePercentDefault;
+		private float virginRatio = VirginRatioDefault;
+		private float maxSingleLustChange = MaxSingleLustChangeDefault;
 
-		public static float MaxLustDeviation = MaxInitialLustDefault;
-		public static float AvgLust = AvgLustDefault;
-		public static float MaxSexCountDeviation = MaxSexCountDeviationDefault;
-		public static float LustEffectPower = LustEffectPowerDefault;
-		public static float SexPerYear = SexPerYearDefault;
-		public static bool SlavesBeenRapedExp = SlavesBeenRapedExpDefault;
-		public static bool EnableRecordRandomizer = EnableStatRandomizerDefault;
-		public static float LustLimit = LustLimitDefault;
+		public float MaxLustDeviation { get => maxLustDeviation; }
+		public float AvgLust { get => avgLust; }
+		public float MaxSexCountDeviation { get => maxSexCountDeviation; }
+		public float LustEffectPower { get => lustEffectPower; }
+		public float SexPerYear { get => sexPerYear; }
+		public bool SlavesBeenRapedExp { get => slavesBeenRapedExp; }
+		public bool EnableRecordRandomizer { get => enableRecordRandomizer; }
+		public float LustLimit { get => lustLimit; }
 		public bool MinSexableFromLifestage { get => minSexableFromLifestage; }
-		public static float MinSexablePercent = MinSexablePercentDefault;
-		public static float VirginRatio = VirginRatioDefault;
+		public float MinSexablePercent { get => minSexablePercent; }
+		public float VirginRatio { get => virginRatio; }
 		public float MaxSingleLustChange { get => maxSingleLustChange; }
 
-		public static bool SelectionLocked = false;
+		private bool selectionLocked = false;
+
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Minor Code Smell", "S2292:Trivial properties should be auto-implemented", Justification = "Can't scribe property")]
+		public bool SelectionLocked { get => selectionLocked; set => selectionLocked = value; }
 
 		public void ResetToDefault()
 		{
-			MaxLustDeviation = MaxInitialLustDefault;
-			AvgLust = AvgLustDefault;
-			MaxSexCountDeviation = MaxSexCountDeviationDefault;
-			LustEffectPower = LustEffectPowerDefault;
-			SexPerYear = SexPerYearDefault;
-			SlavesBeenRapedExp = SlavesBeenRapedExpDefault;
-			EnableRecordRandomizer = EnableStatRandomizerDefault;
-			LustLimit = LustLimitDefault;
+			maxLustDeviation = MaxInitialLustDefault;
+			avgLust = AvgLustDefault;
+			maxSexCountDeviation = MaxSexCountDeviationDefault;
+			lustEffectPower = LustEffectPowerDefault;
+			sexPerYear = SexPerYearDefault;
+			slavesBeenRapedExp = SlavesBeenRapedExpDefault;
+			enableRecordRandomizer = EnableStatRandomizerDefault;
+			lustLimit = LustLimitDefault;
 			maxSingleLustChange = MaxSingleLustChangeDefault;
 			minSexableFromLifestage = MinSexableFromLifestageDefault;
-			MinSexablePercent = MinSexablePercentDefault;
-			VirginRatio = VirginRatioDefault;
+			minSexablePercent = MinSexablePercentDefault;
+			virginRatio = VirginRatioDefault;
 		}
 
 		public override void ExposeData()
 		{
-			Scribe_Values.Look(ref MaxLustDeviation, "MaxLustDeviation", MaxInitialLustDefault, true);
-			Scribe_Values.Look(ref AvgLust, "AvgLust", AvgLust, true);
-			Scribe_Values.Look(ref MaxSexCountDeviation, "MaxSexCountDeviation", MaxSexCountDeviation, true);
-			Scribe_Values.Look(ref LustEffectPower, "LustEffectPower", LustEffectPower, true);
-			Scribe_Values.Look(ref SexPerYear, "SexPerYear", SexPerYear, true);
-			Scribe_Values.Look(ref SlavesBeenRapedExp, "SlavesBeenRapedExp", SlavesBeenRapedExp, true);
-			Scribe_Values.Look(ref EnableRecordRandomizer, "EnableRecordRandomizer", EnableRecordRandomizer, true);
-			Scribe_Values.Look(ref LustLimit, "LustLimit", LustLimit, true);
+			Scribe_Values.Look(ref maxLustDeviation, "MaxLustDeviation", MaxInitialLustDefault, true);
+			Scribe_Values.Look(ref avgLust, "AvgLust", AvgLustDefault, true);
+			Scribe_Values.Look(ref maxSexCountDeviation, "MaxSexCountDeviation", MaxSexCountDeviationDefault, true);
+			Scribe_Values.Look(ref lustEffectPower, "LustEffectPower", LustEffectPowerDefault, true);
+			Scribe_Values.Look(ref sexPerYear, "SexPerYear", SexPerYearDefault, true);
+			Scribe_Values.Look(ref slavesBeenRapedExp, "SlavesBeenRapedExp", SlavesBeenRapedExpDefault, true);
+			Scribe_Values.Look(ref enableRecordRandomizer, "EnableRecordRandomizer", EnableStatRandomizerDefault, true);
+			Scribe_Values.Look(ref lustLimit, "LustLimit", LustLimitDefault, true);
 			Scribe_Values.Look(ref maxSingleLustChange, "maxSingleLustChange", MaxSingleLustChangeDefault, true);
-			Scribe_Values.Look(ref minSexableFromLifestage, "MinSexableFromLifestage", MinSexableFromLifestage, true);
-			Scribe_Values.Look(ref MinSexablePercent, "MinSexablePercent", MinSexablePercent, true);
-			Scribe_Values.Look(ref VirginRatio, "VirginRatio", VirginRatio, true);
-			Scribe_Values.Look(ref SelectionLocked, "SelectionLocked", SelectionLocked, true);
+			Scribe_Values.Look(ref minSexableFromLifestage, "MinSexableFromLifestage", MinSexableFromLifestageDefault, true);
+			Scribe_Values.Look(ref minSexablePercent, "MinSexablePercent", MinSexablePercentDefault, true);
+			Scribe_Values.Look(ref virginRatio, "VirginRatio", VirginRatioDefault, true);
+			Scribe_Values.Look(ref selectionLocked, "SelectionLocked");
 			base.ExposeData();
 		}
 
@@ -79,31 +92,31 @@ namespace RJWSexperience
 			listmain.maxOneColumn = true;
 			listmain.Begin(inRect);
 
-			SliderOption(listmain.GetRect(lineHeight * 2f), Keyed.Option_2_Label + " x" + LustEffectPower, Keyed.Option_2_Desc, ref LustEffectPower, 0f, 2f, 0.001f);
-			SliderOption(listmain.GetRect(lineHeight * 2f), Keyed.Option_8_Label + " " + LustLimit, Keyed.Option_8_Desc, ref LustLimit, 0f, 5000f, 1f);
+			SliderOption(listmain.GetRect(lineHeight * 2f), Keyed.Option_2_Label + " x" + lustEffectPower, Keyed.Option_2_Desc, ref lustEffectPower, 0f, 2f, 0.001f);
+			SliderOption(listmain.GetRect(lineHeight * 2f), Keyed.Option_8_Label + " " + lustLimit, Keyed.Option_8_Desc, ref lustLimit, 0f, 5000f, 1f);
 			SliderOption(listmain.GetRect(lineHeight * 2f), Keyed.Option_MaxSingleLustChange_Label + " " + maxSingleLustChange, Keyed.Option_MaxSingleLustChange_Desc, ref maxSingleLustChange, 0f, 10f, 0.05f);
 
-			listmain.CheckboxLabeled(Keyed.Option_1_Label, ref EnableRecordRandomizer, Keyed.Option_1_Desc);
-			if (EnableRecordRandomizer)
+			listmain.CheckboxLabeled(Keyed.Option_1_Label, ref enableRecordRandomizer, Keyed.Option_1_Desc);
+			if (enableRecordRandomizer)
 			{
 				float sectionHeight = 12f;
-				if (!MinSexableFromLifestage) sectionHeight += 2f;
+				if (!minSexableFromLifestage) sectionHeight += 2f;
 
 				Listing_Standard section = listmain.BeginSection(lineHeight * sectionHeight);
 
-				SliderOption(section.GetRect(lineHeight * 2f), Keyed.Option_3_Label + " " + MaxLustDeviation, Keyed.Option_3_Desc, ref MaxLustDeviation, 0f, 2000f, 1f);
-				SliderOption(section.GetRect(lineHeight * 2f), Keyed.Option_4_Label + " " + AvgLust, Keyed.Option_4_Desc, ref AvgLust, -1000f, 1000f, 1f);
-				SliderOption(section.GetRect(lineHeight * 2f), Keyed.Option_5_Label + " " + MaxSexCountDeviation, Keyed.Option_5_Desc, ref MaxSexCountDeviation, 0f, 2000f, 1f);
-				SliderOption(section.GetRect(lineHeight * 2f), Keyed.Option_6_Label + " " + SexPerYear, Keyed.Option_6_Desc, ref SexPerYear, 0f, 2000f, 1f);
+				SliderOption(section.GetRect(lineHeight * 2f), Keyed.Option_3_Label + " " + maxLustDeviation, Keyed.Option_3_Desc, ref maxLustDeviation, 0f, 2000f, 1f);
+				SliderOption(section.GetRect(lineHeight * 2f), Keyed.Option_4_Label + " " + avgLust, Keyed.Option_4_Desc, ref avgLust, -1000f, 1000f, 1f);
+				SliderOption(section.GetRect(lineHeight * 2f), Keyed.Option_5_Label + " " + maxSexCountDeviation, Keyed.Option_5_Desc, ref maxSexCountDeviation, 0f, 2000f, 1f);
+				SliderOption(section.GetRect(lineHeight * 2f), Keyed.Option_6_Label + " " + sexPerYear, Keyed.Option_6_Desc, ref sexPerYear, 0f, 2000f, 1f);
 
 				section.CheckboxLabeled(Keyed.Option_MinSexableFromLifestage_Label, ref minSexableFromLifestage, Keyed.Option_MinSexableFromLifestage_Desc);
 
-				if (!MinSexableFromLifestage)
-					SliderOption(section.GetRect(lineHeight * 2f), Keyed.Option_9_Label + " " + MinSexablePercent * 100 + "%   " + ThingDefOf.Human.race.lifeExpectancy * MinSexablePercent + " human years", Keyed.Option_9_Desc, ref MinSexablePercent, 0, 1, 0.001f);
+				if (!minSexableFromLifestage)
+					SliderOption(section.GetRect(lineHeight * 2f), Keyed.Option_9_Label + " " + minSexablePercent * 100 + "%   " + ThingDefOf.Human.race.lifeExpectancy * minSexablePercent + " human years", Keyed.Option_9_Desc, ref minSexablePercent, 0, 1, 0.001f);
 
-				SliderOption(section.GetRect(lineHeight * 2f), Keyed.Option_10_Label + " " + VirginRatio * 100 + "%", Keyed.Option_10_Desc, ref VirginRatio, 0, 1, 0.001f);
+				SliderOption(section.GetRect(lineHeight * 2f), Keyed.Option_10_Label + " " + virginRatio * 100 + "%", Keyed.Option_10_Desc, ref virginRatio, 0, 1, 0.001f);
 
-				section.CheckboxLabeled(Keyed.Option_7_Label, ref SlavesBeenRapedExp, Keyed.Option_7_Desc);
+				section.CheckboxLabeled(Keyed.Option_7_Label, ref slavesBeenRapedExp, Keyed.Option_7_Desc);
 
 				listmain.EndSection(section);
 			}
@@ -130,23 +143,5 @@ namespace RJWSexperience
 			LabelwithTextfield(doublerect.TopHalf(), label, tooltip, ref value, min, max);
 			value = Widgets.HorizontalSlider(doublerect.BottomHalf(), value, min, max, roundTo: roundTo);
 		}
-	}
-
-	public class SexperienceMod : Mod
-	{
-		private static Configurations settings;
-		public static Configurations Settings { get => settings; }
-
-		public SexperienceMod(ModContentPack content) : base(content)
-		{
-			settings = GetSettings<Configurations>();
-		}
-
-		public override string SettingsCategory()
-		{
-			return Keyed.Mod_Title;
-		}
-
-		public override void DoSettingsWindowContents(Rect inRect) => Settings.DoSettingsWindowContents(inRect);
 	}
 }

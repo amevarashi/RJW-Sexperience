@@ -124,7 +124,7 @@ namespace RJWSexperience.UI
         public override void DoWindowContents(Rect inRect)
         {
             pos = windowRect.position;
-            if (!Configurations.SelectionLocked)
+            if (!SexperienceMod.Settings.SelectionLocked)
             {
                 List<Pawn> selected = Find.Selector.SelectedPawns;
                 if (selected.Count == 1)
@@ -349,12 +349,13 @@ namespace RJWSexperience.UI
 
             if (Mouse.IsOver(portraitRect))
             {
-                Texture lockicon = Configurations.SelectionLocked ? HistoryUtility.Locked : HistoryUtility.Unlocked;
+                Configurations settings = SexperienceMod.Settings;
+                Texture lockicon = settings.SelectionLocked ? HistoryUtility.Locked : HistoryUtility.Unlocked;
                 Widgets.DrawTextureFitted(lockRect, lockicon, 1.0f);
                 if (Widgets.ButtonInvisible(lockRect))
                 {
                     SoundDefOf.Click.PlayOneShotOnCamera();
-                    Configurations.SelectionLocked = !Configurations.SelectionLocked;
+                    settings.SelectionLocked = !settings.SelectionLocked;
                 }
             }
 
@@ -396,7 +397,7 @@ namespace RJWSexperience.UI
 
             tmp = listmain.GetRect(FONTHEIGHT);
             p = pawn.records.GetValue(VariousDefOf.Lust);
-            FillableBarLabeled(tmp, String.Format(Keyed.Lust +": {0:0.00}", p), Mathf.Clamp01(p.Normalization(-Configurations.LustLimit*3, Configurations.LustLimit*3)), HistoryUtility.Slaanesh, Texture2D.blackTexture, null, String.Format(xxx.sex_drive_stat.LabelCap.CapitalizeFirst() + ": {0:P2}", pawn.Dead ? 0 : pawn.GetStatValue(xxx.sex_drive_stat)));
+            FillableBarLabeled(tmp, String.Format(Keyed.Lust +": {0:0.00}", p), Mathf.Clamp01(p.Normalization(-SexperienceMod.Settings.LustLimit*3, SexperienceMod.Settings.LustLimit*3)), HistoryUtility.Slaanesh, Texture2D.blackTexture, null, String.Format(xxx.sex_drive_stat.LabelCap.CapitalizeFirst() + ": {0:P2}", pawn.Dead ? 0 : pawn.GetStatValue(xxx.sex_drive_stat)));
             listmain.Gap(1f);
             if (Mouse.IsOver(tmp))
             {

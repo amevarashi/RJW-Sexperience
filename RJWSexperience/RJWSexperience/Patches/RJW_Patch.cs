@@ -102,7 +102,7 @@ namespace RJWSexperience
 
 		private static float LustIncrementFactor(float lust)
 		{
-			return Mathf.Exp(-Mathf.Pow(lust / Configurations.LustLimit, 2));
+			return Mathf.Exp(-Mathf.Pow(lust / SexperienceMod.Settings.LustLimit, 2));
 		}
 
 	}

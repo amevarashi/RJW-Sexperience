@@ -31,7 +31,7 @@ namespace RJWSexperience
 
 		public static float GetLustFactor(Pawn pawn)
 		{
-			float lust = pawn.records.GetValue(VariousDefOf.Lust) * Configurations.LustEffectPower;
+			float lust = pawn.records.GetValue(VariousDefOf.Lust) * SexperienceMod.Settings.LustEffectPower;
 			if (lust < 0)
 			{
 				lust = Mathf.Exp((lust + 200f * Mathf.Log(10f)) / 100f) - 100f;

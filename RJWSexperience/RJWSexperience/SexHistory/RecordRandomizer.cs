@@ -9,28 +9,30 @@ namespace RJWSexperience
 {
 	public static class RecordRandomizer
 	{
+		private static Configurations Settings => SexperienceMod.Settings;
+
 		public static void Randomize(Pawn pawn)
 		{
 			int avgsex = -500;
-			bool isvirgin = Rand.Chance(Configurations.VirginRatio);
+			bool isvirgin = Rand.Chance(Settings.VirginRatio);
 			int totalsex = 0;
 			int totalbirth = 0;
-			int deviation = (int)Configurations.MaxSexCountDeviation;
+			int deviation = (int)Settings.MaxSexCountDeviation;
 			if (pawn.story != null)
 			{
 				_ = RandomizeLust(pawn);
 
 				int sexableage = 0;
 				int minsexage = 0;
-				if (SexperienceMod.Settings.MinSexableFromLifestage)
+				if (Settings.MinSexableFromLifestage)
 					minsexage = (int)pawn.RaceProps.lifeStageAges.Find(x => x.def.reproductive).minAge;
 				else
-					minsexage = (int)(pawn.RaceProps.lifeExpectancy * Configurations.MinSexablePercent);
+					minsexage = (int)(pawn.RaceProps.lifeExpectancy * Settings.MinSexablePercent);
 
 				if (pawn.ageTracker.AgeBiologicalYears > minsexage)
 				{
 					sexableage = pawn.ageTracker.AgeBiologicalYears - minsexage;
-					avgsex = (int)(sexableage * Configurations.SexPerYear * StatPart_Lust.GetLustFactor(pawn));
+					avgsex = (int)(sexableage * Settings.SexPerYear * StatPart_Lust.GetLustFactor(pawn));
 				}
 
 				if (pawn.relations != null && pawn.gender == Gender.Female)
@@ -70,7 +72,7 @@ namespace RJWSexperience
 						avgsex /= 4;
 					}
 
-					if (pawn.IsSlave)
+					if (Settings.SlavesBeenRapedExp && pawn.IsSlave)
 					{
 						totalsex += RandomizeRecord(pawn, xxx.CountOfBeenRapedByAnimals, Rand.Range(-50, 10), Rand.Range(0, 10) * sexableage);
 						totalsex += RandomizeRecord(pawn, xxx.CountOfBeenRapedByHumanlikes, 0, Rand.Range(0, 100) * sexableage);
@@ -87,7 +89,7 @@ namespace RJWSexperience
 
 		public static float RandomizeLust(Pawn pawn)
 		{
-			float value = Utility.RandGaussianLike(Configurations.AvgLust - Configurations.MaxLustDeviation, Configurations.AvgLust + Configurations.MaxLustDeviation);
+			float value = Utility.RandGaussianLike(Settings.AvgLust - Settings.MaxLustDeviation, Settings.AvgLust + Settings.MaxLustDeviation);
 			float minValue;
 
 			if (xxx.is_nympho(pawn))

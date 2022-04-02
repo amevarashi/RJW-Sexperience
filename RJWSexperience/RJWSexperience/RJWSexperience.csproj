@@ -86,6 +86,7 @@
     <Compile Include="Keyed.cs" />
     <Compile Include="Patches\Rimworld_Patch.cs" />
     <Compile Include="Patches\RJW_Patch.cs" />
+    <Compile Include="SexperienceMod.cs" />
     <Compile Include="StatParts.cs" />
     <Compile Include="Thought_Opinionbased.cs" />
     <Compile Include="Thought_Recordbased.cs" />
