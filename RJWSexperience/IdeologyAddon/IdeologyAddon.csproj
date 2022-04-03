@@ -76,6 +76,9 @@
     <Compile Include="Ideology\Rituals\RitualRoles.cs" />
     <Compile Include="Ideology\StatParts.cs" />
     <Compile Include="Ideology\Utility.cs" />
+    <Compile Include="Ideology\Thought_IncreaseRecord.cs" />
+    <Compile Include="Ideology\Thought_Opinionbased.cs" />
+    <Compile Include="Ideology\Thought_Recordbased.cs" />
     <Compile Include="VariousDefOf.cs" />
   </ItemGroup>
   <ItemGroup>

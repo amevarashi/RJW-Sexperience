@@ -1,34 +1,33 @@
 ﻿using RimWorld;
 using System.Collections.Generic;
 
-namespace RJWSexperience
+namespace RJWSexperience.Ideology
 {
 	/// <summary>
-	/// ThoughtDef using record
+	/// ThoughtDef using opinion
 	/// </summary>
-	public class ThoughtDef_Recordbased : ThoughtDef
+	public class ThoughtDef_Opinionbased : ThoughtDef
 	{
-		public RecordDef recordDef;
 		public List<float> minimumValueforStage = new List<float>();
 	}
 
 	/// <summary>
 	/// Thought class using record.
 	/// </summary>
-	public class Thought_Recordbased : Thought_Memory
+	public class Thought_Opinionbased : Thought_Memory
 	{
-		protected ThoughtDef_Recordbased Def => (ThoughtDef_Recordbased)def;
-		protected RecordDef recordDef => Def.recordDef;
+		protected ThoughtDef_Opinionbased Def => (ThoughtDef_Opinionbased)def;
 		protected List<float> minimumValueforStage => Def.minimumValueforStage;
 
 		public override int CurStageIndex
 		{
 			get
 			{
-				float value = pawn?.records?.GetValue(recordDef) ?? 0f;
+				float value = 0f;
+				if (otherPawn != null) value = pawn.relations?.OpinionOf(otherPawn) ?? 0f;
 				for (int i = minimumValueforStage.Count - 1; i > 0; i--)
 				{
-					if (minimumValueforStage[i] < value) return i + 1;
+					if (minimumValueforStage[i] < value) return i;
 				}
 				return 0;
 			}

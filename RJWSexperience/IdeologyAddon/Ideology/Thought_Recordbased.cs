@@ -1,7 +1,7 @@
 ﻿using RimWorld;
 using System.Collections.Generic;
 
-namespace RJWSexperience
+namespace RJWSexperience.Ideology
 {
 	/// <summary>
 	/// ThoughtDef using record
@@ -10,6 +10,7 @@ namespace RJWSexperience
 	{
 		public RecordDef recordDef;
 		public List<float> minimumValueforStage = new List<float>();
+		public float increment;
 	}
 
 	/// <summary>
