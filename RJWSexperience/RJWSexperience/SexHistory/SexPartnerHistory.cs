@@ -282,8 +282,7 @@ namespace RJWSexperience
 
 				foreach (KeyValuePair<string, SexPartnerHistoryRecord> element in histories)
 				{
-					element.Value.parent = this;
-					element.Value.partnerID = element.Key;
+					element.Value.PartnerID = element.Key;
 				}
 			}
 			base.PostExposeData();

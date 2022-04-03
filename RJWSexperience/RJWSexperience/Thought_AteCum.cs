@@ -8,7 +8,7 @@ namespace RJWSexperience
 		{
 			get
 			{
-				if (pawn?.health?.hediffSet?.HasHediff(VariousDefOf.CumAddiction) ?? false) return minimumValueforStage.Count;
+				if (pawn?.health?.hediffSet?.HasHediff(VariousDefOf.CumAddiction) ?? false) return MinimumValueforStage.Count;
 				return base.CurStageIndex;
 			}
 		}
