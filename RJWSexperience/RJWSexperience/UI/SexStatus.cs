@@ -484,8 +484,7 @@ namespace RJWSexperience.UI
 			listmain.Gap(4f);
 			listmain.GetRect(FONTHEIGHT).DrawSexuality(rjwcomp);
 			listmain.Gap(1f);
-			listmain.GetRect(FONTHEIGHT).DrawQuirk(pawn);
-			listmain.Gap(1f);
+			listmain.GetRect(FONTHEIGHT * 3f).DrawQuirk(pawn);
 			listmain.End();
 		}
 
