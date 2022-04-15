@@ -18,7 +18,7 @@ namespace RJWSexperience.Ideology
 			base.ThoughtInterval();
 			if (recordIncrement != 0)
 			{
-				pawn.records.AddTo(recordDef, recordIncrement);
+				pawn.records.AddTo(RecordDef, recordIncrement);
 				recordIncrement = 0;
 			}
 		}

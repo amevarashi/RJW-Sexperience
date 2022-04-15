@@ -124,9 +124,8 @@ namespace RJWSexperience.Ideology
 			};
 			get_banged.tickAction = delegate
 			{
-				if ((parteners.Count > 0) && (pawn.IsHashIntervalTick(ticks_between_hearts / parteners.Count)))
-					if (pawn.IsHashIntervalTick(ticks_between_hearts))
-							ThrowMetaIconF(pawn.Position, pawn.Map, FleckDefOf.Heart);
+				if ((parteners.Count > 0) && pawn.IsHashIntervalTick(ticks_between_hearts / parteners.Count) && pawn.IsHashIntervalTick(ticks_between_hearts))
+					ThrowMetaIconF(pawn.Position, pawn.Map, FleckDefOf.Heart);
 			};
 			get_banged.AddEndCondition(new Func<JobCondition>(() =>
 			{

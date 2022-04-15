@@ -25,12 +25,9 @@ namespace RJWSexperience.Ideology
 		public static void Postfix(Pawn otherPawn, Pawn ___pawn, ref float __result)
 		{
 			Ideo ideo = ___pawn.Ideo;
-			if (ideo != null)
+			if (ideo?.HasPrecept(VariousDefOf.Incestuos_IncestOnly) == true && IdeoUtility.IsIncest(___pawn, otherPawn))
 			{
-				if (ideo.HasPrecept(VariousDefOf.Incestuos_IncestOnly) && IdeoUtility.IsIncest(___pawn, otherPawn))
-				{
-					__result *= 8f;
-				}
+				__result *= 8f;
 			}
 		}
 	}
@@ -51,21 +48,17 @@ namespace RJWSexperience.Ideology
 	{
 		public static void Postfix(PreceptDef precept, bool checkDuplicates, ref IdeoFoundation __instance, ref AcceptanceReport __result)
 		{
-			if (precept is PreceptDef_RequirementExtended)
+			if (precept is PreceptDef_RequirementExtended def && !def.requiredAllMemes.NullOrEmpty())
 			{
-				PreceptDef_RequirementExtended def = precept as PreceptDef_RequirementExtended;
-				if (!def.requiredAllMemes.NullOrEmpty())
+				for (int i = 0; i < def.requiredAllMemes.Count; i++)
 				{
-					for (int i = 0; i < def.requiredAllMemes.Count; i++)
+					if (!__instance.ideo.memes.Contains(def.requiredAllMemes[i]))
 					{
-						if (!__instance.ideo.memes.Contains(def.requiredAllMemes[i]))
-						{
-							List<string> report = new List<string>();
-							foreach (MemeDef meme in def.requiredAllMemes) report.Add(meme.LabelCap);
+						List<string> report = new List<string>();
+						foreach (MemeDef meme in def.requiredAllMemes) report.Add(meme.LabelCap);
 
-							__result = new AcceptanceReport("RequiresMeme".Translate() + ": " + report.ToCommaList());
-							return;
-						}
+						__result = new AcceptanceReport("RequiresMeme".Translate() + ": " + report.ToCommaList());
+						return;
 					}
 				}
 			}

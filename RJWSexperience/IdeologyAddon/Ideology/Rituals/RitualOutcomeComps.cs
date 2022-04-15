@@ -1,45 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RimWorld;
+﻿using RimWorld;
+using System.Diagnostics.CodeAnalysis;
 using Verse;
-using rjw;
-
 
 namespace RJWSexperience.Ideology
 {
-    public class RitualOutcomeComp_HediffBased : RitualOutcomeComp_QualitySingleOffset
-    {
-		HediffDef hediffDef = null;
-		float minSeverity = 0;
-		string roleId = "";
+	public class RitualOutcomeComp_HediffBased : RitualOutcomeComp_QualitySingleOffset
+	{
+		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
+		public HediffDef hediffDef = null;
+		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
+		public float minSeverity = 0;
+		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
+		public string roleId = "";
 
-        protected override string LabelForDesc => label;
-        public override bool DataRequired => false;
+		protected override string LabelForDesc => label;
+		public override bool DataRequired => false;
 		public override bool Applies(LordJob_Ritual ritual)
 		{
 			Pawn victim = null;
-			foreach(RitualRole ritualRole in ritual.assignments.AllRolesForReading)
-            {
-				if (ritualRole != null && ritualRole.id.Contains(roleId))
+			foreach (RitualRole ritualRole in ritual.assignments.AllRolesForReading)
+			{
+				if (ritualRole?.id.Contains(roleId) == true)
 				{
 					victim = ritual.assignments.FirstAssignedPawn(ritualRole);
 				}
 			}
 			if (victim != null && hediffDef != null)
-            {
+			{
 				Hediff hediff = victim.health.hediffSet.GetFirstHediffOfDef(hediffDef);
 				if (hediff?.Severity >= minSeverity)
-                {
+				{
 					return true;
-                }
-            }
+				}
+			}
 			return false;
 		}
-		
-
 
 		public override ExpectedOutcomeDesc GetExpectedOutcomeDesc(Precept_Ritual ritual, TargetInfo ritualTarget, RitualObligation obligation, RitualRoleAssignments assignments, RitualOutcomeComp_Data data)
 		{
@@ -53,13 +48,14 @@ namespace RJWSexperience.Ideology
 				positive = true
 			};
 		}
-
 	}
 
 	public class RitualOutcomeComp_NeedBased : RitualOutcomeComp_QualitySingleOffset
 	{
-		NeedDef needDef = null;
-		float minAvgNeed = 0;
+		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
+		public NeedDef needDef = null;
+		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
+		public float minAvgNeed = 0;
 
 		protected override string LabelForDesc => label;
 		public override bool DataRequired => false;
@@ -71,9 +67,7 @@ namespace RJWSexperience.Ideology
 				avgNeed += pawn.needs?.TryGetNeed(needDef)?.CurLevel ?? 0f;
 			}
 			avgNeed /= ritual.assignments.AllPawns.Count;
-			if (avgNeed >= minAvgNeed) return true;
-
-			return false;
+			return avgNeed >= minAvgNeed;
 		}
 
 		public override ExpectedOutcomeDesc GetExpectedOutcomeDesc(Precept_Ritual ritual, TargetInfo ritualTarget, RitualObligation obligation, RitualRoleAssignments assignments, RitualOutcomeComp_Data data)
@@ -89,7 +83,4 @@ namespace RJWSexperience.Ideology
 			};
 		}
 	}
-
-
-
 }

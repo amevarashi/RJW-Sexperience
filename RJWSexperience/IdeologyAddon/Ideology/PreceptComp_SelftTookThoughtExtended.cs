@@ -1,4 +1,5 @@
 ﻿using RimWorld;
+using System.Diagnostics.CodeAnalysis;
 using Verse;
 
 namespace RJWSexperience.Ideology
@@ -22,7 +23,9 @@ namespace RJWSexperience.Ideology
 
 	public class PreceptComp_SelfTookThoughtTagged : PreceptComp_SelfTookMemoryThought
 	{
+		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
 		public string tag;
+		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
 		public bool exclusive = false;
 
 		public PreceptComp_SelfTookThoughtTagged() { }
@@ -57,22 +60,18 @@ namespace RJWSexperience.Ideology
 			}
 			Pawn arg = ev.args.GetArg<Pawn>(HistoryEventArgsNames.Doer);
 			Pawn partner = ev.args.GetArg<Pawn>(HistoryEventArgsNamesCustom.Partner);
-			if (arg.needs != null && arg.needs.mood != null && (!this.onlyForNonSlaves || !arg.IsSlave))
+			if (arg.needs?.mood != null && (!this.onlyForNonSlaves || !arg.IsSlave))
 			{
 				if (this.thought.minExpectationForNegativeThought != null && ExpectationsUtility.CurrentExpectationFor(arg).order < this.thought.minExpectationForNegativeThought.order)
 				{
 					return;
 				}
 				Thought_Memory thought_Memory = ThoughtMaker.MakeThought(this.thought, precept);
-				Thought_KilledInnocentAnimal thought_KilledInnocentAnimal;
-				Pawn animal;
-				if ((thought_KilledInnocentAnimal = (thought_Memory as Thought_KilledInnocentAnimal)) != null && ev.args.TryGetArg<Pawn>(HistoryEventArgsNames.Victim, out animal))
+				if (thought_Memory is Thought_KilledInnocentAnimal thought_KilledInnocentAnimal && ev.args.TryGetArg<Pawn>(HistoryEventArgsNames.Victim, out Pawn animal))
 				{
 					thought_KilledInnocentAnimal.SetAnimal(animal);
 				}
-				Thought_MemoryObservation thought_MemoryObservation;
-				Corpse target;
-				if ((thought_MemoryObservation = (thought_Memory as Thought_MemoryObservation)) != null && ev.args.TryGetArg<Corpse>(HistoryEventArgsNames.Subject, out target))
+				if (thought_Memory is Thought_MemoryObservation thought_MemoryObservation && ev.args.TryGetArg<Corpse>(HistoryEventArgsNames.Subject, out Corpse target))
 				{
 					thought_MemoryObservation.Target = target;
 				}
@@ -83,20 +82,20 @@ namespace RJWSexperience.Ideology
 
 	public class PreceptComp_KnowsMemoryThoughtTagged : PreceptComp_KnowsMemoryThought
 	{
+		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
 		public string tag;
+		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
 		public bool exclusive = false;
+		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
 		public bool applyonpartner = false;
 
 		public PreceptComp_KnowsMemoryThoughtTagged() { }
 
 		public override void Notify_MemberWitnessedAction(HistoryEvent ev, Precept precept, Pawn member)
 		{
-			if (!applyonpartner)
+			if (!applyonpartner && ev.args.TryGetArg(HistoryEventArgsNamesCustom.Partner, out Pawn pawn) && pawn == member)
 			{
-				if (ev.args.TryGetArg(HistoryEventArgsNamesCustom.Partner, out Pawn pawn))
-				{
-					if (pawn == member) return;
-				}
+				return;
 			}
 			if (tag != null)
 			{
