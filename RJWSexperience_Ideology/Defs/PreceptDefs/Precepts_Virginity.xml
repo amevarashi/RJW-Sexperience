@@ -258,9 +258,9 @@
     </stages>
   </ThoughtDef>
 
-  <RJWSexperience.Ideology.ThoughtDef_Opinionbased>
+  <RJWSexperience.ThoughtDef_Opinionbased>
     <defName>Virgin_Precious_Taken</defName>
-    <thoughtClass>RJWSexperience.Ideology.Thought_Opinionbased</thoughtClass>
+    <thoughtClass>RJWSexperience.Thought_Opinionbased</thoughtClass>
     <durationDays>7</durationDays>
     <stackLimit>1</stackLimit>
     <minimumValueforStage>
@@ -291,11 +291,11 @@
         <baseMoodEffect>5</baseMoodEffect>
       </li>
     </stages>
-  </RJWSexperience.Ideology.ThoughtDef_Opinionbased>
+  </RJWSexperience.ThoughtDef_Opinionbased>
 
-  <RJWSexperience.Ideology.ThoughtDef_Opinionbased>
+  <RJWSexperience.ThoughtDef_Opinionbased>
     <defName>Virgin_Shameful_Taken</defName>
-    <thoughtClass>RJWSexperience.Ideology.Thought_Opinionbased</thoughtClass>
+    <thoughtClass>RJWSexperience.Thought_Opinionbased</thoughtClass>
     <durationDays>7</durationDays>
     <stackLimit>1</stackLimit>
     <minimumValueforStage>
@@ -320,7 +320,7 @@
         <baseMoodEffect>20</baseMoodEffect>
       </li>
     </stages>
-  </RJWSexperience.Ideology.ThoughtDef_Opinionbased>
+  </RJWSexperience.ThoughtDef_Opinionbased>
 
 
   <ThoughtDef>
