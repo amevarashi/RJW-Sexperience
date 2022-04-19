@@ -83,6 +83,8 @@
   <RSOption_MinSexableFromLifestage_Desc>Only used for generating records. Get minimum sexable age from the first reproductive life stage. Works better for races with a long lifespan</RSOption_MinSexableFromLifestage_Desc>
   <RSOption_MaxSingleLustChange_Label>Maximum lust change per sex</RSOption_MaxSingleLustChange_Label>
   <RSOption_MaxSingleLustChange_Desc>Set how much lust can change from a single sex act</RSOption_MaxSingleLustChange_Desc>
+  <RSOption_EnableBastardRelation_Label>Enable Bastard relation</RSOption_EnableBastardRelation_Label>
+  <RSOption_EnableBastardRelation_Desc>Child is marked as a bastard if they have only one parent or their parents are (or was) married</RSOption_EnableBastardRelation_Desc>
 
   <Vaginal>Vaginal</Vaginal>
   <Anal>Anal</Anal>

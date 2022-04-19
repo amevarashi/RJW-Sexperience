@@ -82,7 +82,7 @@
     <Compile Include="SexHistory\HistoryUtility.cs" />
     <Compile Include="SexHistory\SexPartnerHistory.cs" />
     <Compile Include="SexHistory\SexPartnerHistoryRecord.cs" />
-    <Compile Include="PawnRelationWorkers.cs" />
+    <Compile Include="PawnRelationWorker_Bastard.cs" />
     <Compile Include="Keyed.cs" />
     <Compile Include="Patches\Rimworld_Patch.cs" />
     <Compile Include="Patches\RJW_Patch.cs" />

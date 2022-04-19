@@ -13,6 +13,7 @@ namespace RJWSexperience
 		public const float SexPerYearDefault = 30f;
 		public const bool SlavesBeenRapedExpDefault = true;
 		public const bool EnableStatRandomizerDefault = true;
+		public const bool EnableBastardRelationDefault = true;
 		public const float LustLimitDefault = MaxInitialLustDefault / 3f;
 		public const float MaxSingleLustChangeDefault = 0.5f;
 		public const bool MinSexableFromLifestageDefault = true;
@@ -26,6 +27,7 @@ namespace RJWSexperience
 		private float sexPerYear = SexPerYearDefault;
 		private bool slavesBeenRapedExp = SlavesBeenRapedExpDefault;
 		private bool enableRecordRandomizer = EnableStatRandomizerDefault;
+		private bool enableBastardRelation = EnableBastardRelationDefault;
 		private float lustLimit = LustLimitDefault;
 		private bool minSexableFromLifestage = MinSexableFromLifestageDefault;
 		private float minSexablePercent = MinSexablePercentDefault;
@@ -39,6 +41,7 @@ namespace RJWSexperience
 		public float SexPerYear { get => sexPerYear; }
 		public bool SlavesBeenRapedExp { get => slavesBeenRapedExp; }
 		public bool EnableRecordRandomizer { get => enableRecordRandomizer; }
+		public bool EnableBastardRelation { get => enableBastardRelation; }
 		public float LustLimit { get => lustLimit; }
 		public bool MinSexableFromLifestage { get => minSexableFromLifestage; }
 		public float MinSexablePercent { get => minSexablePercent; }
@@ -59,6 +62,7 @@ namespace RJWSexperience
 			sexPerYear = SexPerYearDefault;
 			slavesBeenRapedExp = SlavesBeenRapedExpDefault;
 			enableRecordRandomizer = EnableStatRandomizerDefault;
+			enableBastardRelation = EnableBastardRelationDefault;
 			lustLimit = LustLimitDefault;
 			maxSingleLustChange = MaxSingleLustChangeDefault;
 			minSexableFromLifestage = MinSexableFromLifestageDefault;
@@ -75,6 +79,7 @@ namespace RJWSexperience
 			Scribe_Values.Look(ref sexPerYear, "SexPerYear", SexPerYearDefault, true);
 			Scribe_Values.Look(ref slavesBeenRapedExp, "SlavesBeenRapedExp", SlavesBeenRapedExpDefault, true);
 			Scribe_Values.Look(ref enableRecordRandomizer, "EnableRecordRandomizer", EnableStatRandomizerDefault, true);
+			Scribe_Values.Look(ref enableBastardRelation, "EnableBastardRelation", EnableBastardRelationDefault, true);
 			Scribe_Values.Look(ref lustLimit, "LustLimit", LustLimitDefault, true);
 			Scribe_Values.Look(ref maxSingleLustChange, "maxSingleLustChange", MaxSingleLustChangeDefault, true);
 			Scribe_Values.Look(ref minSexableFromLifestage, "MinSexableFromLifestage", MinSexableFromLifestageDefault, true);
@@ -120,6 +125,8 @@ namespace RJWSexperience
 
 				listmain.EndSection(section);
 			}
+
+			listmain.CheckboxLabeled(Keyed.Option_EnableBastardRelation_Label, ref enableBastardRelation, Keyed.Option_EnableBastardRelation_Desc);
 
 			if (listmain.ButtonText("reset to default"))
 			{
