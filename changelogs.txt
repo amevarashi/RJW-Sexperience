@@ -1,7 +1,11 @@
+Version Beta 1.0.3.1
+ - Added ability to draw more quirks in Sex Status window
+ - Added option to disable Bastard relation
+ - Moved "Reset to default" button label from C# to XML for translations
+
 Version Beta 1.0.3.0
  - requires RJW 4.9.5.3 or later
  - Added option to get minimum sexable age for record randomizer from life stages
- - Split Ideology addon from base. In theory, addon now can be used without Sexperience. Untested
  - Fixed rape history recording
  - Fixed cum eating for futas
  - Fixed compatibility with VSIE Teaching
