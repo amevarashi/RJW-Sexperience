@@ -2,6 +2,7 @@
 <LanguageData>
   <RS_Mod_Title>RJW Sexperience</RS_Mod_Title>
 
+  <!-- Sex status screen -->
   <LustStatFactor>Lust: x{0}%</LustStatFactor>
   <SlaveStatFactor>Slave: x{0}%</SlaveStatFactor>
   <SlaveStatFactorDefault>Not Slave: x100%</SlaveStatFactorDefault>
@@ -59,6 +60,7 @@
   <RS_LastSex>last sex</RS_LastSex>
   <RS_HadBestSexDaysAgo>Had best sex {0}.</RS_HadBestSexDaysAgo>
 
+  <!-- Mod settings -->
   <RSOption_1_Label>Enable record randomizer</RSOption_1_Label>
   <RSOption_1_Desc>Randomize pawn's sex records.</RSOption_1_Desc>
   <RSOption_2_Label>Lust effect power</RSOption_2_Label>
@@ -85,7 +87,9 @@
   <RSOption_MaxSingleLustChange_Desc>Set how much lust can change from a single sex act</RSOption_MaxSingleLustChange_Desc>
   <RSOption_EnableBastardRelation_Label>Enable Bastard relation</RSOption_EnableBastardRelation_Label>
   <RSOption_EnableBastardRelation_Desc>Child is marked as a bastard if they have only one parent or their parents are (or was) married</RSOption_EnableBastardRelation_Desc>
+  <Button_ResetToDefault>Reset to default</Button_ResetToDefault>
 
+  <!-- Sex types -->
   <Vaginal>Vaginal</Vaginal>
   <Anal>Anal</Anal>
   <Oral>Oral</Oral>
@@ -104,6 +108,7 @@
   <Cunnilingus>Cunnilingus</Cunnilingus>
   <Sixtynine>Sixtynine</Sixtynine>
 
+  <!-- Sexuality -->
   <None>None</None>
   <Asexual>Asexual</Asexual>
   <Pansexual>Pansexual</Pansexual>
@@ -115,11 +120,13 @@
   <MostlyHomosexual>Mostly gay</MostlyHomosexual>
   <Homosexual>Gay</Homosexual>
 
+  <!-- Misc -->
   <Lust>lust</Lust>
   <Unknown>unknown</Unknown>
   <Virgin>virgin</Virgin>
   <Incest>incest</Incest>
 
+  <!-- Order mode -->
   <RS_PONormal>Unordered</RS_PONormal>
   <RS_PoRecent>Recent</RS_PoRecent>
   <RS_PoMost>Most</RS_PoMost>

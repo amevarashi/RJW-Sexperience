@@ -128,7 +128,7 @@ namespace RJWSexperience
 
 			listmain.CheckboxLabeled(Keyed.Option_EnableBastardRelation_Label, ref enableBastardRelation, Keyed.Option_EnableBastardRelation_Desc);
 
-			if (listmain.ButtonText("reset to default"))
+			if (listmain.ButtonText(Keyed.Button_ResetToDefault))
 			{
 				ResetToDefault();
 			}
