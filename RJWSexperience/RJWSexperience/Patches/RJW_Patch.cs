@@ -3,6 +3,7 @@ using RimWorld;
 using rjw;
 using rjw.Modules.Interactions.Enums;
 using RJWSexperience.ExtensionMethods;
+using RJWSexperience.Logs;
 using UnityEngine;
 using Verse;
 using Verse.AI;
@@ -96,7 +97,7 @@ namespace RJWSexperience
 			if (lustDelta == 0)
 				return;
 
-			rjw.Modules.Shared.Logs.LogManager.GetLogger<SexperienceMod>().Message($"{props.pawn.NameShortColored}'s lust changed by {lustDelta} (from {lust})");
+			LogManager.GetLogger<DebugLogProvider>("RJW_Patch_SatisfyPersonal").Message($"{props.pawn.NameShortColored}'s lust changed by {lustDelta} (from {lust})");
 			props.pawn.records.AddTo(VariousDefOf.Lust, lustDelta);
 		}
 
@@ -223,11 +224,12 @@ namespace RJWSexperience
 			if (partner != null)
 				return true; // Not masturbation
 
-			Log.Message($"CasualSex_Helper.FindSexLocation for {pawn.NameShortColored}");
+			var log = LogManager.GetLogger<DebugLogProvider>("RJW_Patch_CasualSex_Helper_FindSexLocation");
+			log.Message($"Called for {pawn.NameShortColored}");
 
 			if (!pawn.Faction?.IsPlayer ?? true)
 			{
-				Log.Message("Not player faction");
+				log.Message("Not player faction");
 				return true;
 			}
 
@@ -235,12 +237,12 @@ namespace RJWSexperience
 
 			if (bucket == null)
 			{
-				Log.Message("Bucket not found");
+				log.Message("Bucket not found");
 				return true;
 			}
 
 			__result = bucket.RandomAdjacentCell8Way();
-			Log.Message($"Bucket location: {__result}");
+			log.Message($"Bucket location: {__result}");
 			return false;
 		}
 	}

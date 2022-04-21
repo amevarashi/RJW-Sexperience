@@ -74,6 +74,8 @@
     <Compile Include="Harmony.cs" />
     <Compile Include="IngestionOutcomeDoers.cs" />
     <Compile Include="JobDrivers.cs" />
+    <Compile Include="Logs\DebugLogProvider.cs" />
+    <Compile Include="Logs\LogManager.cs" />
     <Compile Include="Patches\DefInjection.cs" />
     <Compile Include="Patches\GetGizmos.cs" />
     <Compile Include="Recipe_HymenSurgery.cs" />
