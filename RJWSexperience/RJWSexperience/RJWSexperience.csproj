@@ -70,6 +70,8 @@
     <Compile Include="DebugAction.cs" />
     <Compile Include="ExtensionMethods\PawnExtensions.cs" />
     <Compile Include="ExtensionMethods\SexPropsExtensions.cs" />
+    <Compile Include="FilterWorkers\SpecialThingFilterWorker_CumBase.cs" />
+    <Compile Include="FilterWorkers\SpecialThingFilterWorker_NoCum.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Harmony.cs" />
     <Compile Include="IngestionOutcomeDoers.cs" />
@@ -89,6 +91,7 @@
     <Compile Include="Patches\Rimworld_Patch.cs" />
     <Compile Include="Patches\RJW_Patch.cs" />
     <Compile Include="SexperienceMod.cs" />
+    <Compile Include="FilterWorkers\SpecialThingFilterWorker_Cum.cs" />
     <Compile Include="StatParts.cs" />
     <Compile Include="Thoughts\ThoughtDef_Opinionbased.cs" />
     <Compile Include="Thoughts\ThoughtDef_Recordbased.cs" />

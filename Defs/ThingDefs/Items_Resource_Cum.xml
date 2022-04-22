@@ -128,4 +128,24 @@
 			</li>
 		</stages>
 	</ThoughtDef>
+
+	<SpecialThingFilterDef>
+		<defName>AllowWithCum</defName>
+		<label>allow food with cum</label>
+		<description>Allow food that was spiced up by adding sexual fluids.</description>
+		<parentCategory>Foods</parentCategory>
+		<allowedByDefault>true</allowedByDefault>
+		<saveKey>allowWithCum</saveKey>
+		<workerClass>RJWSexperience.SpecialThingFilterWorker_Cum</workerClass>
+	</SpecialThingFilterDef>
+
+	<SpecialThingFilterDef>
+		<defName>AllowWithoutCum</defName>
+		<label>allow food without cum</label>
+		<description>Allow food normal food.</description>
+		<parentCategory>Foods</parentCategory>
+		<allowedByDefault>true</allowedByDefault>
+		<saveKey>allowWithoutCum</saveKey>
+		<workerClass>RJWSexperience.SpecialThingFilterWorker_NoCum</workerClass>
+	</SpecialThingFilterDef>
 </Defs>
