@@ -8,8 +8,19 @@ namespace RJWSexperience
 	/// </summary>
 	public class Thought_Opinionbased : Thought_Memory
 	{
-		protected ThoughtDef_Opinionbased Def => (ThoughtDef_Opinionbased)def;
-		protected List<float> MinimumValueforStage => Def.minimumValueforStage;
+		private ThoughtDefExtension_StageFromOpinion extension;
+
+		protected ThoughtDefExtension_StageFromOpinion Extension
+		{
+			get
+			{
+				if (extension == null)
+					extension = def.GetModExtension<ThoughtDefExtension_StageFromOpinion>();
+				return extension;
+			}
+		}
+
+		protected List<float> MinimumValueforStage => Extension.minimumValueforStage;
 
 		public override int CurStageIndex
 		{

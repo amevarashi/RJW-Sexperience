@@ -8,10 +8,20 @@ namespace RJWSexperience
 	/// </summary>
 	public class Thought_Recordbased : Thought_Memory
 	{
-		protected ThoughtDef_Recordbased Def => (ThoughtDef_Recordbased)def;
-		protected RecordDef RecordDef => Def.recordDef;
-		protected List<float> MinimumValueforStage => Def.minimumValueforStage;
-		protected float Increment => Def.increment;
+		private ThoughtDefExtension_StageFromRecord extension;
+
+		protected ThoughtDefExtension_StageFromRecord Extension
+		{
+			get
+			{
+				if (extension == null)
+					extension = def.GetModExtension<ThoughtDefExtension_StageFromRecord>();
+				return extension;
+			}
+		}
+
+		protected RecordDef RecordDef => Extension.recordDef;
+		protected List<float> MinimumValueforStage => Extension.minimumValueforStage;
 
 		public override int CurStageIndex
 		{
@@ -20,7 +30,7 @@ namespace RJWSexperience
 				float value = pawn?.records?.GetValue(RecordDef) ?? 0f;
 				for (int i = MinimumValueforStage.Count - 1; i > 0; i--)
 				{
-					if (MinimumValueforStage[i] < value) return i + 1;
+					if (MinimumValueforStage[i] < value) return i;
 				}
 				return 0;
 			}

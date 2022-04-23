@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <Defs>
-	<RJWSexperience.ThoughtDef_Recordbased>
+	<ThoughtDef>
 		<defName>AteCum</defName>
 		<durationDays>0.5</durationDays>
 		<stackLimit>1</stackLimit>
 		<stackedEffectMultiplier>0.4</stackedEffectMultiplier>
-		<recordDef>NumofEatenCum</recordDef>
 		<thoughtClass>RJWSexperience.Thought_AteCum</thoughtClass>
-		<minimumValueforStage>
-			<li>10</li>
-			<li>60</li>
-			<li>120</li>
-		</minimumValueforStage>
 		<stages>
 			<li>
 				<label>ate cum</label>
@@ -35,7 +29,16 @@
 				<baseMoodEffect>3</baseMoodEffect>
 			</li>
 		</stages>
-	</RJWSexperience.ThoughtDef_Recordbased>
-	
-	
+		<modExtensions>
+			<li Class="RJWSexperience.ThoughtDefExtension_StageFromRecord">
+				<recordDef>NumofEatenCum</recordDef>
+				<minimumValueforStage>
+					<li>0</li>
+					<li>10</li>
+					<li>60</li>
+					<li>120</li>
+				</minimumValueforStage>
+			</li>
+		</modExtensions>
+	</ThoughtDef>
 </Defs>

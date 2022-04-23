@@ -3,8 +3,23 @@ using Verse;
 
 namespace RJWSexperience
 {
-	public class Thought_IncreaseRecord : Thought_Recordbased
+	public class Thought_IncreaseRecord : Thought_Memory
 	{
+		private ThoughtDefExtension_IncreaseRecord extension;
+
+		protected ThoughtDefExtension_IncreaseRecord Extension
+		{
+			get
+			{
+				if (extension == null)
+					extension = def.GetModExtension<ThoughtDefExtension_IncreaseRecord>();
+				return extension;
+			}
+		}
+
+		protected RecordDef RecordDef => Extension.recordDef;
+		protected float Increment => Extension.increment;
+
 		protected float recordIncrement;
 
 		public override void ExposeData()
@@ -21,7 +36,6 @@ namespace RJWSexperience
 				pawn.records.AddTo(RecordDef, recordIncrement);
 				recordIncrement = 0;
 			}
-
 		}
 
 		public override bool TryMergeWithExistingMemory(out bool showBubble)
@@ -46,6 +60,7 @@ namespace RJWSexperience
 			base.Init();
 			recordIncrement = Increment;
 		}
+
 		protected virtual void Merged()
 		{
 			age = 0;

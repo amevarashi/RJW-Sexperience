@@ -150,7 +150,7 @@
   <!-- Thoughts -->
   
 
-  <RJWSexperience.ThoughtDef_Recordbased>
+  <ThoughtDef>
     <defName>BeenRaped_Submissive</defName>
     <durationDays>10</durationDays>
     <stackLimit>100</stackLimit>
@@ -166,9 +166,9 @@
         <baseMoodEffect>-3</baseMoodEffect>
       </li>
     </stages>
-  </RJWSexperience.ThoughtDef_Recordbased>
+  </ThoughtDef>
 
-  <RJWSexperience.ThoughtDef_Recordbased>
+  <ThoughtDef>
     <defName>BeenRaped_NotSubmissive</defName>
     <durationDays>15</durationDays>
     <stackLimit>100</stackLimit>
@@ -185,7 +185,7 @@
         <baseOpinionOffset>-200</baseOpinionOffset>
       </li>
     </stages>
-  </RJWSexperience.ThoughtDef_Recordbased>
+  </ThoughtDef>
 
   <ThoughtDef>
     <defName>Raped_Know_NotBeingSubmissive</defName>

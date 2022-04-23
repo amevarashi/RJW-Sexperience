@@ -258,17 +258,11 @@
     </stages>
   </ThoughtDef>
 
-  <RJWSexperience.ThoughtDef_Opinionbased>
+  <ThoughtDef>
     <defName>Virgin_Precious_Taken</defName>
     <thoughtClass>RJWSexperience.Thought_Opinionbased</thoughtClass>
     <durationDays>7</durationDays>
     <stackLimit>1</stackLimit>
-    <minimumValueforStage>
-      <li>-100</li>
-      <li>-50</li>
-      <li>0</li>
-      <li>75</li>
-    </minimumValueforStage>
     <stages>
       <li>
         <label>Lost virginity by {0}</label>
@@ -291,18 +285,23 @@
         <baseMoodEffect>5</baseMoodEffect>
       </li>
     </stages>
-  </RJWSexperience.ThoughtDef_Opinionbased>
+    <modExtensions>
+      <li Class="RJWSexperience.ThoughtDefExtension_StageFromOpinion">
+        <minimumValueforStage>
+          <li>-100</li>
+          <li>-50</li>
+          <li>0</li>
+          <li>75</li>
+        </minimumValueforStage>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
 
-  <RJWSexperience.ThoughtDef_Opinionbased>
+  <ThoughtDef>
     <defName>Virgin_Shameful_Taken</defName>
     <thoughtClass>RJWSexperience.Thought_Opinionbased</thoughtClass>
     <durationDays>7</durationDays>
     <stackLimit>1</stackLimit>
-    <minimumValueforStage>
-      <li>-100</li>
-      <li>0</li>
-      <li>75</li>
-    </minimumValueforStage>
     <stages>
       <li>
         <label>Lost virginity by {0}</label>
@@ -320,7 +319,16 @@
         <baseMoodEffect>20</baseMoodEffect>
       </li>
     </stages>
-  </RJWSexperience.ThoughtDef_Opinionbased>
+    <modExtensions>
+      <li Class="RJWSexperience.ThoughtDefExtension_StageFromOpinion">
+        <minimumValueforStage>
+          <li>-100</li>
+          <li>0</li>
+          <li>75</li>
+        </minimumValueforStage>
+      </li>
+    </modExtensions>
+  </ThoughtDef>
 
 
   <ThoughtDef>
