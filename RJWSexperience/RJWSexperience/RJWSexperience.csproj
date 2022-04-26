@@ -75,6 +75,7 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Harmony.cs" />
     <Compile Include="IngestionOutcomeDoers.cs" />
+    <Compile Include="Interactions\CumAddictPartKindUsageRule.cs" />
     <Compile Include="JobDrivers.cs" />
     <Compile Include="Logs\DebugLogProvider.cs" />
     <Compile Include="Logs\LogManager.cs" />
@@ -93,8 +94,9 @@
     <Compile Include="SexperienceMod.cs" />
     <Compile Include="FilterWorkers\SpecialThingFilterWorker_Cum.cs" />
     <Compile Include="StatParts.cs" />
-    <Compile Include="Thoughts\ThoughtDef_Opinionbased.cs" />
-    <Compile Include="Thoughts\ThoughtDef_Recordbased.cs" />
+    <Compile Include="Thoughts\ThoughtDefExtension_IncreaseRecord.cs" />
+    <Compile Include="Thoughts\ThoughtDefExtension_StageFromOpinion.cs" />
+    <Compile Include="Thoughts\ThoughtDefExtension_StageFromRecord.cs" />
     <Compile Include="Thoughts\Thought_AteCum.cs" />
     <Compile Include="Thoughts\Thought_IncreaseRecord.cs" />
     <Compile Include="Thoughts\Thought_Opinionbased.cs" />
