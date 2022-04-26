@@ -26,6 +26,7 @@
 		<ingestible>
 			<foodType>Fluid, AnimalProduct</foodType>
 			<preferability>DesperateOnlyForHumanlikes</preferability>
+			<drugCategory>Any</drugCategory>
 			<tasteThought>AteCum</tasteThought>
 			<specialThoughtAsIngredient>AteCum</specialThoughtAsIngredient>
 			<optimalityOffsetHumanlikes>-10</optimalityOffsetHumanlikes>
