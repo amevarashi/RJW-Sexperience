@@ -409,7 +409,7 @@ namespace RJWSexperience.UI
 			}
 
 			p = pawn.records.GetValue(VariousDefOf.AmountofEatenCum);
-			FillableBarLabeled(listmain.GetRect(FONTHEIGHT), String.Format(Keyed.RS_Cum_Swallowed + ": {0:0.00} mL, {1} " + Keyed.RS_NumofTimes, p, pawn.records.GetValue(VariousDefOf.NumofEatenCum)), p / 1000, Texture2D.linearGrayTexture, Texture2D.blackTexture);
+			FillableBarLabeled(listmain.GetRect(FONTHEIGHT), String.Format(Keyed.RS_Cum_Swallowed + ": {0} mL, {1} " + Keyed.RS_NumofTimes, p, pawn.records.GetValue(VariousDefOf.NumofEatenCum)), p / 1000, Texture2D.linearGrayTexture, Texture2D.blackTexture);
 			listmain.Gap(1f);
 
 			Hediff addiction = pawn.health.hediffSet.GetFirstHediffOfDef(VariousDefOf.CumAddiction);
