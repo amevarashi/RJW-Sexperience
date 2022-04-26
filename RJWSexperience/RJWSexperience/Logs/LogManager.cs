@@ -103,5 +103,9 @@ namespace RJWSexperience.Logs
 		{
 			return new Logger(staticTypeName, new TLogProvider());
 		}
+		public static ILog GetLogger(string staticTypeName)
+		{
+			return new Logger(staticTypeName);
+		}
 	}
 }
