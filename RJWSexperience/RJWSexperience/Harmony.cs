@@ -25,7 +25,7 @@ namespace RJWSexperience
 			var log = LogManager.GetLogger("StaticConstructorOnStartup");
 
 			List<IPartPreferenceRule> partKindUsageRules = Unprivater.GetProtectedValue<List<IPartPreferenceRule>>("_partKindUsageRules", typeof(PartPreferenceDetectorService));
-			partKindUsageRules.Add(new Interactions.CumAddictPartKindUsageRule());
+			partKindUsageRules.Add(new Cum.Interactions.CumAddictPartKindUsageRule());
 			log.Message("Added 1 rule to PartPreferenceDetectorService._partKindUsageRules");
 		}
 	}

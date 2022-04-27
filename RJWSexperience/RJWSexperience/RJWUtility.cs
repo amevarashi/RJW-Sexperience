@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using rjw;
 using RimWorld;
 using Verse;
 using Verse.AI;
-using UnityEngine;
 using rjw.Modules.Interactions.Objects;
 using rjw.Modules.Interactions.Helpers;
 using rjw.Modules.Interactions.Enums;
 
 namespace RJWSexperience
 {
-    public static class RJWUtility
+	public static class RJWUtility
     {
         public static bool RemoveVirginTrait(Pawn pawn, Pawn partner, SexProps props)
         {

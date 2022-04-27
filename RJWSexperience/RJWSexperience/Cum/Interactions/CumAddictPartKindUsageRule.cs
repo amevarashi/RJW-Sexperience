@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Verse;
 
-namespace RJWSexperience.Interactions
+namespace RJWSexperience.Cum.Interactions
 {
 	public class CumAddictPartKindUsageRule : IPartPreferenceRule
 	{

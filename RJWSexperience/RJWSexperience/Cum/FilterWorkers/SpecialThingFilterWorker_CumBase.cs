@@ -1,7 +1,7 @@
 ﻿using RimWorld;
 using Verse;
 
-namespace RJWSexperience
+namespace RJWSexperience.Cum.FilterWorkers
 {
 	public abstract class SpecialThingFilterWorker_CumBase : SpecialThingFilterWorker
 	{

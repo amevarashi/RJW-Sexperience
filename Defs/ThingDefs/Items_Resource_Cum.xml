@@ -40,7 +40,7 @@
 				<li Class="IngestionOutcomeDoer_OffsetPsyfocus">
 					<offset>0.05</offset>
 				</li>
-				<li Class="RJWSexperience.CumOutcomeDoers"/>
+				<li Class="RJWSexperience.Cum.IngestionOutcomeDoer_RecordEatenCum"/>
 			</outcomeDoers>
 		</ingestible>
 		<comps>
@@ -137,7 +137,7 @@
 		<parentCategory>Foods</parentCategory>
 		<allowedByDefault>true</allowedByDefault>
 		<saveKey>allowWithCum</saveKey>
-		<workerClass>RJWSexperience.SpecialThingFilterWorker_Cum</workerClass>
+		<workerClass>RJWSexperience.Cum.FilterWorkers.SpecialThingFilterWorker_Cum</workerClass>
 	</SpecialThingFilterDef>
 
 	<SpecialThingFilterDef>
@@ -147,6 +147,6 @@
 		<parentCategory>Foods</parentCategory>
 		<allowedByDefault>true</allowedByDefault>
 		<saveKey>allowWithoutCum</saveKey>
-		<workerClass>RJWSexperience.SpecialThingFilterWorker_NoCum</workerClass>
+		<workerClass>RJWSexperience.Cum.FilterWorkers.SpecialThingFilterWorker_NoCum</workerClass>
 	</SpecialThingFilterDef>
 </Defs>

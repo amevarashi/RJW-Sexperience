@@ -65,18 +65,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Building_Cumbucket.cs" />
+    <Compile Include="Cum\Building_Cumbucket.cs" />
     <Compile Include="Configurations.cs" />
+    <Compile Include="Cum\CumUtility.cs" />
+    <Compile Include="Cum\JobGiver_UseBucket.cs" />
     <Compile Include="DebugAction.cs" />
     <Compile Include="ExtensionMethods\PawnExtensions.cs" />
     <Compile Include="ExtensionMethods\SexPropsExtensions.cs" />
-    <Compile Include="FilterWorkers\SpecialThingFilterWorker_CumBase.cs" />
-    <Compile Include="FilterWorkers\SpecialThingFilterWorker_NoCum.cs" />
+    <Compile Include="Cum\FilterWorkers\SpecialThingFilterWorker_CumBase.cs" />
+    <Compile Include="Cum\FilterWorkers\SpecialThingFilterWorker_NoCum.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Harmony.cs" />
-    <Compile Include="IngestionOutcomeDoers.cs" />
-    <Compile Include="Interactions\CumAddictPartKindUsageRule.cs" />
-    <Compile Include="JobDrivers.cs" />
+    <Compile Include="Cum\IngestionOutcomeDoer_RecordEatenCum.cs" />
+    <Compile Include="Cum\Interactions\CumAddictPartKindUsageRule.cs" />
+    <Compile Include="Cum\JobDriver_CleanSelfWithBucket.cs" />
     <Compile Include="Logs\DebugLogProvider.cs" />
     <Compile Include="Logs\LogManager.cs" />
     <Compile Include="Patches\DefInjection.cs" />
@@ -92,12 +94,12 @@
     <Compile Include="Patches\Rimworld_Patch.cs" />
     <Compile Include="Patches\RJW_Patch.cs" />
     <Compile Include="SexperienceMod.cs" />
-    <Compile Include="FilterWorkers\SpecialThingFilterWorker_Cum.cs" />
+    <Compile Include="Cum\FilterWorkers\SpecialThingFilterWorker_Cum.cs" />
     <Compile Include="StatParts.cs" />
     <Compile Include="Thoughts\ThoughtDefExtension_IncreaseRecord.cs" />
     <Compile Include="Thoughts\ThoughtDefExtension_StageFromOpinion.cs" />
     <Compile Include="Thoughts\ThoughtDefExtension_StageFromRecord.cs" />
-    <Compile Include="Thoughts\Thought_AteCum.cs" />
+    <Compile Include="Cum\Thought_AteCum.cs" />
     <Compile Include="Thoughts\Thought_IncreaseRecord.cs" />
     <Compile Include="Thoughts\Thought_Opinionbased.cs" />
     <Compile Include="Thoughts\Thought_Recordbased.cs" />

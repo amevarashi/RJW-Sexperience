@@ -1,5 +1,4 @@
 ﻿using RimWorld;
-using System.Linq;
 using Verse;
 
 namespace RJWSexperience
@@ -36,39 +35,5 @@ namespace RJWSexperience
 		public static readonly PawnRelationDef relation_birthgiver = DefDatabase<PawnRelationDef>.GetNamed("RJW_Sire");
 		public static readonly PawnRelationDef relation_spawn = DefDatabase<PawnRelationDef>.GetNamed("RJW_Pup");
 		public static readonly KeyBindingDef OpenSexStatistics = DefDatabase<KeyBindingDef>.GetNamed("OpenSexStatistics");
-
-		public static float CumneedLevelOffset
-		{
-			get
-			{
-				if (cumneedLevelOffsetcache == null)
-				{
-					CreateCumCompCache();
-				}
-				return cumneedLevelOffsetcache ?? 1.0f;
-			}
-		}
-
-		public static float CumexistingAddictionSeverityOffset
-		{
-			get
-			{
-				if (cumexistingAddictionSeverityOffsetcache == null)
-				{
-					CreateCumCompCache();
-				}
-				return cumexistingAddictionSeverityOffsetcache ?? 1.0f;
-			}
-		}
-
-		private static void CreateCumCompCache()
-		{
-			CompProperties_Drug comp = (CompProperties_Drug)GatheredCum.comps.FirstOrDefault(x => x is CompProperties_Drug);
-			cumneedLevelOffsetcache = comp.needLevelOffset;
-			cumexistingAddictionSeverityOffsetcache = comp.existingAddictionSeverityOffset;
-		}
-
-		private static float? cumneedLevelOffsetcache = null;
-		private static float? cumexistingAddictionSeverityOffsetcache = null;
 	}
 }

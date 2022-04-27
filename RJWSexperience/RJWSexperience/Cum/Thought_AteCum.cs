@@ -1,6 +1,6 @@
 ﻿using RimWorld;
 
-namespace RJWSexperience
+namespace RJWSexperience // Change in namespace will lead to save incompatibility
 {
 	public class Thought_AteCum : Thought_Recordbased
 	{
@@ -22,7 +22,7 @@ namespace RJWSexperience
 				Thought_AteCum thought_Memory = (Thought_AteCum)thoughts.memories.OldestMemoryInGroup(this);
 				if (thought_Memory != null)
 				{
-					showBubble = (thought_Memory.age > thought_Memory.def.DurationTicks / 2);
+					showBubble = thought_Memory.age > thought_Memory.def.DurationTicks / 2;
 					thought_Memory.Merged();
 					return true;
 				}

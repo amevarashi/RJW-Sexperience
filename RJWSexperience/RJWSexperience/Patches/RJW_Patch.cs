@@ -2,6 +2,7 @@
 using RimWorld;
 using rjw;
 using rjw.Modules.Interactions.Enums;
+using RJWSexperience.Cum;
 using RJWSexperience.ExtensionMethods;
 using RJWSexperience.Logs;
 using UnityEngine;
@@ -66,7 +67,7 @@ namespace RJWSexperience
 			if (props.sexType == xxx.rjwSextype.Masturbation || partner == null)
 			{
 				Building_CumBucket cumbucket = pawn.GetAdjacentBuilding<Building_CumBucket>();
-				cumbucket?.AddCum(pawn.GetCumVolume());
+				cumbucket?.AddCum(CumUtility.GetCumVolume(pawn));
 			}
 
 			RJWUtility.UpdateSatisfactionHIstory(pawn, partner, props, satisfaction);
@@ -124,7 +125,7 @@ namespace RJWSexperience
 			if (!PawnsPenisIsInPartnersMouth(props))
 				return;
 
-			props.partner.AteCum(props.pawn.GetCumVolume());
+			CumUtility.FeedCum(props.partner, CumUtility.GetCumVolume(props.pawn));
 		}
 
 		private static bool PawnsPenisIsInPartnersMouth(SexProps props)

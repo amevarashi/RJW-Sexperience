@@ -1,6 +1,6 @@
 ﻿using Verse;
 
-namespace RJWSexperience
+namespace RJWSexperience.Cum.FilterWorkers
 {
 	public class SpecialThingFilterWorker_NoCum : SpecialThingFilterWorker_CumBase
 	{

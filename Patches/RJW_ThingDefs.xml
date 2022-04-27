@@ -16,7 +16,7 @@
 					<li Class="IngestionOutcomeDoer_OffsetPsyfocus">
 						<offset>0.05</offset>
 					</li>
-					<li Class="RJWSexperience.CumOutcomeDoers">
+					<li Class="RJWSexperience.Cum.IngestionOutcomeDoer_RecordEatenCum">
 						<unitAmount>5.2</unitAmount>
 					</li>
 				</outcomeDoers>
@@ -33,7 +33,7 @@
 				<li Class="IngestionOutcomeDoer_OffsetPsyfocus">
 					<offset>0.05</offset>
 				</li>
-				<li Class="RJWSexperience.CumOutcomeDoers">
+				<li Class="RJWSexperience.Cum.IngestionOutcomeDoer_RecordEatenCum">
 					<unitAmount>5.2</unitAmount>
 				</li>
 			</value>
