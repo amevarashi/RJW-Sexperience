@@ -10,7 +10,10 @@ namespace RJWSexperience
 
 		protected override void DoIngestionOutcomeSpecial(Pawn pawn, Thing ingested)
 		{
-			pawn.AteCum(ingested.stackCount * unitAmount);
+			int amount = ingested.stackCount * (int)unitAmount;
+			Logs.LogManager.GetLogger<CumOutcomeDoers, Logs.DebugLogProvider>().Message($"Record {pawn.NameShortColored} eating {amount} ml of cum");
+			pawn.records.Increment(VariousDefOf.NumofEatenCum);
+			pawn.records.AddTo(VariousDefOf.AmountofEatenCum, amount);
 		}
 	}
 }

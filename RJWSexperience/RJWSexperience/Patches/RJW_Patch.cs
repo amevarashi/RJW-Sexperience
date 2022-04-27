@@ -124,7 +124,7 @@ namespace RJWSexperience
 			if (!PawnsPenisIsInPartnersMouth(props))
 				return;
 
-			props.partner.AteCum(props.pawn.GetCumVolume(), true);
+			props.partner.AteCum(props.pawn.GetCumVolume());
 		}
 
 		private static bool PawnsPenisIsInPartnersMouth(SexProps props)

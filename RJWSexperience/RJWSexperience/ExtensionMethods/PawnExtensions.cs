@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Verse;
+using RJWSexperience.Logs;
 
 namespace RJWSexperience
 {
@@ -130,24 +131,18 @@ namespace RJWSexperience
 			}
 		}
 
-		public static void AteCum(this Pawn pawn, float amount, bool doDrugEffect = false)
+		public static void AteCum(this Pawn pawn, float amount)
 		{
-			pawn.records.AddTo(VariousDefOf.NumofEatenCum, 1);
-			pawn.records.AddTo(VariousDefOf.AmountofEatenCum, amount);
-			if (doDrugEffect) pawn.CumDrugEffect();
-		}
+			const float allOf = 1000f;
 
-		public static void CumDrugEffect(this Pawn pawn)
-		{
-			Need need = pawn.needs?.TryGetNeed(VariousDefOf.Chemical_Cum);
-			if (need != null) need.CurLevel += VariousDefOf.CumneedLevelOffset;
-			Hediff addictive = HediffMaker.MakeHediff(VariousDefOf.CumTolerance, pawn);
-			addictive.Severity = 0.032f;
-			pawn.health.AddHediff(addictive);
-			Hediff addiction = pawn.health.hediffSet.GetFirstHediffOfDef(VariousDefOf.CumAddiction);
-			if (addiction != null) addiction.Severity += VariousDefOf.CumexistingAddictionSeverityOffset;
+			var log = LogManager.GetLogger<DebugLogProvider>("PawnExtensions");
+			log.Message($"AteCum({pawn.NameShortColored}, {amount})");
 
-			pawn.needs?.mood?.thoughts?.memories?.TryGainMemoryFast(VariousDefOf.AteCum);
+			Thing cum = ThingMaker.MakeThing(VariousDefOf.GatheredCum);
+			cum.stackCount = (int)Math.Ceiling(amount);
+			log.Message($"Created a stack of {cum.stackCount} cum");
+			cum.Ingested(pawn, allOf);
+			log.Message($"{pawn.NameShortColored} ingested cum");
 		}
 
 		public static void AddVirginTrait(this Pawn pawn)
