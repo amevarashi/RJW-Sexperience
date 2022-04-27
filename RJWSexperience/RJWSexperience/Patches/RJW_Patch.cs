@@ -227,9 +227,9 @@ namespace RJWSexperience
 			var log = LogManager.GetLogger<DebugLogProvider>("RJW_Patch_CasualSex_Helper_FindSexLocation");
 			log.Message($"Called for {pawn.NameShortColored}");
 
-			if (!pawn.Faction?.IsPlayer ?? true)
+			if (pawn.Faction?.IsPlayer != true && !pawn.IsPrisonerOfColony)
 			{
-				log.Message("Not player faction");
+				log.Message("Not a player's faction or a prisoner");
 				return true;
 			}
 
