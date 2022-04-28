@@ -1,3 +1,6 @@
+Version Beta 1.0.3.2
+ - Fix repeated scroll sounds in mod settings
+
 Version Beta 1.0.3.1
  - Added ability to draw more quirks in Sex Status window
  - Added option to disable Bastard relation
