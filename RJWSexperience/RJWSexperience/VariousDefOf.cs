@@ -21,19 +21,14 @@ namespace RJWSexperience
 		public static readonly RecordDef SexPartnerCount = DefDatabase<RecordDef>.GetNamed("SexPartnerCount");
 		public static readonly RecordDef OrgasmCount = DefDatabase<RecordDef>.GetNamed("OrgasmCount");
 		public static readonly SkillDef SexSkill = DefDatabase<SkillDef>.GetNamed("Sex");
-		public static readonly ThoughtDef AteCum = DefDatabase<ThoughtDef>.GetNamed("AteCum");
-		public static readonly PawnRelationDef Bastard = DefDatabase<PawnRelationDef>.GetNamed("Bastard");
 		public static readonly ThingDef GatheredCum = DefDatabase<ThingDef>.GetNamed("GatheredCum");
 		public static readonly ThingDef FilthCum = ThingDef.Named("FilthCum");
-		public static readonly ThingDef FilthGirlcum = ThingDef.Named("FilthGirlCum");
 		public static readonly HediffDef CumAddiction = DefDatabase<HediffDef>.GetNamed("CumAddiction");
 		public static readonly HediffDef CumTolerance = DefDatabase<HediffDef>.GetNamed("CumTolerance");
 		public static readonly ChemicalDef Cum = DefDatabase<ChemicalDef>.GetNamed("Cum");
 		public static readonly NeedDef Chemical_Cum = DefDatabase<NeedDef>.GetNamed("Chemical_Cum");
 		public static readonly TraitDef Virgin = DefDatabase<TraitDef>.GetNamed("Virgin");
 		public static readonly JobDef CleanSelfwithBucket = DefDatabase<JobDef>.GetNamed("CleanSelfwithBucket");
-		public static readonly PawnRelationDef relation_birthgiver = DefDatabase<PawnRelationDef>.GetNamed("RJW_Sire");
-		public static readonly PawnRelationDef relation_spawn = DefDatabase<PawnRelationDef>.GetNamed("RJW_Pup");
 		public static readonly KeyBindingDef OpenSexStatistics = DefDatabase<KeyBindingDef>.GetNamed("OpenSexStatistics");
 	}
 }
