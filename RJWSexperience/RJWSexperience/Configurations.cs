@@ -102,7 +102,7 @@ namespace RJWSexperience
 			listmain.maxOneColumn = true;
 			listmain.Begin(inRect);
 
-			SliderOption(listmain.GetRect(lineHeight * 2f), Keyed.Option_2_Label + " x" + lustEffectPower, Keyed.Option_2_Desc, ref lustEffectPower, 0f, 2f, 0.001f);
+			SliderOption(listmain.GetRect(lineHeight * 2f), Keyed.Option_2_Label + " x" + lustEffectPower, Keyed.Option_2_Desc, ref lustEffectPower, 0f, 2f, 0.01f);
 			SliderOption(listmain.GetRect(lineHeight * 2f), Keyed.Option_8_Label + " " + lustLimit, Keyed.Option_8_Desc, ref lustLimit, 0f, 5000f, 1f);
 			SliderOption(listmain.GetRect(lineHeight * 2f), Keyed.Option_MaxSingleLustChange_Label + " " + maxSingleLustChange, Keyed.Option_MaxSingleLustChange_Desc, ref maxSingleLustChange, 0f, 10f, 0.05f);
 
@@ -122,9 +122,9 @@ namespace RJWSexperience
 				section.CheckboxLabeled(Keyed.Option_MinSexableFromLifestage_Label, ref minSexableFromLifestage, Keyed.Option_MinSexableFromLifestage_Desc);
 
 				if (!minSexableFromLifestage)
-					SliderOption(section.GetRect(lineHeight * 2f), Keyed.Option_9_Label + " " + minSexablePercent * 100 + "%   " + ThingDefOf.Human.race.lifeExpectancy * minSexablePercent + " human years", Keyed.Option_9_Desc, ref minSexablePercent, 0, 1, 0.001f);
+					SliderOption(section.GetRect(lineHeight * 2f), $"{Keyed.Option_9_Label} {minSexablePercent:P1}   {ThingDefOf.Human.race.lifeExpectancy * minSexablePercent} human years", Keyed.Option_9_Desc, ref minSexablePercent, 0, 1, 0.001f);
 
-				SliderOption(section.GetRect(lineHeight * 2f), Keyed.Option_10_Label + " " + virginRatio * 100 + "%", Keyed.Option_10_Desc, ref virginRatio, 0, 1, 0.001f);
+				SliderOption(section.GetRect(lineHeight * 2f), $"{Keyed.Option_10_Label} {virginRatio:P1}", Keyed.Option_10_Desc, ref virginRatio, 0f, 1f, 0.001f);
 
 				section.CheckboxLabeled(Keyed.Option_7_Label, ref slavesBeenRapedExp, Keyed.Option_7_Desc);
 
@@ -153,8 +153,18 @@ namespace RJWSexperience
 
 		private void SliderOption(Rect doublerect, string label, string tooltip, ref float value, float min, float max, float roundTo = -1f)
 		{
-			LabelwithTextfield(doublerect.TopHalf(), label, tooltip, ref value, min, max);
-			value = Widgets.HorizontalSlider(doublerect.BottomHalf(), value, min, max, roundTo: roundTo);
+			// Slider was fighting with textfield for "correct" decimals. Causes a repeating slider move sound
+			float fieldValue = value;
+			float sliderValue = value;
+			float minChange = roundTo / 10f;
+
+			LabelwithTextfield(doublerect.TopHalf(), label, tooltip, ref fieldValue, min, max);
+			sliderValue = Widgets.HorizontalSlider(doublerect.BottomHalf(), sliderValue, min, max, roundTo: roundTo);
+
+			if (Mathf.Abs(fieldValue - value) > minChange)
+				value = fieldValue;
+			else if (Mathf.Abs(sliderValue - value) > minChange)
+				value = sliderValue;
 		}
 	}
 }
