@@ -3,6 +3,7 @@ using RimWorld;
 using rjw;
 using rjw.Modules.Interactions.Enums;
 using RJWSexperience.ExtensionMethods;
+using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 using Verse.AI;
@@ -60,13 +61,28 @@ namespace RJWSexperience
 		{
 			Pawn pawn = props.pawn;
 			Pawn partner = props.partner;
+			xxx.rjwSextype sextype = props.sexType;
 			UpdateLust(props, satisfaction);
 
-			if (props.sexType == xxx.rjwSextype.Masturbation || partner == null)
-			{
-				Building_CumBucket cumbucket = pawn.GetAdjacentBuilding<Building_CumBucket>();
-				cumbucket?.AddCum(pawn.GetCumVolume());
-			}
+            bool sexFillsCumbuckets = 
+                // Base: Fill Cumbuckets on Masturbation. Having no partner means it must be masturbation too
+                sextype == xxx.rjwSextype.Masturbation || partner == null
+                // Depending on configuration, also fill cumbuckets when certain sextypes are matched 
+                || (SexperienceMod.Settings.SexCanFillBuckets && (sextype == xxx.rjwSextype.Boobjob || sextype == xxx.rjwSextype.Footjob || sextype == xxx.rjwSextype.Handjob));
+
+            if (sexFillsCumbuckets)
+            {
+                IEnumerable<Building_CumBucket> buckets = pawn.GetAdjacentBuildings<Building_CumBucket>();
+
+                if (buckets != null && buckets.EnumerableCount() > 0)
+                {
+                    var initial_Cum = pawn.GetCumVolume();
+                    foreach (Building_CumBucket b in buckets)
+                    {
+                        b.AddCum(initial_Cum / buckets.EnumerableCount());
+                    }
+                }
+            }
 
 			RJWUtility.UpdateSatisfactionHIstory(pawn, partner, props, satisfaction);
 			pawn.records?.Increment(VariousDefOf.OrgasmCount);

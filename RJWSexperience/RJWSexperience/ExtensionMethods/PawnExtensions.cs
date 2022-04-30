@@ -46,6 +46,25 @@ namespace RJWSexperience
 			return null;
 		}
 
+		public static IEnumerable<T> GetAdjacentBuildings<T>(this Pawn pawn) where T : Building
+		{	
+			// This Method was introduced to fill multiple CumBuckets around a single pawn.
+			var results = new List<T>();
+			if (pawn.Spawned)
+			{
+				EdificeGrid edifice = pawn.Map.edificeGrid;
+				if (edifice[pawn.Position] is T)
+					results.Add((T)edifice[pawn.Position]);
+				IEnumerable<IntVec3> adjcells = GenAdjFast.AdjacentCells8Way(pawn.Position);
+				foreach (IntVec3 pos in adjcells)
+				{
+					if (edifice[pos] is T)
+						results.Add((T)edifice[pos]);
+				}
+			}
+			return results;
+		}
+
 		public static float GetCumVolume(this Pawn pawn)
 		{
 			List<Hediff> hediffs = Genital_Helper.get_PartsHediffList(pawn, Genital_Helper.get_genitalsBPR(pawn));
@@ -55,12 +74,21 @@ namespace RJWSexperience
 
 		public static float GetCumVolume(this Pawn pawn, List<Hediff> hediffs)
 		{
-			CompHediffBodyPart part = hediffs?.FindAll((Hediff hed) => hed.def.defName.ToLower().Contains("penis")).InRandomOrder().FirstOrDefault()?.TryGetComp<CompHediffBodyPart>();
-			if (part == null) part = hediffs?.FindAll((Hediff hed) => hed.def.defName.ToLower().Contains("ovipositorf")).InRandomOrder().FirstOrDefault()?.TryGetComp<CompHediffBodyPart>();
-			if (part == null) part = hediffs?.FindAll((Hediff hed) => hed.def.defName.ToLower().Contains("ovipositorm")).InRandomOrder().FirstOrDefault()?.TryGetComp<CompHediffBodyPart>();
-			if (part == null) part = hediffs?.FindAll((Hediff hed) => hed.def.defName.ToLower().Contains("tentacle")).InRandomOrder().FirstOrDefault()?.TryGetComp<CompHediffBodyPart>();
+			float cum_value = 0;
+			// Add Cum for every existing Penis at the pawn
+			foreach (var penis in hediffs?.FindAll((Hediff hed) => hed.def.defName.ToLower().Contains("penis")))
+			{
+				cum_value += pawn.GetCumVolume(penis.TryGetComp<CompHediffBodyPart>());
+			}
+			// Look for more exotic parts - if any is found, add some more cum for the first special part found
+			CompHediffBodyPart special_part = null;
+			if (special_part == null) special_part = hediffs?.FindAll((Hediff hed) => hed.def.defName.ToLower().Contains("ovipositorf")).InRandomOrder().FirstOrDefault()?.TryGetComp<CompHediffBodyPart>();
+			if (special_part == null) special_part = hediffs?.FindAll((Hediff hed) => hed.def.defName.ToLower().Contains("ovipositorm")).InRandomOrder().FirstOrDefault()?.TryGetComp<CompHediffBodyPart>();
+			if (special_part == null) special_part = hediffs?.FindAll((Hediff hed) => hed.def.defName.ToLower().Contains("tentacle")).InRandomOrder().FirstOrDefault()?.TryGetComp<CompHediffBodyPart>();
 
-			return pawn.GetCumVolume(part);
+			cum_value += pawn.GetCumVolume(special_part);
+
+			return cum_value;
 		}
 
 		public static float GetCumVolume(this Pawn pawn, CompHediffBodyPart part)

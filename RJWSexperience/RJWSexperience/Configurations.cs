@@ -19,6 +19,7 @@ namespace RJWSexperience
 		public const bool MinSexableFromLifestageDefault = true;
 		public const float MinSexablePercentDefault = 0.2f;
 		public const float VirginRatioDefault = 0.01f;
+        public const bool SexCanFillBucketsDefault = false;
 
 		private float maxLustDeviation = MaxInitialLustDefault;
 		private float avgLust = AvgLustDefault;
@@ -33,6 +34,7 @@ namespace RJWSexperience
 		private float minSexablePercent = MinSexablePercentDefault;
 		private float virginRatio = VirginRatioDefault;
 		private float maxSingleLustChange = MaxSingleLustChangeDefault;
+        private bool sexCanFillBuckets = SexCanFillBucketsDefault;
 
 		public float MaxLustDeviation { get => maxLustDeviation; }
 		public float AvgLust { get => avgLust; }
@@ -47,6 +49,7 @@ namespace RJWSexperience
 		public float MinSexablePercent { get => minSexablePercent; }
 		public float VirginRatio { get => virginRatio; }
 		public float MaxSingleLustChange { get => maxSingleLustChange; }
+        public bool SexCanFillBuckets { get => sexCanFillBuckets; }
 
 		private bool selectionLocked = false;
 
@@ -68,6 +71,7 @@ namespace RJWSexperience
 			minSexableFromLifestage = MinSexableFromLifestageDefault;
 			minSexablePercent = MinSexablePercentDefault;
 			virginRatio = VirginRatioDefault;
+            sexCanFillBuckets = SexCanFillBucketsDefault;
 		}
 
 		public override void ExposeData()
@@ -86,6 +90,7 @@ namespace RJWSexperience
 			Scribe_Values.Look(ref minSexablePercent, "MinSexablePercent", MinSexablePercentDefault, true);
 			Scribe_Values.Look(ref virginRatio, "VirginRatio", VirginRatioDefault, true);
 			Scribe_Values.Look(ref selectionLocked, "SelectionLocked");
+            Scribe_Values.Look(ref sexCanFillBuckets, "SexCanFillBuckets", SexCanFillBucketsDefault, true);
 			base.ExposeData();
 		}
 
@@ -127,6 +132,9 @@ namespace RJWSexperience
 			}
 
 			listmain.CheckboxLabeled(Keyed.Option_EnableBastardRelation_Label, ref enableBastardRelation, Keyed.Option_EnableBastardRelation_Desc);
+
+
+            listmain.CheckboxLabeled("SexCanFillBuckets".Translate(), ref sexCanFillBuckets, "SexCanFillBuckets_desc".Translate());
 
 			if (listmain.ButtonText(Keyed.Button_ResetToDefault))
 			{
