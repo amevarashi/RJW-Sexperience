@@ -1,9 +1,6 @@
 ﻿using HarmonyLib;
-using RimWorld;
 using rjw;
 using System;
-using System.Collections.Generic;
-using UnityEngine;
 using Verse;
 
 namespace RJWSexperience
@@ -18,35 +15,6 @@ namespace RJWSexperience
 				RecordRandomizer.Randomize(__result);
 			}
 			__result.AddVirginTrait();
-		}
-	}
-
-	[HarmonyPatch(typeof(FloatMenuMakerMap), "AddHumanlikeOrders")]
-	public static class HumanlikeOrder_Patch
-	{
-		public static void Postfix(Vector3 clickPos, Pawn pawn, List<FloatMenuOption> opts)
-		{
-			var targets = GenUI.TargetsAt(clickPos, TargetingParameters.ForBuilding());
-
-			if (pawn.health.hediffSet.HasHediff(RJW_SemenoOverlayHediffDefOf.Hediff_Bukkake))
-				foreach (LocalTargetInfo t in targets)
-				{
-					if (t.Thing is Building_CumBucket building)
-					{
-						opts.AddDistinct(MakeMenu(pawn, building));
-						break;
-					}
-				}
-		}
-
-		public static FloatMenuOption MakeMenu(Pawn pawn, LocalTargetInfo target)
-		{
-			FloatMenuOption option = FloatMenuUtility.DecoratePrioritizedTask(new FloatMenuOption(Keyed.RS_FloatMenu_CleanSelf, delegate ()
-			{
-				pawn.jobs.TryTakeOrderedJob(new Verse.AI.Job(VariousDefOf.CleanSelfwithBucket, null, target, target.Cell));
-			}, MenuOptionPriority.Low), pawn, target);
-
-			return option;
 		}
 	}
 }

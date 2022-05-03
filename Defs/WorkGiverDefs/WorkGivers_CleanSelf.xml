@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<WorkGiverDef>
+		<defName>CleanSelfwithBucket</defName>
+		<label>collect cum into a bucket</label>
+		<giverClass>RJWSexperience.Cum.WorkGiver_CleanSelfWithBucket</giverClass>
+		<workType>BasicWorker</workType>
+		<verb>collect cum into a</verb>
+		<gerund>collecting cum into a</gerund>
+		<scanCells>false</scanCells>
+		<priorityInType>12</priorityInType><!-- slightly higher than RJW CleanSelf-->
+		<nonColonistsCanDo>true</nonColonistsCanDo>
+		<requiredCapacities>
+			<li>Manipulation</li>
+		</requiredCapacities>
+	</WorkGiverDef>
+</Defs>

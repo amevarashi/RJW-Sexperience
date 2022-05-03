@@ -21,6 +21,7 @@ namespace RJWSexperience
 		public static readonly RecordDef SexPartnerCount = DefDatabase<RecordDef>.GetNamed("SexPartnerCount");
 		public static readonly RecordDef OrgasmCount = DefDatabase<RecordDef>.GetNamed("OrgasmCount");
 		public static readonly SkillDef SexSkill = DefDatabase<SkillDef>.GetNamed("Sex");
+		public static readonly ThingDef CumBucket = DefDatabase<ThingDef>.GetNamed("CumBucket");
 		public static readonly ThingDef GatheredCum = DefDatabase<ThingDef>.GetNamed("GatheredCum");
 		public static readonly ThingDef FilthCum = ThingDef.Named("FilthCum");
 		public static readonly HediffDef CumAddiction = DefDatabase<HediffDef>.GetNamed("CumAddiction");
