@@ -42,7 +42,7 @@ namespace RJWSexperience.Cum.Interactions
 			var log = LogManager.GetLogger<CumAddictPartKindUsageRule, DebugLogProvider>();
 			log.Message($"Called for {pawn.NameShortColored}");
 
-			if (!(pawn.needs.TryGetNeed(VariousDefOf.Chemical_Cum) is Need_Chemical cumNeed))
+			if (!(pawn.needs?.TryGetNeed(VariousDefOf.Chemical_Cum) is Need_Chemical cumNeed))
 				yield break;
 
 			log.Message($"{pawn.NameShortColored} is cum addict, current desire level: {cumNeed.CurCategory}");
