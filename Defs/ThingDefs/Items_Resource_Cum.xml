@@ -43,6 +43,11 @@
 				<li Class="RJWSexperience.Cum.IngestionOutcomeDoer_RecordEatenCum"/>
 			</outcomeDoers>
 		</ingestible>
+		<ingredient>
+			<mergeCompatibilityTags>
+				<li MayRequire="Ludeon.RimWorld.Ideology">GatheredCum</li>
+			</mergeCompatibilityTags>
+		</ingredient>
 		<comps>
 			<li Class="CompProperties_Drug">
 				<chemical>Cum</chemical>
