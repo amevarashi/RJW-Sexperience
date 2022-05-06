@@ -83,7 +83,6 @@
     <Compile Include="Logs\DebugLogProvider.cs" />
     <Compile Include="Logs\LogManager.cs" />
     <Compile Include="Patches\DefInjection.cs" />
-    <Compile Include="Patches\GetGizmos.cs" />
     <Compile Include="Recipe_HymenSurgery.cs" />
     <Compile Include="Settings\SettingsTabDebug.cs" />
     <Compile Include="Settings\IResettable.cs" />
