@@ -260,21 +260,22 @@ namespace RJWSexperience
 			}
 
 			Scribe_Collections.Look(ref histories, "histories", LookMode.Value, LookMode.Deep);
-			Scribe_Values.Look(ref first, "first", "", true);
-			Scribe_Values.Look(ref recentsex, "recentsex", recentsex, true);
-			Scribe_Values.Look(ref recentsat, "recentsat", recentsat, true);
-			Scribe_Values.Look(ref recentpartner, "recentpartner", recentpartner, true);
-			Scribe_Values.Look(ref virginstaken, "virginstaken", virginstaken, true);
-			Scribe_Values.Look(ref incestuous, "incestous", incestuous, true);
-			Scribe_Values.Look(ref bestiality, "bestiality", bestiality, true);
-			Scribe_Values.Look(ref corpsefuck, "corpsefuck", corpsefuck, true);
-			Scribe_Values.Look(ref interspecies, "interspecies", interspecies, true);
-			Scribe_Values.Look(ref firstsextickabs, "firstsextickabs", firstsextickabs, true);
+			Scribe_Values.Look(ref first, "first", string.Empty);
+			Scribe_Values.Look(ref recentsex, "recentsex", xxx.rjwSextype.None);
+			Scribe_Values.Look(ref recentsat, "recentsat", 0);
+			Scribe_Values.Look(ref recentpartner, "recentpartner", string.Empty);
+			Scribe_Values.Look(ref virginstaken, "virginstaken", 0);
+			Scribe_Values.Look(ref incestuous, "incestous", 0);
+			Scribe_Values.Look(ref bestiality, "bestiality", 0);
+			Scribe_Values.Look(ref corpsefuck, "corpsefuck", 0);
+			Scribe_Values.Look(ref interspecies, "interspecies", 0);
+			Scribe_Values.Look(ref firstsextickabs, "firstsextickabs", 0);
 			Scribe_Collections.Look(ref sextypecountsave, "sextypecountsave", LookMode.Value);
 			Scribe_Collections.Look(ref sextypesatsave, "sextypesatsave", LookMode.Value);
 			Scribe_Collections.Look(ref sextyperecenttickabssave, "sextyperecenttickabssave", LookMode.Value);
 
-			if (histories == null) histories = new Dictionary<string, SexPartnerHistoryRecord>();
+			if (histories == null)
+				histories = new Dictionary<string, SexPartnerHistoryRecord>();
 
 			if (Scribe.mode == LoadSaveMode.LoadingVars)
 			{
