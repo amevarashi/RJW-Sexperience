@@ -122,17 +122,17 @@ namespace RJWSexperience
 
 		public void ExposeData()
 		{
-			Scribe_Values.Look(ref namecache, "namecache", namecache, true);
-			Scribe_Values.Look(ref totalsexhad, "totalsexhad", totalsexhad, true);
-			Scribe_Values.Look(ref raped, "raped", raped, true);
-			Scribe_Values.Look(ref rapedme, "rapedme", rapedme, true);
-			Scribe_Values.Look(ref orgasms, "orgasms", orgasms, true);
-			Scribe_Values.Look(ref bestsextype, "bestsextype", bestsextype, true);
-			Scribe_Values.Look(ref bestsatisfaction, "bestsatisfaction", bestsatisfaction, true);
-			Scribe_Values.Look(ref itookvirgin, "itookvirgin", itookvirgin, true);
-			Scribe_Values.Look(ref incest, "incest", incest, true);
-			Scribe_Values.Look(ref recentsextickabs, "recentsextickabs", recentsextickabs, true);
-			Scribe_Values.Look(ref bestsextickabs, "bestsextickabs", bestsextickabs, true);
+			Scribe_Values.Look(ref namecache, "namecache");
+			Scribe_Values.Look(ref totalsexhad, "totalsexhad", 0);
+			Scribe_Values.Look(ref raped, "raped", 0);
+			Scribe_Values.Look(ref rapedme, "rapedme", 0);
+			Scribe_Values.Look(ref orgasms, "orgasms", 0);
+			Scribe_Values.Look(ref bestsextype, "bestsextype", xxx.rjwSextype.None);
+			Scribe_Values.Look(ref bestsatisfaction, "bestsatisfaction", 0f);
+			Scribe_Values.Look(ref itookvirgin, "itookvirgin", false);
+			Scribe_Values.Look(ref incest, "incest", false);
+			Scribe_Values.Look(ref recentsextickabs, "recentsextickabs", 0);
+			Scribe_Values.Look(ref bestsextickabs, "bestsextickabs", 0);
 			Scribe_Defs.Look(ref race, "race");
 		}
 
