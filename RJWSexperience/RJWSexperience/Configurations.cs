@@ -23,6 +23,7 @@ namespace RJWSexperience
 		public const float MinSexablePercentDefault = 0.2f;
 		public const float VirginRatioDefault = 0.01f;
 		public const bool selectionLockedDefault = false;
+        public const bool SexCanFillBucketsDefault = false;
 
 		// Private attributes
 		private float maxLustDeviation = MaxInitialLustDefault;
@@ -55,6 +56,7 @@ namespace RJWSexperience
 		public float MinSexablePercent => minSexablePercent;
 		public float VirginRatio => virginRatio;
 		public float MaxSingleLustChange => maxSingleLustChange;
+        public bool SexCanFillBuckets => sexCanFillBuckets;
 		public Settings.SettingsTabDebug Debug => debug;
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Minor Code Smell", "S2292:Trivial properties should be auto-implemented", Justification = "Can't scribe property")]
 		public bool SelectionLocked { get => selectionLocked; set => selectionLocked = value; }
@@ -74,6 +76,7 @@ namespace RJWSexperience
 			minSexableFromLifestage = MinSexableFromLifestageDefault;
 			minSexablePercent = MinSexablePercentDefault;
 			virginRatio = VirginRatioDefault;
+            sexCanFillBuckets = SexCanFillBucketsDefault;
 		}
 
 		public override void ExposeData()
@@ -92,6 +95,7 @@ namespace RJWSexperience
 			Scribe_Values.Look(ref minSexablePercent, "MinSexablePercent", MinSexablePercentDefault);
 			Scribe_Values.Look(ref virginRatio, "VirginRatio", VirginRatioDefault);
 			Scribe_Values.Look(ref selectionLocked, "SelectionLocked", selectionLockedDefault);
+			Scribe_Values.Look(ref sexCanFillBuckets, "SexCanFillBuckets", SexCanFillBucketsDefault);
 			Scribe_Deep.Look(ref debug, "Debug");
 			base.ExposeData();
 
@@ -143,6 +147,9 @@ namespace RJWSexperience
 			}
 
 			listmain.CheckboxLabeled(Keyed.Option_EnableBastardRelation_Label, ref enableBastardRelation, Keyed.Option_EnableBastardRelation_Desc);
+
+
+            listmain.CheckboxLabeled("SexCanFillBuckets".Translate(), ref sexCanFillBuckets, "SexCanFillBuckets_desc".Translate());
 
 			if (listmain.ButtonText(Keyed.Button_ResetToDefault))
 			{
