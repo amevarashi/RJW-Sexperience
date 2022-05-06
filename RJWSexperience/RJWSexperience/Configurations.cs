@@ -4,8 +4,11 @@ using Verse;
 
 namespace RJWSexperience
 {
-	public class Configurations : ModSettings
+	public class Configurations : ModSettings, Settings.ITab
 	{
+		public string Label => Keyed.TabLabelMain;
+
+		// Defaults
 		public const float MaxInitialLustDefault = 400f;
 		public const float AvgLustDefault = 0f;
 		public const float MaxSexCountDeviationDefault = 90f;
@@ -19,8 +22,9 @@ namespace RJWSexperience
 		public const bool MinSexableFromLifestageDefault = true;
 		public const float MinSexablePercentDefault = 0.2f;
 		public const float VirginRatioDefault = 0.01f;
-		public const bool DebugDefault = false;
+		public const bool selectionLockedDefault = false;
 
+		// Private attributes
 		private float maxLustDeviation = MaxInitialLustDefault;
 		private float avgLust = AvgLustDefault;
 		private float maxSexCountDeviation = MaxSexCountDeviationDefault;
@@ -34,25 +38,24 @@ namespace RJWSexperience
 		private float minSexablePercent = MinSexablePercentDefault;
 		private float virginRatio = VirginRatioDefault;
 		private float maxSingleLustChange = MaxSingleLustChangeDefault;
-		private bool debug = DebugDefault;
+		private bool selectionLocked = selectionLockedDefault;
+		private Settings.SettingsTabDebug debug;
 
-		public float MaxLustDeviation { get => maxLustDeviation; }
-		public float AvgLust { get => avgLust; }
-		public float MaxSexCountDeviation { get => maxSexCountDeviation; }
-		public float LustEffectPower { get => lustEffectPower; }
-		public float SexPerYear { get => sexPerYear; }
-		public bool SlavesBeenRapedExp { get => slavesBeenRapedExp; }
-		public bool EnableRecordRandomizer { get => enableRecordRandomizer; }
-		public bool EnableBastardRelation { get => enableBastardRelation; }
-		public float LustLimit { get => lustLimit; }
-		public bool MinSexableFromLifestage { get => minSexableFromLifestage; }
-		public float MinSexablePercent { get => minSexablePercent; }
-		public float VirginRatio { get => virginRatio; }
-		public float MaxSingleLustChange { get => maxSingleLustChange; }
-		public bool Debug { get => debug; }
-
-		private bool selectionLocked = false;
-
+		//Public read-only properties
+		public float MaxLustDeviation => maxLustDeviation;
+		public float AvgLust => avgLust;
+		public float MaxSexCountDeviation => maxSexCountDeviation;
+		public float LustEffectPower => lustEffectPower;
+		public float SexPerYear => sexPerYear;
+		public bool SlavesBeenRapedExp => slavesBeenRapedExp;
+		public bool EnableRecordRandomizer => enableRecordRandomizer;
+		public bool EnableBastardRelation => enableBastardRelation;
+		public float LustLimit => lustLimit;
+		public bool MinSexableFromLifestage => minSexableFromLifestage;
+		public float MinSexablePercent => minSexablePercent;
+		public float VirginRatio => virginRatio;
+		public float MaxSingleLustChange => maxSingleLustChange;
+		public Settings.SettingsTabDebug Debug => debug;
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Minor Code Smell", "S2292:Trivial properties should be auto-implemented", Justification = "Can't scribe property")]
 		public bool SelectionLocked { get => selectionLocked; set => selectionLocked = value; }
 
@@ -71,30 +74,38 @@ namespace RJWSexperience
 			minSexableFromLifestage = MinSexableFromLifestageDefault;
 			minSexablePercent = MinSexablePercentDefault;
 			virginRatio = VirginRatioDefault;
-			debug = DebugDefault;
 		}
 
 		public override void ExposeData()
 		{
-			Scribe_Values.Look(ref maxLustDeviation, "MaxLustDeviation", MaxInitialLustDefault, true);
-			Scribe_Values.Look(ref avgLust, "AvgLust", AvgLustDefault, true);
-			Scribe_Values.Look(ref maxSexCountDeviation, "MaxSexCountDeviation", MaxSexCountDeviationDefault, true);
-			Scribe_Values.Look(ref lustEffectPower, "LustEffectPower", LustEffectPowerDefault, true);
-			Scribe_Values.Look(ref sexPerYear, "SexPerYear", SexPerYearDefault, true);
-			Scribe_Values.Look(ref slavesBeenRapedExp, "SlavesBeenRapedExp", SlavesBeenRapedExpDefault, true);
-			Scribe_Values.Look(ref enableRecordRandomizer, "EnableRecordRandomizer", EnableStatRandomizerDefault, true);
-			Scribe_Values.Look(ref enableBastardRelation, "EnableBastardRelation", EnableBastardRelationDefault, true);
-			Scribe_Values.Look(ref lustLimit, "LustLimit", LustLimitDefault, true);
-			Scribe_Values.Look(ref maxSingleLustChange, "maxSingleLustChange", MaxSingleLustChangeDefault, true);
-			Scribe_Values.Look(ref minSexableFromLifestage, "MinSexableFromLifestage", MinSexableFromLifestageDefault, true);
-			Scribe_Values.Look(ref minSexablePercent, "MinSexablePercent", MinSexablePercentDefault, true);
-			Scribe_Values.Look(ref virginRatio, "VirginRatio", VirginRatioDefault, true);
-			Scribe_Values.Look(ref debug, "Debug", DebugDefault, true);
-			Scribe_Values.Look(ref selectionLocked, "SelectionLocked");
+			Scribe_Values.Look(ref maxLustDeviation, "MaxLustDeviation", MaxInitialLustDefault);
+			Scribe_Values.Look(ref avgLust, "AvgLust", AvgLustDefault);
+			Scribe_Values.Look(ref maxSexCountDeviation, "MaxSexCountDeviation", MaxSexCountDeviationDefault);
+			Scribe_Values.Look(ref lustEffectPower, "LustEffectPower", LustEffectPowerDefault);
+			Scribe_Values.Look(ref sexPerYear, "SexPerYear", SexPerYearDefault);
+			Scribe_Values.Look(ref slavesBeenRapedExp, "SlavesBeenRapedExp", SlavesBeenRapedExpDefault);
+			Scribe_Values.Look(ref enableRecordRandomizer, "EnableRecordRandomizer", EnableStatRandomizerDefault);
+			Scribe_Values.Look(ref enableBastardRelation, "EnableBastardRelation", EnableBastardRelationDefault);
+			Scribe_Values.Look(ref lustLimit, "LustLimit", LustLimitDefault);
+			Scribe_Values.Look(ref maxSingleLustChange, "maxSingleLustChange", MaxSingleLustChangeDefault);
+			Scribe_Values.Look(ref minSexableFromLifestage, "MinSexableFromLifestage", MinSexableFromLifestageDefault);
+			Scribe_Values.Look(ref minSexablePercent, "MinSexablePercent", MinSexablePercentDefault);
+			Scribe_Values.Look(ref virginRatio, "VirginRatio", VirginRatioDefault);
+			Scribe_Values.Look(ref selectionLocked, "SelectionLocked", selectionLockedDefault);
+			Scribe_Deep.Look(ref debug, "Debug");
 			base.ExposeData();
+
+			if (Scribe.mode != LoadSaveMode.LoadingVars)
+				return;
+
+			if (debug == null)
+			{
+				debug = new Settings.SettingsTabDebug();
+				debug.Reset();
+			}
 		}
 
-		public void DoSettingsWindowContents(Rect inRect)
+		public void DoTabContents(Rect inRect)
 		{
 			const float lineHeight = 24f;
 
@@ -132,7 +143,6 @@ namespace RJWSexperience
 			}
 
 			listmain.CheckboxLabeled(Keyed.Option_EnableBastardRelation_Label, ref enableBastardRelation, Keyed.Option_EnableBastardRelation_Desc);
-			listmain.CheckboxLabeled(Keyed.Option_Debug_Label, ref debug, Keyed.Option_Debug_Desc);
 
 			if (listmain.ButtonText(Keyed.Button_ResetToDefault))
 			{

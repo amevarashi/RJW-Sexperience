@@ -63,6 +63,9 @@ namespace RJWSexperience
 		public static readonly string RS_Ago = "RS_Ago".Translate();
 		public static readonly string RS_LastSex = "RS_LastSex".Translate();
 
+		public static readonly string TabLabelMain = "TabLabelMain".Translate();
+		public static readonly string TabLabelDebug = "TabLabelDebug".Translate();
+
 		public static readonly string Option_1_Label = "RSOption_1_Label".Translate();
 		public static readonly string Option_1_Desc = "RSOption_1_Desc".Translate();
 		public static readonly string Option_2_Label = "RSOption_2_Label".Translate();

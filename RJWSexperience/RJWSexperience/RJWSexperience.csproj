@@ -69,6 +69,7 @@
     <Compile Include="Configurations.cs" />
     <Compile Include="Cum\CumUtility.cs" />
     <Compile Include="Cum\JobGiver_UseBucket.cs" />
+    <Compile Include="Cum\WorkGiver_CleanSelfWithBucket.cs" />
     <Compile Include="DebugAction.cs" />
     <Compile Include="ExtensionMethods\PawnExtensions.cs" />
     <Compile Include="ExtensionMethods\SexPropsExtensions.cs" />
@@ -84,6 +85,9 @@
     <Compile Include="Patches\DefInjection.cs" />
     <Compile Include="Patches\GetGizmos.cs" />
     <Compile Include="Recipe_HymenSurgery.cs" />
+    <Compile Include="Settings\SettingsTabDebug.cs" />
+    <Compile Include="Settings\IResettable.cs" />
+    <Compile Include="Settings\ITab.cs" />
     <Compile Include="SexHistory\RecordRandomizer.cs" />
     <Compile Include="RJWUtility.cs" />
     <Compile Include="SexHistory\HistoryUtility.cs" />
