@@ -22,8 +22,8 @@ namespace RJWSexperience
 		public const bool MinSexableFromLifestageDefault = true;
 		public const float MinSexablePercentDefault = 0.2f;
 		public const float VirginRatioDefault = 0.01f;
+		public const bool SexCanFillBucketsDefault = false;
 		public const bool selectionLockedDefault = false;
-        public const bool SexCanFillBucketsDefault = false;
 
 		// Private attributes
 		private float maxLustDeviation = MaxInitialLustDefault;
@@ -39,6 +39,7 @@ namespace RJWSexperience
 		private float minSexablePercent = MinSexablePercentDefault;
 		private float virginRatio = VirginRatioDefault;
 		private float maxSingleLustChange = MaxSingleLustChangeDefault;
+		private bool sexCanFillBuckets = SexCanFillBucketsDefault;
 		private bool selectionLocked = selectionLockedDefault;
 		private Settings.SettingsTabDebug debug;
 
@@ -56,7 +57,7 @@ namespace RJWSexperience
 		public float MinSexablePercent => minSexablePercent;
 		public float VirginRatio => virginRatio;
 		public float MaxSingleLustChange => maxSingleLustChange;
-        public bool SexCanFillBuckets => sexCanFillBuckets;
+		public bool SexCanFillBuckets => sexCanFillBuckets;
 		public Settings.SettingsTabDebug Debug => debug;
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Minor Code Smell", "S2292:Trivial properties should be auto-implemented", Justification = "Can't scribe property")]
 		public bool SelectionLocked { get => selectionLocked; set => selectionLocked = value; }
@@ -147,9 +148,7 @@ namespace RJWSexperience
 			}
 
 			listmain.CheckboxLabeled(Keyed.Option_EnableBastardRelation_Label, ref enableBastardRelation, Keyed.Option_EnableBastardRelation_Desc);
-
-
-            listmain.CheckboxLabeled("SexCanFillBuckets".Translate(), ref sexCanFillBuckets, "SexCanFillBuckets_desc".Translate());
+			listmain.CheckboxLabeled(Keyed.Option_SexCanFillBuckets_Label, ref sexCanFillBuckets, Keyed.Option_SexCanFillBuckets_Desc);
 
 			if (listmain.ButtonText(Keyed.Button_ResetToDefault))
 			{

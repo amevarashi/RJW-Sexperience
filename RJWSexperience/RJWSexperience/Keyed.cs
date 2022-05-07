@@ -92,6 +92,8 @@ namespace RJWSexperience
 		public static readonly string Option_MaxSingleLustChange_Desc = "RSOption_MaxSingleLustChange_Desc".Translate();
 		public static readonly string Option_EnableBastardRelation_Label = "RSOption_EnableBastardRelation_Label".Translate();
 		public static readonly string Option_EnableBastardRelation_Desc = "RSOption_EnableBastardRelation_Desc".Translate();
+		public static readonly string Option_SexCanFillBuckets_Label = "RSOption_SexCanFillBuckets_Label".Translate();
+		public static readonly string Option_SexCanFillBuckets_Desc = "RSOption_SexCanFillBuckets_Desc".Translate();
 		public static readonly string Option_Debug_Label = "RSOption_Debug_Label".Translate();
 		public static readonly string Option_Debug_Desc = "RSOption_Debug_Desc".Translate();
 		public static readonly string Button_ResetToDefault = "Button_ResetToDefault".Translate();

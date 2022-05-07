@@ -62,37 +62,35 @@ namespace RJWSexperience
 		public static void Postfix(SexProps props, ref float satisfaction)
 		{
 			Pawn pawn = props.pawn;
-			Pawn partner = props.partner;
-			xxx.rjwSextype sextype = props.sexType;
 			UpdateLust(props, satisfaction);
+			FillCumBuckets(props);
+			RJWUtility.UpdateSatisfactionHIstory(pawn, props.partner, props, satisfaction);
+			pawn.records?.Increment(VariousDefOf.OrgasmCount);
+		}
 
-			if (props.sexType == xxx.rjwSextype.Masturbation || partner == null)
-			{
-				Building_CumBucket cumbucket = pawn.GetAdjacentBuilding<Building_CumBucket>();
-				cumbucket?.AddCum(CumUtility.GetCumVolume(pawn));
-			}
+		private static void FillCumBuckets(SexProps props)
+		{
+			xxx.rjwSextype sextype = props.sexType;
+
             bool sexFillsCumbuckets = 
                 // Base: Fill Cumbuckets on Masturbation. Having no partner means it must be masturbation too
-                sextype == xxx.rjwSextype.Masturbation || partner == null
+                sextype == xxx.rjwSextype.Masturbation || props.partner == null
                 // Depending on configuration, also fill cumbuckets when certain sextypes are matched 
                 || (SexperienceMod.Settings.SexCanFillBuckets && (sextype == xxx.rjwSextype.Boobjob || sextype == xxx.rjwSextype.Footjob || sextype == xxx.rjwSextype.Handjob));
 
             if (sexFillsCumbuckets)
             {
-                IEnumerable<Building_CumBucket> buckets = pawn.GetAdjacentBuildings<Building_CumBucket>();
+                IEnumerable<Building_CumBucket> buckets = props.pawn.GetAdjacentBuildings<Building_CumBucket>();
 
-                if (buckets != null && buckets.EnumerableCount() > 0)
+                if (buckets?.EnumerableCount() > 0)
                 {
-                    var initial_Cum = pawn.GetCumVolume();
-                    foreach (Building_CumBucket b in buckets)
+                    var initialCum = CumUtility.GetCumVolume(props.pawn);
+                    foreach (Building_CumBucket bucket in buckets)
                     {
-                        b.AddCum(initial_Cum / buckets.EnumerableCount());
+						bucket.AddCum(initialCum / buckets.EnumerableCount());
                     }
                 }
             }
-
-			RJWUtility.UpdateSatisfactionHIstory(pawn, partner, props, satisfaction);
-			pawn.records?.Increment(VariousDefOf.OrgasmCount);
 		}
 
 		private static void UpdateLust(SexProps props, float satisfaction)
@@ -146,7 +144,7 @@ namespace RJWSexperience
 			if (!PawnsPenisIsInPartnersMouth(props))
 				return;
 
-			CumUtility.FeedCum(props.partner, CumUtility.GetCumVolume(props.pawn));
+			CumUtility.FeedCum(props.partner, CumUtility.GetOnePartCumVolume(props.pawn));
 		}
 
 		private static bool PawnsPenisIsInPartnersMouth(SexProps props)

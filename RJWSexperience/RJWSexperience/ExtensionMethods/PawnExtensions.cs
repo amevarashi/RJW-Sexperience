@@ -45,7 +45,7 @@ namespace RJWSexperience
 		}
 
 		public static IEnumerable<T> GetAdjacentBuildings<T>(this Pawn pawn) where T : Building
-		{	
+		{
 			// This Method was introduced to fill multiple CumBuckets around a single pawn.
 			var results = new List<T>();
 			if (pawn.Spawned)
@@ -61,49 +61,6 @@ namespace RJWSexperience
 				}
 			}
 			return results;
-		}
-
-		public static float GetCumVolume(this Pawn pawn)
-		{
-			List<Hediff> hediffs = Genital_Helper.get_PartsHediffList(pawn, Genital_Helper.get_genitalsBPR(pawn));
-			if (hediffs.NullOrEmpty()) return 0;
-			else return pawn.GetCumVolume(hediffs);
-		}
-
-		public static float GetCumVolume(this Pawn pawn, List<Hediff> hediffs)
-		{
-			float cum_value = 0;
-			// Add Cum for every existing Penis at the pawn
-			foreach (var penis in hediffs?.FindAll((Hediff hed) => hed.def.defName.ToLower().Contains("penis")))
-			{
-				cum_value += pawn.GetCumVolume(penis.TryGetComp<CompHediffBodyPart>());
-			}
-			// Look for more exotic parts - if any is found, add some more cum for the first special part found
-			CompHediffBodyPart special_part = null;
-			if (special_part == null) special_part = hediffs?.FindAll((Hediff hed) => hed.def.defName.ToLower().Contains("ovipositorf")).InRandomOrder().FirstOrDefault()?.TryGetComp<CompHediffBodyPart>();
-			if (special_part == null) special_part = hediffs?.FindAll((Hediff hed) => hed.def.defName.ToLower().Contains("ovipositorm")).InRandomOrder().FirstOrDefault()?.TryGetComp<CompHediffBodyPart>();
-			if (special_part == null) special_part = hediffs?.FindAll((Hediff hed) => hed.def.defName.ToLower().Contains("tentacle")).InRandomOrder().FirstOrDefault()?.TryGetComp<CompHediffBodyPart>();
-
-			cum_value += pawn.GetCumVolume(special_part);
-
-			return cum_value;
-		}
-
-		public static float GetCumVolume(this Pawn pawn, CompHediffBodyPart part)
-		{
-			float res;
-
-			try
-			{
-				res = part.FluidAmmount * part.FluidModifier * pawn.BodySize / pawn.RaceProps.baseBodySize * Rand.Range(0.8f, 1.2f) * RJWSettings.cum_on_body_amount_adjust * 0.3f;
-			}
-			catch (NullReferenceException)
-			{
-				res = 0.0f;
-			}
-			if (pawn.Has(Quirk.Messy)) res *= Rand.Range(4.0f, 8.0f);
-
-			return res;
 		}
 
 		/// <summary>
