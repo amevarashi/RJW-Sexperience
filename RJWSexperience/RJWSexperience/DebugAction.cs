@@ -60,7 +60,7 @@ namespace RJWSexperience
 		{
 			if (!allzero)
 			{
-				if (SexperienceMod.Settings.EnableRecordRandomizer && pawn != null && xxx.is_human(pawn))
+				if (SexperienceMod.Settings.History.EnableRecordRandomizer && pawn != null && xxx.is_human(pawn))
 				{
 					RecordRandomizer.Randomize(pawn);
 				}

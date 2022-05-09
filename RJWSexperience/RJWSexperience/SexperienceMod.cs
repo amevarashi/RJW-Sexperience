@@ -35,6 +35,7 @@ namespace RJWSexperience
 			List<ITab> tabs = new List<ITab>
 			{
 				settings,
+				settings.History,
 				settings.Debug
 			};
 

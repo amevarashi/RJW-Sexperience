@@ -3,13 +3,12 @@ using System;
 using Verse;
 using RimWorld;
 using UnityEngine;
-using RJWSexperience.ExtensionMethods;
 
 namespace RJWSexperience
 {
 	public static class RecordRandomizer
 	{
-		private static Configurations Settings => SexperienceMod.Settings;
+		private static Settings.SettingsTabHistory Settings => SexperienceMod.Settings.History;
 
 		public static void Randomize(Pawn pawn)
 		{

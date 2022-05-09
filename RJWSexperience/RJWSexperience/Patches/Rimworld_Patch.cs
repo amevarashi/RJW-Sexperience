@@ -10,7 +10,7 @@ namespace RJWSexperience
 	{
 		public static void Postfix(PawnGenerationRequest request, ref Pawn __result)
 		{
-			if (SexperienceMod.Settings.EnableRecordRandomizer && __result != null && !request.Newborn && xxx.is_human(__result))
+			if (SexperienceMod.Settings.History.EnableRecordRandomizer && __result != null && !request.Newborn && xxx.is_human(__result))
 			{
 				RecordRandomizer.Randomize(__result);
 			}

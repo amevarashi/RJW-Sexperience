@@ -62,6 +62,7 @@
 
   <!-- Settings tab labels -->
   <TabLabelMain>Main</TabLabelMain>
+  <TabLabelHistory>Sex records</TabLabelHistory>
   <TabLabelDebug>Debug</TabLabelDebug>
 
   <!-- Mod settings -->

@@ -84,9 +84,11 @@
     <Compile Include="Logs\LogManager.cs" />
     <Compile Include="Patches\DefInjection.cs" />
     <Compile Include="Recipe_HymenSurgery.cs" />
+    <Compile Include="Settings\SettingsTabHistory.cs" />
     <Compile Include="Settings\SettingsTabDebug.cs" />
     <Compile Include="Settings\IResettable.cs" />
     <Compile Include="Settings\ITab.cs" />
+    <Compile Include="Settings\SettingsWidgets.cs" />
     <Compile Include="SexHistory\RecordRandomizer.cs" />
     <Compile Include="RJWUtility.cs" />
     <Compile Include="SexHistory\HistoryUtility.cs" />
