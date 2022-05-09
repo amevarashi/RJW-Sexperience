@@ -1,3 +1,31 @@
+Version Beta 1.0.4.0
+ - Hiden log spam behind Debug option
+ - Allowed prisoners to use buckets for masturbation
+ - Added filters for food with and without cum
+ - Added WorkGiver for collecting cum from body into bucket. Currently it is in Basic category
+ - Added tabs tor the mod settings window
+ - Moved record randomiser settings to a separate tab
+ - Fixed second stage of AteCum thought not triggering
+ - Filled drugCategory for cum to enable drug properties display
+ - Made cum addicts gravitate to blowjobs based on cum need state
+ - Made meals with cum non-mergable with other kinds
+ - Optimized sex history saving for reduced file size. Now it does not write default values
+ - Removed decimals from "Cum swallowed" in sex status window
+ 
+ by Vegapnk:
+  - Changed calculation for cum amount from masturbation near a bucket. Now cum amount is collected from all penetrators
+  - Split cum amount equally between all buckets in range
+  - Made boobjobs, footjobs and handjobs that happens near cum bucket fill it like masturbation does. Can be enabled in settings. Disabled by default
+
+ internal:
+ - Changed mod settings format
+ - Refactored ThoughtDefs to use mod extensions
+ - Refactored cum ingestion to use RW's ingestion system
+ - Refactored history gizmo injection
+ - Removed unused DefOfs
+ - Migrated projects to Krafs.Rimworld.Ref nuget
+ - Updated Harmony version in project refs to 2.2.1
+ 
 Version Beta 1.0.3.2
  - Fix repeated scroll sounds in mod settings
 
