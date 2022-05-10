@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 	<!-- Teaching from Vanilla Social Interactions Expanded selects a random skill and doesn't checks if a rule pack for selected skill exists -->
-	<RulePackDef>
+	<RulePackDef MayRequire="VanillaExpanded.VanillaSocialInteractionsExpanded">
 		<defName>VSIE_Teaching_Sex</defName>
 		<rulePack>
 			<rulesFiles>
