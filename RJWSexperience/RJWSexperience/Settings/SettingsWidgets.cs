@@ -29,7 +29,7 @@ namespace RJWSexperience.Settings
 
 			if (Mathf.Abs(fieldValue - value) > minChange)
 				value = fieldValue;
-			else if (Mathf.Abs(sliderValue - value) > minChange)
+			else
 				value = sliderValue;
 		}
 	}
