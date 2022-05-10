@@ -24,8 +24,8 @@ namespace RJWSexperience
 		private float maxSingleLustChange = MaxSingleLustChangeDefault;
 		private bool sexCanFillBuckets = SexCanFillBucketsDefault;
 		private bool selectionLocked = selectionLockedDefault;
-		private SettingsTabHistory history;
-		private SettingsTabDebug debug;
+		private SettingsTabHistory history = SettingsTabHistory.CreateDefault();
+		private SettingsTabDebug debug = new SettingsTabDebug();
 
 		//Public read-only properties
 		public float LustEffectPower => lustEffectPower;

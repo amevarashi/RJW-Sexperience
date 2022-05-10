@@ -41,6 +41,13 @@ namespace RJWSexperience.Settings
 		public float VirginRatio => virginRatio;
 		public bool SlavesBeenRapedExp => slavesBeenRapedExp;
 
+		public static SettingsTabHistory CreateDefault()
+		{
+			SettingsTabHistory history = new SettingsTabHistory();
+			history.Reset();
+			return history;
+		}
+
 		public void Reset()
 		{
 			enableRecordRandomizer = EnableStatRandomizerDefault;
