@@ -60,5 +60,16 @@
 				<marketValueFactorOffset>0.20</marketValueFactorOffset>
 			</li>
 		</degreeDatas>
+		<modExtensions>
+			<!-- Compatibility with [SYR] Trait Value by AerosAtar -->
+			<li Class="SyrTraitValue.TraitValueExtension" MayRequire="syrchalis.traitvalue">
+				<traitValues>
+					<li>-1, 10</li>
+					<li>0, 0</li>
+					<li>1, 10</li>
+					<li>2, 10</li>
+				</traitValues>
+			</li>
+		</modExtensions>
 	</TraitDef>
 </Defs>
