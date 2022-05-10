@@ -46,7 +46,7 @@ namespace RJWSexperience
 		protected int mostsextickabscache = 0;
 		protected int bestsextickabscache = 0;
 
-		protected Gizmo historyGizmo;
+		public Gizmo Gizmo { get; private set; }
 
 		public SexPartnerHistoryRecord GetFirstPartnerHistory
 		{
@@ -476,7 +476,7 @@ namespace RJWSexperience
 		{
 			base.Initialize(props);
 
-			historyGizmo = new Command_Action
+			Gizmo = new Command_Action
 			{
 				defaultLabel = Keyed.RS_Sex_History,
 				icon = HistoryUtility.HistoryIcon,
@@ -487,14 +487,6 @@ namespace RJWSexperience
 					UI.SexStatusWindow.ToggleWindow(parent as Pawn, this);
 				}
 			};
-		}
-
-		public override IEnumerable<Gizmo> CompGetGizmosExtra()
-		{
-			if (Find.Selector.NumSelected > 1)
-				yield break;
-
-			yield return historyGizmo;
 		}
 	}
 }
