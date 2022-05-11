@@ -239,15 +239,22 @@ namespace RJWSexperience.UI
 						SoundDefOf.ClickReject.PlayOneShotOnCamera();
 					}
 				}
+
+				string rapeInfo = "";
+				if (history.Raped > 0) rapeInfo += Keyed.RS_Raped + history.Raped + " ";
+				if (history.RapedMe > 0) rapeInfo += Keyed.RS_RapedMe + history.RapedMe;
+
 				GUI.Label(nameRect, partner?.Name?.ToStringFull ?? history.Label.CapitalizeFirst(), fontstyleleft);
-				GUI.Label(sexinfoRect, Keyed.RS_Sex_Count + history.TotalSexCount + " " + history.RapeInfo, fontstyleleft);
+				GUI.Label(sexinfoRect, Keyed.RS_Sex_Count + history.TotalSexCount + " " + rapeInfo, fontstyleleft);
 				GUI.Label(sexinfoRect2, Keyed.RS_Orgasms + history.OrgasmCount, fontstyleleft);
 				GUI.Label(sexinfoRect2, pawn.GetRelationsString(partner) + " ", fontstyleright);
 				float p = history.BestSatisfaction / BASESAT;
 				FillableBarLabeled(bestsexRect, String.Format(Keyed.RS_Best_Sextype + ": {0}", Keyed.Sextype[(int)history.BestSextype]), p / 2, HistoryUtility.SextypeColor[(int)history.BestSextype], Texture2D.blackTexture, null, String.Format("{0:P2}", p));
 
-				if (history.IamFirst) str += "\n" + Keyed.RS_LostVirgin(history.Label, pawn.LabelShort);
-				str += "\n" + history.BestSexDays;
+				if (history.IamFirst)
+					str += "\n" + Keyed.RS_LostVirgin(history.Label, pawn.LabelShort);
+				if (history.BestSexTickAbs != 0)
+					str += "\n" + Keyed.RS_HadBestSexDaysAgo(history.BestSexElapsedTicks.ToStringTicksToDays() + " " + Keyed.RS_Ago);
 
 				TooltipHandler.TipRegion(rect, str);
 			}

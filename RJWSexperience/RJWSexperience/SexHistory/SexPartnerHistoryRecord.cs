@@ -1,8 +1,6 @@
-﻿using RimWorld;
-using rjw;
+﻿using rjw;
 using RJWSexperience.ExtensionMethods;
 using System.Collections.Generic;
-using System.Linq;
 using Verse;
 
 namespace RJWSexperience
@@ -12,53 +10,31 @@ namespace RJWSexperience
 		public string PartnerID { get; set; }
 
 		protected Pawn partner = null;
-		protected string namecache;
-		protected int totalsexhad = 0;
+		protected string labelCache;
+		protected int totalSexCount = 0;
 		protected int raped = 0;
-		protected int rapedme = 0;
+		protected int rapedMe = 0;
 		protected int orgasms = 0;
-		protected xxx.rjwSextype bestsextype = xxx.rjwSextype.None;
-		protected float bestsatisfaction = 0;
-		protected bool itookvirgin = false;
+		protected xxx.rjwSextype bestSextype = xxx.rjwSextype.None;
+		protected float bestSatisfaction = 0;
+		protected bool iTookVirgin = false;
 		protected bool incest = false;
-		protected int recentsextickabs = 0;
-		protected int bestsextickabs = 0;
+		protected int recentSexTickAbs = 0;
+		protected int bestSexTickAbs = 0;
 		protected bool cannotLoadPawnData = false;
-		protected ThingDef race;
+		protected ThingDef raceCache;
 
-		public string Label
-		{
-			get
-			{
-				if (partner != null)
-				{
-					namecache = partner.Label;
-					return namecache;
-				}
-				else return namecache;
-			}
-		}
-		public xxx.rjwSextype BestSextype
-		{
-			get
-			{
-				return bestsextype;
-			}
-		}
-		public float BestSatisfaction
-		{
-			get
-			{
-				return bestsatisfaction;
-			}
-		}
-		public int TotalSexCount
-		{
-			get
-			{
-				return totalsexhad;
-			}
-		}
+		public xxx.rjwSextype BestSextype => bestSextype;
+		public float BestSatisfaction => bestSatisfaction;
+		public int TotalSexCount => totalSexCount;
+		public int OrgasmCount => orgasms;
+		public bool IamFirst => iTookVirgin;
+		public bool Incest => incest;
+		public int Raped => raped;
+		public int RapedMe => rapedMe;
+		public int RecentSexTickAbs => recentSexTickAbs;
+		public int BestSexTickAbs => bestSexTickAbs;
+		public int BestSexElapsedTicks => GenTicks.TicksAbs - bestSexTickAbs;
 		public Pawn Partner
 		{
 			get
@@ -71,30 +47,13 @@ namespace RJWSexperience
 				return partner;
 			}
 		}
-		public string RapeInfo
+		public string Label
 		{
 			get
 			{
-				string res = "";
-				if (raped > 0) res += Keyed.RS_Raped + raped + " ";
-				if (rapedme > 0) res += Keyed.RS_RapedMe + rapedme + " ";
-				return res;
-			}
-		}
-		public int OrgasmCount => orgasms;
-		public bool IamFirst => itookvirgin;
-		public bool Incest => incest;
-		public int Raped => raped;
-		public int RapedMe => rapedme;
-		public int RecentSexTickAbs => recentsextickabs;
-		public int BestSexTickAbs => bestsextickabs;
-		public int BestSexElapsedTicks => GenTicks.TicksAbs - bestsextickabs;
-		public string BestSexDays
-		{
-			get
-			{
-				if (bestsextickabs != 0) return Keyed.RS_HadBestSexDaysAgo(GenDate.ToStringTicksToDays(BestSexElapsedTicks) + " " + Keyed.RS_Ago);
-				return "";
+				if (Partner != null)
+					labelCache = Partner.Label;
+				return labelCache;
 			}
 		}
 		public ThingDef Race
@@ -102,11 +61,8 @@ namespace RJWSexperience
 			get
 			{
 				if (Partner != null)
-				{
-					race = Partner.def;
-					return race;
-				}
-				else return race;
+					raceCache = Partner.def;
+				return raceCache;
 			}
 		}
 
@@ -115,69 +71,68 @@ namespace RJWSexperience
 		public SexPartnerHistoryRecord(Pawn pawn, bool incest = false)
 		{
 			this.partner = pawn;
-			this.namecache = pawn.Label;
+			this.labelCache = pawn.Label;
 			this.incest = incest;
-			this.race = pawn.def;
+			this.raceCache = pawn.def;
 		}
 
 		public void ExposeData()
 		{
-			Scribe_Values.Look(ref namecache, "namecache");
-			Scribe_Values.Look(ref totalsexhad, "totalsexhad", 0);
+			Scribe_Values.Look(ref labelCache, "namecache");
+			Scribe_Values.Look(ref totalSexCount, "totalsexhad", 0);
 			Scribe_Values.Look(ref raped, "raped", 0);
-			Scribe_Values.Look(ref rapedme, "rapedme", 0);
+			Scribe_Values.Look(ref rapedMe, "rapedme", 0);
 			Scribe_Values.Look(ref orgasms, "orgasms", 0);
-			Scribe_Values.Look(ref bestsextype, "bestsextype", xxx.rjwSextype.None);
-			Scribe_Values.Look(ref bestsatisfaction, "bestsatisfaction", 0f);
-			Scribe_Values.Look(ref itookvirgin, "itookvirgin", false);
+			Scribe_Values.Look(ref bestSextype, "bestsextype", xxx.rjwSextype.None);
+			Scribe_Values.Look(ref bestSatisfaction, "bestsatisfaction", 0f);
+			Scribe_Values.Look(ref iTookVirgin, "itookvirgin", false);
 			Scribe_Values.Look(ref incest, "incest", false);
-			Scribe_Values.Look(ref recentsextickabs, "recentsextickabs", 0);
-			Scribe_Values.Look(ref bestsextickabs, "bestsextickabs", 0);
-			Scribe_Defs.Look(ref race, "race");
+			Scribe_Values.Look(ref recentSexTickAbs, "recentsextickabs", 0);
+			Scribe_Values.Look(ref bestSexTickAbs, "bestsextickabs", 0);
+			Scribe_Defs.Look(ref raceCache, "race");
 		}
 
 		public void RecordSex(SexProps props)
 		{
-			totalsexhad++;
+			totalSexCount++;
 			if (props.isRape)
 			{
 				if (partner == props.GetInteractionInitiator())
-				{
-					rapedme++;
-				}
-				else if (partner == props.GetInteractionRecipient())
-				{
+					rapedMe++;
+				else
 					raped++;
-				}
 			}
-			recentsextickabs = GenTicks.TicksAbs;
+			recentSexTickAbs = GenTicks.TicksAbs;
 		}
 
 		public void RecordSatisfaction(SexProps props, float satisfaction)
 		{
-			if (satisfaction > bestsatisfaction)
+			orgasms++;
+
+			if (satisfaction > bestSatisfaction)
 			{
-				orgasms++;
-				bestsextype = props.sexType;
-				bestsatisfaction = satisfaction;
-				bestsextickabs = GenTicks.TicksAbs;
+				bestSextype = props.sexType;
+				bestSatisfaction = satisfaction;
+				bestSexTickAbs = GenTicks.TicksAbs;
 			}
 		}
 
 		public void TookVirgin()
 		{
-			itookvirgin = true;
+			iTookVirgin = true;
 		}
 
 		protected void LoadPartnerPawn(string partnerID)
 		{
 			foreach (Map map in Find.Maps)
 			{
-				partner = map.mapPawns.AllPawns.FirstOrDefault(x => x.ThingID.Equals(partnerID));
+				partner = map.mapPawns.AllPawns.Find(x => x.ThingID.Equals(partnerID));
 				if (partner != null) return;
 			}
-			partner = Find.WorldPawns.AllPawnsAliveOrDead.FirstOrDefault(x => x.ThingID.Equals(partnerID));
+			partner = Find.WorldPawns.AllPawnsAliveOrDead.Find(x => x.ThingID.Equals(partnerID));
 		}
+
+		#region OrderComparers
 
 		public class RecentOrderComparer : IComparer<SexPartnerHistoryRecord>
 		{
@@ -202,6 +157,7 @@ namespace RJWSexperience
 				return x.Label.CompareTo(y.Label);
 			}
 		}
-	}
 
+		#endregion OrderComparers
+	}
 }
