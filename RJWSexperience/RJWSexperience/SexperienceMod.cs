@@ -48,7 +48,7 @@ namespace RJWSexperience
 			if (tabRecords.NullOrEmpty())
 				InitTabRecords();
 
-			Rect contentRect = inRect.ContractedBy(TabDrawer.TabHeight);
+			Rect contentRect = inRect.BottomPartPixels(inRect.height - TabDrawer.TabHeight);
 
 			_ = TabDrawer.DrawTabs(contentRect, tabRecords);
 
