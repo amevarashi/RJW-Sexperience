@@ -120,7 +120,7 @@ namespace RJWSexperience.UI
 					Pawn p = selected.First();
 					if (p != pawn)
 					{
-						SexPartnerHistory h = p.GetPartnerHistory();
+						SexPartnerHistory h = p.TryGetComp<SexPartnerHistory>();
 						if (h != null) ChangePawn(p, h);
 					}
 				}
@@ -228,7 +228,7 @@ namespace RJWSexperience.UI
 				Widgets.DrawHighlightIfMouseover(portraitRect);
 				if (Widgets.ButtonInvisible(portraitRect))
 				{
-					SexPartnerHistory pawnhistory = partner?.GetPartnerHistory();
+					SexPartnerHistory pawnhistory = partner?.TryGetComp<SexPartnerHistory>();
 					if (pawnhistory != null)
 					{
 						ChangePawn(partner, pawnhistory);
@@ -284,10 +284,10 @@ namespace RJWSexperience.UI
 		{
 			Listing_Standard listmain = new Listing_Standard();
 			listmain.Begin(rect.ContractedBy(4f));
-			DrawSexInfoCard(listmain.GetRect(CARDHEIGHT), history.GetRecentPartnersHistory, Keyed.RS_Recent_Sex_Partner, Keyed.RS_Recent_Sex_Partner_ToolTip, history.RecentSexDays);
-			DrawSexInfoCard(listmain.GetRect(CARDHEIGHT), history.GetFirstPartnerHistory, Keyed.RS_First_Sex_Partner, Keyed.RS_First_Sex_Partner_ToolTip, history.FirstSexDays);
-			DrawSexInfoCard(listmain.GetRect(CARDHEIGHT), history.GetMostPartnerHistory, Keyed.RS_Most_Sex_Partner, Keyed.RS_Most_Sex_Partner_ToolTip, history.MostSexDays);
-			DrawSexInfoCard(listmain.GetRect(CARDHEIGHT), history.GetBestSexPartnerHistory, Keyed.RS_Best_Sex_Partner, Keyed.RS_Best_Sex_Partner_ToolTip, history.BestSexDays);
+			DrawSexInfoCard(listmain.GetRect(CARDHEIGHT), history.GetRecentPartnersHistory, Keyed.RS_Recent_Sex_Partner, Keyed.RS_Recent_Sex_Partner_ToolTip, RJWUIUtility.GetSexDays(history.RecentSexTickAbs));
+			DrawSexInfoCard(listmain.GetRect(CARDHEIGHT), history.GetFirstPartnerHistory, Keyed.RS_First_Sex_Partner, Keyed.RS_First_Sex_Partner_ToolTip, RJWUIUtility.GetSexDays(history.FirstSexTickAbs));
+			DrawSexInfoCard(listmain.GetRect(CARDHEIGHT), history.GetMostPartnerHistory, Keyed.RS_Most_Sex_Partner, Keyed.RS_Most_Sex_Partner_ToolTip, RJWUIUtility.GetSexDays(history.MostSexTickAbs));
+			DrawSexInfoCard(listmain.GetRect(CARDHEIGHT), history.GetBestSexPartnerHistory, Keyed.RS_Best_Sex_Partner, Keyed.RS_Best_Sex_Partner_ToolTip, RJWUIUtility.GetSexDays(history.BestSexTickAbs));
 			GUI.Label(listmain.GetRect(FONTHEIGHT), Keyed.RS_PreferRace, fontstyleleft);
 			DrawPreferRace(listmain.GetRect(66f + 15f));
 			listmain.GetRect(15f);
@@ -304,7 +304,7 @@ namespace RJWSexperience.UI
 
 			if (history.PreferRace != null)
 			{
-				Widgets.DrawTextureFitted(portraitRect, history.GetPreferRaceIcon(portraitRect.size), 1.0f);
+				Widgets.DrawTextureFitted(portraitRect, RJWUIUtility.GetRaceIcon(history.PreferRacePawn, portraitRect.size), 1.0f);
 				GUI.Label(infoRect1, history.PreferRace?.label.CapitalizeFirst() ?? Keyed.None, fontstyleleft);
 				GUI.Label(infoRect2, Keyed.RS_Sex_Count + history.PreferRaceSexCount, fontstyleleft);
 				if (history.PreferRace != pawn.def)
@@ -519,7 +519,7 @@ namespace RJWSexperience.UI
 				FillableBarLabeled(tmpRect, label, relativeSat, HistoryUtility.SextypeColor[sexindex], Texture2D.blackTexture, null, Keyed.RS_SAT_AVG(String.Format("{0:P2}", p)));
 				if (Mouse.IsOver(tmpRect))
 				{
-					TooltipHandler.TipRegion(tmpRect, Keyed.RS_LastSex.CapitalizeFirst() + ": " + history.SextypeRecentDays(Sextype[i]));
+					TooltipHandler.TipRegion(tmpRect, Keyed.RS_LastSex.CapitalizeFirst() + ": " + RJWUIUtility.GetSexDays(history.GetSextypeRecentTickAbs(Sextype[i]), true));
 				}
 
 				listmain.Gap(1f);

@@ -84,9 +84,18 @@ namespace RJWSexperience.UI
 
 		public static string GetSexDays(int absticks, bool printUnknown = false)
 		{
-			if (absticks != 0) return GenDate.ToStringTicksToDays(GenTicks.TicksAbs - absticks) + " " + Keyed.RS_Ago;
-			else if (printUnknown) return Keyed.Unknown;
-			else return "";
+			if (absticks != 0)
+				return GenDate.ToStringTicksToDays(GenTicks.TicksAbs - absticks) + " " + Keyed.RS_Ago;
+			else if (printUnknown)
+				return Keyed.Unknown;
+			return "";
+		}
+
+		public static Texture GetRaceIcon(Pawn pawn, Vector2 size)
+		{
+			if (pawn != null)
+				return PortraitsCache.Get(pawn, size, Rot4.South, default, 1, true, true, false, false);
+			return HistoryUtility.UnknownPawn;
 		}
 	}
 }
