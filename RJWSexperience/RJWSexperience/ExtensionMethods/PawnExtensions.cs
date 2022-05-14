@@ -85,7 +85,7 @@ namespace RJWSexperience
 			{
 				if (pawn.IsVirgin())
 				{
-					SexPartnerHistory history = pawn.GetPartnerHistory();
+					SexPartnerHistory history = pawn.TryGetComp<SexPartnerHistory>();
 					history?.RecordFirst(partner, props);
 					if (RJWUtility.RemoveVirginTrait(pawn, partner, props))
 					{

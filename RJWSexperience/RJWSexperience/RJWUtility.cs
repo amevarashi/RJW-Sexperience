@@ -160,7 +160,7 @@ namespace RJWSexperience
             if (partner != null)
             {
                 SexPartnerHistory pawnshistory = pawn.TryGetComp<SexPartnerHistory>();
-                pawnshistory?.RecordHistory(partner, props);
+                pawnshistory?.RecordSex(partner, props);
             }
         }
 
@@ -169,7 +169,7 @@ namespace RJWSexperience
             if (partner != null)
             {
                 SexPartnerHistory pawnshistory = pawn.TryGetComp<SexPartnerHistory>();
-                pawnshistory?.RecordSatisfactionHistory(partner, props, satisfaction);
+                pawnshistory?.RecordSatisfaction(partner, props, satisfaction);
             }
         }
 
