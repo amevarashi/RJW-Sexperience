@@ -36,9 +36,6 @@
     <description>Being pregnant is considered noble.</description>
     <impact>Low</impact>
     <displayOrderInIssue>20</displayOrderInIssue>
-    <requiredMemes>
-      <li>Blindsight</li>
-    </requiredMemes>
     <comps>
       <li Class="PreceptComp_SituationalThought">
         <thought>Pregnancy_Elevated_Pregnant</thought>
