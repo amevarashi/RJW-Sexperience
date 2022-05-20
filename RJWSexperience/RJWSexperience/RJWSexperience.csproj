@@ -59,6 +59,7 @@
     <Compile Include="Cum\JobDriver_CleanSelfWithBucket.cs" />
     <Compile Include="Logs\DebugLogProvider.cs" />
     <Compile Include="Logs\LogManager.cs" />
+    <Compile Include="LustUtility.cs" />
     <Compile Include="Patches\DefInjection.cs" />
     <Compile Include="Patches\GetGizmos.cs" />
     <Compile Include="Recipe_HymenSurgery.cs" />

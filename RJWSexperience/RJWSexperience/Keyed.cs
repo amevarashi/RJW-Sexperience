@@ -1,4 +1,5 @@
-﻿using rjw;
+﻿using RimWorld;
+using rjw;
 using RJWSexperience.UI;
 using UnityEngine;
 using Verse;
@@ -7,17 +8,13 @@ namespace RJWSexperience
 {
 	public static class Keyed
 	{
-		public static string LustStatFactor(string value) => "LustStatFactor".Translate(value);
-		public static string SlaveStatFactor(string value) => "SlaveStatFactor".Translate(value);
 		public static string RS_LostVirgin(string pawn, string partner) => "RS_LostVirgin".Translate(pawn.Colorize(Color.yellow), partner.Colorize(Color.yellow));
 		public static string RS_Sex_Info(string sextype, string sexcount) => "RS_Sex_Info".Translate(sextype, sexcount);
 		public static string RS_SAT_AVG(string avgsat) => "RS_SAT_AVG".Translate(avgsat);
 		public static string RS_HadBestSexDaysAgo(string days) => "RS_HadBestSexDaysAgo".Translate(days);
 
 		public static readonly string Mod_Title = "RS_Mod_Title".Translate();
-		public static readonly string SlaveStatFactorDefault = "SlaveStatFactorDefault".Translate();
 		public static readonly string RSTotalGatheredCum = "RSTotalGatheredCum".Translate();
-		public static readonly string RS_FloatMenu_CleanSelf = "RS_FloatMenu_CleanSelf".Translate();
 		public static readonly string RS_Best_Sextype = "RS_Best_Sextype".Translate();
 		public static readonly string RS_Recent_Sextype = "RS_Recent_Sextype".Translate();
 		public static readonly string RS_Sex_Partners = "RS_Sex_Partners".Translate();
@@ -35,7 +32,6 @@ namespace RJWSexperience
 		public static readonly string RS_First_Sex_Partner_ToolTip = "RS_First_Sex_Partner_ToolTip".Translate();
 		public static readonly string RS_Most_Sex_Partner_ToolTip = "RS_Most_Sex_Partner_ToolTip".Translate();
 		public static readonly string RS_Best_Sex_Partner_ToolTip = "RS_Best_Sex_Partner_ToolTip".Translate();
-		public static readonly string RS_VirginsTaken_ToolTip = "RS_VirginsTaken_ToolTip".Translate();
 		public static readonly string RS_Raped = "RS_Raped".Translate();
 		public static readonly string RS_RapedMe = "RS_RapedMe".Translate();
 		public static readonly string RS_Sex_History = "RS_Sex_History".Translate();
@@ -53,7 +49,6 @@ namespace RJWSexperience
 		public static readonly string RS_Bestiality = "RS_Bestiality".Translate();
 		public static readonly string RS_Interspecies = "RS_Interspecies".Translate();
 		public static readonly string RS_Necrophile = "RS_Necrophile".Translate();
-		public static readonly string RS_GatherCum = "RS_GatherCum".Translate();
 		public static readonly string RS_SexSkill = "RS_SexSkill".Translate();
 		public static readonly string RS_CumAddiction = "RS_CumAddiction".Translate();
 		public static readonly string RS_CumAddiction_Tooltip = "RS_CumAddiction_Tooltip".Translate();
@@ -62,6 +57,7 @@ namespace RJWSexperience
 		public static readonly string RS_NumofTimes = "RS_NumofTimes".Translate();
 		public static readonly string RS_Ago = "RS_Ago".Translate();
 		public static readonly string RS_LastSex = "RS_LastSex".Translate();
+		[MayRequireRoyalty] public static readonly string Slave = "Slave".Translate();
 
 		public static readonly string TabLabelMain = "TabLabelMain".Translate();
 		public static readonly string TabLabelHistory = "TabLabelHistory".Translate();

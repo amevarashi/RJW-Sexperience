@@ -25,9 +25,7 @@
 	<Operation Class="PatchOperationAdd">
 		<xpath>Defs/StatDef[defName="SexFrequency"]/parts</xpath>
 		<value>
-			<li Class="RJWSexperience.StatPart_Lust">
-				<factor>1.0</factor>
-			</li>
+			<li Class="RJWSexperience.StatPart_Lust" />
 		</value>
 	</Operation>
 

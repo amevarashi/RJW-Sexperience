@@ -3,9 +3,6 @@
   <RS_Mod_Title>RJW Sexperience</RS_Mod_Title>
 
   <!-- Sex status screen -->
-  <LustStatFactor>Lust: x{0}%</LustStatFactor>
-  <SlaveStatFactor>Slave: x{0}%</SlaveStatFactor>
-  <SlaveStatFactorDefault>Not Slave: x100%</SlaveStatFactorDefault>
   <MemeStatFactor>Meme: x{0}%</MemeStatFactor>
   <RSVictimCondition>slave, prisoner, submissive gender only</RSVictimCondition>
   <RSBreederCondition>improper animal: cannot breed or forbidden by precepts</RSBreederCondition>
@@ -14,7 +11,6 @@
   <RSShouldCanFuck>capable of sex is required</RSShouldCanFuck>
   <RSTotalGatheredCum>Total gathered cum: </RSTotalGatheredCum>
   <RS_LostVirgin>{1} took {0}'s virginity.</RS_LostVirgin>
-  <RS_FloatMenu_CleanSelf>Gather cums on body</RS_FloatMenu_CleanSelf>
   <RS_Best_Sextype>Best sextype</RS_Best_Sextype>
   <RS_Recent_Sextype>Recent sextype</RS_Recent_Sextype>
   <RS_Sex_Partners>Sex partners</RS_Sex_Partners>
@@ -33,7 +29,6 @@
   <RS_Best_Sex_Partner>Best Sex Partner</RS_Best_Sex_Partner>
   <RS_Best_Sex_Partner_ToolTip>The partner who had most satisfying sex.</RS_Best_Sex_Partner_ToolTip>
   <RS_VirginsTaken>Taken virgins</RS_VirginsTaken>
-  <RS_VirginsTaken_ToolTip>The number of partners who i taken first.</RS_VirginsTaken_ToolTip>
   <RS_TotalSexHad>Total sex had</RS_TotalSexHad>
   <RS_TotalSexHad_ToolTip>Total number of sex.</RS_TotalSexHad_ToolTip>
   <RS_Raped>Raped: </RS_Raped>
@@ -49,7 +44,6 @@
   <RS_Interspecies>Interspecies</RS_Interspecies>
   <RS_Normal>Normal</RS_Normal>
   <RS_Necrophile>Necrophile</RS_Necrophile>
-  <RS_GatherCum>Gather cum</RS_GatherCum>
   <RS_SexSkill>Sex skill</RS_SexSkill>
   <RS_CumAddiction>Cum addiction</RS_CumAddiction>
   <RS_CumAddiction_Tooltip>Addicted to cum.</RS_CumAddiction_Tooltip>

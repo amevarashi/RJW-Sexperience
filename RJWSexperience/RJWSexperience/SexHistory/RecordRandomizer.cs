@@ -19,7 +19,7 @@ namespace RJWSexperience
 			int deviation = (int)Settings.MaxSexCountDeviation;
 			if (pawn.story != null)
 			{
-				_ = RandomizeLust(pawn);
+				float lust = RandomizeLust(pawn);
 
 				int sexableage = 0;
 				int minsexage = 0;
@@ -31,7 +31,7 @@ namespace RJWSexperience
 				if (pawn.ageTracker.AgeBiologicalYears > minsexage)
 				{
 					sexableage = pawn.ageTracker.AgeBiologicalYears - minsexage;
-					avgsex = (int)(sexableage * Settings.SexPerYear * StatPart_Lust.GetLustFactor(pawn));
+					avgsex = (int)(sexableage * Settings.SexPerYear * LustUtility.GetLustFactor(lust));
 				}
 
 				if (pawn.relations != null && pawn.gender == Gender.Female)
