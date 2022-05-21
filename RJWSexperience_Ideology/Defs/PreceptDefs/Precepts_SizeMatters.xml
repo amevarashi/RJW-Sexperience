@@ -22,11 +22,9 @@
       <li Class="PreceptComp_SituationalThought">
         <thought>GenitalSize_Approved</thought>
       </li>
-      <!-- TBD
       <li Class="PreceptComp_SituationalThought">
         <thought>GenitalSize_Approved_Social</thought>
       </li>
-      -->
     </comps>
   </PreceptDef>
 
@@ -54,11 +52,9 @@
       <li Class="PreceptComp_SituationalThought">
         <thought>GenitalSize_Disapproved</thought>
       </li>
-       <!-- TBD
       <li Class="PreceptComp_SituationalThought">
         <thought>GenitalSize_Disapproved_Social</thought>
       </li>
-      -->
     </comps>
   </PreceptDef>
 
@@ -131,29 +127,46 @@
   </ThoughtDef>
 
   <!-- Social-Thoughts (Opinion)-->
-<!-- TBD 
-  <ThoughtDef Name="CoveredInCum_Disapproved_Social">
-    <defName>CoveredInCum_Disapproved_Social</defName>
-    <thoughtClass>Thought_SituationalSocial</thoughtClass>
-    <workerClass>RJWSexperience.Ideology.ThoughtWorker_Precept_Bukkake_SocialDisapproved</workerClass>
+  
+  <ThoughtDef>
+    <defName>GenitalSize_Approved_Social</defName>
+    <workerClass>RJWSexperience.Ideology.ThoughtWorker_Precept_GenitalSize_Approved_Social</workerClass>
+		<thoughtClass>Thought_SituationalSocial</thoughtClass>
     <stages>
       <li>
-        <label>They look slimy ... </label>
+        <label>Unwanted Genitals</label>
         <baseOpinionOffset>-5</baseOpinionOffset>
       </li>
-    </stages>
-  </ThoughtDef>
-
-  <ThoughtDef Name="CoveredInCum_Approved_Social">
-    <defName>CoveredInCum_Approved_Social</defName>
-    <thoughtClass>Thought_SituationalSocial</thoughtClass>
-    <workerClass>RJWSexperience.Ideology.ThoughtWorker_Precept_Bukkake_SocialApproved</workerClass>
-    <stages>
       <li>
-        <label>This person must be very popular! </label>
+        <label>Normal Genitals</label>
+        <baseOpinionOffset>0</baseOpinionOffset>
+      </li>
+      <li>
+        <label>Favorable Genitals</label>
         <baseOpinionOffset>+5</baseOpinionOffset>
       </li>
     </stages>
   </ThoughtDef>
---> 
+
+  
+  <ThoughtDef>
+    <defName>GenitalSize_Disapproved_Social</defName>
+    <workerClass>RJWSexperience.Ideology.ThoughtWorker_Precept_GenitalSize_Disapproved_Social</workerClass>
+		<thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <stages>
+      <li>
+        <label>Unwanted Genitals</label>
+        <baseOpinionOffset>-5</baseOpinionOffset>
+      </li>
+      <li>
+        <label>Normal Genitals</label>
+        <baseOpinionOffset>0</baseOpinionOffset>
+      </li>
+      <li>
+        <label>Favorable Genitals</label>
+        <baseOpinionOffset>+5</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
 </Defs>

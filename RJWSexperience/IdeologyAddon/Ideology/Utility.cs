@@ -1,4 +1,5 @@
 ﻿using RimWorld;
+using rjw;
 using System.Collections.Generic;
 using System.Linq;
 using Verse;
@@ -44,6 +45,30 @@ namespace RJWSexperience.Ideology
 					else if (relation.familyByBloodRelation) return true;
 				}
 			return false;
+		}
+
+		public static float getGenitalSize(Pawn p)
+		{
+			if (p == null)
+				return 0f;
+
+			// Iff the pawn has multiple genitalia, the "best" is picked (the biggest penis or tightest vagina)
+			float best_seen_size = 0f;
+			foreach (Hediff part in rjw.Genital_Helper.get_AllPartsHediffList(p))
+			{
+				// Only check for Vaginas and Penises, not for Anus or for things not categorized as primary sexual parts
+				if (Genital_Helper.is_penis(part) || Genital_Helper.is_vagina(part))
+				{
+					best_seen_size = part.Severity > best_seen_size ? part.Severity : best_seen_size;
+				}
+			}
+
+
+			// For Women, the scale is inversed.
+			if (p.gender == Gender.Female)
+				return 1 - best_seen_size;
+
+			return best_seen_size;
 		}
 	}
 }
