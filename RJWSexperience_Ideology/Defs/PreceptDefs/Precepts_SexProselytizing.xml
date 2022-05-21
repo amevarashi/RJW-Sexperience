@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Issues -->
+  <IssueDef>
+    <defName>Sex_Proselytizing</defName>
+    <label>sex type</label>
+    <iconPath>UI/Issues/Submissive</iconPath>
+  </IssueDef>
+
+  <PreceptDef>
+    <defName>Proselyzing_By_Sex</defName>
+    <issue>Sex_Proselytizing</issue>
+    <label>Sexual Proselyzing</label>
+    <description>Sex converts both partners towards this ideology.</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>40</displayOrderInIssue>
+    <displayOrderInImpact>300</displayOrderInImpact>
+  </PreceptDef>
+
+  <PreceptDef>
+    <defName>Proselyzing_By_Orgasm</defName>
+    <issue>Sex_Proselytizing</issue>
+    <label>Orgasm Proselyzing</label>
+    <description>Orgasms converts both partners towards this ideology.</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>50</displayOrderInIssue>
+    <displayOrderInImpact>400</displayOrderInImpact>
+  </PreceptDef>
+
+</Defs>
