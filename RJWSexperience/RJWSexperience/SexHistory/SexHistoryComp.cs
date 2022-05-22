@@ -1,14 +1,12 @@
-﻿using RimWorld;
-using rjw;
+﻿using rjw;
 using RJWSexperience.ExtensionMethods;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using Verse;
 
 namespace RJWSexperience
 {
-	public class SexPartnerHistory : ThingComp
+	public class SexHistoryComp : ThingComp
 	{
 		public const int ARRLEN = 20;
 
@@ -275,7 +273,7 @@ namespace RJWSexperience
 			if (VirginCheck() && props.sexType == xxx.rjwSextype.Vaginal)
 			{
 				first = partner.ThingID;
-				SexPartnerHistory history = partner.TryGetComp<SexPartnerHistory>();
+				SexHistoryComp history = partner.TryGetComp<SexHistoryComp>();
 				firstSexTickAbs = GenTicks.TicksAbs;
 				history?.TakeSomeonesVirgin(parent as Pawn);
 			}

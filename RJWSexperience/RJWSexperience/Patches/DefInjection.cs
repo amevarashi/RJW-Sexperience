@@ -25,7 +25,7 @@ namespace RJWSexperience
 
         private static void InjectComp(List<ThingDef> PawnDefs)
         {
-            CompProperties comp = new CompProperties(typeof(SexPartnerHistory));
+            CompProperties comp = new CompProperties(typeof(SexHistoryComp));
             if (!PawnDefs.NullOrEmpty()) foreach(ThingDef def in PawnDefs)
             {
                     def.comps.Add(comp);

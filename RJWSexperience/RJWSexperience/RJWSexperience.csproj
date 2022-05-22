@@ -71,7 +71,7 @@
     <Compile Include="SexHistory\RecordRandomizer.cs" />
     <Compile Include="RJWUtility.cs" />
     <Compile Include="SexHistory\HistoryUtility.cs" />
-    <Compile Include="SexHistory\SexPartnerHistory.cs" />
+    <Compile Include="SexHistory\SexHistoryComp.cs" />
     <Compile Include="SexHistory\SexPartnerHistoryRecord.cs" />
     <Compile Include="PawnRelationWorker_Bastard.cs" />
     <Compile Include="Keyed.cs" />

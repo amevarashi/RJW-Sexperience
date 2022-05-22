@@ -20,7 +20,7 @@ namespace RJWSexperience
 			foreach (Gizmo gizmo in gizmos)
 				yield return gizmo;
 
-			SexPartnerHistory history = pawn.TryGetComp<SexPartnerHistory>();
+			SexHistoryComp history = pawn.TryGetComp<SexHistoryComp>();
 			if (history != null)
 				yield return history.Gizmo;
 		}

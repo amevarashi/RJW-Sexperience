@@ -56,7 +56,7 @@ namespace RJWSexperience.UI
 
 		protected Pawn pawn;
 		protected SexPartnerHistoryRecord selectedPawn;
-		protected SexPartnerHistory history;
+		protected SexHistoryComp history;
 		protected CompRJW rjwcomp;
 		protected List<SexPartnerHistoryRecord> partnerList;
 		protected PartnerOrderMode orderMode;
@@ -73,7 +73,7 @@ namespace RJWSexperience.UI
 		private static Vector2 LastWindowPosition { get; set; }
 		private Vector2 scroll;
 
-		public SexStatusWindow(Pawn pawn, SexPartnerHistory history)
+		public SexStatusWindow(Pawn pawn, SexHistoryComp history)
 		{
 			this.pawn = pawn;
 			this.history = history;
@@ -120,7 +120,7 @@ namespace RJWSexperience.UI
 					Pawn p = selected.First();
 					if (p != pawn)
 					{
-						SexPartnerHistory h = p.TryGetComp<SexPartnerHistory>();
+						SexHistoryComp h = p.TryGetComp<SexHistoryComp>();
 						if (h != null) ChangePawn(p, h);
 					}
 				}
@@ -129,7 +129,7 @@ namespace RJWSexperience.UI
 			DrawSexStatus(inRect, history);
 		}
 
-		public static void ToggleWindow(Pawn pawn, SexPartnerHistory history)
+		public static void ToggleWindow(Pawn pawn, SexHistoryComp history)
 		{
 			SexStatusWindow window = (SexStatusWindow)Find.WindowStack.Windows.FirstOrDefault(x => x.GetType() == typeof(SexStatusWindow));
 			if (window != null)
@@ -146,7 +146,7 @@ namespace RJWSexperience.UI
 			}
 		}
 
-		public void ChangePawn(Pawn pawn, SexPartnerHistory history)
+		public void ChangePawn(Pawn pawn, SexHistoryComp history)
 		{
 			List<Pawn> selected = Find.Selector.SelectedPawns;
 			if (!selected.NullOrEmpty())
@@ -189,7 +189,7 @@ namespace RJWSexperience.UI
 		/// <summary>
 		/// Main contents
 		/// </summary>
-		protected void DrawSexStatus(Rect mainrect, SexPartnerHistory history)
+		protected void DrawSexStatus(Rect mainrect, SexHistoryComp history)
 		{
 			float sectionwidth = mainrect.width / 3;
 
@@ -228,7 +228,7 @@ namespace RJWSexperience.UI
 				Widgets.DrawHighlightIfMouseover(portraitRect);
 				if (Widgets.ButtonInvisible(portraitRect))
 				{
-					SexPartnerHistory pawnhistory = partner?.TryGetComp<SexPartnerHistory>();
+					SexHistoryComp pawnhistory = partner?.TryGetComp<SexHistoryComp>();
 					if (pawnhistory != null)
 					{
 						ChangePawn(partner, pawnhistory);
