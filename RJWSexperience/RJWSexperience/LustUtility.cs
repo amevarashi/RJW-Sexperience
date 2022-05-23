@@ -1,6 +1,6 @@
-﻿using System;
+﻿using rjw;
+using RJWSexperience.Logs;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using Verse;
 
@@ -70,6 +70,39 @@ namespace RJWSexperience
 				LabelX = Keyed.Lust
 			};
 			SimpleCurveDrawer.DrawCurves(graphRect, curves, curveDrawerStyle);
+		}
+
+		public static void UpdateLust(SexProps props, float satisfaction, float baseSatisfaction)
+		{
+			float? lust = props.pawn.records?.GetValue(VariousDefOf.Lust);
+
+			if (lust == null)
+				return;
+
+			float lustDelta;
+
+			if (props.sexType != xxx.rjwSextype.Masturbation)
+			{
+				lustDelta = satisfaction - baseSatisfaction;
+				if (Mathf.Sign(lustDelta) == Mathf.Sign((float)lust)) // Only if getting closer to the limit
+					lustDelta *= LustIncrementFactor((float)lust);
+				lustDelta = Mathf.Clamp(lustDelta, -SexperienceMod.Settings.MaxSingleLustChange, SexperienceMod.Settings.MaxSingleLustChange); // If the sex is satisfactory, lust grows up. Declines at the opposite.
+			}
+			else
+			{
+				lustDelta = Mathf.Clamp(satisfaction * satisfaction * LustIncrementFactor((float)lust), 0, SexperienceMod.Settings.MaxSingleLustChange); // Masturbation always increases lust.
+			}
+
+			if (lustDelta == 0)
+				return;
+
+			LogManager.GetLogger<DebugLogProvider>("LustUtility").Message($"{props.pawn.NameShortColored}'s lust changed by {lustDelta} (from {lust})");
+			props.pawn.records.AddTo(VariousDefOf.Lust, lustDelta);
+		}
+
+		private static float LustIncrementFactor(float lust)
+		{
+			return Mathf.Exp(-Mathf.Pow(lust / SexperienceMod.Settings.LustLimit, 2));
 		}
 	}
 }

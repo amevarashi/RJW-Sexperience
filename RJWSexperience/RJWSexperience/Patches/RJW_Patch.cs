@@ -49,7 +49,7 @@ namespace RJWSexperience
 		}
 	}
 
-	[HarmonyPatch(typeof(SexUtility), "SatisfyPersonal")]
+	[HarmonyPatch(typeof(SexUtility), nameof(SexUtility.SatisfyPersonal))]
 	public static class RJW_Patch_SatisfyPersonal
 	{
 		private const float base_sat_per_fuck = 0.4f;
@@ -61,12 +61,11 @@ namespace RJWSexperience
 
 		public static void Postfix(SexProps props, ref float satisfaction)
 		{
-			Pawn pawn = props.pawn;
-			UpdateLust(props, satisfaction);
+			LustUtility.UpdateLust(props, satisfaction, base_sat_per_fuck);
 			FillCumBuckets(props);
-			pawn.records?.Increment(VariousDefOf.OrgasmCount);
+			props.pawn.records?.Increment(VariousDefOf.OrgasmCount);
 			if (props.partner != null)
-				pawn.TryGetComp<SexHistoryComp>()?.RecordSatisfaction(props.partner, props, satisfaction);
+				props.pawn.TryGetComp<SexHistoryComp>()?.RecordSatisfaction(props.partner, props, satisfaction);
 		}
 
 		private static void FillCumBuckets(SexProps props)
@@ -93,40 +92,6 @@ namespace RJWSexperience
                 }
             }
 		}
-
-		private static void UpdateLust(SexProps props, float satisfaction)
-		{
-			float? lust = props.pawn.records?.GetValue(VariousDefOf.Lust);
-
-			if (lust == null)
-				return;
-
-			float lustDelta;
-
-			if (props.sexType != xxx.rjwSextype.Masturbation)
-			{
-				lustDelta = satisfaction - base_sat_per_fuck;
-				if (Mathf.Sign(lustDelta) == Mathf.Sign((float)lust)) // Only if getting closer to the limit
-					lustDelta *= LustIncrementFactor((float)lust);
-				lustDelta = Mathf.Clamp(lustDelta, -SexperienceMod.Settings.MaxSingleLustChange, SexperienceMod.Settings.MaxSingleLustChange); // If the sex is satisfactory, lust grows up. Declines at the opposite.
-			}
-			else
-			{
-				lustDelta = Mathf.Clamp(satisfaction * satisfaction * LustIncrementFactor((float)lust), 0, SexperienceMod.Settings.MaxSingleLustChange); // Masturbation always increases lust.
-			}
-
-			if (lustDelta == 0)
-				return;
-
-			LogManager.GetLogger<DebugLogProvider>("RJW_Patch_SatisfyPersonal").Message($"{props.pawn.NameShortColored}'s lust changed by {lustDelta} (from {lust})");
-			props.pawn.records.AddTo(VariousDefOf.Lust, lustDelta);
-		}
-
-		private static float LustIncrementFactor(float lust)
-		{
-			return Mathf.Exp(-Mathf.Pow(lust / SexperienceMod.Settings.LustLimit, 2));
-		}
-
 	}
 
 	[HarmonyPatch(typeof(SexUtility), "TransferNutrition")]
