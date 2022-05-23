@@ -64,8 +64,9 @@ namespace RJWSexperience
 			Pawn pawn = props.pawn;
 			UpdateLust(props, satisfaction);
 			FillCumBuckets(props);
-			RJWUtility.UpdateSatisfactionHIstory(pawn, props.partner, props, satisfaction);
 			pawn.records?.Increment(VariousDefOf.OrgasmCount);
+			if (props.partner != null)
+				pawn.TryGetComp<SexHistoryComp>()?.RecordSatisfaction(props.partner, props, satisfaction);
 		}
 
 		private static void FillCumBuckets(SexProps props)
