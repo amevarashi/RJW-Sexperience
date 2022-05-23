@@ -22,11 +22,7 @@ namespace RJWSexperience.Cum
 			if (!(t is Building_CumBucket bucket))
 				return false;
 
-			List<Thing> thingsInBucket = bucket.Map.thingGrid.ThingsListAt(bucket.Position);
-
-			int stackInBucket = thingsInBucket.Select(thing => thing.stackCount).Aggregate((sum, x) => sum + x);
-
-			return stackInBucket < VariousDefOf.GatheredCum.stackLimit;
+			return bucket.StoredStackCount < VariousDefOf.GatheredCum.stackLimit;
 		}
 
 		public override Job JobOnThing(Pawn pawn, Thing t, bool forced = false)
