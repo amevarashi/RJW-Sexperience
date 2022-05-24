@@ -1,3 +1,21 @@
+Version Beta 1.0.4.2
+ - Pawns ignore full buckets when searching one to masturbate
+ - Fixed generation error for races with no reproductive lifestages
+
+ by AerosAtar:
+  - Added [SYR] Trait Value compatibility
+
+ internal:
+  - Added StoredStackCount arrtibute to Building_CumBucket
+  - Refactored Building_CumBucket
+  - Refactored SexPartnerHistoryRecord
+  - Refactored StatParts
+  - Removed factor from StatPart_Lust
+  - Removed HistoryUtility.GetPartnerHistory method
+  - Removed RJWUtility.UpdateSatisfactionHIstory method
+  - Renamed SexPartnerHistory to SexHistoryComp
+  - Do not load VSIE_Teaching_Sex RulePackDef if Vanilla Social Interactions Expanded is not used
+
 Version Beta 1.0.4.1
  - Fixed pawn generation exception
  - Fixed history gizmo for non-colonists
