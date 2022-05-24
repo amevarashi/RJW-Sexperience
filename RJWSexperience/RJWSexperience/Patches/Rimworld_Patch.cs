@@ -10,11 +10,16 @@ namespace RJWSexperience
 	{
 		public static void Postfix(PawnGenerationRequest request, ref Pawn __result)
 		{
-			if (SexperienceMod.Settings.History.EnableRecordRandomizer && __result != null && !request.Newborn && xxx.is_human(__result))
-			{
-				RecordRandomizer.Randomize(__result);
-			}
-			__result.AddVirginTrait();
+			if (__result == null)
+				return;
+
+			bool doVirginTrait = true;
+
+			if (SexperienceMod.Settings.History.EnableRecordRandomizer && !request.Newborn && xxx.is_human(__result))
+				doVirginTrait = RecordRandomizer.Randomize(__result);
+
+			if (doVirginTrait)
+				__result.AddVirginTrait();
 		}
 	}
 }

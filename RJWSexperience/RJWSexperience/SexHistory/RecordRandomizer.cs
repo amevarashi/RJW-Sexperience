@@ -3,36 +3,61 @@ using System;
 using Verse;
 using RimWorld;
 using UnityEngine;
+using RJWSexperience.Logs;
 
 namespace RJWSexperience
 {
 	public static class RecordRandomizer
 	{
+		private static readonly rjw.Modules.Shared.Logs.ILog log = LogManager.GetLogger<DebugLogProvider>("RecordRandomizer");
+
 		private static Settings.SettingsTabHistory Settings => SexperienceMod.Settings.History;
 
-		public static void Randomize(Pawn pawn)
+		public static bool Randomize(Pawn pawn)
 		{
+			log.Message($"Randomize request for {pawn.NameShortColored}");
+
 			int avgsex = -500;
 			bool isvirgin = Rand.Chance(Settings.VirginRatio);
 			int totalsex = 0;
 			int totalbirth = 0;
 			int deviation = (int)Settings.MaxSexCountDeviation;
+
+			if (isvirgin)
+				log.Message("Rand.Chance rolled virgin");
+
 			if (pawn.story != null)
 			{
-				float lust = RandomizeLust(pawn);
-
 				int sexableage = 0;
 				int minsexage = 0;
 				if (Settings.MinSexableFromLifestage)
-					minsexage = (int)pawn.RaceProps.lifeStageAges.Find(x => x.def.reproductive).minAge;
+				{
+					LifeStageAge lifeStageAges = pawn.RaceProps.lifeStageAges.Find(x => x.def.reproductive);
+					if (lifeStageAges == null)
+					{
+						log.Message($"No reproductive life stage! {pawn.NameShortColored}'s randomizstion cancelled");
+						return false;
+					}
+					minsexage = (int)lifeStageAges.minAge;
+				}
 				else
+				{
 					minsexage = (int)(pawn.RaceProps.lifeExpectancy * Settings.MinSexablePercent);
+				}
+
+				log.Message($"Min sex age is {minsexage}");
+
+				float lust = RandomizeLust(pawn);
+				log.Message($"Lust set to {lust}");
 
 				if (pawn.ageTracker.AgeBiologicalYears > minsexage)
 				{
 					sexableage = pawn.ageTracker.AgeBiologicalYears - minsexage;
 					avgsex = (int)(sexableage * Settings.SexPerYear * LustUtility.GetLustFactor(lust));
 				}
+
+				log.Message($"Generating {sexableage} years of sex life");
+				log.Message($"Average sex/year: {avgsex}");
 
 				if (pawn.relations != null && pawn.gender == Gender.Female)
 				{
@@ -83,7 +108,10 @@ namespace RJWSexperience
 				}
 			}
 			pawn.records?.SetTo(xxx.CountOfSex, totalsex);
+			log.Message($"Splitting {totalsex} sex acts between sex types");
 			GenerateSextypeRecords(pawn, totalsex);
+			log.Message($"{pawn.NameShortColored} randomized");
+			return true;
 		}
 
 		public static float RandomizeLust(Pawn pawn)

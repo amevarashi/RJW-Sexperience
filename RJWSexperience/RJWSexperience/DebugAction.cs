@@ -13,8 +13,8 @@ namespace RJWSexperience
 			Trait virgin = p.story?.traits?.GetTrait(VariousDefOf.Virgin);
 			if (virgin != null) p.story.traits.RemoveTrait(virgin);
 			ResetRecord(p, true);
-			ResetRecord(p, false);
-			p.AddVirginTrait();
+			if (ResetRecord(p, false))
+				p.AddVirginTrait();
 			MoteMaker.ThrowText(p.TrueCenter(), p.Map, "Records resetted!");
 		}
 
@@ -56,13 +56,13 @@ namespace RJWSexperience
 			MoteMaker.ThrowText(p.TrueCenter(), p.Map, "Lust: " + p.records.GetValue(VariousDefOf.Lust));
 		}
 
-		private static void ResetRecord(Pawn pawn, bool allzero)
+		private static bool ResetRecord(Pawn pawn, bool allzero)
 		{
 			if (!allzero)
 			{
-				if (SexperienceMod.Settings.History.EnableRecordRandomizer && pawn != null && xxx.is_human(pawn))
+				if (SexperienceMod.Settings.History.EnableRecordRandomizer && xxx.is_human(pawn))
 				{
-					RecordRandomizer.Randomize(pawn);
+					return RecordRandomizer.Randomize(pawn);
 				}
 			}
 			else
@@ -102,6 +102,8 @@ namespace RJWSexperience
 				pawn.records.SetTo(xxx.CountOfSexWithOthers, 0);
 				pawn.records.SetTo(xxx.CountOfWhore, 0);
 			}
+
+			return true;
 		}
 	}
 }
