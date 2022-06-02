@@ -110,7 +110,12 @@ namespace RJWSexperience
 			if (!PawnsPenisIsInPartnersMouth(props))
 				return;
 
-			CumUtility.FeedCum(props.partner, CumUtility.GetOnePartCumVolume(props.pawn));
+			float cumAmount = CumUtility.GetOnePartCumVolume(props.pawn);
+
+			if (cumAmount <= 0)
+				return;
+
+			CumUtility.FeedCum(props.partner, cumAmount);
 		}
 
 		private static bool PawnsPenisIsInPartnersMouth(SexProps props)
