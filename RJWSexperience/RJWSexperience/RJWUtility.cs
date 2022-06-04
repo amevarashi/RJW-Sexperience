@@ -4,7 +4,6 @@ using rjw.Modules.Interactions.Enums;
 using rjw.Modules.Interactions.Helpers;
 using rjw.Modules.Interactions.Objects;
 using System.Collections.Generic;
-using System.Linq;
 using Verse;
 using Verse.AI;
 
@@ -153,14 +152,6 @@ namespace RJWSexperience
 						IncreaseSameRecords(pawn, partner, VariousDefOf.MiscSexualBehaviorCount);
 						break;
 				}
-			}
-		}
-
-		public static void UpdatePartnerHistory(Pawn pawn, Pawn partner, SexProps props)
-		{
-			if (partner != null)
-			{
-				pawn.TryGetComp<SexHistoryComp>()?.RecordSex(partner, props);
 			}
 		}
 

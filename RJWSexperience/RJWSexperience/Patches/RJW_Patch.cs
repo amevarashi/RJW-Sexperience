@@ -164,10 +164,13 @@ namespace RJWSexperience
 		public static void Postfix(SexProps props)
 		{
 			RJWUtility.UpdateSextypeRecords(props);
-			RJWUtility.UpdatePartnerHistory(props.pawn, props.partner, props);
-			RJWUtility.UpdatePartnerHistory(props.partner, props.pawn, props);
-		}
 
+			if (props.partner == null)
+				return;
+
+			props.pawn.TryGetComp<SexHistoryComp>()?.RecordSex(props.partner, props);
+			props.partner.TryGetComp<SexHistoryComp>()?.RecordSex(props.pawn, props);
+		}
 	}
 
 	[HarmonyPatch(typeof(JobDriver_SexBaseInitiator), "Start")]
