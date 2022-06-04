@@ -1,35 +1,29 @@
-﻿using System;
+﻿using RJWSexperience.Logs;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Verse;
-using HarmonyLib;
-
 
 namespace RJWSexperience
 {
-    [StaticConstructorOnStartup]
-    public static class DefInjection
-    {
-        static DefInjection()
-        {
-            InjectRaces();
-        }
+	[StaticConstructorOnStartup]
+	public static class DefInjection
+	{
+		static DefInjection()
+		{
+			InjectRaces();
+		}
 
-        private static void InjectRaces()
-        {
-            List<ThingDef> PawnDefs = DefDatabase<ThingDef>.AllDefs.Where(x => x.race != null && !x.race.IsMechanoid).ToList();
-            InjectComp(PawnDefs);
-        }
+		private static void InjectRaces()
+		{
+			IEnumerable<ThingDef> PawnDefs = DefDatabase<ThingDef>.AllDefs.Where(x => x.race != null && !x.race.IsMechanoid);
+			if (PawnDefs.EnumerableNullOrEmpty())
+				return;
 
-        private static void InjectComp(List<ThingDef> PawnDefs)
-        {
-            CompProperties comp = new CompProperties(typeof(SexHistoryComp));
-            if (!PawnDefs.NullOrEmpty()) foreach(ThingDef def in PawnDefs)
-            {
-                    def.comps.Add(comp);
-            }
-        }
-    }
+			CompProperties comp = new CompProperties(typeof(SexHistoryComp));
+			foreach (ThingDef def in PawnDefs)
+				def.comps.Add(comp);
+
+			LogManager.GetLogger("StaticConstructorOnStartup").Message($"Injected SexHistoryComp into {PawnDefs.Count()} pawn Defs");
+		}
+	}
 }
