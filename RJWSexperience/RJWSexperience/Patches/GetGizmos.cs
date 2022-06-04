@@ -12,17 +12,19 @@ namespace RJWSexperience
 			if (Find.Selector.NumSelected > 1)
 				return;
 
-			__result = AddHistoryGizmo(__instance, __result);
+			SexHistoryComp history = __instance.TryGetComp<SexHistoryComp>();
+			if (history == null)
+				return;
+
+			__result = AddHistoryGizmo(history, __result);
 		}
 
-		private static IEnumerable<Gizmo> AddHistoryGizmo(Pawn pawn, IEnumerable<Gizmo> gizmos)
+		private static IEnumerable<Gizmo> AddHistoryGizmo(SexHistoryComp history, IEnumerable<Gizmo> gizmos)
 		{
 			foreach (Gizmo gizmo in gizmos)
 				yield return gizmo;
 
-			SexHistoryComp history = pawn.TryGetComp<SexHistoryComp>();
-			if (history != null)
-				yield return history.Gizmo;
+			yield return history.Gizmo;
 		}
 	}
 }
