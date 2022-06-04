@@ -78,17 +78,17 @@ namespace RJWSexperience
 				// Depending on configuration, also fill cumbuckets when certain sextypes are matched 
 				|| (SexperienceMod.Settings.SexCanFillBuckets && (sextype == xxx.rjwSextype.Boobjob || sextype == xxx.rjwSextype.Footjob || sextype == xxx.rjwSextype.Handjob));
 
-			if (sexFillsCumbuckets)
-			{
-				IEnumerable<Building_CumBucket> buckets = props.pawn.GetAdjacentBuildings<Building_CumBucket>();
+			if (!sexFillsCumbuckets)
+				return;
 
-				if (buckets?.EnumerableCount() > 0)
+			IEnumerable<Building_CumBucket> buckets = props.pawn.GetAdjacentBuildings<Building_CumBucket>();
+
+			if (buckets?.EnumerableCount() > 0)
+			{
+				var initialCum = CumUtility.GetCumVolume(props.pawn);
+				foreach (Building_CumBucket bucket in buckets)
 				{
-					var initialCum = CumUtility.GetCumVolume(props.pawn);
-					foreach (Building_CumBucket bucket in buckets)
-					{
-						bucket.AddCum(initialCum / buckets.EnumerableCount());
-					}
+					bucket.AddCum(initialCum / buckets.EnumerableCount());
 				}
 			}
 		}
