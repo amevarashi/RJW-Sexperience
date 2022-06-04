@@ -7,6 +7,8 @@ namespace RJWSexperience.Logs
 	// Copy of RJW code because of hardcoded mod name prefix. Maybe TODO: update RJW's version to accept prefix from LogProvider
 	public static class LogManager
 	{
+		public const string LogPrefix = "[Sexperience]";
+
 		private class Logger : ILog
 		{
 			private readonly string _loggerTypeName;
@@ -56,7 +58,7 @@ namespace RJWSexperience.Logs
 
 			private string CreateLogMessage(string message)
 			{
-				return $"[Sexperience] [{_loggerTypeName}] {message}";
+				return $"{LogPrefix} [{_loggerTypeName}] {message}";
 			}
 			private string CreateLogMessage(string message, Exception exception)
 			{
