@@ -48,18 +48,23 @@ namespace RJWSexperience.Ideology
 	{
 		public static void Postfix(PreceptDef precept, bool checkDuplicates, ref IdeoFoundation __instance, ref AcceptanceReport __result)
 		{
-			if (precept is PreceptDef_RequirementExtended def && !def.requiredAllMemes.NullOrEmpty())
-			{
-				for (int i = 0; i < def.requiredAllMemes.Count; i++)
-				{
-					if (!__instance.ideo.memes.Contains(def.requiredAllMemes[i]))
-					{
-						List<string> report = new List<string>();
-						foreach (MemeDef meme in def.requiredAllMemes) report.Add(meme.LabelCap);
+			PreceptDefExtension_MultipleMemesRequired extension = precept.GetModExtension<PreceptDefExtension_MultipleMemesRequired>();
 
-						__result = new AcceptanceReport("RequiresMeme".Translate() + ": " + report.ToCommaList());
-						return;
-					}
+			if (extension == null)
+				return;
+
+			if (extension.requiredAllMemes.NullOrEmpty())
+				return;
+
+			for (int i = 0; i < extension.requiredAllMemes.Count; i++)
+			{
+				if (!__instance.ideo.memes.Contains(extension.requiredAllMemes[i]))
+				{
+					List<string> report = new List<string>();
+					foreach (MemeDef meme in extension.requiredAllMemes) report.Add(meme.LabelCap);
+
+					__result = new AcceptanceReport("RequiresMeme".Translate() + ": " + report.ToCommaList());
+					return;
 				}
 			}
 		}

@@ -48,7 +48,7 @@
     </requiredMemes>
   </PreceptDef>
 
-  <RJWSexperience.Ideology.PreceptDef_RequirementExtended>
+  <PreceptDef>
     <defName>AnimalGangbangCeremony</defName>
     <label>animal gangbang</label>
     <description>A ritualistic gangbang where animals rape a victim.</description>
@@ -65,11 +65,15 @@
     <receivesExpectationsQualityOffset>true</receivesExpectationsQualityOffset>
     <canGenerateAsSpecialPrecept>false</canGenerateAsSpecialPrecept>
     <allowStackingRitualObligationAlerts>true</allowStackingRitualObligationAlerts>
-    <requiredAllMemes>
-      <li>Rapist</li>
-      <li>Zoophile</li>
-    </requiredAllMemes>
-  </RJWSexperience.Ideology.PreceptDef_RequirementExtended>
+		<modExtensions>
+			<li Class="RJWSexperience.Ideology.PreceptDefExtension_MultipleMemesRequired">
+        <requiredAllMemes>
+          <li>Rapist</li>
+          <li>Zoophile</li>
+        </requiredAllMemes>
+			</li>
+		</modExtensions>
+  </PreceptDef>
   
   <PreceptDef>
     <defName>AnimalGangbangCeremony_Consensual</defName>
