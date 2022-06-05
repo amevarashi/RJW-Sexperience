@@ -23,7 +23,7 @@ namespace RJWSexperience
 			foreach (ThingDef def in PawnDefs)
 				def.comps.Add(comp);
 
-			LogManager.GetLogger("StaticConstructorOnStartup").Message($"Injected SexHistoryComp into {PawnDefs.Count()} pawn Defs");
+			LogManager.GetLogger<DebugLogProvider>("StaticConstructorOnStartup").Message($"Injected SexHistoryComp into {PawnDefs.Count()} pawn Defs");
 		}
 	}
 }
