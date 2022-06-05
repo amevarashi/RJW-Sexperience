@@ -283,6 +283,7 @@ namespace RJWSexperience.Ideology
 		{
 			{ "Vaginal", VariousDefOf.Sex_VaginalOnly },
 			{ "Anal", VariousDefOf.Sex_AnalOnly },
+			{ "Rimming", VariousDefOf.Sex_AnalOnly },
 			{ "Cunnilingus", VariousDefOf.Sex_OralOnly },
 			{ "Fellatio", VariousDefOf.Sex_OralOnly },
 			{ "Beakjob", VariousDefOf.Sex_OralOnly },
