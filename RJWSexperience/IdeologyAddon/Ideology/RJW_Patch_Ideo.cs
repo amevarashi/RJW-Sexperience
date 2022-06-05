@@ -279,33 +279,27 @@ namespace RJWSexperience.Ideology
 			if (!context.Inputs.IsRape && ideo != null) PreceptSextype(ideo, context.Inputs.Partner.GetStatValue(xxx.sex_drive_stat), ref __result, interaction);
 		}
 
-		private static readonly List<String> promiscuousSexTypes = new List<String> {
-			"DoublePenetration",
-			"Scissoring",
-			"Sixtynine",
-			"Fisting",
+		private static readonly Dictionary<string, PreceptDef> PreceptBySextype = new Dictionary<string, PreceptDef>
+		{
+			{ "Vaginal", VariousDefOf.Sex_VaginalOnly },
+			{ "Anal", VariousDefOf.Sex_AnalOnly },
+			{ "Cunnilingus", VariousDefOf.Sex_OralOnly },
+			{ "Fellatio", VariousDefOf.Sex_OralOnly },
+			{ "Beakjob", VariousDefOf.Sex_OralOnly },
+			{ "DoublePenetration", VariousDefOf.Sex_Promiscuous },
+			{ "Scissoring", VariousDefOf.Sex_Promiscuous },
+			{ "Sixtynine", VariousDefOf.Sex_Promiscuous },
+			{ "Fisting", VariousDefOf.Sex_Promiscuous }
 		};
 
 		public static void PreceptSextype(Ideo ideo, float sexdrive, ref float result, InteractionWithExtension interaction)
 		{
+			if (!PreceptBySextype.TryGetValue(interaction.Extension.rjwSextype, out PreceptDef preceptDef))
+				return;
+
 			float mult = 8.0f * Math.Max(0.3f, 1 / Math.Max(0.01f, sexdrive));
-			if ((interaction.Extension.rjwSextype == "Vaginal")
-				&& ideo.HasPrecept(VariousDefOf.Sex_VaginalOnly))
-			{
-				result *= mult;
-			}
-			else if ((interaction.Extension.rjwSextype == "Anal")
-					 && ideo.HasPrecept(VariousDefOf.Sex_AnalOnly))
-			{
-				result *= mult;
-			}
-			else if ((interaction.Extension.rjwSextype == "Cunnilingus" || interaction.Extension.rjwSextype == "Fellatio" || interaction.Extension.rjwSextype == "Beakjob")
-					 && ideo.HasPrecept(VariousDefOf.Sex_OralOnly))
-			{
-				result *= mult;
-			}
-			else if (promiscuousSexTypes.Contains(interaction.Extension.rjwSextype)
-					 && ideo.HasPrecept(VariousDefOf.Sex_Promiscuous))
+
+			if (ideo.HasPrecept(preceptDef))
 			{
 				result *= mult;
 			}
