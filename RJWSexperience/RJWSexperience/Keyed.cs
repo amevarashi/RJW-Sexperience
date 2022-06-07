@@ -59,9 +59,9 @@ namespace RJWSexperience
 		public static readonly string RS_LastSex = "RS_LastSex".Translate();
 		[MayRequireRoyalty] public static readonly string Slave = "Slave".Translate();
 
-		public static readonly string TabLabelMain = "TabLabelMain".Translate();
-		public static readonly string TabLabelHistory = "TabLabelHistory".Translate();
-		public static readonly string TabLabelDebug = "TabLabelDebug".Translate();
+		public static readonly string TabLabelMain = "RSTabLabelMain".Translate();
+		public static readonly string TabLabelHistory = "RSTabLabelHistory".Translate();
+		public static readonly string TabLabelDebug = "RSTabLabelDebug".Translate();
 
 		public static readonly string Option_1_Label = "RSOption_1_Label".Translate();
 		public static readonly string Option_1_Desc = "RSOption_1_Desc".Translate();
@@ -93,6 +93,8 @@ namespace RJWSexperience
 		public static readonly string Option_SexCanFillBuckets_Desc = "RSOption_SexCanFillBuckets_Desc".Translate();
 		public static readonly string Option_Debug_Label = "RSOption_Debug_Label".Translate();
 		public static readonly string Option_Debug_Desc = "RSOption_Debug_Desc".Translate();
+		public static readonly string Option_EnableSexHistory_Label = "RSOption_EnableSexHistory_Label".Translate();
+		public static readonly string Option_EnableSexHistory_Desc = "RSOption_EnableSexHistory_Desc".Translate();
 		public static readonly string Button_ResetToDefault = "Button_ResetToDefault".Translate();
 
 		public static string Translate(this PartnerOrderMode mode)

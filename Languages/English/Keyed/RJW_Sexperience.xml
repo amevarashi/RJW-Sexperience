@@ -55,9 +55,9 @@
   <RS_HadBestSexDaysAgo>Had best sex {0}.</RS_HadBestSexDaysAgo>
 
   <!-- Settings tab labels -->
-  <TabLabelMain>Main</TabLabelMain>
-  <TabLabelHistory>Sex records</TabLabelHistory>
-  <TabLabelDebug>Debug</TabLabelDebug>
+  <RSTabLabelMain>Main</RSTabLabelMain>
+  <RSTabLabelHistory>Sex records</RSTabLabelHistory>
+  <RSTabLabelDebug>Debug</RSTabLabelDebug>
 
   <!-- Mod settings -->
   <RSOption_1_Label>Enable record randomizer</RSOption_1_Label>
@@ -90,6 +90,8 @@
   <RSOption_SexCanFillBuckets_Desc>If enabled boobjobs, footjobs and handjobs that happens near cum bucket will fill it</RSOption_SexCanFillBuckets_Desc>
   <RSOption_Debug_Label>Debug</RSOption_Debug_Label>
   <RSOption_Debug_Desc>Enable debug logs</RSOption_Debug_Desc>
+  <RSOption_EnableSexHistory_Label>[Caution] Enable Sex History*</RSOption_EnableSexHistory_Label>
+  <RSOption_EnableSexHistory_Desc>* Needs a game restart\n\nEnables Sex History window, information collection for the said window and save/load of this information. Also enables sex partners count in pawn's records.\n\n[Caution] Disabling this mid save will result in the loss of previously collected histories.</RSOption_EnableSexHistory_Desc>
   <Button_ResetToDefault>Reset to default</Button_ResetToDefault>
 
   <!-- Sex types -->

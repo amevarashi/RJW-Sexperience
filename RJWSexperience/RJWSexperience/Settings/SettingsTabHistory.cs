@@ -18,6 +18,7 @@ namespace RJWSexperience.Settings
 		public const float MinSexablePercentDefault = 0.2f;
 		public const float VirginRatioDefault = 0.01f;
 		public const bool SlavesBeenRapedExpDefault = true;
+		public const bool EnableSexHistoryDefault = true;
 
 		// Private attributes
 		private bool enableRecordRandomizer = EnableStatRandomizerDefault;
@@ -29,6 +30,7 @@ namespace RJWSexperience.Settings
 		private float minSexablePercent = MinSexablePercentDefault;
 		private float virginRatio = VirginRatioDefault;
 		private bool slavesBeenRapedExp = SlavesBeenRapedExpDefault;
+		private bool enableSexHistory = EnableSexHistoryDefault;
 
 		//Public read-only properties
 		public bool EnableRecordRandomizer => enableRecordRandomizer;
@@ -40,6 +42,7 @@ namespace RJWSexperience.Settings
 		public float MinSexablePercent => minSexablePercent;
 		public float VirginRatio => virginRatio;
 		public bool SlavesBeenRapedExp => slavesBeenRapedExp;
+		public bool EnableSexHistory => enableSexHistory;
 
 		public static SettingsTabHistory CreateDefault()
 		{
@@ -59,6 +62,7 @@ namespace RJWSexperience.Settings
 			minSexablePercent = MinSexablePercentDefault;
 			virginRatio = VirginRatioDefault;
 			slavesBeenRapedExp = SlavesBeenRapedExpDefault;
+			enableSexHistory = EnableSexHistoryDefault;
 		}
 
 		public void ExposeData()
@@ -72,6 +76,7 @@ namespace RJWSexperience.Settings
 			Scribe_Values.Look(ref minSexablePercent, "MinSexablePercent", MinSexablePercentDefault);
 			Scribe_Values.Look(ref virginRatio, "VirginRatio", VirginRatioDefault);
 			Scribe_Values.Look(ref slavesBeenRapedExp, "SlavesBeenRapedExp", SlavesBeenRapedExpDefault);
+			Scribe_Values.Look(ref enableSexHistory, "EnableSexHistory", EnableSexHistoryDefault);
 		}
 
 		public void DoTabContents(Rect inRect)
@@ -105,6 +110,8 @@ namespace RJWSexperience.Settings
 
 				listmain.EndSection(section);
 			}
+
+			listmain.CheckboxLabeled(Keyed.Option_EnableSexHistory_Label, ref enableSexHistory, Keyed.Option_EnableSexHistory_Desc);
 
 			if (listmain.ButtonText(Keyed.Button_ResetToDefault))
 			{
