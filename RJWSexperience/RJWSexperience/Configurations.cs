@@ -93,6 +93,9 @@ namespace RJWSexperience
 			listmain.CheckboxLabeled(Keyed.Option_EnableBastardRelation_Label, ref enableBastardRelation, Keyed.Option_EnableBastardRelation_Desc);
 			listmain.CheckboxLabeled(Keyed.Option_SexCanFillBuckets_Label, ref sexCanFillBuckets, Keyed.Option_SexCanFillBuckets_Desc);
 
+			if (SexperienceMod.Settings.Debug.DevMode)
+				LustUtility.DrawGraph(listmain.GetRect(300f));
+
 			if (listmain.ButtonText(Keyed.Button_ResetToDefault))
 			{
 				ResetToDefault();
