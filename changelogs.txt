@@ -1,3 +1,8 @@
+Version Beta 1.0.4.3
+ - Updated for RimWorld version 1.3.3387
+ - Added rimming to "Anal only" precept
+ - Added option to completely disable sex history
+
 Version Beta 1.0.4.2
  - Pawns ignore full buckets when searching one to masturbate
  - Fixed generation error for races with no reproductive lifestages
@@ -6,7 +11,7 @@ Version Beta 1.0.4.2
   - Added [SYR] Trait Value compatibility
 
  internal:
-  - Added StoredStackCount arrtibute to Building_CumBucket
+  - Added StoredStackCount property to Building_CumBucket
   - Refactored Building_CumBucket
   - Refactored SexPartnerHistoryRecord
   - Refactored StatParts
