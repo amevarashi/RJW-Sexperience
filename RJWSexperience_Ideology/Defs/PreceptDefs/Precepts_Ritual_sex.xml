@@ -17,7 +17,6 @@
     <ignoreLimitsInEditMode>false</ignoreLimitsInEditMode>
     <receivesExpectationsQualityOffset>true</receivesExpectationsQualityOffset>
     <canGenerateAsSpecialPrecept>false</canGenerateAsSpecialPrecept>
-    <allowStackingRitualObligationAlerts>true</allowStackingRitualObligationAlerts>
     <exclusionTags>
       <li>RapeBad</li>
     </exclusionTags>
@@ -42,7 +41,6 @@
     <ignoreLimitsInEditMode>false</ignoreLimitsInEditMode>
     <receivesExpectationsQualityOffset>true</receivesExpectationsQualityOffset>
     <canGenerateAsSpecialPrecept>false</canGenerateAsSpecialPrecept>
-    <allowStackingRitualObligationAlerts>true</allowStackingRitualObligationAlerts>
     <requiredMemes>
       <li>Lewd</li>
     </requiredMemes>
@@ -64,7 +62,6 @@
     <ignoreLimitsInEditMode>false</ignoreLimitsInEditMode>
     <receivesExpectationsQualityOffset>true</receivesExpectationsQualityOffset>
     <canGenerateAsSpecialPrecept>false</canGenerateAsSpecialPrecept>
-    <allowStackingRitualObligationAlerts>true</allowStackingRitualObligationAlerts>
 		<modExtensions>
 			<li Class="RJWSexperience.Ideology.PreceptDefExtension_MultipleMemesRequired">
         <requiredAllMemes>
@@ -91,7 +88,6 @@
     <ignoreLimitsInEditMode>false</ignoreLimitsInEditMode>
     <receivesExpectationsQualityOffset>true</receivesExpectationsQualityOffset>
     <canGenerateAsSpecialPrecept>false</canGenerateAsSpecialPrecept>
-    <allowStackingRitualObligationAlerts>true</allowStackingRitualObligationAlerts>
     <requiredMemes>
       <li>Zoophile</li>
     </requiredMemes>
@@ -115,7 +111,6 @@
     <ignoreLimitsInEditMode>false</ignoreLimitsInEditMode>
     <receivesExpectationsQualityOffset>true</receivesExpectationsQualityOffset>
     <canGenerateAsSpecialPrecept>false</canGenerateAsSpecialPrecept>
-    <allowStackingRitualObligationAlerts>true</allowStackingRitualObligationAlerts>
     <requiredMemes>
       <li>Lewd</li>
     </requiredMemes>
