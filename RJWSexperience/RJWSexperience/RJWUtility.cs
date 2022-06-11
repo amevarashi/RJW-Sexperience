@@ -13,25 +13,24 @@ namespace RJWSexperience
 	{
 		public static bool RemoveVirginTrait(Pawn pawn, Pawn partner, SexProps props)
 		{
-			int degree;
 			Trait virgin = pawn.story?.traits?.GetTrait(VariousDefOf.Virgin);
-			if (virgin != null)
+			if (virgin == null)
+				return false;
+
+			int degree = virgin.Degree;
+			if (pawn.gender == Gender.Female && degree > 0 && !pawn.Dead)
 			{
-				degree = virgin.Degree;
-				if (pawn.gender == Gender.Female && degree > 0)
-				{
-					FilthMaker.TryMakeFilth(pawn.Position, pawn.Map, ThingDefOf.Filth_Blood, pawn.LabelShort, 1, FilthSourceFlags.Pawn);
-				}
-				ThrowVirginHIstoryEvent(pawn, partner, props, degree);
-				pawn.story.traits.RemoveTrait(virgin);
-				return true;
+				FilthMaker.TryMakeFilth(pawn.Position, pawn.Map, ThingDefOf.Filth_Blood, pawn.LabelShort, 1, FilthSourceFlags.Pawn);
 			}
-			return false;
+			ThrowVirginHIstoryEvent(pawn, partner, props, degree);
+			pawn.story.traits.RemoveTrait(virgin);
+			return true;
 		}
 
 		/// <summary>
 		/// For ideo patch
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Redundancy", "RCS1163:Unused parameter.", Justification = "All parameters are needed for the ideology patch")]
 		public static void ThrowVirginHIstoryEvent(Pawn pawn, Pawn partner, SexProps props, int degree)
 		{
 			//for non-ideo
