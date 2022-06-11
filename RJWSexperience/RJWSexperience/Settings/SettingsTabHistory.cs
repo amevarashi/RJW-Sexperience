@@ -19,6 +19,8 @@ namespace RJWSexperience.Settings
 		public const float VirginRatioDefault = 0.01f;
 		public const bool SlavesBeenRapedExpDefault = true;
 		public const bool EnableSexHistoryDefault = true;
+		public const bool HideGizmoWhenDraftedDefault = true;
+		public const bool HideGizmoWithRJWDefault = true;
 
 		// Private attributes
 		private bool enableRecordRandomizer = EnableStatRandomizerDefault;
@@ -31,6 +33,8 @@ namespace RJWSexperience.Settings
 		private float virginRatio = VirginRatioDefault;
 		private bool slavesBeenRapedExp = SlavesBeenRapedExpDefault;
 		private bool enableSexHistory = EnableSexHistoryDefault;
+		private bool hideGizmoWhenDrafted = HideGizmoWhenDraftedDefault;
+		private bool hideGizmoWithRJW = HideGizmoWithRJWDefault;
 
 		//Public read-only properties
 		public bool EnableRecordRandomizer => enableRecordRandomizer;
@@ -43,6 +47,8 @@ namespace RJWSexperience.Settings
 		public float VirginRatio => virginRatio;
 		public bool SlavesBeenRapedExp => slavesBeenRapedExp;
 		public bool EnableSexHistory => enableSexHistory;
+		public bool HideGizmoWhenDrafted => hideGizmoWhenDrafted;
+		public bool HideGizmoWithRJW => hideGizmoWithRJW;
 
 		public static SettingsTabHistory CreateDefault()
 		{
@@ -63,6 +69,8 @@ namespace RJWSexperience.Settings
 			virginRatio = VirginRatioDefault;
 			slavesBeenRapedExp = SlavesBeenRapedExpDefault;
 			enableSexHistory = EnableSexHistoryDefault;
+			hideGizmoWhenDrafted = HideGizmoWhenDraftedDefault;
+			hideGizmoWithRJW = HideGizmoWithRJWDefault;
 		}
 
 		public void ExposeData()
@@ -77,6 +85,8 @@ namespace RJWSexperience.Settings
 			Scribe_Values.Look(ref virginRatio, "VirginRatio", VirginRatioDefault);
 			Scribe_Values.Look(ref slavesBeenRapedExp, "SlavesBeenRapedExp", SlavesBeenRapedExpDefault);
 			Scribe_Values.Look(ref enableSexHistory, "EnableSexHistory", EnableSexHistoryDefault);
+			Scribe_Values.Look(ref hideGizmoWhenDrafted, "HideGizmoWhenDrafted", HideGizmoWhenDraftedDefault);
+			Scribe_Values.Look(ref hideGizmoWithRJW, "HideGizmoWithRJW", HideGizmoWithRJWDefault);
 		}
 
 		public void DoTabContents(Rect inRect)
@@ -112,6 +122,12 @@ namespace RJWSexperience.Settings
 			}
 
 			listmain.CheckboxLabeled(Keyed.Option_EnableSexHistory_Label, ref enableSexHistory, Keyed.Option_EnableSexHistory_Desc);
+
+			if (enableSexHistory)
+			{
+				listmain.CheckboxLabeled(Keyed.Option_HideGizmoWhenDrafted_Label, ref hideGizmoWhenDrafted, Keyed.Option_HideGizmoWhenDrafted_Desc);
+				listmain.CheckboxLabeled(Keyed.Option_HideGizmoWithRJW_Label, ref hideGizmoWithRJW, Keyed.Option_HideGizmoWithRJW_Desc);
+			}
 
 			if (listmain.ButtonText(Keyed.Button_ResetToDefault))
 			{

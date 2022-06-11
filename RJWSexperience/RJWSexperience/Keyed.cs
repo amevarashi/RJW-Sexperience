@@ -95,6 +95,10 @@ namespace RJWSexperience
 		public static readonly string Option_Debug_Desc = "RSOption_Debug_Desc".Translate();
 		public static readonly string Option_EnableSexHistory_Label = "RSOption_EnableSexHistory_Label".Translate();
 		public static readonly string Option_EnableSexHistory_Desc = "RSOption_EnableSexHistory_Desc".Translate();
+		public static readonly string Option_HideGizmoWhenDrafted_Label = "RSOption_HideGizmoWhenDrafted_Label".Translate();
+		public static readonly string Option_HideGizmoWhenDrafted_Desc = "RSOption_HideGizmoWhenDrafted_Desc".Translate();
+		public static readonly string Option_HideGizmoWithRJW_Label = "RSOption_HideGizmoWithRJW_Label".Translate();
+		public static readonly string Option_HideGizmoWithRJW_Desc = "RSOption_HideGizmoWithRJW_Desc".Translate();
 		public static readonly string Button_ResetToDefault = "Button_ResetToDefault".Translate();
 
 		public static string Translate(this PartnerOrderMode mode)

@@ -59,11 +59,19 @@
   <RSTabLabelHistory>Sex records</RSTabLabelHistory>
   <RSTabLabelDebug>Debug</RSTabLabelDebug>
 
-  <!-- Mod settings -->
-  <RSOption_1_Label>Enable record randomizer</RSOption_1_Label>
-  <RSOption_1_Desc>Randomize pawn's sex records.</RSOption_1_Desc>
+  <!-- Mod settings: Main -->
   <RSOption_2_Label>Lust effect power</RSOption_2_Label>
   <RSOption_2_Desc>Set how much lust affect to sex drive.</RSOption_2_Desc>
+  <RSOption_8_Label>Lust Limit</RSOption_8_Label>
+  <RSOption_8_Desc>Set limitation of lust.\nIf absolute value of lust close to or larger than this value, lust will be less likely to change.</RSOption_8_Desc>
+  <RSOption_MaxSingleLustChange_Label>Maximum lust change per sex</RSOption_MaxSingleLustChange_Label>
+  <RSOption_MaxSingleLustChange_Desc>Set how much lust can change from a single sex act</RSOption_MaxSingleLustChange_Desc>
+  <RSOption_SexCanFillBuckets_Label>Sex can fill buckets</RSOption_SexCanFillBuckets_Label>
+  <RSOption_SexCanFillBuckets_Desc>If enabled boobjobs, footjobs and handjobs that happens near cum bucket will fill it</RSOption_SexCanFillBuckets_Desc>
+
+  <!-- Mod settings: Sex records -->
+  <RSOption_1_Label>Enable record randomizer</RSOption_1_Label>
+  <RSOption_1_Desc>Randomize pawn's sex records.</RSOption_1_Desc>
   <RSOption_3_Label>Maximum lust deviation</RSOption_3_Label>
   <RSOption_3_Desc>Set maximum deviation of lust.&#10;The lust value can be negative depending on its average.</RSOption_3_Desc>
   <RSOption_4_Label>Average Lust</RSOption_4_Label>
@@ -74,24 +82,25 @@
   <RSOption_6_Desc>Set average sex count.</RSOption_6_Desc>
   <RSOption_7_Label>Enable slaves get raped experience</RSOption_7_Label>
   <RSOption_7_Desc>Slaves will have experience of being raped</RSOption_7_Desc>
-  <RSOption_8_Label>Lust Limit</RSOption_8_Label>
-  <RSOption_8_Desc>Set limitation of lust.&#10;If absolute value of lust close to or larger than this value, lust will be less likely to change.</RSOption_8_Desc>
   <RSOption_9_Label>Minimum age can have sex</RSOption_9_Label>
   <RSOption_9_Desc>Set minimum sexable age.&#10;This value is not related to RJW's minimum sex age. Only used for generating records.</RSOption_9_Desc>
   <RSOption_10_Label>Virgin ratio</RSOption_10_Label>
   <RSOption_10_Desc>Set probability of virgin regardless of age.</RSOption_10_Desc>
   <RSOption_MinSexableFromLifestage_Label>Minimum sexable age from life stages</RSOption_MinSexableFromLifestage_Label>
-  <RSOption_MinSexableFromLifestage_Desc>Only used for generating records. Get minimum sexable age from the first reproductive life stage. Works better for races with a long lifespan</RSOption_MinSexableFromLifestage_Desc>
-  <RSOption_MaxSingleLustChange_Label>Maximum lust change per sex</RSOption_MaxSingleLustChange_Label>
-  <RSOption_MaxSingleLustChange_Desc>Set how much lust can change from a single sex act</RSOption_MaxSingleLustChange_Desc>
+  <RSOption_MinSexableFromLifestage_Desc>Only used for generating records. Get minimum sexable age from the first reproductive life stage. Works better for the races with a long lifespan</RSOption_MinSexableFromLifestage_Desc>
   <RSOption_EnableBastardRelation_Label>Enable Bastard relation</RSOption_EnableBastardRelation_Label>
   <RSOption_EnableBastardRelation_Desc>Child is marked as a bastard if they have only one parent or their parents are not (or was not) married</RSOption_EnableBastardRelation_Desc>
-  <RSOption_SexCanFillBuckets_Label>Sex can fill buckets</RSOption_SexCanFillBuckets_Label>
-  <RSOption_SexCanFillBuckets_Desc>If enabled boobjobs, footjobs and handjobs that happens near cum bucket will fill it</RSOption_SexCanFillBuckets_Desc>
+  <RSOption_EnableSexHistory_Label>[Caution] Enable Sex History*</RSOption_EnableSexHistory_Label>
+  <RSOption_EnableSexHistory_Desc>* Needs a game restart\n\nEnables Sex History window, information collection for the said window and save/load of this information. Also enables sex partners count in the pawn's records.\n\n[Caution] Disabling this mid save will result in the loss of previously collected histories.</RSOption_EnableSexHistory_Desc>
+  <RSOption_HideGizmoWhenDrafted_Label>Hide Sex History button when drafted</RSOption_HideGizmoWhenDrafted_Label>
+  <RSOption_HideGizmoWhenDrafted_Desc>Hides Sex History Gizmo for currently drafted pawns</RSOption_HideGizmoWhenDrafted_Desc>
+  <RSOption_HideGizmoWithRJW_Label>Hide Sex History button with RJW designators</RSOption_HideGizmoWithRJW_Label>
+  <RSOption_HideGizmoWithRJW_Desc>Hides Sex History Gizmo if RJW designators are hidden</RSOption_HideGizmoWithRJW_Desc>
+
+  <!-- Mod settings: Debug -->
   <RSOption_Debug_Label>Debug</RSOption_Debug_Label>
   <RSOption_Debug_Desc>Enable debug logs</RSOption_Debug_Desc>
-  <RSOption_EnableSexHistory_Label>[Caution] Enable Sex History*</RSOption_EnableSexHistory_Label>
-  <RSOption_EnableSexHistory_Desc>* Needs a game restart\n\nEnables Sex History window, information collection for the said window and save/load of this information. Also enables sex partners count in pawn's records.\n\n[Caution] Disabling this mid save will result in the loss of previously collected histories.</RSOption_EnableSexHistory_Desc>
+
   <Button_ResetToDefault>Reset to default</Button_ResetToDefault>
 
   <!-- Sex types -->
