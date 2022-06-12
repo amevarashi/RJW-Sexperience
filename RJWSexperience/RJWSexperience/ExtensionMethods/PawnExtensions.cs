@@ -86,14 +86,14 @@ namespace RJWSexperience
 				if (pawn.IsVirgin())
 				{
 					pawn.TryGetComp<SexHistoryComp>()?.RecordFirst(partner, props);
-					if (RJWUtility.RemoveVirginTrait(pawn, partner, props))
+					if (Virginity.TraitHandler.RemoveVirginTrait(pawn, partner, props))
 					{
 						Messages.Message(Keyed.RS_LostVirgin(pawn.LabelShort, partner.LabelShort), MessageTypeDefOf.NeutralEvent, true);
 					}
 				}
 				else
 				{
-					RJWUtility.RemoveVirginTrait(pawn, partner, props);
+					Virginity.TraitHandler.RemoveVirginTrait(pawn, partner, props);
 				}
 			}
 		}
@@ -109,25 +109,6 @@ namespace RJWSexperience
 			{
 				if (xxx.is_homosexual(pawn)) return Gender.Female;
 				else return Gender.Male;
-			}
-		}
-
-		public static void AddVirginTrait(this Pawn pawn)
-		{
-			if (pawn.story?.traits == null)
-				return;
-
-			if (pawn.IsVirgin())
-			{
-				Virginity.TraitDegree degree = Virginity.TraitDegree.MaleVirgin;
-				if (pawn.gender == Gender.Female) degree = Virginity.TraitDegree.FemaleVirgin;
-				Trait virgin = new Trait(VariousDefOf.Virgin, (int)degree, true);
-				pawn.story.traits.GainTrait(virgin);
-			}
-			else if (pawn.gender == Gender.Female && Rand.Chance(0.05f))
-			{
-				Trait virgin = new Trait(VariousDefOf.Virgin, (int)Virginity.TraitDegree.FemaleAfterSurgery, true);
-				pawn.story.traits.GainTrait(virgin);
 			}
 		}
 	}

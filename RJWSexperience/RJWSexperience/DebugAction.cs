@@ -1,6 +1,5 @@
 ﻿using RimWorld;
 using rjw;
-using RJWSexperience.ExtensionMethods;
 using Verse;
 
 namespace RJWSexperience
@@ -14,7 +13,7 @@ namespace RJWSexperience
 			if (virgin != null) p.story.traits.RemoveTrait(virgin);
 			ResetRecord(p, true);
 			if (ResetRecord(p, false))
-				p.AddVirginTrait();
+				Virginity.TraitHandler.AddVirginTrait(p);
 			MoteMaker.ThrowText(p.TrueCenter(), p.Map, "Records resetted!");
 		}
 
@@ -22,10 +21,9 @@ namespace RJWSexperience
 		private static void ResetRecordsZero(Pawn p)
 		{
 			ResetRecord(p, true);
-			p.AddVirginTrait();
+			Virginity.TraitHandler.AddVirginTrait(p);
 			MoteMaker.ThrowText(p.TrueCenter(), p.Map, "Records resetted!\nVirginified!");
 		}
-
 
 		[DebugAction("RJW Sexperience", "Reset lust", false, false, actionType = DebugActionType.ToolMapForPawns, allowedGameStates = AllowedGameStates.PlayingOnMap)]
 		private static void ResetLust(Pawn p)

@@ -11,22 +11,6 @@ namespace RJWSexperience
 {
 	public static class RJWUtility
 	{
-		public static bool RemoveVirginTrait(Pawn pawn, Pawn partner, SexProps props)
-		{
-			Trait virgin = pawn.story?.traits?.GetTrait(VariousDefOf.Virgin);
-			if (virgin == null)
-				return false;
-
-			int degree = virgin.Degree;
-			if (pawn.gender == Gender.Female && degree > 0 && !pawn.Dead)
-			{
-				FilthMaker.TryMakeFilth(pawn.Position, pawn.Map, ThingDefOf.Filth_Blood, pawn.LabelShort, 1, FilthSourceFlags.Pawn);
-			}
-			ThrowVirginHIstoryEvent(pawn, partner, props, degree);
-			pawn.story.traits.RemoveTrait(virgin);
-			return true;
-		}
-
 		/// <summary>
 		/// For ideo patch
 		/// </summary>

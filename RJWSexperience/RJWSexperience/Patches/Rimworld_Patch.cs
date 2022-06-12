@@ -19,7 +19,7 @@ namespace RJWSexperience
 				doVirginTrait = RecordRandomizer.Randomize(__result);
 
 			if (doVirginTrait)
-				__result.AddVirginTrait();
+				Virginity.TraitHandler.AddVirginTrait(__result);
 		}
 	}
 }
