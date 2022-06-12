@@ -9,13 +9,17 @@ namespace RJWSexperience
 	{
 		public static bool IsIncest(this Pawn pawn, Pawn otherpawn)
 		{
-			if (otherpawn != null)
+			if (otherpawn == null)
+				return false;
+
+			IEnumerable<PawnRelationDef> relations = pawn.GetRelations(otherpawn);
+			if (relations.EnumerableNullOrEmpty())
+				return false;
+
+			foreach (PawnRelationDef relation in relations)
 			{
-				IEnumerable<PawnRelationDef> relations = pawn.GetRelations(otherpawn);
-				if (!relations.EnumerableNullOrEmpty()) foreach (PawnRelationDef relation in relations)
-					{
-						if (relation.incestOpinionOffset < 0) return true;
-					}
+				if (relation.incestOpinionOffset < 0)
+					return true;
 			}
 			return false;
 		}
@@ -23,42 +27,40 @@ namespace RJWSexperience
 		public static float GetSexStat(this Pawn pawn)
 		{
 			if (xxx.is_human(pawn) && !pawn.Dead)
-			{
 				return pawn.GetStatValue(xxx.sex_stat);
-			}
-			else return 1.0f;
+			return 1.0f;
 		}
 
 		public static T GetAdjacentBuilding<T>(this Pawn pawn) where T : Building
 		{
-			if (pawn.Spawned)
+			if (!pawn.Spawned)
+				return null;
+
+			EdificeGrid edifice = pawn.Map.edificeGrid;
+			if (edifice[pawn.Position] is T building)
+				return building;
+			foreach (IntVec3 pos in GenAdjFast.AdjacentCells8Way(pawn.Position))
 			{
-				EdificeGrid edifice = pawn.Map.edificeGrid;
-				if (edifice[pawn.Position] is T) return (T)edifice[pawn.Position];
-				IEnumerable<IntVec3> adjcells = GenAdjFast.AdjacentCells8Way(pawn.Position);
-				foreach (IntVec3 pos in adjcells)
-				{
-					if (edifice[pos] is T) return (T)edifice[pos];
-				}
+				if (edifice[pos] is T adjBuilding)
+					return adjBuilding;
 			}
 			return null;
 		}
 
 		public static IEnumerable<T> GetAdjacentBuildings<T>(this Pawn pawn) where T : Building
 		{
-			// This Method was introduced to fill multiple CumBuckets around a single pawn.
 			var results = new List<T>();
-			if (pawn.Spawned)
+
+			if (!pawn.Spawned)
+				return results;
+
+			EdificeGrid edifice = pawn.Map.edificeGrid;
+			if (edifice[pawn.Position] is T building)
+				results.Add(building);
+			foreach (IntVec3 pos in GenAdjFast.AdjacentCells8Way(pawn.Position))
 			{
-				EdificeGrid edifice = pawn.Map.edificeGrid;
-				if (edifice[pawn.Position] is T)
-					results.Add((T)edifice[pawn.Position]);
-				IEnumerable<IntVec3> adjcells = GenAdjFast.AdjacentCells8Way(pawn.Position);
-				foreach (IntVec3 pos in adjcells)
-				{
-					if (edifice[pos] is T)
-						results.Add((T)edifice[pos]);
-				}
+				if (edifice[pos] is T adjBuilding)
+					results.Add(adjBuilding);
 			}
 			return results;
 		}
