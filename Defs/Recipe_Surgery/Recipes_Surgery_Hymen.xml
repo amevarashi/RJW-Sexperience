@@ -4,7 +4,7 @@
     <defName>Surgery_RestoreHymen</defName>
     <label>hymenoplasty</label>
     <description>Disguises as virgin.</description>
-    <workerClass>RJWSexperience.Recipe_HymenSurgery</workerClass>
+    <workerClass>RJWSexperience.Virginity.Recipe_HymenSurgery</workerClass>
     <jobString>restoring hymen</jobString>
     <effectWorking>Surgery</effectWorking>
     <soundWorking>Recipe_Surgery</soundWorking>
@@ -12,10 +12,10 @@
     <workSkill>Medicine</workSkill>
     <workSkillLearnFactor>0.2</workSkillLearnFactor>
     <workAmount>400</workAmount>
-	<anesthetize>false</anesthetize>
-	<recipeUsers>
-		<li>Human</li>
-	</recipeUsers>
+    <anesthetize>false</anesthetize>
+    <recipeUsers>
+      <li>Human</li>
+    </recipeUsers>
     <surgerySuccessChanceFactor>100</surgerySuccessChanceFactor>
     <ingredients>
       <li>
@@ -33,6 +33,4 @@
       </categories>
     </fixedIngredientFilter>
   </RecipeDef>
-
-  
 </Defs>

@@ -62,7 +62,7 @@
     <Compile Include="LustUtility.cs" />
     <Compile Include="Patches\DefInjection.cs" />
     <Compile Include="Patches\GetGizmos.cs" />
-    <Compile Include="Recipe_HymenSurgery.cs" />
+    <Compile Include="Virginity\Recipe_HymenSurgery.cs" />
     <Compile Include="Settings\SettingsTabHistory.cs" />
     <Compile Include="Settings\SettingsTabDebug.cs" />
     <Compile Include="Settings\IResettable.cs" />
@@ -92,6 +92,7 @@
     <Compile Include="UI\SexStatus.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="VariousDefOf.cs" />
+    <Compile Include="Virginity\TraitDegree.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Rimworld.Ref">
