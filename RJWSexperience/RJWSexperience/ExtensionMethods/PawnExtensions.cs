@@ -114,20 +114,20 @@ namespace RJWSexperience
 
 		public static void AddVirginTrait(this Pawn pawn)
 		{
-			if (pawn.story?.traits != null)
+			if (pawn.story?.traits == null)
+				return;
+
+			if (pawn.IsVirgin())
 			{
-				if (pawn.IsVirgin())
-				{
-					int degree = 0;
-					if (pawn.gender == Gender.Female) degree = 2;
-					Trait virgin = new Trait(VariousDefOf.Virgin, degree, true);
-					pawn.story.traits.GainTrait(virgin);
-				}
-				else if (pawn.gender == Gender.Female && Rand.Chance(0.05f))
-				{
-					Trait virgin = new Trait(VariousDefOf.Virgin, 1, true);
-					pawn.story.traits.GainTrait(virgin);
-				}
+				Virginity.TraitDegree degree = Virginity.TraitDegree.MaleVirgin;
+				if (pawn.gender == Gender.Female) degree = Virginity.TraitDegree.FemaleVirgin;
+				Trait virgin = new Trait(VariousDefOf.Virgin, (int)degree, true);
+				pawn.story.traits.GainTrait(virgin);
+			}
+			else if (pawn.gender == Gender.Female && Rand.Chance(0.05f))
+			{
+				Trait virgin = new Trait(VariousDefOf.Virgin, (int)Virginity.TraitDegree.FemaleAfterSurgery, true);
+				pawn.story.traits.GainTrait(virgin);
 			}
 		}
 	}
