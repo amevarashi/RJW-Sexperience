@@ -21,7 +21,6 @@ namespace RJWSexperience
 			bool isvirgin = Rand.Chance(Settings.VirginRatio);
 			int totalsex = 0;
 			int totalbirth = 0;
-			int deviation = (int)Settings.MaxSexCountDeviation;
 
 			if (isvirgin)
 				log.Message("Rand.Chance rolled virgin");
@@ -35,7 +34,7 @@ namespace RJWSexperience
 					LifeStageAge lifeStageAges = pawn.RaceProps.lifeStageAges.Find(x => x.def.reproductive);
 					if (lifeStageAges == null)
 					{
-						log.Message($"No reproductive life stage! {pawn.NameShortColored}'s randomizstion cancelled");
+						log.Message($"No reproductive life stage! {pawn.NameShortColored}'s randomization cancelled");
 						return false;
 					}
 					minsexage = (int)lifeStageAges.minAge;
@@ -69,42 +68,13 @@ namespace RJWSexperience
 				}
 				if (!isvirgin)
 				{
-					if (xxx.is_rapist(pawn))
-					{
-						if (xxx.is_zoophile(pawn))
-						{
-							if (pawn.Has(Quirk.ChitinLover)) totalsex += RandomizeRecord(pawn, xxx.CountOfRapedInsects, avgsex, deviation);
-							else totalsex += RandomizeRecord(pawn, xxx.CountOfRapedAnimals, avgsex, deviation);
-						}
-						else
-						{
-							totalsex += RandomizeRecord(pawn, xxx.CountOfRapedHumanlikes, avgsex, deviation);
-						}
-
-						avgsex /= 8;
-					}
-
-					if (xxx.is_zoophile(pawn))
-					{
-						if (pawn.Has(Quirk.ChitinLover)) totalsex += RandomizeRecord(pawn, xxx.CountOfRapedInsects, avgsex, deviation);
-						else totalsex += RandomizeRecord(pawn, xxx.CountOfSexWithAnimals, avgsex, deviation);
-						avgsex /= 10;
-					}
-					else if (xxx.is_necrophiliac(pawn))
-					{
-						totalsex += RandomizeRecord(pawn, xxx.CountOfSexWithCorpse, avgsex, deviation);
-						avgsex /= 4;
-					}
+					totalsex += GeneratePartnerTypeRecords(pawn, avgsex);
 
 					if (Settings.SlavesBeenRapedExp && pawn.IsSlave)
 					{
 						totalsex += RandomizeRecord(pawn, xxx.CountOfBeenRapedByAnimals, Rand.Range(-50, 10), Rand.Range(0, 10) * sexableage);
 						totalsex += RandomizeRecord(pawn, xxx.CountOfBeenRapedByHumanlikes, 0, Rand.Range(0, 100) * sexableage);
 					}
-
-					totalsex += RandomizeRecord(pawn, xxx.CountOfSexWithHumanlikes, avgsex, deviation);
-
-					if (totalsex > 0) pawn.records.AddTo(VariousDefOf.SexPartnerCount, Math.Max(1, Rand.Range(0, totalsex / 7)));
 				}
 			}
 			pawn.records?.SetTo(xxx.CountOfSex, totalsex);
@@ -138,6 +108,46 @@ namespace RJWSexperience
 			pawn.records.AddTo(record, value - recordvalue);
 
 			return value;
+		}
+
+		private static int GeneratePartnerTypeRecords(Pawn pawn, int avgsex)
+		{
+			int deviation = (int)Settings.MaxSexCountDeviation;
+			int totalSexCount = 0;
+
+			if (xxx.is_rapist(pawn))
+			{
+				if (xxx.is_zoophile(pawn))
+				{
+					if (pawn.Has(Quirk.ChitinLover)) totalSexCount += RandomizeRecord(pawn, xxx.CountOfRapedInsects, avgsex, deviation);
+					else totalSexCount += RandomizeRecord(pawn, xxx.CountOfRapedAnimals, avgsex, deviation);
+				}
+				else
+				{
+					totalSexCount += RandomizeRecord(pawn, xxx.CountOfRapedHumanlikes, avgsex, deviation);
+				}
+
+				avgsex /= 8;
+			}
+
+			if (xxx.is_zoophile(pawn))
+			{
+				if (pawn.Has(Quirk.ChitinLover)) totalSexCount += RandomizeRecord(pawn, xxx.CountOfRapedInsects, avgsex, deviation);
+				else totalSexCount += RandomizeRecord(pawn, xxx.CountOfSexWithAnimals, avgsex, deviation);
+				avgsex /= 10;
+			}
+			else if (xxx.is_necrophiliac(pawn))
+			{
+				totalSexCount += RandomizeRecord(pawn, xxx.CountOfSexWithCorpse, avgsex, deviation);
+				avgsex /= 4;
+			}
+
+			totalSexCount += RandomizeRecord(pawn, xxx.CountOfSexWithHumanlikes, avgsex, deviation);
+
+			if (totalSexCount > 0)
+				pawn.records.AddTo(VariousDefOf.SexPartnerCount, Math.Max(1, Rand.Range(0, totalSexCount / 7)));
+
+			return totalSexCount;
 		}
 
 		private static void GenerateSextypeRecords(Pawn pawn, int totalsex)
