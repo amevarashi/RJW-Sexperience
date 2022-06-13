@@ -5,7 +5,7 @@ using RimWorld;
 using UnityEngine;
 using RJWSexperience.Logs;
 
-namespace RJWSexperience
+namespace RJWSexperience.SexHistory
 {
 	public static class RecordRandomizer
 	{

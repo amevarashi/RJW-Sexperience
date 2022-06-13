@@ -5,6 +5,7 @@ using rjw.Modules.Interactions.Enums;
 using RJWSexperience.Cum;
 using RJWSexperience.ExtensionMethods;
 using RJWSexperience.Logs;
+using RJWSexperience.SexHistory;
 using System.Collections.Generic;
 using UnityEngine;
 using Verse;

@@ -6,7 +6,7 @@ using System.Text;
 using UnityEngine;
 using Verse;
 
-namespace RJWSexperience.UI
+namespace RJWSexperience.SexHistory.UI
 {
 	public static class RJWUIUtility
 	{

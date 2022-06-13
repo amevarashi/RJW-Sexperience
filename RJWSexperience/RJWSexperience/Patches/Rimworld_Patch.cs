@@ -16,7 +16,7 @@ namespace RJWSexperience
 			bool doVirginTrait = true;
 
 			if (SexperienceMod.Settings.History.EnableRecordRandomizer && !request.Newborn && xxx.is_human(__result))
-				doVirginTrait = RecordRandomizer.Randomize(__result);
+				doVirginTrait = SexHistory.RecordRandomizer.Randomize(__result);
 
 			if (doVirginTrait)
 				Virginity.TraitHandler.AddVirginTrait(__result);

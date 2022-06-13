@@ -3,7 +3,7 @@ using RJWSexperience.ExtensionMethods;
 using System.Collections.Generic;
 using Verse;
 
-namespace RJWSexperience
+namespace RJWSexperience.SexHistory
 {
 	public class SexPartnerHistoryRecord : IExposable
 	{

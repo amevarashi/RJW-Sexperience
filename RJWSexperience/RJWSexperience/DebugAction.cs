@@ -1,5 +1,6 @@
 ﻿using RimWorld;
 using rjw;
+using RJWSexperience.SexHistory;
 using Verse;
 
 namespace RJWSexperience

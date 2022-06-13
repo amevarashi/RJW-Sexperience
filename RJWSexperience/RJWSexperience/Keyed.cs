@@ -1,6 +1,6 @@
 ﻿using RimWorld;
 using rjw;
-using RJWSexperience.UI;
+using RJWSexperience.SexHistory.UI;
 using UnityEngine;
 using Verse;
 

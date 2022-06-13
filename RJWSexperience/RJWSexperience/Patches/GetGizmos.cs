@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using RJWSexperience.Logs;
+using RJWSexperience.SexHistory;
 using System.Collections.Generic;
 using System.Reflection;
 using Verse;

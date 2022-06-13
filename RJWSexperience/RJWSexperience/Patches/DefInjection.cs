@@ -1,4 +1,5 @@
 ﻿using RJWSexperience.Logs;
+using RJWSexperience.SexHistory;
 using System.Collections.Generic;
 using System.Linq;
 using Verse;

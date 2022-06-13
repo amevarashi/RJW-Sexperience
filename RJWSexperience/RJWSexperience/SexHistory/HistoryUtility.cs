@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Verse;
 
-namespace RJWSexperience
+namespace RJWSexperience.SexHistory
 {
 	[StaticConstructorOnStartup]
 	public static class HistoryUtility

@@ -7,7 +7,7 @@ using UnityEngine;
 using Verse;
 using Verse.Sound;
 
-namespace RJWSexperience.UI
+namespace RJWSexperience.SexHistory.UI
 {
 	public enum PartnerOrderMode
 	{
