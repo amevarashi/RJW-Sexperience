@@ -88,8 +88,8 @@
     <Compile Include="Thoughts\Thought_Opinionbased.cs" />
     <Compile Include="Thoughts\Thought_Recordbased.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\RJWUIUtility.cs" />
-    <Compile Include="UI\SexStatus.cs" />
+    <Compile Include="SexHistory\UI\RJWUIUtility.cs" />
+    <Compile Include="SexHistory\UI\SexStatus.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="VariousDefOf.cs" />
     <Compile Include="Virginity\TraitDegree.cs" />
