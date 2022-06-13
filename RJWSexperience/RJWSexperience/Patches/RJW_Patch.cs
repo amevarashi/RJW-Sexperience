@@ -187,23 +187,6 @@ namespace RJWSexperience
 		}
 	}
 
-	[HarmonyPatch(typeof(WorkGiver_CleanSelf), "JobOnThing")]
-	public static class RJW_Patch_CleanSelf_JobOnThing
-	{
-		public static bool Prefix(Pawn pawn, Thing t, bool forced, ref Job __result)
-		{
-			Building_CumBucket bucket = pawn.GetAdjacentBuilding<Building_CumBucket>();
-			if (bucket == null) bucket = pawn.FindClosestBucket();
-			if (bucket != null)
-			{
-				__result = JobMaker.MakeJob(VariousDefOf.CleanSelfwithBucket, null, bucket, bucket.Position);
-				return false;
-			}
-
-			return true;
-		}
-	}
-
 	[HarmonyPatch(typeof(CasualSex_Helper), nameof(CasualSex_Helper.FindSexLocation))]
 	public static class RJW_Patch_CasualSex_Helper_FindSexLocation
 	{
