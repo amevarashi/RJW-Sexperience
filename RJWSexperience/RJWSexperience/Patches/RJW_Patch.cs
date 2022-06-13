@@ -1,15 +1,11 @@
 ﻿using HarmonyLib;
 using RimWorld;
 using rjw;
-using rjw.Modules.Interactions.Enums;
 using RJWSexperience.Cum;
-using RJWSexperience.ExtensionMethods;
 using RJWSexperience.Logs;
 using RJWSexperience.SexHistory;
-using System.Collections.Generic;
 using UnityEngine;
 using Verse;
-using Verse.AI;
 
 namespace RJWSexperience
 {
@@ -63,35 +59,10 @@ namespace RJWSexperience
 		public static void Postfix(SexProps props, ref float satisfaction)
 		{
 			LustUtility.UpdateLust(props, satisfaction, base_sat_per_fuck);
-			FillCumBuckets(props);
+			CumUtility.FillCumBuckets(props);
 			props.pawn.records?.Increment(VariousDefOf.OrgasmCount);
 			if (SexperienceMod.Settings.History.EnableSexHistory && props.partner != null)
 				props.pawn.TryGetComp<SexHistoryComp>()?.RecordSatisfaction(props.partner, props, satisfaction);
-		}
-
-		private static void FillCumBuckets(SexProps props)
-		{
-			xxx.rjwSextype sextype = props.sexType;
-
-			bool sexFillsCumbuckets =
-				// Base: Fill Cumbuckets on Masturbation. Having no partner means it must be masturbation too
-				sextype == xxx.rjwSextype.Masturbation || props.partner == null
-				// Depending on configuration, also fill cumbuckets when certain sextypes are matched 
-				|| (SexperienceMod.Settings.SexCanFillBuckets && (sextype == xxx.rjwSextype.Boobjob || sextype == xxx.rjwSextype.Footjob || sextype == xxx.rjwSextype.Handjob));
-
-			if (!sexFillsCumbuckets)
-				return;
-
-			IEnumerable<Building_CumBucket> buckets = props.pawn.GetAdjacentBuildings<Building_CumBucket>();
-
-			if (buckets?.EnumerableCount() > 0)
-			{
-				var initialCum = CumUtility.GetCumVolume(props.pawn);
-				foreach (Building_CumBucket bucket in buckets)
-				{
-					bucket.AddCum(initialCum / buckets.EnumerableCount());
-				}
-			}
 		}
 	}
 
@@ -100,47 +71,7 @@ namespace RJWSexperience
 	{
 		public static void Postfix(SexProps props)
 		{
-			TryFeedCum(props);
-		}
-
-		private static void TryFeedCum(SexProps props)
-		{
-			if (!Genital_Helper.has_penis_fertile(props.pawn))
-				return;
-
-			if (!PawnsPenisIsInPartnersMouth(props))
-				return;
-
-			float cumAmount = CumUtility.GetOnePartCumVolume(props.pawn);
-
-			if (cumAmount <= 0)
-				return;
-
-			CumUtility.FeedCum(props.partner, cumAmount);
-		}
-
-		private static bool PawnsPenisIsInPartnersMouth(SexProps props)
-		{
-			var interaction = rjw.Modules.Interactions.Helpers.InteractionHelper.GetWithExtension(props.dictionaryKey);
-
-			if (props.pawn == props.GetInteractionInitiator())
-			{
-				if (!interaction.DominantHasTag(GenitalTag.CanPenetrate) && !interaction.DominantHasFamily(GenitalFamily.Penis))
-					return false;
-				var requirement = interaction.SelectorExtension.submissiveRequirement;
-				if (!requirement.mouth && !requirement.beak && !requirement.mouthORbeak)
-					return false;
-			}
-			else
-			{
-				if (!interaction.SubmissiveHasTag(GenitalTag.CanPenetrate) && !interaction.SubmissiveHasFamily(GenitalFamily.Penis))
-					return false;
-				var requirement = interaction.SelectorExtension.dominantRequirement;
-				if (!requirement.mouth && !requirement.beak && !requirement.mouthORbeak)
-					return false;
-			}
-
-			return true;
+			CumUtility.TryFeedCum(props);
 		}
 	}
 

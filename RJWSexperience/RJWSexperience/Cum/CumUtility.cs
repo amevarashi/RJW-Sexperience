@@ -1,4 +1,6 @@
 ﻿using rjw;
+using rjw.Modules.Interactions.Enums;
+using RJWSexperience.ExtensionMethods;
 using RJWSexperience.Logs;
 using System;
 using System.Collections.Generic;
@@ -78,7 +80,47 @@ namespace RJWSexperience.Cum
 			return part;
 		}
 
-		public static void FeedCum(Pawn pawn, float amount)
+		public static void TryFeedCum(SexProps props)
+		{
+			if (!Genital_Helper.has_penis_fertile(props.pawn))
+				return;
+
+			if (!PawnsPenisIsInPartnersMouth(props))
+				return;
+
+			float cumAmount = CumUtility.GetOnePartCumVolume(props.pawn);
+
+			if (cumAmount <= 0)
+				return;
+
+			FeedCum(props.partner, cumAmount);
+		}
+
+		private static bool PawnsPenisIsInPartnersMouth(SexProps props)
+		{
+			var interaction = rjw.Modules.Interactions.Helpers.InteractionHelper.GetWithExtension(props.dictionaryKey);
+
+			if (props.pawn == props.GetInteractionInitiator())
+			{
+				if (!interaction.DominantHasTag(GenitalTag.CanPenetrate) && !interaction.DominantHasFamily(GenitalFamily.Penis))
+					return false;
+				var requirement = interaction.SelectorExtension.submissiveRequirement;
+				if (!requirement.mouth && !requirement.beak && !requirement.mouthORbeak)
+					return false;
+			}
+			else
+			{
+				if (!interaction.SubmissiveHasTag(GenitalTag.CanPenetrate) && !interaction.SubmissiveHasFamily(GenitalFamily.Penis))
+					return false;
+				var requirement = interaction.SelectorExtension.dominantRequirement;
+				if (!requirement.mouth && !requirement.beak && !requirement.mouthORbeak)
+					return false;
+			}
+
+			return true;
+		}
+
+		private static void FeedCum(Pawn pawn, float amount)
 		{
 			const float allOf = 1000f;
 
@@ -88,6 +130,31 @@ namespace RJWSexperience.Cum
 			log.Message($"Created a stack of {cum.stackCount} cum");
 			cum.Ingested(pawn, allOf);
 			log.Message($"{pawn.NameShortColored} ingested cum");
+		}
+
+		public static void FillCumBuckets(SexProps props)
+		{
+			xxx.rjwSextype sextype = props.sexType;
+
+			bool sexFillsCumbuckets =
+				// Base: Fill Cumbuckets on Masturbation. Having no partner means it must be masturbation too
+				sextype == xxx.rjwSextype.Masturbation || props.partner == null
+				// Depending on configuration, also fill cumbuckets when certain sextypes are matched 
+				|| (SexperienceMod.Settings.SexCanFillBuckets && (sextype == xxx.rjwSextype.Boobjob || sextype == xxx.rjwSextype.Footjob || sextype == xxx.rjwSextype.Handjob));
+
+			if (!sexFillsCumbuckets)
+				return;
+
+			IEnumerable<Building_CumBucket> buckets = props.pawn.GetAdjacentBuildings<Building_CumBucket>();
+
+			if (buckets?.EnumerableCount() > 0)
+			{
+				var initialCum = CumUtility.GetCumVolume(props.pawn);
+				foreach (Building_CumBucket bucket in buckets)
+				{
+					bucket.AddCum(initialCum / buckets.EnumerableCount());
+				}
+			}
 		}
 	}
 }
