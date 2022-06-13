@@ -26,5 +26,22 @@
 		<li>rim.job.world</li>
 	</loadAfter>
 	<packageId>rjw.sexperience</packageId>
-	<description>Original mod by moreorganstodump (a), updated for RJW 4.9 by c0ffee</description>
+	<description><![CDATA[
+Original mod by moreorganstodump (a), updated for RJW 4.9 by c0ffee
+
+This submod adds new stuff to RJW:
+- Sex skill
+- Lust stat
+- Cum as collectable resource, cum buckets and cum addiction
+- More sex records
+- Partner sex history, sex type statistics and UI to display these
+- Virgin trait
+- Bastard relation
+
+Ideology content:
+- Memes: lewd, rapist, zoophile and necrophile memes
+- Rituals: consensual gangbang, rape gangbang, consensual animal gangbang, rape animal gangbang and drug orgy
+- Precepts: baby faction, bestiality, incest, necrophilia, rape, allowed sex type, social affection, submissive gender, virginity
+- HumpShroom bong and HumpShroom Autobong]]>
+	</description>
 </ModMetaData>
