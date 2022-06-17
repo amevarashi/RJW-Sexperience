@@ -36,10 +36,10 @@ namespace RJWSexperience.Virginity
 
 		protected void SurgeryResult(Pawn pawn)
 		{
-			TraitDegree degree = TraitDegree.FemaleAfterSurgery;
+			int degree = TraitDegree.FemaleAfterSurgery;
 			if (pawn.IsVirgin())
 				degree = TraitDegree.FemaleVirgin;
-			Trait virgin = new Trait(VariousDefOf.Virgin, (int)degree, true);
+			Trait virgin = new Trait(VariousDefOf.Virgin, degree, true);
 			pawn.story.traits.GainTrait(virgin);
 		}
 	}

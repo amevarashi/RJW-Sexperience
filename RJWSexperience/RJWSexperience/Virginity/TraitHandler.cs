@@ -15,14 +15,14 @@ namespace RJWSexperience.Virginity
 
 			if (pawn.IsVirgin())
 			{
-				TraitDegree degree = TraitDegree.MaleVirgin;
+				int degree = TraitDegree.MaleVirgin;
 				if (pawn.gender == Gender.Female) degree = TraitDegree.FemaleVirgin;
-				Trait virgin = new Trait(VariousDefOf.Virgin, (int)degree, true);
+				Trait virgin = new Trait(VariousDefOf.Virgin, degree, true);
 				pawn.story.traits.GainTrait(virgin);
 			}
 			else if (pawn.gender == Gender.Female && Rand.Chance(hymenSurgeryChance))
 			{
-				Trait virgin = new Trait(VariousDefOf.Virgin, (int)TraitDegree.FemaleAfterSurgery, true);
+				Trait virgin = new Trait(VariousDefOf.Virgin, TraitDegree.FemaleAfterSurgery, true);
 				pawn.story.traits.GainTrait(virgin);
 			}
 		}

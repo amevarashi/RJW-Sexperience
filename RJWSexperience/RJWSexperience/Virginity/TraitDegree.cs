@@ -1,10 +1,10 @@
 ﻿namespace RJWSexperience.Virginity
 {
-	public enum TraitDegree
+	public static class TraitDegree
 	{
-		FemaleDamagedVirgin = -1,
-		MaleVirgin = 0,
-		FemaleAfterSurgery = 1,
-		FemaleVirgin = 2
+		public const int FemaleDamagedVirgin = -1;
+		public const int MaleVirgin = 0;
+		public const int FemaleAfterSurgery = 1;
+		public const int FemaleVirgin = 2;
 	}
 }
