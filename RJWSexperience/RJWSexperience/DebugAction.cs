@@ -14,7 +14,7 @@ namespace RJWSexperience
 			if (virgin != null) p.story.traits.RemoveTrait(virgin);
 			ResetRecord(p, true);
 			if (ResetRecord(p, false))
-				Virginity.TraitHandler.AddVirginTrait(p);
+				Virginity.TraitHandler.GenerateVirginTrait(p);
 			MoteMaker.ThrowText(p.TrueCenter(), p.Map, "Records resetted!");
 		}
 

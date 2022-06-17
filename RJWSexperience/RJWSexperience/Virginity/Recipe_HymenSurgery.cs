@@ -31,16 +31,7 @@ namespace RJWSexperience.Virginity
 				billDoer,
 				pawn
 			});
-			SurgeryResult(pawn);
-		}
-
-		protected void SurgeryResult(Pawn pawn)
-		{
-			int degree = TraitDegree.FemaleAfterSurgery;
-			if (pawn.IsVirgin())
-				degree = TraitDegree.FemaleVirgin;
-			Trait virgin = new Trait(VariousDefOf.Virgin, degree, true);
-			pawn.story.traits.GainTrait(virgin);
+			TraitHandler.AddVirginTrait(pawn);
 		}
 	}
 }
