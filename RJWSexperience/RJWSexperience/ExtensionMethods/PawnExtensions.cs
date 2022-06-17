@@ -105,19 +105,5 @@ namespace RJWSexperience
 				}
 			}
 		}
-
-		public static Gender PreferGender(this Pawn pawn)
-		{
-			if (pawn.gender == Gender.Male)
-			{
-				if (xxx.is_homosexual(pawn)) return Gender.Male;
-				else return Gender.Female;
-			}
-			else
-			{
-				if (xxx.is_homosexual(pawn)) return Gender.Female;
-				else return Gender.Male;
-			}
-		}
 	}
 }

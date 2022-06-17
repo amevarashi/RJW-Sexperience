@@ -167,7 +167,7 @@ namespace RJWSexperience.SexHistory
 				RJWPreferenceSettings.scissoring +
 				RJWPreferenceSettings.fisting +
 				RJWPreferenceSettings.sixtynine;
-			Gender prefer = pawn.PreferGender();
+			Gender prefer = PreferredGender(pawn);
 			int sex = (int)(totalsex * RJWPreferenceSettings.vaginal / totalweight);
 			totalsex -= sex;
 			pawn.records.AddTo(VariousDefOf.VaginalSexCount, sex);
@@ -231,6 +231,17 @@ namespace RJWSexperience.SexHistory
 			pawn.records.AddTo(VariousDefOf.OralSexCount, totalsex);
 			if (prefer == Gender.Male) pawn.records.AddTo(VariousDefOf.BlowjobCount, totalsex);
 			else pawn.records.AddTo(VariousDefOf.CunnilingusCount, totalsex);
+		}
+
+		private static Gender PreferredGender(Pawn pawn)
+		{
+			if (xxx.is_homosexual(pawn))
+				return pawn.gender;
+
+			if (pawn.gender == Gender.Male)
+				return Gender.Female;
+			else
+				return Gender.Male;
 		}
 	}
 }
