@@ -72,11 +72,6 @@ namespace RJWSexperience
 		{
 			return pawn.records.GetValue(VariousDefOf.VaginalSexCount) == 0;
 		}
-		public static bool HasHymen(this Pawn pawn)
-		{
-			Trait virgin = pawn.story?.traits?.GetTrait(VariousDefOf.Virgin);
-			return virgin?.Degree > 0;
-		}
 
 		/// <summary>
 		/// If pawn is virgin, lose his/her virginity.

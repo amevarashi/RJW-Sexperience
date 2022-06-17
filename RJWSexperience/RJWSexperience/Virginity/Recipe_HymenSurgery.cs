@@ -17,7 +17,7 @@ namespace RJWSexperience.Virginity
 				yield break;
 
 			List<Hediff> hediffs = Genital_Helper.get_PartsHediffList(pawn, part);
-			if (Genital_Helper.has_vagina(pawn, hediffs) && !pawn.HasHymen())
+			if (Genital_Helper.has_vagina(pawn, hediffs) && !HasHymen(pawn))
 				yield return part;
 		}
 
@@ -33,5 +33,7 @@ namespace RJWSexperience.Virginity
 			});
 			TraitHandler.AddVirginTrait(pawn);
 		}
+
+		private static bool HasHymen(Pawn pawn) => pawn.story?.traits?.GetTrait(VariousDefOf.Virgin)?.Degree > 0;
 	}
 }
