@@ -83,19 +83,25 @@ namespace RJWSexperience
 		/// </summary>
 		public static void PoptheCherry(this Pawn pawn, Pawn partner, SexProps props)
 		{
-			if (props?.sexType == xxx.rjwSextype.Vaginal)
+			if (props?.sexType != xxx.rjwSextype.Vaginal)
+				return;
+
+			if (pawn.IsVirgin())
 			{
-				if (pawn.IsVirgin())
+				pawn.TryGetComp<SexHistory.SexHistoryComp>()?.RecordFirst(partner, props);
+				int? removedDegree = Virginity.TraitHandler.RemoveVirginTrait(pawn);
+				if (removedDegree != null)
 				{
-					pawn.TryGetComp<SexHistory.SexHistoryComp>()?.RecordFirst(partner, props);
-					if (Virginity.TraitHandler.RemoveVirginTrait(pawn, partner, props))
-					{
-						Messages.Message(Keyed.RS_LostVirgin(pawn.LabelShort, partner.LabelShort), MessageTypeDefOf.NeutralEvent, true);
-					}
+					RJWUtility.ThrowVirginHIstoryEvent(pawn, partner, props, (int)removedDegree);
+					Messages.Message(Keyed.RS_LostVirgin(pawn.LabelShort, partner.LabelShort), MessageTypeDefOf.NeutralEvent, true);
 				}
-				else
+			}
+			else
+			{
+				int? removedDegree = Virginity.TraitHandler.RemoveVirginTrait(pawn);
+				if (removedDegree != null)
 				{
-					Virginity.TraitHandler.RemoveVirginTrait(pawn, partner, props);
+					RJWUtility.ThrowVirginHIstoryEvent(pawn, partner, props, (int)removedDegree);
 				}
 			}
 		}

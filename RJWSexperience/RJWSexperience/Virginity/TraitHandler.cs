@@ -46,20 +46,19 @@ namespace RJWSexperience.Virginity
 			}
 		}
 
-		public static bool RemoveVirginTrait(Pawn pawn, Pawn partner, SexProps props)
+		public static int? RemoveVirginTrait(Pawn pawn)
 		{
 			Trait virgin = pawn.story?.traits?.GetTrait(VariousDefOf.Virgin);
 			if (virgin == null)
-				return false;
+				return null;
 
 			int degree = virgin.Degree;
 			if (pawn.gender == Gender.Female && degree > 0 && !pawn.Dead)
 			{
 				FilthMaker.TryMakeFilth(pawn.Position, pawn.Map, ThingDefOf.Filth_Blood, pawn.LabelShort, 1, FilthSourceFlags.Pawn);
 			}
-			RJWUtility.ThrowVirginHIstoryEvent(pawn, partner, props, degree);
 			pawn.story.traits.RemoveTrait(virgin);
-			return true;
+			return degree;
 		}
 	}
 }
