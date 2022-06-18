@@ -81,24 +81,17 @@ namespace RJWSexperience
 			if (props?.sexType != xxx.rjwSextype.Vaginal)
 				return;
 
+			int? removedDegree = Virginity.TraitHandler.RemoveVirginTrait(pawn);
+
 			if (pawn.IsVirgin())
 			{
 				pawn.TryGetComp<SexHistory.SexHistoryComp>()?.RecordFirst(partner, props);
-				int? removedDegree = Virginity.TraitHandler.RemoveVirginTrait(pawn);
 				if (removedDegree != null)
-				{
-					RJWUtility.ThrowVirginHIstoryEvent(pawn, partner, props, (int)removedDegree);
 					Messages.Message(Keyed.RS_LostVirgin(pawn.LabelShort, partner.LabelShort), MessageTypeDefOf.NeutralEvent, true);
-				}
 			}
-			else
-			{
-				int? removedDegree = Virginity.TraitHandler.RemoveVirginTrait(pawn);
-				if (removedDegree != null)
-				{
-					RJWUtility.ThrowVirginHIstoryEvent(pawn, partner, props, (int)removedDegree);
-				}
-			}
+
+			if (removedDegree != null)
+				RJWUtility.ThrowVirginHIstoryEvent(pawn, partner, props, (int)removedDegree);
 		}
 	}
 }
