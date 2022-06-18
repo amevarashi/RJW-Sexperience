@@ -61,6 +61,10 @@
     <Compile Include="Ideology\Rituals\RitualRoles.cs" />
     <Compile Include="Ideology\StatParts.cs" />
     <Compile Include="Ideology\Utility.cs" />
+    <Compile Include="Thoughts\ThoughtDefExtension_IncreaseRecord.cs" />
+    <Compile Include="Thoughts\ThoughtDefExtension_StageFromOpinion.cs" />
+    <Compile Include="Thoughts\Thought_IncreaseRecord.cs" />
+    <Compile Include="Thoughts\Thought_Opinionbased.cs" />
     <Compile Include="VariousDefOf.cs" />
   </ItemGroup>
   <ItemGroup>

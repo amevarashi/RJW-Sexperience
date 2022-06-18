@@ -80,12 +80,8 @@
     <Compile Include="SexperienceMod.cs" />
     <Compile Include="Cum\FilterWorkers\SpecialThingFilterWorker_Cum.cs" />
     <Compile Include="StatParts.cs" />
-    <Compile Include="Thoughts\ThoughtDefExtension_IncreaseRecord.cs" />
-    <Compile Include="Thoughts\ThoughtDefExtension_StageFromOpinion.cs" />
     <Compile Include="Thoughts\ThoughtDefExtension_StageFromRecord.cs" />
     <Compile Include="Cum\Thought_AteCum.cs" />
-    <Compile Include="Thoughts\Thought_IncreaseRecord.cs" />
-    <Compile Include="Thoughts\Thought_Opinionbased.cs" />
     <Compile Include="Thoughts\Thought_Recordbased.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SexHistory\UI\RJWUIUtility.cs" />

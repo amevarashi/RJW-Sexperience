@@ -3,9 +3,6 @@ using System.Collections.Generic;
 
 namespace RJWSexperience
 {
-	/// <summary>
-	/// Thought class using record.
-	/// </summary>
 	public class Thought_Opinionbased : Thought_Memory
 	{
 		private ThoughtDefExtension_StageFromOpinion extension;

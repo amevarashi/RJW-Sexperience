@@ -249,7 +249,7 @@
       </li>
     </stages>
 		<modExtensions>
-			<li Class="RJWSexperience.ThoughtDefExtension_IncreaseRecord">
+			<li Class="RJWSexperience.ThoughtDefExtension_IncreaseRecord" MayRequire="rjw.sexperience">
 		    <recordDef>Lust</recordDef>
         <increment>3.0</increment>
 			</li>
