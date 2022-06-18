@@ -1,12 +1,9 @@
 ﻿using HarmonyLib;
 using RimWorld;
 using rjw;
-using rjw.Modules.Interactions.Contexts;
 using rjw.Modules.Interactions.Internals.Implementation;
 using rjw.Modules.Interactions.Objects;
-using rjw.Modules.Interactions.Rules.InteractionRules;
 using System;
-using System.Collections.Generic;
 using Verse;
 
 namespace RJWSexperience.Ideology
@@ -267,28 +264,28 @@ namespace RJWSexperience.Ideology
 	/// <summary>
 	/// Set prefer sextype using precepts
 	/// </summary>
-	[HarmonyPatch(typeof(InteractionSelectorService), "Score")]
+	[HarmonyPatch(typeof(InteractionScoringService), nameof(InteractionScoringService.Score), new Type[] { typeof(InteractionWithExtension), typeof(InteractionPawn), typeof(InteractionPawn) })]
 	public static class RJW_Patch_DetermineSexScores
 	{
-		public static void Postfix(InteractionContext context, InteractionWithExtension interaction, IInteractionRule rule, ref float __result)
+		public static void Postfix(InteractionWithExtension interaction, InteractionPawn dominant, InteractionPawn submissive, ref InteractionScore __result)
 		{
-			Ideo ideo = context.Inputs.Initiator.Ideo;
-			if (ideo != null) PreceptSextype(ideo, context.Inputs.Initiator.GetStatValue(xxx.sex_drive_stat), ref __result, interaction);
+			Ideo ideo = dominant.Pawn.Ideo;
+			if (ideo != null) __result.Dominant = PreceptSextype(ideo, dominant.Pawn.GetStatValue(xxx.sex_drive_stat), __result.Dominant, interaction);
 
-			ideo = context.Inputs.Partner.Ideo;
-			if (!context.Inputs.IsRape && ideo != null) PreceptSextype(ideo, context.Inputs.Partner.GetStatValue(xxx.sex_drive_stat), ref __result, interaction);
+			ideo = submissive.Pawn.Ideo;
+			if (ideo != null) __result.Submissive = PreceptSextype(ideo, submissive.Pawn.GetStatValue(xxx.sex_drive_stat), __result.Submissive, interaction);
 		}
 
-		public static void PreceptSextype(Ideo ideo, float sexdrive, ref float result, InteractionWithExtension interaction)
+		public static float PreceptSextype(Ideo ideo, float sexdrive, float score, InteractionWithExtension interaction)
 		{
 			Precept sextypePrecept = ideo.GetPreceptOfIssue(Ideology.IssueDefOf.Sextype);
-			bool boostSextype = sextypePrecept.def.GetModExtension<PreceptDefExtension_PreferSextype>().sextypes.Contains(interaction.Extension.rjwSextype);
+			bool boostSextype = sextypePrecept.def.GetModExtension<PreceptDefExtension_PreferSextype>().HasSextype(interaction.Extension.rjwSextype);
 
 			if (!boostSextype)
-				return;
+				return score;
 
 			float mult = 8.0f * Math.Max(0.3f, 1 / Math.Max(0.01f, sexdrive));
-			result *= mult;
+			return score * mult;
 		}
 	}
 
