@@ -279,31 +279,16 @@ namespace RJWSexperience.Ideology
 			if (!context.Inputs.IsRape && ideo != null) PreceptSextype(ideo, context.Inputs.Partner.GetStatValue(xxx.sex_drive_stat), ref __result, interaction);
 		}
 
-		private static readonly Dictionary<string, PreceptDef> PreceptBySextype = new Dictionary<string, PreceptDef>
-		{
-			{ "Vaginal", VariousDefOf.Sex_VaginalOnly },
-			{ "Anal", VariousDefOf.Sex_AnalOnly },
-			{ "Rimming", VariousDefOf.Sex_AnalOnly },
-			{ "Cunnilingus", VariousDefOf.Sex_OralOnly },
-			{ "Fellatio", VariousDefOf.Sex_OralOnly },
-			{ "Beakjob", VariousDefOf.Sex_OralOnly },
-			{ "DoublePenetration", VariousDefOf.Sex_Promiscuous },
-			{ "Scissoring", VariousDefOf.Sex_Promiscuous },
-			{ "Sixtynine", VariousDefOf.Sex_Promiscuous },
-			{ "Fisting", VariousDefOf.Sex_Promiscuous }
-		};
-
 		public static void PreceptSextype(Ideo ideo, float sexdrive, ref float result, InteractionWithExtension interaction)
 		{
-			if (!PreceptBySextype.TryGetValue(interaction.Extension.rjwSextype, out PreceptDef preceptDef))
+			Precept sextypePrecept = ideo.GetPreceptOfIssue(Ideology.IssueDefOf.Sextype);
+			bool boostSextype = sextypePrecept.def.GetModExtension<PreceptDefExtension_PreferSextype>().sextypes.Contains(interaction.Extension.rjwSextype);
+
+			if (!boostSextype)
 				return;
 
 			float mult = 8.0f * Math.Max(0.3f, 1 / Math.Max(0.01f, sexdrive));
-
-			if (ideo.HasPrecept(preceptDef))
-			{
-				result *= mult;
-			}
+			result *= mult;
 		}
 	}
 

@@ -88,6 +88,13 @@
         <thought>Sex_Know_Promiscuous</thought>
       </li>
     </comps>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.PreceptDefExtension_PreferSextype">
+        <sextypes>
+          <li>Vaginal</li>
+        </sextypes>
+      </li>
+    </modExtensions>
   </PreceptDef>
 
   <PreceptDef>
@@ -133,6 +140,14 @@
         <thought>Sex_Know_Promiscuous</thought>
       </li>
     </comps>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.PreceptDefExtension_PreferSextype">
+        <sextypes>
+          <li>Anal</li>
+          <li>Rimming</li>
+        </sextypes>
+      </li>
+    </modExtensions>
   </PreceptDef>
 
   <PreceptDef>
@@ -178,6 +193,15 @@
         <thought>Sex_Know_Promiscuous</thought>
       </li>
     </comps>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.PreceptDefExtension_PreferSextype">
+        <sextypes>
+          <li>Cunnilingus</li>
+          <li>Fellatio</li>
+          <li>Beakjob</li>
+        </sextypes>
+      </li>
+    </modExtensions>
   </PreceptDef>
 
   <PreceptDef>
@@ -230,6 +254,16 @@
         <thought>Sex_Know_Promiscuous_Approval</thought>
       </li>
     </comps>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.PreceptDefExtension_PreferSextype">
+        <sextypes>
+          <li>DoublePenetration</li>
+          <li>Scissoring</li>
+          <li>Sixtynine</li>
+          <li>Fisting</li>
+        </sextypes>
+      </li>
+    </modExtensions>
   </PreceptDef>
 
   

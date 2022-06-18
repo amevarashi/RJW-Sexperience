@@ -45,7 +45,10 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Ideology\GoodwillSituationWorker_MemeCompatibility.cs" />
     <Compile Include="Harmony.cs" />
+    <Compile Include="Ideology\IssueDefOf.cs" />
+    <Compile Include="Ideology\IssueUtility.cs" />
     <Compile Include="Ideology\Keyed.cs" />
+    <Compile Include="Ideology\PreceptDefExtension_PreferSextype.cs" />
     <Compile Include="Ideology\PreceptDefExtension_MultipleMemesRequired.cs" />
     <Compile Include="Ideology\Rituals\JobGiver_GangbangConsensual.cs" />
     <Compile Include="Ideology\Rituals\LordJob_Rituals.cs" />
@@ -60,7 +63,7 @@
     <Compile Include="Ideology\Rituals\RitualOutcomeComps.cs" />
     <Compile Include="Ideology\Rituals\RitualRoles.cs" />
     <Compile Include="Ideology\StatParts.cs" />
-    <Compile Include="Ideology\Utility.cs" />
+    <Compile Include="Ideology\IdeoUtility.cs" />
     <Compile Include="Thoughts\ThoughtDefExtension_IncreaseRecord.cs" />
     <Compile Include="Thoughts\ThoughtDefExtension_StageFromOpinion.cs" />
     <Compile Include="Thoughts\Thought_IncreaseRecord.cs" />
