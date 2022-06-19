@@ -4,7 +4,6 @@ using Verse;
 
 namespace RJWSexperience.Ideology
 {
-
 	public class PreceptComp_SelfTookThoughtTagged : PreceptComp_SelfTookMemoryThought
 	{
 		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]

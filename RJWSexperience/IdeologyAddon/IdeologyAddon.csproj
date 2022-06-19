@@ -45,15 +45,17 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Ideology\GoodwillSituationWorker_MemeCompatibility.cs" />
     <Compile Include="Harmony.cs" />
+    <Compile Include="Ideology\HETag.cs" />
+    <Compile Include="Ideology\HistoryEventArgsNamesCustom.cs" />
     <Compile Include="Ideology\IssueUtility.cs" />
     <Compile Include="Ideology\Keyed.cs" />
-    <Compile Include="Ideology\PreceptDefExtension_ModifyPreference.cs" />
-    <Compile Include="Ideology\PreceptDefExtension_PreferSextype.cs" />
-    <Compile Include="Ideology\PreceptDefExtension_MultipleMemesRequired.cs" />
+    <Compile Include="Ideology\Precepts\PreceptDefExtension_ModifyPreference.cs" />
+    <Compile Include="Ideology\Precepts\PreceptDefExtension_PreferSextype.cs" />
+    <Compile Include="Ideology\Precepts\PreceptDefExtension_MultipleMemesRequired.cs" />
     <Compile Include="Ideology\Rituals\JobGiver_GangbangConsensual.cs" />
     <Compile Include="Ideology\Rituals\LordJob_Rituals.cs" />
     <Compile Include="Ideology\RJW_Patch_Ideo.cs" />
-    <Compile Include="Ideology\PreceptComp_SelftTookThoughtExtended.cs" />
+    <Compile Include="Ideology\Precepts\PreceptComp_SelftTookThoughtExtended.cs" />
     <Compile Include="Ideology\Sexperience_Patch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ideology\Rimworld_Patch.cs" />
@@ -79,5 +81,6 @@
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
