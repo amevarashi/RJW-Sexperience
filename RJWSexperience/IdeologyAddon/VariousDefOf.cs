@@ -35,8 +35,6 @@ namespace RJWSexperience.Ideology
 		[MayRequireIdeology] public static readonly HistoryEventDef Virgin_TakenM = DefDatabase<HistoryEventDef>.GetNamed("Virgin_TakenM");
 		[MayRequireIdeology] public static readonly HistoryEventDef Virgin_TookF = DefDatabase<HistoryEventDef>.GetNamed("Virgin_TookF");
 		[MayRequireIdeology] public static readonly HistoryEventDef Virgin_TookM = DefDatabase<HistoryEventDef>.GetNamed("Virgin_TookM");
-		[MayRequireIdeology] public static readonly PreceptDef Bestiality_Abhorrent = DefDatabase<PreceptDef>.GetNamed("Bestiality_Abhorrent");
-		[MayRequireIdeology] public static readonly PreceptDef Bestiality_Horrible = DefDatabase<PreceptDef>.GetNamed("Bestiality_Horrible");
 		[MayRequireIdeology] public static readonly PreceptDef Bestiality_Disapproved = DefDatabase<PreceptDef>.GetNamed("Bestiality_Disapproved");
 		[MayRequireIdeology] public static readonly PreceptDef Bestiality_Acceptable = DefDatabase<PreceptDef>.GetNamed("Bestiality_Acceptable");
 		[MayRequireIdeology] public static readonly PreceptDef Bestiality_OnlyVenerated = DefDatabase<PreceptDef>.GetNamed("Bestiality_OnlyVenerated");
@@ -46,8 +44,6 @@ namespace RJWSexperience.Ideology
 		[MayRequireIdeology] public static readonly PreceptDef Rape_Disapproved = DefDatabase<PreceptDef>.GetNamed("Rape_Disapproved");
 		[MayRequireIdeology] public static readonly PreceptDef Rape_Acceptable = DefDatabase<PreceptDef>.GetNamed("Rape_Acceptable");
 		[MayRequireIdeology] public static readonly PreceptDef Rape_Honorable = DefDatabase<PreceptDef>.GetNamed("Rape_Honorable");
-		[MayRequireIdeology] public static readonly PreceptDef Incestuos_Disapproved = DefDatabase<PreceptDef>.GetNamed("Incestuos_Disapproved");
-		[MayRequireIdeology] public static readonly PreceptDef Incestuos_Forbidden = DefDatabase<PreceptDef>.GetNamed("Incestuos_Forbidden");
 		[MayRequireIdeology] public static readonly PreceptDef Incestuos_IncestOnly = DefDatabase<PreceptDef>.GetNamed("Incestuos_IncestOnly");
 		[MayRequireIdeology] public static readonly PreceptDef Incestuos_Disapproved_CloseOnly = DefDatabase<PreceptDef>.GetNamed("Incestuos_Disapproved_CloseOnly");
 		[MayRequireIdeology] public static readonly PreceptDef BabyFaction_AlwaysMother = DefDatabase<PreceptDef>.GetNamed("BabyFaction_AlwaysMother");

@@ -57,6 +57,18 @@
         <exclusive>true</exclusive>
       </li>
     </comps>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.PreceptDefExtension_ModifyPreference">
+        <rules>
+          <li>
+            <filter>
+              <isAnimal>true</isAnimal>
+            </filter>
+            <multiplier>0.05</multiplier>
+          </li>
+        </rules>
+      </li>
+    </modExtensions>
   </PreceptDef>
 
   <PreceptDef>
@@ -96,6 +108,18 @@
         <exclusive>true</exclusive>
       </li>
     </comps>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.PreceptDefExtension_ModifyPreference">
+        <rules>
+          <li>
+            <filter>
+              <isAnimal>true</isAnimal>
+            </filter>
+            <multiplier>0.1</multiplier>
+          </li>
+        </rules>
+      </li>
+    </modExtensions>
   </PreceptDef>
 
   <PreceptDef>
@@ -135,6 +159,18 @@
         <exclusive>true</exclusive>
       </li>
     </comps>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.PreceptDefExtension_ModifyPreference">
+        <rules>
+          <li>
+            <filter>
+              <isAnimal>true</isAnimal>
+            </filter>
+            <multiplier>0.5</multiplier>
+          </li>
+        </rules>
+      </li>
+    </modExtensions>
   </PreceptDef>
 
   <PreceptDef>
@@ -187,6 +223,24 @@
         <onlyForNonSlaves>true</onlyForNonSlaves>
       </li>
     </comps>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.PreceptDefExtension_ModifyPreference">
+        <rules>
+          <li>
+            <filter>
+              <isVeneratedAnimal>true</isVeneratedAnimal>
+            </filter>
+            <multiplier>2.0</multiplier>
+          </li>
+          <li>
+            <filter>
+              <isVeneratedAnimal>false</isVeneratedAnimal>
+            </filter>
+            <multiplier>0.05</multiplier>
+          </li>
+        </rules>
+      </li>
+    </modExtensions>
   </PreceptDef>
 
   <PreceptDef>
@@ -227,6 +281,18 @@
         <onlyForNonSlaves>true</onlyForNonSlaves>
       </li>
     </comps>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.PreceptDefExtension_ModifyPreference">
+        <rules>
+          <li>
+            <filter>
+              <isAnimal>true</isAnimal>
+            </filter>
+            <multiplier>2.0</multiplier>
+          </li>
+        </rules>
+      </li>
+    </modExtensions>
   </PreceptDef>
   
   <!-- Thoughts -->

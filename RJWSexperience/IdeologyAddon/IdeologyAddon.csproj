@@ -45,9 +45,9 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Ideology\GoodwillSituationWorker_MemeCompatibility.cs" />
     <Compile Include="Harmony.cs" />
-    <Compile Include="Ideology\IssueDefOf.cs" />
     <Compile Include="Ideology\IssueUtility.cs" />
     <Compile Include="Ideology\Keyed.cs" />
+    <Compile Include="Ideology\PreceptDefExtension_ModifyPreference.cs" />
     <Compile Include="Ideology\PreceptDefExtension_PreferSextype.cs" />
     <Compile Include="Ideology\PreceptDefExtension_MultipleMemesRequired.cs" />
     <Compile Include="Ideology\Rituals\JobGiver_GangbangConsensual.cs" />

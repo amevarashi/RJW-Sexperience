@@ -67,6 +67,30 @@
         <tag>Incestuos</tag>
       </li>
     </comps>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.PreceptDefExtension_ModifyPreference">
+        <rules>
+          <li>
+            <filter>
+              <hasOneOfRelations>
+                <li>Parent</li>
+                <li>Child</li>
+                <li>Sibling</li>
+                <li>HalfSibling</li>
+                <li>Grandparent</li>
+                <li>Grandchild</li>
+                <li>NephewOrNiece</li>
+                <li>UncleOrAunt</li>
+              </hasOneOfRelations>
+              <hasNoneOfRelations>
+                <li>Spouse</li>
+              </hasNoneOfRelations>
+            </filter>
+            <multiplier>0.5</multiplier>
+          </li>
+        </rules>
+      </li>
+    </modExtensions>
   </PreceptDef>
 
   <PreceptDef>
@@ -113,6 +137,38 @@
         <tag>Incestuos</tag>
       </li>
     </comps>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.PreceptDefExtension_ModifyPreference">
+        <rules>
+          <li>
+            <filter>
+              <hasOneOfRelations>
+                <li>Parent</li>
+                <li>Child</li>
+                <li>Sibling</li>
+                <li>HalfSibling</li>
+                <li>Grandparent</li>
+                <li>Grandchild</li>
+                <li>NephewOrNiece</li>
+                <li>UncleOrAunt</li>
+                <li>GreatGrandparent</li>
+                <li>GreatGrandchild</li>
+                <li>GranduncleOrGrandaunt</li>
+                <li>GrandnephewOrGrandniece</li>
+                <li>CousinOnceRemoved</li>
+                <li>SecondCousin</li>
+                <li>Cousin</li>
+                <li>Kin</li>
+              </hasOneOfRelations>
+              <hasNoneOfRelations>
+                <li>Spouse</li>
+              </hasNoneOfRelations>
+            </filter>
+            <multiplier>0.5</multiplier>
+          </li>
+        </rules>
+      </li>
+    </modExtensions>
   </PreceptDef>
 
   <PreceptDef>
@@ -159,6 +215,38 @@
         <tag>Incestuos</tag>
       </li>
     </comps>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.PreceptDefExtension_ModifyPreference">
+        <rules>
+          <li>
+            <filter>
+              <hasOneOfRelations>
+                <li>Parent</li>
+                <li>Child</li>
+                <li>Sibling</li>
+                <li>HalfSibling</li>
+                <li>Grandparent</li>
+                <li>Grandchild</li>
+                <li>NephewOrNiece</li>
+                <li>UncleOrAunt</li>
+                <li>GreatGrandparent</li>
+                <li>GreatGrandchild</li>
+                <li>GranduncleOrGrandaunt</li>
+                <li>GrandnephewOrGrandniece</li>
+                <li>CousinOnceRemoved</li>
+                <li>SecondCousin</li>
+                <li>Cousin</li>
+                <li>Kin</li>
+              </hasOneOfRelations>
+              <hasNoneOfRelations>
+                <li>Spouse</li>
+              </hasNoneOfRelations>
+            </filter>
+            <multiplier>0.1</multiplier>
+          </li>
+        </rules>
+      </li>
+    </modExtensions>
   </PreceptDef>
 
   <PreceptDef>
@@ -210,6 +298,35 @@
         <exclusive>true</exclusive>
       </li>
     </comps>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.PreceptDefExtension_ModifyPreference">
+        <rules>
+          <li>
+            <filter>
+              <hasOneOfRelations>
+                <li>Parent</li>
+                <li>Child</li>
+                <li>Sibling</li>
+                <li>HalfSibling</li>
+                <li>Grandparent</li>
+                <li>Grandchild</li>
+                <li>NephewOrNiece</li>
+                <li>UncleOrAunt</li>
+                <li>GreatGrandparent</li>
+                <li>GreatGrandchild</li>
+                <li>GranduncleOrGrandaunt</li>
+                <li>GrandnephewOrGrandniece</li>
+                <li>CousinOnceRemoved</li>
+                <li>SecondCousin</li>
+                <li>Cousin</li>
+                <li>Kin</li>
+              </hasOneOfRelations>
+            </filter>
+            <multiplier>2.0</multiplier>
+          </li>
+        </rules>
+      </li>
+    </modExtensions>
   </PreceptDef>
 
   

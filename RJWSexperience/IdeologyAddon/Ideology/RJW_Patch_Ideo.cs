@@ -278,61 +278,32 @@ namespace RJWSexperience.Ideology
 
 		public static float PreceptSextype(Ideo ideo, float sexdrive, float score, InteractionWithExtension interaction)
 		{
-			Precept sextypePrecept = ideo.GetPreceptOfIssue(Ideology.IssueDefOf.Sextype);
-			bool boostSextype = sextypePrecept.def.GetModExtension<PreceptDefExtension_PreferSextype>().HasSextype(interaction.Extension.rjwSextype);
-
-			if (!boostSextype)
-				return score;
-
-			float mult = 8.0f * Math.Max(0.3f, 1 / Math.Max(0.01f, sexdrive));
-			return score * mult;
+			for (int i = 0; i < ideo.PreceptsListForReading.Count; i++)
+			{
+				if (ideo.PreceptsListForReading[i].def.GetModExtension<PreceptDefExtension_PreferSextype>()?.HasSextype(interaction.Extension.rjwSextype) == true)
+				{
+					float mult = 8.0f * Math.Max(0.3f, 1 / Math.Max(0.01f, sexdrive));
+					return score * mult;
+				}
+			}
+			return score;
 		}
 	}
 
-	[HarmonyPatch(typeof(SexAppraiser), "would_fuck", new Type[] { typeof(Pawn), typeof(Pawn), typeof(bool), typeof(bool), typeof(bool) })]
+	[HarmonyPatch(typeof(SexAppraiser), nameof(SexAppraiser.would_fuck), new Type[] { typeof(Pawn), typeof(Pawn), typeof(bool), typeof(bool), typeof(bool) })]
 	public static class RJW_Patch_would_fuck
 	{
-		public static void Postfix(Pawn fucker, Pawn fucked, bool invert_opinion, bool ignore_bleeding, bool ignore_gender, ref float __result)
+		public static void Postfix(Pawn fucker, Pawn fucked, ref float __result)
 		{
-			if (xxx.is_human(fucker))
-			{
-				Ideo ideo = fucker.Ideo;
-				if (ideo != null)
-				{
-					if (IdeoUtility.IsIncest(fucker, fucked))
-					{
-						if (ideo.HasPrecept(VariousDefOf.Incestuos_IncestOnly))
-						{
-							__result *= 2.0f;
-						}
-						else if (!fucker.relations?.DirectRelationExists(PawnRelationDefOf.Spouse, fucked) ?? false)
-						{
-							if (ideo.HasPrecept(VariousDefOf.Incestuos_Disapproved)) __result *= 0.5f;
-							else if (ideo.HasPrecept(VariousDefOf.Incestuos_Forbidden)) __result *= 0.1f;
-						}
-					}
-					if (fucked.IsAnimal())
-					{
-						if (ideo.HasPrecept(VariousDefOf.Bestiality_Honorable))
-						{
-							__result *= 2.0f;
-						}
-						else if (ideo.HasPrecept(VariousDefOf.Bestiality_OnlyVenerated))
-						{
-							if (ideo.IsVeneratedAnimal(fucked)) __result *= 2.0f;
-							else __result *= 0.05f;
-						}
-						else if (ideo.HasPrecept(VariousDefOf.Bestiality_Acceptable))
-						{
-							__result *= 1.0f;
-						}
-						else
-						{
-							__result *= 0.5f;
-						}
-					}
-				}
-			}
+			if (!xxx.is_human(fucker))
+				return;
+
+			Ideo ideo = fucker.Ideo;
+			if (ideo == null)
+				return;
+
+			for(int i = 0; i < ideo.PreceptsListForReading.Count; i++)
+				ideo.PreceptsListForReading[i].def.GetModExtension<PreceptDefExtension_ModifyPreference>()?.Apply(fucker, fucked, ref __result);
 		}
 	}
 
