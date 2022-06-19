@@ -55,5 +55,17 @@ namespace RJWSexperience.Ideology
 			}
 			return false;
 		}
+
+		public static float GetPreceptsMtbMultiplier<T>(Ideo ideo) where T : Precepts.DefExtension_ModifyMtb
+		{
+			float finalMultiplier = 1f;
+			for (int i = 0; i < ideo.PreceptsListForReading.Count; i++)
+			{
+				float? multiplier = ideo.PreceptsListForReading[i].def.GetModExtension<T>()?.multiplier;
+				if (multiplier != null)
+					finalMultiplier *= (float)multiplier;
+			}
+			return finalMultiplier;
+		}
 	}
 }

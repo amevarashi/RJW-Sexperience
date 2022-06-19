@@ -68,6 +68,9 @@
           </li>
         </rules>
       </li>
+      <li Class="RJWSexperience.Ideology.Precepts.DefExtension_ModifyBestialityMtb">
+        <multiplier>5.0</multiplier>
+      </li>
     </modExtensions>
   </PreceptDef>
 
@@ -118,6 +121,9 @@
             <multiplier>0.1</multiplier>
           </li>
         </rules>
+      </li>
+      <li Class="RJWSexperience.Ideology.Precepts.DefExtension_ModifyBestialityMtb">
+        <multiplier>5.0</multiplier>
       </li>
     </modExtensions>
   </PreceptDef>
@@ -182,6 +188,11 @@
     <displayOrderInIssue>10</displayOrderInIssue>
     <defaultSelectionWeight>10</defaultSelectionWeight>
     <approvesOfSlavery>true</approvesOfSlavery>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.Precepts.DefExtension_ModifyBestialityMtb">
+        <multiplier>0.75</multiplier>
+      </li>
+    </modExtensions>
   </PreceptDef>
   
 
@@ -240,6 +251,9 @@
           </li>
         </rules>
       </li>
+      <li Class="RJWSexperience.Ideology.Precepts.DefExtension_ModifyBestialityMtb">
+        <multiplier>0.65</multiplier>
+      </li>
     </modExtensions>
   </PreceptDef>
 
@@ -291,6 +305,9 @@
             <multiplier>2.0</multiplier>
           </li>
         </rules>
+      </li>
+      <li Class="RJWSexperience.Ideology.Precepts.DefExtension_ModifyBestialityMtb">
+        <multiplier>0.5</multiplier>
       </li>
     </modExtensions>
   </PreceptDef>

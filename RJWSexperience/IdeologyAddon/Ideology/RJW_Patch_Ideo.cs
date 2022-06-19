@@ -47,16 +47,8 @@ namespace RJWSexperience.Ideology
 		public static void Postfix(Pawn pawn, ref float __result)
 		{
 			Ideo ideo = pawn.Ideo;
-			if (ideo != null) __result *= BestialityByPrecept(ideo); // ideo is null if don't have dlc
-		}
-
-		public static float BestialityByPrecept(Ideo ideo)
-		{
-			if (ideo.HasPrecept(VariousDefOf.Bestiality_Honorable)) return 0.5f;
-			else if (ideo.HasPrecept(VariousDefOf.Bestiality_OnlyVenerated)) return 0.65f;
-			else if (ideo.HasPrecept(VariousDefOf.Bestiality_Acceptable)) return 0.75f;
-			else if (ideo.HasPrecept(VariousDefOf.Bestiality_Disapproved)) return 1.0f;
-			else return 5f;
+			if (ideo != null) // ideo is null if don't have dlc
+				__result *= IdeoUtility.GetPreceptsMtbMultiplier<DefExtension_ModifyBestialityMtb>(ideo);
 		}
 	}
 
@@ -66,15 +58,8 @@ namespace RJWSexperience.Ideology
 		public static void Postfix(Pawn pawn, ref float __result)
 		{
 			Ideo ideo = pawn.Ideo;
-			if (ideo != null) __result *= RapeByPrecept(ideo); // ideo is null if don't have dlc
-		}
-
-		public static float RapeByPrecept(Ideo ideo)
-		{
-			if (ideo.HasPrecept(VariousDefOf.Rape_Honorable)) return 0.5f;
-			else if (ideo.HasPrecept(VariousDefOf.Rape_Acceptable)) return 0.75f;
-			else if (ideo.HasPrecept(VariousDefOf.Rape_Disapproved)) return 1.0f;
-			else return 3f;
+			if (ideo != null) // ideo is null if don't have dlc
+				__result *= IdeoUtility.GetPreceptsMtbMultiplier<DefExtension_ModifyRapeCPMtb>(ideo);
 		}
 	}
 
@@ -84,15 +69,8 @@ namespace RJWSexperience.Ideology
 		public static void Postfix(Pawn pawn, ref float __result)
 		{
 			Ideo ideo = pawn.Ideo;
-			if (ideo != null) __result *= NecroByPrecept(ideo); // ideo is null if don't have dlc
-		}
-
-		public static float NecroByPrecept(Ideo ideo)
-		{
-			if (ideo.HasPrecept(VariousDefOf.Necrophilia_Approved)) return 0.5f;
-			else if (ideo.HasPrecept(VariousDefOf.Necrophilia_Acceptable)) return 0.75f;
-			else if (ideo.HasPrecept(VariousDefOf.Necrophilia_Disapproved)) return 1.0f;
-			else return 8f;
+			if (ideo != null) // ideo is null if don't have dlc
+				__result *= IdeoUtility.GetPreceptsMtbMultiplier<DefExtension_ModifyNecroMtb>(ideo);
 		}
 	}
 
@@ -142,13 +120,11 @@ namespace RJWSexperience.Ideology
 		{
 			Pawn pawn = props.pawn;
 			Pawn partner = props.partner;
-			bool rape = props.isRape;
-			xxx.rjwSextype sextype = props.sexType;
 
 			if (partner != null)
 			{
-				if (xxx.is_human(pawn)) AfterSexHuman(pawn, partner, rape, sextype);
-				else if (xxx.is_human(partner)) AfterSexHuman(partner, pawn, false, sextype, true);
+				if (xxx.is_human(pawn)) AfterSexHuman(pawn, partner, props.isRape, props.sexType);
+				else if (xxx.is_human(partner)) AfterSexHuman(partner, pawn, false, props.sexType, true);
 			}
 		}
 
@@ -271,10 +247,12 @@ namespace RJWSexperience.Ideology
 		public static void Postfix(InteractionWithExtension interaction, InteractionPawn dominant, InteractionPawn submissive, ref InteractionScore __result)
 		{
 			Ideo ideo = dominant.Pawn.Ideo;
-			if (ideo != null) __result.Dominant = PreceptSextype(ideo, dominant.Pawn.GetStatValue(xxx.sex_drive_stat), __result.Dominant, interaction);
+			if (ideo != null)
+				__result.Dominant = PreceptSextype(ideo, dominant.Pawn.GetStatValue(xxx.sex_drive_stat), __result.Dominant, interaction);
 
 			ideo = submissive.Pawn.Ideo;
-			if (ideo != null) __result.Submissive = PreceptSextype(ideo, submissive.Pawn.GetStatValue(xxx.sex_drive_stat), __result.Submissive, interaction);
+			if (ideo != null)
+				__result.Submissive = PreceptSextype(ideo, submissive.Pawn.GetStatValue(xxx.sex_drive_stat), __result.Submissive, interaction);
 		}
 
 		public static float PreceptSextype(Ideo ideo, float sexdrive, float score, InteractionWithExtension interaction)

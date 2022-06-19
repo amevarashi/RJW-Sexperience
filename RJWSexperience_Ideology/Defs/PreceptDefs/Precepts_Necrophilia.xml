@@ -37,6 +37,11 @@
         <thought>Necrophilia_Know_Abhorrent</thought>
       </li>
     </comps>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.Precepts.DefExtension_ModifyNecroMtb">
+        <multiplier>8.0</multiplier>
+      </li>
+    </modExtensions>
   </PreceptDef>
 
   <PreceptDef>
@@ -61,6 +66,11 @@
         <thought>Necrophilia_Know_Horrible</thought>
       </li>
     </comps>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.Precepts.DefExtension_ModifyNecroMtb">
+        <multiplier>8.0</multiplier>
+      </li>
+    </modExtensions>
   </PreceptDef>
 
   <PreceptDef>
@@ -99,6 +109,11 @@
     <requiredMemes>
       <li>Necrophile</li>
     </requiredMemes>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.Precepts.DefExtension_ModifyNecroMtb">
+        <multiplier>0.75</multiplier>
+      </li>
+    </modExtensions>
   </PreceptDef>
 
   <PreceptDef>
@@ -123,6 +138,11 @@
         <thought>Necrophilia_Know_Approved</thought>
       </li>
     </comps>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.Precepts.DefExtension_ModifyNecroMtb">
+        <multiplier>0.5</multiplier>
+      </li>
+    </modExtensions>
   </PreceptDef>
   
   <!-- Thoughts -->
