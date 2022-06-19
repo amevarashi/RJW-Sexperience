@@ -63,7 +63,7 @@
     <receivesExpectationsQualityOffset>true</receivesExpectationsQualityOffset>
     <canGenerateAsSpecialPrecept>false</canGenerateAsSpecialPrecept>
 		<modExtensions>
-			<li Class="RJWSexperience.Ideology.PreceptDefExtension_MultipleMemesRequired">
+			<li Class="RJWSexperience.Ideology.Precepts.DefExtension_MultipleMemesRequired">
         <requiredAllMemes>
           <li>Rapist</li>
           <li>Zoophile</li>

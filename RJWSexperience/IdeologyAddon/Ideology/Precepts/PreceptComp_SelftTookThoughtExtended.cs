@@ -2,7 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Verse;
 
-namespace RJWSexperience.Ideology
+namespace RJWSexperience.Ideology.Precepts
 {
 	public class PreceptComp_SelfTookThoughtTagged : PreceptComp_SelfTookMemoryThought
 	{

@@ -67,18 +67,18 @@
     <displayOrderInImpact>1000</displayOrderInImpact>
     <defaultSelectionWeight>80</defaultSelectionWeight>
     <comps>
-      <li Class="RJWSexperience.Ideology.PreceptComp_SelfTookThoughtTagged">
+      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
         <eventDef>Virgin_TakenF</eventDef>
         <thought>Virgin_Precious_Taken_Forcefully</thought>
         <tag>BeenRaped</tag>
       </li>
-      <li Class="RJWSexperience.Ideology.PreceptComp_SelfTookThoughtTagged">
+      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
         <eventDef>Virgin_TakenF</eventDef>
         <thought>Virgin_Precious_Taken</thought>
         <tag>BeenRaped</tag>
         <exclusive>true</exclusive>
       </li>
-      <li Class="RJWSexperience.Ideology.PreceptComp_SelfTookThoughtTagged">
+      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
         <eventDef>Virgin_TookF</eventDef>
         <thought>TookVirginity</thought>
       </li>
@@ -95,18 +95,18 @@
     <displayOrderInImpact>1000</displayOrderInImpact>
     <defaultSelectionWeight>1</defaultSelectionWeight>
     <comps>
-      <li Class="RJWSexperience.Ideology.PreceptComp_SelfTookThoughtTagged">
+      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
         <eventDef>Virgin_TakenM</eventDef>
         <thought>Virgin_Precious_Taken_Forcefully</thought>
         <tag>BeenRaped</tag>
       </li>
-      <li Class="RJWSexperience.Ideology.PreceptComp_SelfTookThoughtTagged">
+      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
         <eventDef>Virgin_TakenM</eventDef>
         <thought>Virgin_Precious_Taken</thought>
         <tag>BeenRaped</tag>
         <exclusive>true</exclusive>
       </li>
-      <li Class="RJWSexperience.Ideology.PreceptComp_SelfTookThoughtTagged">
+      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
         <eventDef>Virgin_TookM</eventDef>
         <thought>TookVirginity</thought>
       </li>
@@ -132,18 +132,18 @@
       <li>MaleSupremacy</li>
     </associatedMemes>
     <comps>
-      <li Class="RJWSexperience.Ideology.PreceptComp_SelfTookThoughtTagged">
+      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
         <eventDef>Virgin_TakenF</eventDef>
         <thought>Virgin_Precious_Taken_Forcefully</thought>
         <tag>BeenRaped</tag>
       </li>
-      <li Class="RJWSexperience.Ideology.PreceptComp_SelfTookThoughtTagged">
+      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
         <eventDef>Virgin_TakenF</eventDef>
         <thought>Virgin_Precious_Taken</thought>
         <tag>BeenRaped</tag>
         <exclusive>true</exclusive>
       </li>
-      <li Class="RJWSexperience.Ideology.PreceptComp_KnowsMemoryThoughtTagged">
+      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
         <eventDef>Virgin_TakenF</eventDef>
         <thought>Virgin_OnlyForSpouse_Know_Taken</thought>
         <tag>Female, NotSpouse</tag>
@@ -174,18 +174,18 @@
       <li>FemaleSupremacy</li>
     </associatedMemes>
     <comps>
-      <li Class="RJWSexperience.Ideology.PreceptComp_SelfTookThoughtTagged">
+      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
         <eventDef>Virgin_TakenM</eventDef>
         <thought>Virgin_Precious_Taken_Forcefully</thought>
         <tag>BeenRaped</tag>
       </li>
-      <li Class="RJWSexperience.Ideology.PreceptComp_SelfTookThoughtTagged">
+      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
         <eventDef>Virgin_TakenM</eventDef>
         <thought>Virgin_Precious_Taken</thought>
         <tag>BeenRaped</tag>
         <exclusive>true</exclusive>
       </li>
-      <li Class="RJWSexperience.Ideology.PreceptComp_KnowsMemoryThoughtTagged">
+      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
         <eventDef>Virgin_TakenM</eventDef>
         <thought>Virgin_OnlyForSpouse_Know_Taken</thought>
         <tag>Male, NotSpouse</tag>
@@ -210,7 +210,7 @@
       <li>FemaleSupremacy</li>
     </associatedMemes>
     <comps>
-      <li Class="RJWSexperience.Ideology.PreceptComp_SelfTookThoughtTagged">
+      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
         <eventDef>Virgin_TakenF</eventDef>
         <thought>Virgin_Shameful_Taken</thought>
         <tag>BeenRaped</tag>
@@ -232,7 +232,7 @@
       <li>MaleSupremacy</li>
     </associatedMemes>
     <comps>
-      <li Class="RJWSexperience.Ideology.PreceptComp_SelfTookThoughtTagged">
+      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
         <eventDef>Virgin_TakenM</eventDef>
         <thought>Virgin_Shameful_Taken</thought>
         <tag>BeenRaped</tag>

@@ -3,6 +3,7 @@ using RimWorld;
 using rjw;
 using rjw.Modules.Interactions.Internals.Implementation;
 using rjw.Modules.Interactions.Objects;
+using RJWSexperience.Ideology.Precepts;
 using System;
 using Verse;
 
@@ -280,7 +281,7 @@ namespace RJWSexperience.Ideology
 		{
 			for (int i = 0; i < ideo.PreceptsListForReading.Count; i++)
 			{
-				if (ideo.PreceptsListForReading[i].def.GetModExtension<PreceptDefExtension_PreferSextype>()?.HasSextype(interaction.Extension.rjwSextype) == true)
+				if (ideo.PreceptsListForReading[i].def.GetModExtension<DefExtension_PreferSextype>()?.HasSextype(interaction.Extension.rjwSextype) == true)
 				{
 					float mult = 8.0f * Math.Max(0.3f, 1 / Math.Max(0.01f, sexdrive));
 					return score * mult;
@@ -303,7 +304,7 @@ namespace RJWSexperience.Ideology
 				return;
 
 			for(int i = 0; i < ideo.PreceptsListForReading.Count; i++)
-				ideo.PreceptsListForReading[i].def.GetModExtension<PreceptDefExtension_ModifyPreference>()?.Apply(fucker, fucked, ref __result);
+				ideo.PreceptsListForReading[i].def.GetModExtension<DefExtension_ModifyPreference>()?.Apply(fucker, fucked, ref __result);
 		}
 	}
 

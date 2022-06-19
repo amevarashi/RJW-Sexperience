@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Verse;
 
-namespace RJWSexperience.Ideology
+namespace RJWSexperience.Ideology.Precepts
 {
-	public class PreceptDefExtension_ModifyPreference : DefModExtension
+	public class DefExtension_ModifyPreference : DefModExtension
 	{
 		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
 		public List<Rule> rules;

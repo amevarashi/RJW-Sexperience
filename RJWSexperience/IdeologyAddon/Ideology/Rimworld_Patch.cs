@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using RimWorld;
 using rjw;
+using RJWSexperience.Ideology.Precepts;
 using System.Collections.Generic;
 using Verse;
 
@@ -48,7 +49,7 @@ namespace RJWSexperience.Ideology
 	{
 		public static void Postfix(PreceptDef precept, bool checkDuplicates, ref IdeoFoundation __instance, ref AcceptanceReport __result)
 		{
-			PreceptDefExtension_MultipleMemesRequired extension = precept.GetModExtension<PreceptDefExtension_MultipleMemesRequired>();
+			DefExtension_MultipleMemesRequired extension = precept.GetModExtension<DefExtension_MultipleMemesRequired>();
 
 			if (extension == null)
 				return;
