@@ -49,9 +49,10 @@
     <Compile Include="Ideology\HistoryEventArgsNamesCustom.cs" />
     <Compile Include="Ideology\IssueUtility.cs" />
     <Compile Include="Ideology\Keyed.cs" />
-    <Compile Include="Ideology\Precepts\PreceptDefExtension_ModifyPreference.cs" />
-    <Compile Include="Ideology\Precepts\PreceptDefExtension_PreferSextype.cs" />
-    <Compile Include="Ideology\Precepts\PreceptDefExtension_MultipleMemesRequired.cs" />
+    <Compile Include="Ideology\Precepts\DefExtension_ModifyPreference.cs" />
+    <Compile Include="Ideology\Precepts\DefExtension_PreferSextype.cs" />
+    <Compile Include="Ideology\Precepts\DefExtension_MultipleMemesRequired.cs" />
+    <Compile Include="Ideology\Precepts\PreceptComp_KnowsMemoryThoughtTagged.cs" />
     <Compile Include="Ideology\Rituals\JobGiver_GangbangConsensual.cs" />
     <Compile Include="Ideology\Rituals\LordJob_Rituals.cs" />
     <Compile Include="Ideology\RJW_Patch_Ideo.cs" />
