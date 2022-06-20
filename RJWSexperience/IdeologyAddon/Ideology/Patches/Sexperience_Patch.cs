@@ -2,7 +2,7 @@
 using rjw;
 using Verse;
 
-namespace RJWSexperience.Ideology
+namespace RJWSexperience.Ideology.Patches
 {
 	public static class Sexperience_Patch_ThrowVirginHIstoryEvent
 	{

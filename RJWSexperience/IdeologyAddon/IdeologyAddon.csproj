@@ -49,6 +49,7 @@
     <Compile Include="Ideology\HistoryEventArgsNamesCustom.cs" />
     <Compile Include="Ideology\IssueUtility.cs" />
     <Compile Include="Ideology\Keyed.cs" />
+    <Compile Include="Ideology\Patches\RJW_Patch_ChancePerHour.cs" />
     <Compile Include="Ideology\Precepts\DefExtension_ModifyMtb.cs" />
     <Compile Include="Ideology\Precepts\DefExtension_ModifyFappinMtb.cs" />
     <Compile Include="Ideology\Precepts\DefExtension_ModifyRapeCPMtb.cs" />

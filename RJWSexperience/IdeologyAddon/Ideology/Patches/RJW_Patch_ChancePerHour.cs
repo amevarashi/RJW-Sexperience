@@ -4,7 +4,7 @@ using rjw;
 using RJWSexperience.Ideology.Precepts;
 using Verse;
 
-namespace RJWSexperience.Ideology
+namespace RJWSexperience.Ideology.Patches
 {
 	[HarmonyPatch(typeof(ThinkNode_ChancePerHour_Bestiality), "MtbHours")]
 	public static class RJW_Patch_ChancePerHour_Bestiality

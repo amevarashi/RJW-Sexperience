@@ -7,7 +7,7 @@ using RJWSexperience.Ideology.Precepts;
 using System;
 using Verse;
 
-namespace RJWSexperience.Ideology
+namespace RJWSexperience.Ideology.Patches
 {
 	public static class RJWUtility_Ideo
 	{

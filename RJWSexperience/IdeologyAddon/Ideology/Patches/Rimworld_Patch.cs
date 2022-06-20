@@ -5,7 +5,7 @@ using RJWSexperience.Ideology.Precepts;
 using System.Collections.Generic;
 using Verse;
 
-namespace RJWSexperience.Ideology
+namespace RJWSexperience.Ideology.Patches
 {
 	[HarmonyPatch(typeof(MarriageCeremonyUtility), "Married")]
 	public static class Rimworld_Patch_Marriage
