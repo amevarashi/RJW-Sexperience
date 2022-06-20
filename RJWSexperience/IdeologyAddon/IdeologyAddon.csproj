@@ -50,6 +50,7 @@
     <Compile Include="Ideology\IssueUtility.cs" />
     <Compile Include="Ideology\Keyed.cs" />
     <Compile Include="Ideology\Precepts\DefExtension_ModifyMtb.cs" />
+    <Compile Include="Ideology\Precepts\DefExtension_ModifyFappinMtb.cs" />
     <Compile Include="Ideology\Precepts\DefExtension_ModifyRapeCPMtb.cs" />
     <Compile Include="Ideology\Precepts\DefExtension_ModifyNecroMtb.cs" />
     <Compile Include="Ideology\Precepts\DefExtension_ModifyBestialityMtb.cs" />
@@ -59,11 +60,11 @@
     <Compile Include="Ideology\Precepts\PreceptComp_KnowsMemoryThoughtTagged.cs" />
     <Compile Include="Ideology\Rituals\JobGiver_GangbangConsensual.cs" />
     <Compile Include="Ideology\Rituals\LordJob_Rituals.cs" />
-    <Compile Include="Ideology\RJW_Patch_Ideo.cs" />
+    <Compile Include="Ideology\Patches\RJW_Patch_Ideo.cs" />
     <Compile Include="Ideology\Precepts\PreceptComp_SelftTookThoughtExtended.cs" />
-    <Compile Include="Ideology\Sexperience_Patch.cs" />
+    <Compile Include="Ideology\Patches\Sexperience_Patch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Ideology\Rimworld_Patch.cs" />
+    <Compile Include="Ideology\Patches\Rimworld_Patch.cs" />
     <Compile Include="Ideology\Rituals\JobGiver_DrugOrgy.cs" />
     <Compile Include="Ideology\Rituals\JobGiver_GangbangVictim.cs" />
     <Compile Include="Ideology\Rituals\RitualBehaviorWorkers.cs" />
