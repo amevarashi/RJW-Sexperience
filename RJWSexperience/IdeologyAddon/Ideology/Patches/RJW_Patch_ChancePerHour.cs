@@ -41,9 +41,12 @@ namespace RJWSexperience.Ideology.Patches
 	[HarmonyPatch(typeof(ThinkNode_ChancePerHour_Fappin), "MtbHours")]
 	public static class RJW_Patch_ThinkNode_ChancePerHour_Fappin
 	{
-		public static void Postfix(Pawn pawn, ref float __result)
+		public static void Postfix(Pawn p, ref float __result)
 		{
-			Ideo ideo = pawn.Ideo;
+			if (__result < 0f)
+				return;
+
+			Ideo ideo = p.Ideo;
 			if (ideo != null) // ideo is null if don't have dlc
 				__result *= IdeoUtility.GetPreceptsMtbMultiplier<DefExtension_ModifyFappinMtb>(ideo);
 		}
