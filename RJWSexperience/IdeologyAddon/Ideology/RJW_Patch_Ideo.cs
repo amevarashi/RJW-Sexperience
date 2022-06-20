@@ -74,6 +74,17 @@ namespace RJWSexperience.Ideology
 		}
 	}
 
+	[HarmonyPatch(typeof(ThinkNode_ChancePerHour_Fappin), "MtbHours")]
+	public static class RJW_Patch_ThinkNode_ChancePerHour_Fappin
+	{
+		public static void Postfix(Pawn pawn, ref float __result)
+		{
+			Ideo ideo = pawn.Ideo;
+			if (ideo != null) // ideo is null if don't have dlc
+				__result *= IdeoUtility.GetPreceptsMtbMultiplier<DefExtension_ModifyFappinMtb>(ideo);
+		}
+	}
+
 	[HarmonyPatch(typeof(xxx), "is_rapist")]
 	public static class RJW_Patch_is_rapist
 	{
