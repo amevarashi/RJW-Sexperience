@@ -245,6 +245,7 @@
           </li>
           <li>
             <filter>
+              <isAnimal>true</isAnimal>
               <isVeneratedAnimal>false</isVeneratedAnimal>
             </filter>
             <multiplier>0.05</multiplier>
