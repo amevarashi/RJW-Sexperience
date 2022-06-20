@@ -90,8 +90,10 @@ namespace RJWSexperience.Ideology.Patches
 
 			if (partner != null)
 			{
-				if (xxx.is_human(pawn)) AfterSexHuman(pawn, partner, props.isRape, props.sexType);
-				else if (xxx.is_human(partner)) AfterSexHuman(partner, pawn, false, props.sexType, true);
+				if (xxx.is_human(pawn))
+					AfterSexHuman(pawn, partner, props.isRape, props.sexType);
+				else if (xxx.is_human(partner))
+					AfterSexHuman(partner, pawn, false, props.sexType, true);
 			}
 		}
 
@@ -114,11 +116,21 @@ namespace RJWSexperience.Ideology.Patches
 					if (human.IsSlave) RapeEffectSlave(human);
 					if (human.Ideo?.IsVeneratedAnimal(partner) ?? false) Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithVeneratedAnimal.TaggedEvent(human, tag + HETag.BeenRaped + HETag.Gender(human), partner));
 					else Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithAnimal.TaggedEvent(human, tag + HETag.BeenRaped + HETag.Gender(human), partner));
+
+					if (human.Ideo != null && human.relations?.DirectRelationExists(PawnRelationDefOf.Bond, partner) == true)
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithBondedAnimal.TaggedEvent(human, tag + HETag.BeenRaped + HETag.Gender(human), partner));
+					else
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithNonBondAnimal.TaggedEvent(human, tag + HETag.BeenRaped + HETag.Gender(human), partner));
 				}
 				else
 				{
 					if (human.Ideo?.IsVeneratedAnimal(partner) ?? false) Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithVeneratedAnimal.TaggedEvent(human, tag + HETag.Gender(human), partner));
 					else Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithAnimal.TaggedEvent(human, tag + HETag.Gender(human), partner));
+
+					if (human.Ideo != null && human.relations?.DirectRelationExists(PawnRelationDefOf.Bond, partner) == true)
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithBondedAnimal.TaggedEvent(human, tag + HETag.Gender(human), partner));
+					else
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithNonBondAnimal.TaggedEvent(human, tag + HETag.Gender(human), partner));
 				}
 			}
 			else if (xxx.is_human(partner))
