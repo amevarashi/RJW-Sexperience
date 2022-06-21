@@ -38,6 +38,12 @@ namespace RJWSexperience.Ideology.Precepts
 				if (filter.isVeneratedAnimal != null && filter.isVeneratedAnimal != pawn.Ideo.IsVeneratedAnimal(partner))
 					return false;
 
+				if (filter.isSlave != null && filter.isSlave != partner.IsSlave)
+					return false;
+
+				//if (filter.isAlien != null && filter.isAlien != partner)
+				//	return false;
+
 				if (!filter.hasOneOfRelations.NullOrEmpty())
 				{
 					if (pawn.relations == null)
@@ -75,6 +81,10 @@ namespace RJWSexperience.Ideology.Precepts
 			public bool? isAnimal;
 			[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
 			public bool? isVeneratedAnimal;
+			[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
+			public bool? isSlave;
+			[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
+			public bool? isAlien;
 			[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
 			public List<PawnRelationDef> hasOneOfRelations;
 			[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
