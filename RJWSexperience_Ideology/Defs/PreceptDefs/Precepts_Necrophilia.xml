@@ -39,7 +39,7 @@
     </comps>
     <modExtensions>
       <li Class="RJWSexperience.Ideology.Precepts.DefExtension_ModifyNecroMtb">
-        <multiplier>8.0</multiplier>
+        <disable>true</disable>
       </li>
     </modExtensions>
   </PreceptDef>

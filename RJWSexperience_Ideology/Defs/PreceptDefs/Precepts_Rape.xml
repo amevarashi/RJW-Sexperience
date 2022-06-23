@@ -91,7 +91,7 @@
     </comps>
     <modExtensions>
       <li Class="RJWSexperience.Ideology.Precepts.DefExtension_ModifyRapeCPMtb">
-        <multiplier>3.0</multiplier>
+        <disable>true</disable>
       </li>
     </modExtensions>
   </PreceptDef>

@@ -61,9 +61,15 @@ namespace RJWSexperience.Ideology
 			float finalMultiplier = 1f;
 			for (int i = 0; i < ideo.PreceptsListForReading.Count; i++)
 			{
-				float? multiplier = ideo.PreceptsListForReading[i].def.GetModExtension<T>()?.multiplier;
-				if (multiplier != null)
-					finalMultiplier *= (float)multiplier;
+				T defExtension = ideo.PreceptsListForReading[i].def.GetModExtension<T>();
+
+				if (defExtension == null)
+					continue;
+
+				if (defExtension.disable)
+					return -1f;
+
+				finalMultiplier *= defExtension.multiplier;
 			}
 			return finalMultiplier;
 		}

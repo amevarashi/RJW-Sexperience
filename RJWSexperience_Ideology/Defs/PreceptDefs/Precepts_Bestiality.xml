@@ -79,7 +79,7 @@
         </rules>
       </li>
       <li Class="RJWSexperience.Ideology.Precepts.DefExtension_ModifyBestialityMtb">
-        <multiplier>5.0</multiplier>
+        <disable>true</disable>
       </li>
     </modExtensions>
   </PreceptDef>
