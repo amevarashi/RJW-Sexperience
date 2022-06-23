@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using RimWorld;
 using rjw;
 using RJWSexperience.Ideology.Precepts;
 using Verse;
@@ -7,24 +6,22 @@ using Verse;
 namespace RJWSexperience.Ideology.Patches
 {
 	[HarmonyPatch(typeof(ThinkNode_ChancePerHour_Bestiality), "MtbHours")]
-	public static class RJW_Patch_ChancePerHour_Bestiality
+	public static class RJW_Patch_ThinkNode_ChancePerHour_Bestiality
 	{
 		public static void Postfix(Pawn pawn, ref float __result)
 		{
-			Ideo ideo = pawn.Ideo;
-			if (ideo != null) // ideo is null if don't have dlc
-				__result *= IdeoUtility.GetPreceptsMtbMultiplier<DefExtension_ModifyBestialityMtb>(ideo);
+			if (__result > 0f && pawn.Ideo != null) // ideo is null if don't have dlc
+				__result *= IdeoUtility.GetPreceptsMtbMultiplier<DefExtension_ModifyBestialityMtb>(pawn.Ideo);
 		}
 	}
 
 	[HarmonyPatch(typeof(ThinkNode_ChancePerHour_RapeCP), "MtbHours")]
-	public static class RJW_Patch_ChancePerHour_RapeCP
+	public static class RJW_Patch_ThinkNode_ChancePerHour_RapeCP
 	{
 		public static void Postfix(Pawn pawn, ref float __result)
 		{
-			Ideo ideo = pawn.Ideo;
-			if (ideo != null) // ideo is null if don't have dlc
-				__result *= IdeoUtility.GetPreceptsMtbMultiplier<DefExtension_ModifyRapeCPMtb>(ideo);
+			if (__result > 0f && pawn.Ideo != null) // ideo is null if don't have dlc
+				__result *= IdeoUtility.GetPreceptsMtbMultiplier<DefExtension_ModifyRapeCPMtb>(pawn.Ideo);
 		}
 	}
 	[HarmonyPatch(typeof(ThinkNode_ChancePerHour_Necro), "MtbHours")]
@@ -32,9 +29,8 @@ namespace RJWSexperience.Ideology.Patches
 	{
 		public static void Postfix(Pawn pawn, ref float __result)
 		{
-			Ideo ideo = pawn.Ideo;
-			if (ideo != null) // ideo is null if don't have dlc
-				__result *= IdeoUtility.GetPreceptsMtbMultiplier<DefExtension_ModifyNecroMtb>(ideo);
+			if (__result > 0f && pawn.Ideo != null) // ideo is null if don't have dlc
+				__result *= IdeoUtility.GetPreceptsMtbMultiplier<DefExtension_ModifyNecroMtb>(pawn.Ideo);
 		}
 	}
 
@@ -43,12 +39,8 @@ namespace RJWSexperience.Ideology.Patches
 	{
 		public static void Postfix(Pawn p, ref float __result)
 		{
-			if (__result < 0f)
-				return;
-
-			Ideo ideo = p.Ideo;
-			if (ideo != null) // ideo is null if don't have dlc
-				__result *= IdeoUtility.GetPreceptsMtbMultiplier<DefExtension_ModifyFappinMtb>(ideo);
+			if (__result > 0f && p.Ideo != null) // ideo is null if don't have dlc
+				__result *= IdeoUtility.GetPreceptsMtbMultiplier<DefExtension_ModifyFappinMtb>(p.Ideo);
 		}
 	}
 }
