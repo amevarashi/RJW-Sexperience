@@ -103,44 +103,44 @@
       <li Class="PreceptComp_UnwillingToDo">
         <eventDef>AnalSex</eventDef>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
+      <li Class="PreceptComp_SelfTookMemoryThought">
         <eventDef>AnalSex</eventDef>
         <thought>Sex_Promiscuous</thought>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
+      <li Class="PreceptComp_KnowsMemoryThought">
         <eventDef>AnalSex</eventDef>
         <thought>Sex_Know_Promiscuous</thought>
       </li>
       <li Class="PreceptComp_UnwillingToDo">
         <eventDef>OralSex</eventDef>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
+      <li Class="PreceptComp_SelfTookMemoryThought">
         <eventDef>OralSex</eventDef>
         <thought>Sex_Promiscuous</thought>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
+      <li Class="PreceptComp_KnowsMemoryThought">
         <eventDef>OralSex</eventDef>
         <thought>Sex_Know_Promiscuous</thought>
       </li>
       <li Class="PreceptComp_UnwillingToDo">
         <eventDef>MiscSex</eventDef>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
+      <li Class="PreceptComp_SelfTookMemoryThought">
         <eventDef>MiscSex</eventDef>
         <thought>Sex_Promiscuous</thought>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
+      <li Class="PreceptComp_KnowsMemoryThought">
         <eventDef>MiscSex</eventDef>
         <thought>Sex_Know_Promiscuous</thought>
       </li>
       <li Class="PreceptComp_UnwillingToDo">
         <eventDef>PromiscuousSex</eventDef>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
+      <li Class="PreceptComp_SelfTookMemoryThought">
         <eventDef>PromiscuousSex</eventDef>
         <thought>Sex_Promiscuous</thought>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
+      <li Class="PreceptComp_KnowsMemoryThought">
         <eventDef>PromiscuousSex</eventDef>
         <thought>Sex_Know_Promiscuous</thought>
       </li>
@@ -160,44 +160,44 @@
       <li Class="PreceptComp_UnwillingToDo">
         <eventDef>VaginalSex</eventDef>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
+      <li Class="PreceptComp_SelfTookMemoryThought">
         <eventDef>VaginalSex</eventDef>
         <thought>Sex_Promiscuous</thought>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
+      <li Class="PreceptComp_KnowsMemoryThought">
         <eventDef>VaginalSex</eventDef>
         <thought>Sex_Know_Promiscuous</thought>
       </li>
       <li Class="PreceptComp_UnwillingToDo">
         <eventDef>OralSex</eventDef>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
+      <li Class="PreceptComp_SelfTookMemoryThought">
         <eventDef>OralSex</eventDef>
         <thought>Sex_Promiscuous</thought>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
+      <li Class="PreceptComp_KnowsMemoryThought">
         <eventDef>OralSex</eventDef>
         <thought>Sex_Know_Promiscuous</thought>
       </li>
       <li Class="PreceptComp_UnwillingToDo">
         <eventDef>MiscSex</eventDef>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
+      <li Class="PreceptComp_SelfTookMemoryThought">
         <eventDef>MiscSex</eventDef>
         <thought>Sex_Promiscuous</thought>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
+      <li Class="PreceptComp_KnowsMemoryThought">
         <eventDef>MiscSex</eventDef>
         <thought>Sex_Know_Promiscuous</thought>
       </li>
       <li Class="PreceptComp_UnwillingToDo">
         <eventDef>PromiscuousSex</eventDef>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
+      <li Class="PreceptComp_SelfTookMemoryThought">
         <eventDef>PromiscuousSex</eventDef>
         <thought>Sex_Promiscuous</thought>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
+      <li Class="PreceptComp_KnowsMemoryThought">
         <eventDef>PromiscuousSex</eventDef>
         <thought>Sex_Know_Promiscuous</thought>
       </li>
@@ -217,44 +217,44 @@
       <li Class="PreceptComp_UnwillingToDo">
         <eventDef>VaginalSex</eventDef>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
+      <li Class="PreceptComp_SelfTookMemoryThought">
         <eventDef>VaginalSex</eventDef>
         <thought>Sex_Promiscuous</thought>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
+      <li Class="PreceptComp_KnowsMemoryThought">
         <eventDef>VaginalSex</eventDef>
         <thought>Sex_Know_Promiscuous</thought>
       </li>
       <li Class="PreceptComp_UnwillingToDo">
         <eventDef>AnalSex</eventDef>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
+      <li Class="PreceptComp_SelfTookMemoryThought">
         <eventDef>AnalSex</eventDef>
         <thought>Sex_Promiscuous</thought>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
+      <li Class="PreceptComp_KnowsMemoryThought">
         <eventDef>AnalSex</eventDef>
         <thought>Sex_Know_Promiscuous</thought>
       </li>
       <li Class="PreceptComp_UnwillingToDo">
         <eventDef>MiscSex</eventDef>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
+      <li Class="PreceptComp_SelfTookMemoryThought">
         <eventDef>MiscSex</eventDef>
         <thought>Sex_Promiscuous</thought>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
+      <li Class="PreceptComp_KnowsMemoryThought">
         <eventDef>MiscSex</eventDef>
         <thought>Sex_Know_Promiscuous</thought>
       </li>
       <li Class="PreceptComp_UnwillingToDo">
         <eventDef>PromiscuousSex</eventDef>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
+      <li Class="PreceptComp_SelfTookMemoryThought">
         <eventDef>PromiscuousSex</eventDef>
         <thought>Sex_Promiscuous</thought>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
+      <li Class="PreceptComp_KnowsMemoryThought">
         <eventDef>PromiscuousSex</eventDef>
         <thought>Sex_Know_Promiscuous</thought>
       </li>
