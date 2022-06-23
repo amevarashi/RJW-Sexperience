@@ -11,29 +11,74 @@
   <HistoryEventDef>
     <defName>VaginalSex</defName>
     <label>vaginal sex</label>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.HistoryEventDefExtension_AssociatedSextypes">
+        <sextypes>
+          <li>Vaginal</li>
+        </sextypes>
+      </li>
+    </modExtensions>
   </HistoryEventDef>
 
   <HistoryEventDef>
     <defName>AnalSex</defName>
     <label>anal sex</label>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.HistoryEventDefExtension_AssociatedSextypes">
+        <sextypes>
+          <li>Anal</li>
+          <li>Rimming</li>
+        </sextypes>
+      </li>
+    </modExtensions>
   </HistoryEventDef>
 
   <HistoryEventDef>
     <defName>OralSex</defName>
     <label>oral sex</label>
-  </HistoryEventDef>
-
-  <HistoryEventDef>
-    <defName>MiscSex</defName>
-    <label>sex</label>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.HistoryEventDefExtension_AssociatedSextypes">
+        <sextypes>
+          <li>Cunnilingus</li>
+          <li>Fellatio</li>
+        </sextypes>
+      </li>
+    </modExtensions>
   </HistoryEventDef>
   
   <HistoryEventDef>
     <defName>PromiscuousSex</defName>
     <label>promiscuous sex</label>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.HistoryEventDefExtension_AssociatedSextypes">
+        <sextypes>
+          <li>DoublePenetration</li>
+          <li>Scissoring</li>
+          <li>Sixtynine</li>
+          <li>Fisting</li>
+        </sextypes>
+      </li>
+    </modExtensions>
   </HistoryEventDef>
-  <!-- Precepts -->
 
+  <HistoryEventDef>
+    <defName>MiscSex</defName>
+    <label>sex</label>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.HistoryEventDefExtension_AssociatedSextypes">
+        <sextypes>
+          <li>Masturbation</li>
+          <li>Boobjob</li>
+          <li>Handjob</li>
+          <li>Footjob</li>
+          <li>Fingering</li>
+          <li>MutualMasturbation</li>
+        </sextypes>
+      </li>
+    </modExtensions>
+  </HistoryEventDef>
+
+  <!-- Precepts -->
   <PreceptDef>
     <defName>Sex_Free</defName>
     <issue>Sextype</issue>
@@ -55,6 +100,9 @@
     <displayOrderInImpact>1000</displayOrderInImpact>
     <defaultSelectionWeight>100</defaultSelectionWeight>
     <comps>
+      <li Class="PreceptComp_UnwillingToDo">
+        <eventDef>AnalSex</eventDef>
+      </li>
       <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
         <eventDef>AnalSex</eventDef>
         <thought>Sex_Promiscuous</thought>
@@ -62,6 +110,9 @@
       <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
         <eventDef>AnalSex</eventDef>
         <thought>Sex_Know_Promiscuous</thought>
+      </li>
+      <li Class="PreceptComp_UnwillingToDo">
+        <eventDef>OralSex</eventDef>
       </li>
       <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
         <eventDef>OralSex</eventDef>
@@ -71,6 +122,9 @@
         <eventDef>OralSex</eventDef>
         <thought>Sex_Know_Promiscuous</thought>
       </li>
+      <li Class="PreceptComp_UnwillingToDo">
+        <eventDef>MiscSex</eventDef>
+      </li>
       <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
         <eventDef>MiscSex</eventDef>
         <thought>Sex_Promiscuous</thought>
@@ -78,6 +132,9 @@
       <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
         <eventDef>MiscSex</eventDef>
         <thought>Sex_Know_Promiscuous</thought>
+      </li>
+      <li Class="PreceptComp_UnwillingToDo">
+        <eventDef>PromiscuousSex</eventDef>
       </li>
       <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
         <eventDef>PromiscuousSex</eventDef>
@@ -88,13 +145,6 @@
         <thought>Sex_Know_Promiscuous</thought>
       </li>
     </comps>
-    <modExtensions>
-      <li Class="RJWSexperience.Ideology.Precepts.DefExtension_PreferSextype">
-        <sextypes>
-          <li>Vaginal</li>
-        </sextypes>
-      </li>
-    </modExtensions>
   </PreceptDef>
 
   <PreceptDef>
@@ -107,6 +157,9 @@
     <displayOrderInImpact>1000</displayOrderInImpact>
     <defaultSelectionWeight>10</defaultSelectionWeight>
     <comps>
+      <li Class="PreceptComp_UnwillingToDo">
+        <eventDef>VaginalSex</eventDef>
+      </li>
       <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
         <eventDef>VaginalSex</eventDef>
         <thought>Sex_Promiscuous</thought>
@@ -114,6 +167,9 @@
       <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
         <eventDef>VaginalSex</eventDef>
         <thought>Sex_Know_Promiscuous</thought>
+      </li>
+      <li Class="PreceptComp_UnwillingToDo">
+        <eventDef>OralSex</eventDef>
       </li>
       <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
         <eventDef>OralSex</eventDef>
@@ -123,6 +179,9 @@
         <eventDef>OralSex</eventDef>
         <thought>Sex_Know_Promiscuous</thought>
       </li>
+      <li Class="PreceptComp_UnwillingToDo">
+        <eventDef>MiscSex</eventDef>
+      </li>
       <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
         <eventDef>MiscSex</eventDef>
         <thought>Sex_Promiscuous</thought>
@@ -130,6 +189,9 @@
       <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
         <eventDef>MiscSex</eventDef>
         <thought>Sex_Know_Promiscuous</thought>
+      </li>
+      <li Class="PreceptComp_UnwillingToDo">
+        <eventDef>PromiscuousSex</eventDef>
       </li>
       <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
         <eventDef>PromiscuousSex</eventDef>
@@ -140,14 +202,6 @@
         <thought>Sex_Know_Promiscuous</thought>
       </li>
     </comps>
-    <modExtensions>
-      <li Class="RJWSexperience.Ideology.Precepts.DefExtension_PreferSextype">
-        <sextypes>
-          <li>Anal</li>
-          <li>Rimming</li>
-        </sextypes>
-      </li>
-    </modExtensions>
   </PreceptDef>
 
   <PreceptDef>
@@ -160,6 +214,9 @@
     <displayOrderInImpact>1000</displayOrderInImpact>
     <defaultSelectionWeight>5</defaultSelectionWeight>
     <comps>
+      <li Class="PreceptComp_UnwillingToDo">
+        <eventDef>VaginalSex</eventDef>
+      </li>
       <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
         <eventDef>VaginalSex</eventDef>
         <thought>Sex_Promiscuous</thought>
@@ -167,6 +224,9 @@
       <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
         <eventDef>VaginalSex</eventDef>
         <thought>Sex_Know_Promiscuous</thought>
+      </li>
+      <li Class="PreceptComp_UnwillingToDo">
+        <eventDef>AnalSex</eventDef>
       </li>
       <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
         <eventDef>AnalSex</eventDef>
@@ -176,6 +236,9 @@
         <eventDef>AnalSex</eventDef>
         <thought>Sex_Know_Promiscuous</thought>
       </li>
+      <li Class="PreceptComp_UnwillingToDo">
+        <eventDef>MiscSex</eventDef>
+      </li>
       <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
         <eventDef>MiscSex</eventDef>
         <thought>Sex_Promiscuous</thought>
@@ -183,6 +246,9 @@
       <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
         <eventDef>MiscSex</eventDef>
         <thought>Sex_Know_Promiscuous</thought>
+      </li>
+      <li Class="PreceptComp_UnwillingToDo">
+        <eventDef>PromiscuousSex</eventDef>
       </li>
       <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
         <eventDef>PromiscuousSex</eventDef>
@@ -193,15 +259,6 @@
         <thought>Sex_Know_Promiscuous</thought>
       </li>
     </comps>
-    <modExtensions>
-      <li Class="RJWSexperience.Ideology.Precepts.DefExtension_PreferSextype">
-        <sextypes>
-          <li>Cunnilingus</li>
-          <li>Fellatio</li>
-          <li>Beakjob</li>
-        </sextypes>
-      </li>
-    </modExtensions>
   </PreceptDef>
 
   <PreceptDef>
@@ -217,6 +274,9 @@
       <SexAbility>1.25</SexAbility>
     </statFactors>
     <comps>
+      <li Class="PreceptComp_UnwillingToDo">
+        <eventDef>VaginalSex</eventDef>
+      </li>
       <li Class="PreceptComp_SelfTookMemoryThought">
         <eventDef>VaginalSex</eventDef>
         <thought>Sex_NonPromiscuous</thought>
@@ -224,6 +284,9 @@
       <li Class="PreceptComp_KnowsMemoryThought">
         <eventDef>VaginalSex</eventDef>
         <thought>Sex_Know_NonPromiscuous</thought>
+      </li>
+      <li Class="PreceptComp_UnwillingToDo">
+        <eventDef>AnalSex</eventDef>
       </li>
       <li Class="PreceptComp_SelfTookMemoryThought">
         <eventDef>AnalSex</eventDef>
@@ -233,6 +296,9 @@
         <eventDef>AnalSex</eventDef>
         <thought>Sex_Know_NonPromiscuous</thought>
       </li>
+      <li Class="PreceptComp_UnwillingToDo">
+        <eventDef>OralSex</eventDef>
+      </li>
       <li Class="PreceptComp_SelfTookMemoryThought">
         <eventDef>OralSex</eventDef>
         <thought>Sex_NonPromiscuous</thought>
@@ -240,6 +306,9 @@
       <li Class="PreceptComp_KnowsMemoryThought">
         <eventDef>OralSex</eventDef>
         <thought>Sex_Know_NonPromiscuous</thought>
+      </li>
+      <li Class="PreceptComp_UnwillingToDo">
+        <eventDef>MiscSex</eventDef>
       </li>
       <li Class="PreceptComp_SelfTookMemoryThought">
         <eventDef>MiscSex</eventDef>
@@ -254,16 +323,6 @@
         <thought>Sex_Know_Promiscuous_Approval</thought>
       </li>
     </comps>
-    <modExtensions>
-      <li Class="RJWSexperience.Ideology.Precepts.DefExtension_PreferSextype">
-        <sextypes>
-          <li>DoublePenetration</li>
-          <li>Scissoring</li>
-          <li>Sixtynine</li>
-          <li>Fisting</li>
-        </sextypes>
-      </li>
-    </modExtensions>
   </PreceptDef>
 
   

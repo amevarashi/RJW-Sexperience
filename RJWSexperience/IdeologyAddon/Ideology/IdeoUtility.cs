@@ -1,9 +1,12 @@
 ﻿using RimWorld;
+using rjw;
+using System;
 using System.Collections.Generic;
 using Verse;
 
 namespace RJWSexperience.Ideology
 {
+	[StaticConstructorOnStartup]
 	public static class IdeoUtility
 	{
 		public static bool IsSubmissive(this Pawn pawn)
@@ -72,6 +75,39 @@ namespace RJWSexperience.Ideology
 				finalMultiplier *= defExtension.multiplier;
 			}
 			return finalMultiplier;
+		}
+
+		public static HistoryEventDef GetSextypeEventDef(xxx.rjwSextype sextype)
+		{
+			if (historyEventBySextype.TryGetValue(sextype, out HistoryEventDef historyEventDef))
+				return historyEventDef;
+			return null;
+		}
+
+		public static HistoryEventDef GetSextypeEventDef(string sextype)
+		{
+			if (!Enum.TryParse(sextype, out xxx.rjwSextype rjwSextype))
+				return null;
+			return GetSextypeEventDef(rjwSextype);
+		}
+
+		private static readonly Dictionary<xxx.rjwSextype, HistoryEventDef> historyEventBySextype = BuildHistoryEventBySextype();
+
+		private static Dictionary<xxx.rjwSextype, HistoryEventDef> BuildHistoryEventBySextype()
+		{
+			Dictionary<xxx.rjwSextype, HistoryEventDef> dictionary = new Dictionary<xxx.rjwSextype, HistoryEventDef>();
+			foreach (HistoryEventDef historyEventDef in DefDatabase<HistoryEventDef>.AllDefsListForReading)
+			{
+				HistoryEventDefExtension_AssociatedSextypes associatedSextypes = historyEventDef.GetModExtension<HistoryEventDefExtension_AssociatedSextypes>();
+				if (associatedSextypes == null)
+					continue;
+				foreach (xxx.rjwSextype sextype in associatedSextypes.sextypes)
+				{
+					if (!dictionary.TryAdd(sextype, historyEventDef))
+						Log.Error($"[Sexperience.Ideology] Error in HistoryEventDef {historyEventDef.defName}: {sextype} sextype is already associated with {dictionary[sextype].defName} HistoryEventDef");
+				}
+			}
+			return dictionary;
 		}
 	}
 }

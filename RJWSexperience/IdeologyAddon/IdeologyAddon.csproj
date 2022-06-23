@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Ideology\HistoryEventDefExtension_AssociatedSextypes.cs" />
     <Compile Include="Ideology\GoodwillSituationWorker_MemeCompatibility.cs" />
     <Compile Include="Harmony.cs" />
     <Compile Include="Ideology\HETag.cs" />
@@ -56,7 +57,6 @@
     <Compile Include="Ideology\Precepts\DefExtension_ModifyNecroMtb.cs" />
     <Compile Include="Ideology\Precepts\DefExtension_ModifyBestialityMtb.cs" />
     <Compile Include="Ideology\Precepts\DefExtension_ModifyPreference.cs" />
-    <Compile Include="Ideology\Precepts\DefExtension_PreferSextype.cs" />
     <Compile Include="Ideology\Precepts\DefExtension_MultipleMemesRequired.cs" />
     <Compile Include="Ideology\Precepts\PreceptComp_KnowsMemoryThoughtTagged.cs" />
     <Compile Include="Ideology\Rituals\JobGiver_GangbangConsensual.cs" />

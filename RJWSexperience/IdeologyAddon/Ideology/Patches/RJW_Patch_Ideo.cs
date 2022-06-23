@@ -157,7 +157,7 @@ namespace RJWSexperience.Ideology.Patches
 				}
 				else
 				{
-					HistoryEventDef sexevent = GetSexHistoryDef(sextype);
+					HistoryEventDef sexevent = IdeoUtility.GetSextypeEventDef(sextype);
 					if (sexevent != null)
 					{
 						Find.HistoryEventsManager.RecordEvent(sexevent.TaggedEvent(human, tag + HETag.Gender(human), partner));
@@ -175,44 +175,6 @@ namespace RJWSexperience.Ideology.Patches
 				Hediff broken = victim.health.hediffSet.GetFirstHediffOfDef(xxx.feelingBroken);
 				if (broken != null) suppression.CurLevel += (0.3f * broken.Severity) + 0.05f;
 				else suppression.CurLevel += 0.05f;
-			}
-		}
-
-		/// <summary>
-		/// only for non-violate human sex
-		/// </summary>
-		/// <param name="sextype"></param>
-		/// <returns></returns>
-		public static HistoryEventDef GetSexHistoryDef(xxx.rjwSextype sextype)
-		{
-			switch (sextype)
-			{
-				case xxx.rjwSextype.None:
-				case xxx.rjwSextype.MechImplant:
-				default:
-					return null;
-				case xxx.rjwSextype.Vaginal:
-					return VariousDefOf.VaginalSex;
-				case xxx.rjwSextype.Anal:
-				case xxx.rjwSextype.Rimming:
-					return VariousDefOf.AnalSex;
-				case xxx.rjwSextype.Oral:
-				case xxx.rjwSextype.Fellatio:
-				case xxx.rjwSextype.Cunnilingus:
-					return VariousDefOf.OralSex;
-
-				case xxx.rjwSextype.Masturbation:
-				case xxx.rjwSextype.Boobjob:
-				case xxx.rjwSextype.Handjob:
-				case xxx.rjwSextype.Footjob:
-				case xxx.rjwSextype.Fingering:
-				case xxx.rjwSextype.MutualMasturbation:
-					return VariousDefOf.MiscSex;
-				case xxx.rjwSextype.DoublePenetration:
-				case xxx.rjwSextype.Scissoring:
-				case xxx.rjwSextype.Fisting:
-				case xxx.rjwSextype.Sixtynine:
-					return VariousDefOf.PromiscuousSex;
 			}
 		}
 	}
@@ -236,13 +198,11 @@ namespace RJWSexperience.Ideology.Patches
 
 		public static float PreceptSextype(Ideo ideo, float sexdrive, float score, InteractionWithExtension interaction)
 		{
-			for (int i = 0; i < ideo.PreceptsListForReading.Count; i++)
+			HistoryEventDef sexEventDef = IdeoUtility.GetSextypeEventDef(interaction.Extension.rjwSextype);
+			if (sexEventDef != null && ideo.MemberWillingToDo(new HistoryEvent(sexEventDef)))
 			{
-				if (ideo.PreceptsListForReading[i].def.GetModExtension<DefExtension_PreferSextype>()?.HasSextype(interaction.Extension.rjwSextype) == true)
-				{
-					float mult = 8.0f * Math.Max(0.3f, 1 / Math.Max(0.01f, sexdrive));
-					return score * mult;
-				}
+				float mult = 8.0f * Math.Max(0.3f, 1 / Math.Max(0.01f, sexdrive));
+				return score * mult;
 			}
 			return score;
 		}
