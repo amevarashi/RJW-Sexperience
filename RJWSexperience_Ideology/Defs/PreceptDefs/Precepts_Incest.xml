@@ -13,6 +13,21 @@
     <label>Incestuos marriage</label>
   </HistoryEventDef>
 
+  <HistoryEventDef>
+    <defName>RJWSI_NonIncestuosMarriage</defName>
+    <label>Non-incestuos marriage</label>
+  </HistoryEventDef>
+
+  <HistoryEventDef>
+    <defName>RJWSI_IncestuosSex</defName>
+    <label>Incestuos sex</label>
+  </HistoryEventDef>
+
+  <HistoryEventDef>
+    <defName>RJWSI_NonIncestuosSex</defName>
+    <label>Non-incestuos sex</label>
+  </HistoryEventDef>
+
   <!-- Precepts -->
 
   <PreceptDef>
@@ -25,7 +40,6 @@
     <displayOrderInImpact>1000</displayOrderInImpact>
     <defaultSelectionWeight>100</defaultSelectionWeight>
   </PreceptDef>
-
 
   <PreceptDef>
     <defName>Incestuos_Disapproved_CloseOnly</defName>
@@ -41,30 +55,9 @@
         <eventDef>Incestuos_Marriage</eventDef>
         <thought>IncestuosMarriage_Disapproved</thought>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>VaginalSex</eventDef>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>RJWSI_IncestuosSex</eventDef>
         <thought>Sex_Know_Incest_Disapproved</thought>
-        <tag>Incestuos</tag>
-      </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>AnalSex</eventDef>
-        <thought>Sex_Know_Incest_Disapproved</thought>
-        <tag>Incestuos</tag>
-      </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>OralSex</eventDef>
-        <thought>Sex_Know_Incest_Disapproved</thought>
-        <tag>Incestuos</tag>
-      </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>MiscSex</eventDef>
-        <thought>Sex_Know_Incest_Disapproved</thought>
-        <tag>Incestuos</tag>
-      </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>PromiscuousSex</eventDef>
-        <thought>Sex_Know_Incest_Disapproved</thought>
-        <tag>Incestuos</tag>
       </li>
     </comps>
     <modExtensions>
@@ -107,34 +100,13 @@
         <eventDef>Incestuos_Marriage</eventDef>
         <thought>IncestuosMarriage_Disapproved</thought>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
+      <li Class="PreceptComp_KnowsMemoryThought">
         <eventDef>Incestuos_Marriage</eventDef>
         <thought>Sex_Know_IncestMarriage_Disapproved</thought>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>VaginalSex</eventDef>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>RJWSI_IncestuosSex</eventDef>
         <thought>Sex_Know_Incest_Disapproved</thought>
-        <tag>Incestuos</tag>
-      </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>AnalSex</eventDef>
-        <thought>Sex_Know_Incest_Disapproved</thought>
-        <tag>Incestuos</tag>
-      </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>OralSex</eventDef>
-        <thought>Sex_Know_Incest_Disapproved</thought>
-        <tag>Incestuos</tag>
-      </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>MiscSex</eventDef>
-        <thought>Sex_Know_Incest_Disapproved</thought>
-        <tag>Incestuos</tag>
-      </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>PromiscuousSex</eventDef>
-        <thought>Sex_Know_Incest_Disapproved</thought>
-        <tag>Incestuos</tag>
       </li>
     </comps>
     <modExtensions>
@@ -185,34 +157,13 @@
         <eventDef>Incestuos_Marriage</eventDef>
         <thought>IncestuosMarriage_Forbidden</thought>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
+      <li Class="PreceptComp_KnowsMemoryThought">
         <eventDef>Incestuos_Marriage</eventDef>
         <thought>Sex_Know_IncestMarriage_Forbidden</thought>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>VaginalSex</eventDef>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>RJWSI_IncestuosSex</eventDef>
         <thought>Sex_Know_Incest_Forbidden</thought>
-        <tag>Incestuos</tag>
-      </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>AnalSex</eventDef>
-        <thought>Sex_Know_Incest_Forbidden</thought>
-        <tag>Incestuos</tag>
-      </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>OralSex</eventDef>
-        <thought>Sex_Know_Incest_Forbidden</thought>
-        <tag>Incestuos</tag>
-      </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>MiscSex</eventDef>
-        <thought>Sex_Know_Incest_Forbidden</thought>
-        <tag>Incestuos</tag>
-      </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>PromiscuousSex</eventDef>
-        <thought>Sex_Know_Incest_Forbidden</thought>
-        <tag>Incestuos</tag>
       </li>
     </comps>
     <modExtensions>
@@ -261,41 +212,13 @@
       <li>Zoophile</li>
     </conflictingMemes>
     <comps>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>GotMarried_SpouseCount_OneOrFewer</eventDef>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>RJWSI_NonIncestuosMarriage</eventDef>
         <thought>Sex_Know_IncestMarriage_Violated</thought>
-        <tag>Incestuos</tag>
-        <exclusive>true</exclusive>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>VaginalSex</eventDef>
+      <li Class="PreceptComp_KnowsMemoryThought">
+        <eventDef>RJWSI_NonIncestuosSex</eventDef>
         <thought>Sex_Know_Incest_Violated</thought>
-        <tag>Incestuos</tag>
-        <exclusive>true</exclusive>
-      </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>AnalSex</eventDef>
-        <thought>Sex_Know_Incest_Violated</thought>
-        <tag>Incestuos</tag>
-        <exclusive>true</exclusive>
-      </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>OralSex</eventDef>
-        <thought>Sex_Know_Incest_Violated</thought>
-        <tag>Incestuos</tag>
-        <exclusive>true</exclusive>
-      </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>MiscSex</eventDef>
-        <thought>Sex_Know_Incest_Violated</thought>
-        <tag>Incestuos</tag>
-        <exclusive>true</exclusive>
-      </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>PromiscuousSex</eventDef>
-        <thought>Sex_Know_Incest_Violated</thought>
-        <tag>Incestuos</tag>
-        <exclusive>true</exclusive>
       </li>
     </comps>
     <modExtensions>
@@ -457,7 +380,6 @@
     </stages>
   </ThoughtDef>
   
-
   <ThoughtDef>
     <defName>Sex_Know_Incest_Violated</defName>
     <thoughtClass>Thought_MemorySocial</thoughtClass>

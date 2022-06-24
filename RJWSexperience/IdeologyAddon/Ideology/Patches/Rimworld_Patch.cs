@@ -14,8 +14,13 @@ namespace RJWSexperience.Ideology.Patches
 		{
 			if (IdeoUtility.IsIncest(firstPawn, secondPawn))
 			{
-				Find.HistoryEventsManager.RecordEvent(new HistoryEvent(VariousDefOf.Incestuos_Marriage, firstPawn.Named(HistoryEventArgsNames.Doer)));
-				Find.HistoryEventsManager.RecordEvent(new HistoryEvent(VariousDefOf.Incestuos_Marriage, secondPawn.Named(HistoryEventArgsNames.Doer)));
+				Find.HistoryEventsManager.RecordEvent(VariousDefOf.Incestuos_Marriage.CreateEvent(firstPawn));
+				Find.HistoryEventsManager.RecordEvent(VariousDefOf.Incestuos_Marriage.CreateEvent(secondPawn));
+			}
+			else
+			{
+				Find.HistoryEventsManager.RecordEvent(VariousDefOf.RJWSI_NonIncestuosMarriage.CreateEvent(firstPawn));
+				Find.HistoryEventsManager.RecordEvent(VariousDefOf.RJWSI_NonIncestuosMarriage.CreateEvent(secondPawn));
 			}
 		}
 	}
