@@ -11,9 +11,13 @@ namespace RJWSexperience.Ideology.Patches
 {
 	public static class RJWUtility_Ideo
 	{
-		public static HistoryEvent TaggedEvent(this HistoryEventDef def, Pawn pawn, string tag, Pawn partner)
+		public static HistoryEvent CreateTaggedEvent(this HistoryEventDef def, Pawn pawn, string tag, Pawn partner)
 		{
 			return new HistoryEvent(def, pawn.Named(HistoryEventArgsNames.Doer), tag.Named(HistoryEventArgsNamesCustom.Tag), partner.Named(HistoryEventArgsNamesCustom.Partner));
+		}
+		public static HistoryEvent CreateEvent(this HistoryEventDef def, Pawn pawn)
+		{
+			return new HistoryEvent(def, pawn.Named(HistoryEventArgsNames.Doer));
 		}
 
 		public static Faction GetFactionUsingPrecept(this Pawn baby, out Ideo ideo)
@@ -99,38 +103,46 @@ namespace RJWSexperience.Ideology.Patches
 
 		public static void AfterSexHuman(Pawn human, Pawn partner, bool rape, xxx.rjwSextype sextype, bool isHumanReceiving = false)
 		{
+			if (partner.Dead)
+			{
+				Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithCorpse.CreateEvent(human));
+				return;
+			}
+
 			string tag = "";
 			if (IdeoUtility.IsIncest(human, partner))
 			{
 				tag += HETag.Incestous;
 			}
 
-			if (partner.Dead)
-			{
-				Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithCorpse.TaggedEvent(human, tag + HETag.Gender(human), partner));
-			}
-			else if (partner.IsAnimal())
+			if (partner.IsAnimal())
 			{
 				if (isHumanReceiving && rape)
 				{
-					if (human.IsSlave) RapeEffectSlave(human);
-					if (human.Ideo?.IsVeneratedAnimal(partner) ?? false) Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithVeneratedAnimal.TaggedEvent(human, tag + HETag.BeenRaped + HETag.Gender(human), partner));
-					else Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithAnimal.TaggedEvent(human, tag + HETag.BeenRaped + HETag.Gender(human), partner));
+					if (human.IsSlave)
+						RapeEffectSlave(human);
+
+					if (human.Ideo?.IsVeneratedAnimal(partner) ?? false)
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithVeneratedAnimal.CreateTaggedEvent(human, tag + HETag.BeenRaped + HETag.Gender(human), partner));
+					else
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithAnimal.CreateTaggedEvent(human, tag + HETag.BeenRaped + HETag.Gender(human), partner));
 
 					if (human.Ideo != null && human.relations?.DirectRelationExists(PawnRelationDefOf.Bond, partner) == true)
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithBondedAnimal.TaggedEvent(human, tag + HETag.BeenRaped + HETag.Gender(human), partner));
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithBondedAnimal.CreateTaggedEvent(human, tag + HETag.BeenRaped + HETag.Gender(human), partner));
 					else
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithNonBondAnimal.TaggedEvent(human, tag + HETag.BeenRaped + HETag.Gender(human), partner));
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithNonBondAnimal.CreateTaggedEvent(human, tag + HETag.BeenRaped + HETag.Gender(human), partner));
 				}
 				else
 				{
-					if (human.Ideo?.IsVeneratedAnimal(partner) ?? false) Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithVeneratedAnimal.TaggedEvent(human, tag + HETag.Gender(human), partner));
-					else Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithAnimal.TaggedEvent(human, tag + HETag.Gender(human), partner));
+					if (human.Ideo?.IsVeneratedAnimal(partner) ?? false)
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithVeneratedAnimal.CreateTaggedEvent(human, tag + HETag.Gender(human), partner));
+					else
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithAnimal.CreateTaggedEvent(human, tag + HETag.Gender(human), partner));
 
 					if (human.Ideo != null && human.relations?.DirectRelationExists(PawnRelationDefOf.Bond, partner) == true)
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithBondedAnimal.TaggedEvent(human, tag + HETag.Gender(human), partner));
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithBondedAnimal.CreateTaggedEvent(human, tag + HETag.Gender(human), partner));
 					else
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithNonBondAnimal.TaggedEvent(human, tag + HETag.Gender(human), partner));
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithNonBondAnimal.CreateTaggedEvent(human, tag + HETag.Gender(human), partner));
 				}
 			}
 			else if (xxx.is_human(partner))
@@ -139,29 +151,29 @@ namespace RJWSexperience.Ideology.Patches
 				{
 					if (partner.IsSlave)
 					{
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.RapedSlave.TaggedEvent(human, tag + HETag.Rape + HETag.Gender(human), partner));
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.WasRapedSlave.TaggedEvent(partner, tag + HETag.BeenRaped + HETag.Gender(partner), human));
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.RapedSlave.CreateTaggedEvent(human, tag + HETag.Rape + HETag.Gender(human), partner));
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.WasRapedSlave.CreateTaggedEvent(partner, tag + HETag.BeenRaped + HETag.Gender(partner), human));
 						RapeEffectSlave(partner);
 					}
 					else if (partner.IsPrisoner)
 					{
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.RapedPrisoner.TaggedEvent(human, tag + HETag.Rape + HETag.Gender(human), partner));
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.WasRapedPrisoner.TaggedEvent(partner, tag + HETag.BeenRaped + HETag.Gender(partner), human));
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.RapedPrisoner.CreateTaggedEvent(human, tag + HETag.Rape + HETag.Gender(human), partner));
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.WasRapedPrisoner.CreateTaggedEvent(partner, tag + HETag.BeenRaped + HETag.Gender(partner), human));
 						partner.guest.will = Math.Max(0, partner.guest.will - 0.2f);
 					}
 					else
 					{
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.Raped.TaggedEvent(human, tag + HETag.Rape + HETag.Gender(human), partner));
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.WasRaped.TaggedEvent(partner, tag + HETag.BeenRaped + HETag.Gender(partner), human));
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.Raped.CreateTaggedEvent(human, tag + HETag.Rape + HETag.Gender(human), partner));
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.WasRaped.CreateTaggedEvent(partner, tag + HETag.BeenRaped + HETag.Gender(partner), human));
 					}
 				}
 				else
 				{
-					HistoryEventDef sexevent = IdeoUtility.GetSextypeEventDef(sextype);
-					if (sexevent != null)
+					HistoryEventDef sexEventDef = IdeoUtility.GetSextypeEventDef(sextype);
+					if (sexEventDef != null)
 					{
-						Find.HistoryEventsManager.RecordEvent(sexevent.TaggedEvent(human, tag + HETag.Gender(human), partner));
-						Find.HistoryEventsManager.RecordEvent(sexevent.TaggedEvent(partner, tag + HETag.Gender(partner), human));
+						Find.HistoryEventsManager.RecordEvent(sexEventDef.CreateTaggedEvent(human, tag + HETag.Gender(human), partner));
+						Find.HistoryEventsManager.RecordEvent(sexEventDef.CreateTaggedEvent(partner, tag + HETag.Gender(partner), human));
 					}
 				}
 			}

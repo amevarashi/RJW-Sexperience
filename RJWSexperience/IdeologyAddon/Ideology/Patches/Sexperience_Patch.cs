@@ -21,13 +21,13 @@ namespace RJWSexperience.Ideology.Patches
 
 			if (pawn.gender == Gender.Male)
 			{
-				if (degree > 1) Find.HistoryEventsManager.RecordEvent(VariousDefOf.Virgin_TakenM.TaggedEvent(pawn, tag + HETag.Gender(pawn), partner));
-				Find.HistoryEventsManager.RecordEvent(VariousDefOf.Virgin_TookM.TaggedEvent(partner, tag + HETag.Gender(pawn), pawn));
+				if (degree > 1) Find.HistoryEventsManager.RecordEvent(VariousDefOf.Virgin_TakenM.CreateTaggedEvent(pawn, tag + HETag.Gender(pawn), partner));
+				Find.HistoryEventsManager.RecordEvent(VariousDefOf.Virgin_TookM.CreateTaggedEvent(partner, tag + HETag.Gender(pawn), pawn));
 			}
 			else
 			{
-				if (degree > 1) Find.HistoryEventsManager.RecordEvent(VariousDefOf.Virgin_TakenF.TaggedEvent(pawn, tag + HETag.Gender(pawn), partner));
-				Find.HistoryEventsManager.RecordEvent(VariousDefOf.Virgin_TookF.TaggedEvent(partner, tag + HETag.Gender(pawn), pawn));
+				if (degree > 1) Find.HistoryEventsManager.RecordEvent(VariousDefOf.Virgin_TakenF.CreateTaggedEvent(pawn, tag + HETag.Gender(pawn), partner));
+				Find.HistoryEventsManager.RecordEvent(VariousDefOf.Virgin_TookF.CreateTaggedEvent(partner, tag + HETag.Gender(pawn), pawn));
 			}
 		}
 	}
