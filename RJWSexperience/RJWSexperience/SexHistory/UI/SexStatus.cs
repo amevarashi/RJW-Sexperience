@@ -370,13 +370,13 @@ namespace RJWSexperience.SexHistory.UI
 			listmain.Gap(20f);
 			float p;
 
-			if (pawn.IsVirgin())
+			if (pawn.story?.traits?.HasTrait(VariousDefOf.Virgin) == true)
 			{
 				tmp = listmain.GetRect(FONTHEIGHT);
 				GUI.color = Color.red;
 				GUI.Box(tmp, "", boxstyle);
 				GUI.color = Color.white;
-				GUI.Label(tmp, Keyed.Virgin, fontstylecenter);
+				GUI.Label(tmp, pawn.story.traits.GetTrait(VariousDefOf.Virgin).Label, fontstylecenter);
 			}
 			else
 			{
