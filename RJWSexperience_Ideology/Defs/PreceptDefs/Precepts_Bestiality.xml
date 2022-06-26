@@ -19,13 +19,18 @@
   </HistoryEventDef>
 
   <HistoryEventDef>
+    <defName>SexWithNonVeneratedAnimal</defName>
+    <label>sex with non venerated animal</label>
+  </HistoryEventDef>
+
+  <HistoryEventDef>
     <defName>SexWithBondedAnimal</defName>
     <label>Sex with bonded</label>
   </HistoryEventDef>
 
   <HistoryEventDef>
     <defName>SexWithNonBondAnimal</defName>
-    <label>Sex with Non Bonded</label>
+    <label>Sex with non Bonded</label>
   </HistoryEventDef>
 
   <!-- Precepts -->
@@ -222,12 +227,12 @@
     </requiredMemes>
     <comps>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>SexWithAnimal</eventDef>
+        <eventDef>SexWithNonVeneratedAnimal</eventDef>
         <thought>Bestiality_Nonvenerated_Disapproved</thought>
         <onlyForNonSlaves>true</onlyForNonSlaves>
       </li>
       <li Class="PreceptComp_KnowsMemoryThought">
-        <eventDef>SexWithAnimal</eventDef>
+        <eventDef>SexWithNonVeneratedAnimal</eventDef>
         <thought>Bestiality_Nonvenerated_Know_Disapproved</thought>
         <description>Someone sex with any animal</description>
         <onlyForNonSlaves>true</onlyForNonSlaves>

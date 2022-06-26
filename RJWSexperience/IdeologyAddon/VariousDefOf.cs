@@ -17,6 +17,7 @@ namespace RJWSexperience.Ideology
 		[MayRequireIdeology] public static readonly MemeDef Necrophile = DefDatabase<MemeDef>.GetNamed("Necrophile");
 		[MayRequireIdeology] public static readonly HistoryEventDef SexWithAnimal = DefDatabase<HistoryEventDef>.GetNamed("SexWithAnimal");
 		[MayRequireIdeology] public static readonly HistoryEventDef SexWithVeneratedAnimal = DefDatabase<HistoryEventDef>.GetNamed("SexWithVeneratedAnimal");
+		[MayRequireIdeology] public static readonly HistoryEventDef SexWithNonVeneratedAnimal = DefDatabase<HistoryEventDef>.GetNamed("SexWithNonVeneratedAnimal");
 		[MayRequireIdeology] public static readonly HistoryEventDef SexWithBondedAnimal = DefDatabase<HistoryEventDef>.GetNamed("SexWithBondedAnimal");
 		[MayRequireIdeology] public static readonly HistoryEventDef SexWithNonBondAnimal = DefDatabase<HistoryEventDef>.GetNamed("SexWithNonBondAnimal");
 		[MayRequireIdeology] public static readonly HistoryEventDef Raped = DefDatabase<HistoryEventDef>.GetNamed("Raped");
