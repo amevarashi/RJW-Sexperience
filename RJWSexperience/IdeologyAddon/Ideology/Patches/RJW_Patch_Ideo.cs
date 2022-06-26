@@ -119,33 +119,26 @@ namespace RJWSexperience.Ideology.Patches
 
 			if (partner.IsAnimal())
 			{
+				string tag = HETag.Gender(human);
 				if (isHumanReceiving && rape)
 				{
+					tag += HETag.BeenRaped;
+
 					if (human.IsSlave)
 						RapeEffectSlave(human);
-
-					if (human.Ideo?.IsVeneratedAnimal(partner) ?? false)
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithVeneratedAnimal.CreateTaggedEvent(human, HETag.BeenRaped + HETag.Gender(human), partner));
-					else
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithAnimal.CreateTaggedEvent(human, HETag.BeenRaped + HETag.Gender(human), partner));
-
-					if (human.Ideo != null && human.relations?.DirectRelationExists(PawnRelationDefOf.Bond, partner) == true)
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithBondedAnimal.CreateTaggedEvent(human, HETag.BeenRaped + HETag.Gender(human), partner));
-					else
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithNonBondAnimal.CreateTaggedEvent(human, HETag.BeenRaped + HETag.Gender(human), partner));
 				}
+
+				if (human.Ideo?.IsVeneratedAnimal(partner) ?? false)
+					Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithVeneratedAnimal.CreateTaggedEvent(human, tag, partner));
 				else
-				{
-					if (human.Ideo?.IsVeneratedAnimal(partner) ?? false)
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithVeneratedAnimal.CreateTaggedEvent(human, HETag.Gender(human), partner));
-					else
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithAnimal.CreateTaggedEvent(human, HETag.Gender(human), partner));
+					Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithNonVeneratedAnimal.CreateTaggedEvent(human, tag, partner));
 
-					if (human.Ideo != null && human.relations?.DirectRelationExists(PawnRelationDefOf.Bond, partner) == true)
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithBondedAnimal.CreateTaggedEvent(human, HETag.Gender(human), partner));
-					else
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithNonBondAnimal.CreateTaggedEvent(human, HETag.Gender(human), partner));
-				}
+				if (human.Ideo != null && human.relations?.DirectRelationExists(PawnRelationDefOf.Bond, partner) == true)
+					Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithBondedAnimal.CreateTaggedEvent(human, tag, partner));
+				else
+					Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithNonBondAnimal.CreateTaggedEvent(human, tag, partner));
+
+				Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithAnimal.CreateTaggedEvent(human, tag, partner));
 			}
 			else if (xxx.is_human(partner))
 			{
