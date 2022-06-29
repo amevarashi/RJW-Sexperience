@@ -79,7 +79,7 @@
 	<HediffDef ParentName="DrugToleranceBase">
 		<defName>CumTolerance</defName>
 		<label>cum addictiveness</label>
-		<description>cum addictiveness.</description>
+		<description>More likely to get addicted to cum.</description>
 		<isBad>false</isBad>
 		<comps>
 			<li Class="HediffCompProperties_SeverityPerDay">

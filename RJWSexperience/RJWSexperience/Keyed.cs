@@ -49,10 +49,6 @@ namespace RJWSexperience
 		public static readonly string RS_Interspecies = "RS_Interspecies".Translate();
 		public static readonly string RS_Necrophile = "RS_Necrophile".Translate();
 		public static readonly string RS_SexSkill = "RS_SexSkill".Translate();
-		public static readonly string RS_CumAddiction = "RS_CumAddiction".Translate();
-		public static readonly string RS_CumAddiction_Tooltip = "RS_CumAddiction_Tooltip".Translate();
-		public static readonly string RS_CumAddictiveness = "RS_CumAddictiveness".Translate();
-		public static readonly string RS_CumAddictiveness_Tooltip = "RS_CumAddictiveness_Tooltip".Translate();
 		public static readonly string RS_NumofTimes = "RS_NumofTimes".Translate();
 		public static readonly string RS_Ago = "RS_Ago".Translate();
 		public static readonly string RS_LastSex = "RS_LastSex".Translate();

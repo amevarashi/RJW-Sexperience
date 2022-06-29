@@ -420,24 +420,18 @@ namespace RJWSexperience.SexHistory.UI
 			FillableBarLabeled(listmain.GetRect(FONTHEIGHT), String.Format(Keyed.RS_Cum_Swallowed + ": {0} mL, {1} " + Keyed.RS_NumofTimes, p, pawn.records.GetValue(VariousDefOf.NumofEatenCum)), p / 1000, Texture2D.linearGrayTexture, Texture2D.blackTexture);
 			listmain.Gap(1f);
 
-			Hediff addiction = pawn.health.hediffSet.GetFirstHediffOfDef(VariousDefOf.CumAddiction);
+			Hediff addiction = pawn.health.hediffSet.GetFirstHediffOfDef(VariousDefOf.CumAddiction)
+				?? pawn.health.hediffSet.GetFirstHediffOfDef(VariousDefOf.CumTolerance);
 			if (addiction != null)
 			{
 				p = addiction.Severity;
-				FillableBarLabeled(listmain.GetRect(FONTHEIGHT), String.Format(Keyed.RS_CumAddiction + ": {0:P2}", p), p, Texture2D.linearGrayTexture, Texture2D.blackTexture, Keyed.RS_CumAddiction_Tooltip);
-				listmain.Gap(1f);
-			}
-			else if ((addiction = pawn.health.hediffSet.GetFirstHediffOfDef(VariousDefOf.CumTolerance)) != null)
-			{
-				p = addiction.Severity;
-				FillableBarLabeled(listmain.GetRect(FONTHEIGHT), String.Format(Keyed.RS_CumAddictiveness + ": {0:P}", p), p, Texture2D.linearGrayTexture, Texture2D.blackTexture, Keyed.RS_CumAddictiveness_Tooltip);
-				listmain.Gap(1f);
+				FillableBarLabeled(listmain.GetRect(FONTHEIGHT), $"{addiction.Label}: {p.ToStringPercent()}", p, Texture2D.linearGrayTexture, Texture2D.blackTexture, addiction.GetTooltip(pawn, false));
 			}
 			else
 			{
 				listmain.GetRect(FONTHEIGHT);
-				listmain.Gap(1f);
 			}
+			listmain.Gap(1f);
 
 			p = history.RapedCount;
 			tmp = listmain.GetRect(FONTHEIGHT);
