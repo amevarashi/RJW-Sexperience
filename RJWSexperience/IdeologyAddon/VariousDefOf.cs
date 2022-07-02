@@ -31,8 +31,10 @@ namespace RJWSexperience.Ideology
 		[MayRequireIdeology] public static readonly HistoryEventDef OralSex = DefDatabase<HistoryEventDef>.GetNamed("OralSex");
 		[MayRequireIdeology] public static readonly HistoryEventDef MiscSex = DefDatabase<HistoryEventDef>.GetNamed("MiscSex");
 		[MayRequireIdeology] public static readonly HistoryEventDef PromiscuousSex = DefDatabase<HistoryEventDef>.GetNamed("PromiscuousSex");
+		[MayRequireIdeology] public static readonly HistoryEventDef RJWSI_CloseRelativeMarriage = DefDatabase<HistoryEventDef>.GetNamed("RJWSI_CloseRelativeMarriage");
 		[MayRequireIdeology] public static readonly HistoryEventDef Incestuos_Marriage = DefDatabase<HistoryEventDef>.GetNamed("Incestuos_Marriage");
 		[MayRequireIdeology] public static readonly HistoryEventDef RJWSI_NonIncestuosMarriage = DefDatabase<HistoryEventDef>.GetNamed("RJWSI_NonIncestuosMarriage");
+		[MayRequireIdeology] public static readonly HistoryEventDef RJWSI_CloseRelativeSex = DefDatabase<HistoryEventDef>.GetNamed("RJWSI_CloseRelativeSex");
 		[MayRequireIdeology] public static readonly HistoryEventDef RJWSI_IncestuosSex = DefDatabase<HistoryEventDef>.GetNamed("RJWSI_IncestuosSex");
 		[MayRequireIdeology] public static readonly HistoryEventDef RJWSI_NonIncestuosSex = DefDatabase<HistoryEventDef>.GetNamed("RJWSI_NonIncestuosSex");
 		[MayRequireIdeology] public static readonly HistoryEventDef SexWithCorpse = DefDatabase<HistoryEventDef>.GetNamed("SexWithCorpse");

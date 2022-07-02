@@ -114,8 +114,13 @@ namespace RJWSexperience.Ideology.Patches
 
 		public static void AfterSexHuman(Pawn human, Pawn partner, bool rape, bool isHumanReceiving = false)
 		{
-			if (IdeoUtility.IsIncest(human, partner))
+			if (IdeoUtility.IsIncest(human, partner, false))
 			{
+				if (IdeoUtility.IsIncest(human, partner, true))
+				{
+					Find.HistoryEventsManager.RecordEvent(VariousDefOf.RJWSI_CloseRelativeSex.CreateEvent(human));
+					Find.HistoryEventsManager.RecordEvent(VariousDefOf.RJWSI_CloseRelativeSex.CreateEvent(partner));
+				}
 				Find.HistoryEventsManager.RecordEvent(VariousDefOf.RJWSI_IncestuosSex.CreateEvent(human));
 				Find.HistoryEventsManager.RecordEvent(VariousDefOf.RJWSI_IncestuosSex.CreateEvent(partner));
 			}

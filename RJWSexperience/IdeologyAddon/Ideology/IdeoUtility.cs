@@ -37,16 +37,15 @@ namespace RJWSexperience.Ideology
 			return true;
 		}
 
-		public static bool IsIncest(Pawn pawn, Pawn partner)
+		public static bool IsIncest(Pawn pawn, Pawn partner, bool close)
 		{
 			IEnumerable<PawnRelationDef> relations = pawn.GetRelations(partner);
 			if (relations.EnumerableNullOrEmpty())
 				return false;
 
-			bool wide = pawn.Ideo?.HasPrecept(VariousDefOf.Incestuos_Disapproved_CloseOnly) == true;
 			foreach (PawnRelationDef relation in relations)
 			{
-				if (wide)
+				if (close)
 				{
 					if (relation.incestOpinionOffset < 0)
 						return true;

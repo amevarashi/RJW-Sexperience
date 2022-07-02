@@ -31,14 +31,4 @@ namespace RJWSexperience.Ideology.Patches
 			}
 		}
 	}
-
-	public static class Sexperience_Patch_IsIncest
-	{
-		public static bool Prefix(Pawn pawn, Pawn otherpawn, ref bool __result)
-		{
-			__result = IdeoUtility.IsIncest(pawn, otherpawn);
-			return false;
-		}
-	}
-
 }
