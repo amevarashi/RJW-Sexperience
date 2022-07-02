@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Patch>
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>/Defs/InteractionDef[defName="Sex_Vaginal"]</xpath>
+		<value>
+			<li Class="RJWSexperience.Ideology.InteractionDefExtension_HistoryEvents">
+				<pawnEvents>
+					<li>VaginalSex</li>
+				</pawnEvents>
+				<partnerEvents>
+					<li>VaginalSex</li>
+				</partnerEvents>
+			</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>/Defs/InteractionDef[defName="Sex_Anal" or defName="Sex_Rimming"]</xpath>
+		<value>
+			<li Class="RJWSexperience.Ideology.InteractionDefExtension_HistoryEvents">
+				<pawnEvents>
+					<li>AnalSex</li>
+				</pawnEvents>
+				<partnerEvents>
+					<li>AnalSex</li>
+				</partnerEvents>
+			</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>/Defs/InteractionDef[defName="Sex_Beakjob" or defName="Sex_Cunnilingus" or defName="Sex_Fellatio" or defName="Sex_Makeout" or defName="Sex_Sixtynine"]</xpath>
+		<value>
+			<li Class="RJWSexperience.Ideology.InteractionDefExtension_HistoryEvents">
+				<pawnEvents>
+					<li>OralSex</li>
+				</pawnEvents>
+				<partnerEvents>
+					<li>OralSex</li>
+				</partnerEvents>
+			</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>/Defs/InteractionDef[defName="Sex_Breastjob" or defName="Sex_Fingering" or defName="Sex_Footjob" or defName="Sex_Handjob" or defName="Sex_MutualHandholding" or defName="Sex_MutualMasturbation" or defName="Sex_MutualTailholding"]</xpath>
+		<value>
+			<li Class="RJWSexperience.Ideology.InteractionDefExtension_HistoryEvents">
+				<pawnEvents>
+					<li>MiscSex</li>
+				</pawnEvents>
+				<partnerEvents>
+					<li>MiscSex</li>
+				</partnerEvents>
+			</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>/Defs/InteractionDef[defName="Sex_DoublePenetration" or defName="Sex_DoublePenetrationM" or defName="Sex_Fisting" or defName="Sex_Scissoring"]</xpath>
+		<value>
+			<li Class="RJWSexperience.Ideology.InteractionDefExtension_HistoryEvents">
+				<pawnEvents>
+					<li>PromiscuousSex</li>
+				</pawnEvents>
+				<partnerEvents>
+					<li>PromiscuousSex</li>
+				</partnerEvents>
+			</li>
+		</value>
+	</Operation>
+</Patch>

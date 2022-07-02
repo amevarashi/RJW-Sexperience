@@ -43,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Ideology\HistoryEventDefExtension_AssociatedSextypes.cs" />
+    <Compile Include="Ideology\InteractionDefExtension_HistoryEvents.cs" />
     <Compile Include="Ideology\GoodwillSituationWorker_MemeCompatibility.cs" />
     <Compile Include="Harmony.cs" />
     <Compile Include="Ideology\HETag.cs" />

@@ -5,6 +5,7 @@ using rjw.Modules.Interactions.Internals.Implementation;
 using rjw.Modules.Interactions.Objects;
 using RJWSexperience.Ideology.Precepts;
 using System;
+using System.Collections.Generic;
 using Verse;
 
 namespace RJWSexperience.Ideology.Patches
@@ -92,20 +93,27 @@ namespace RJWSexperience.Ideology.Patches
 			Pawn pawn = props.pawn;
 			Pawn partner = props.partner;
 
-			if (partner != null)
+			if (props.hasPartner())
 			{
 				if (xxx.is_human(pawn))
-					AfterSexHuman(pawn, partner, props.isRape, props.sexType);
+					AfterSexHuman(pawn, partner, props.isRape);
 				else if (xxx.is_human(partner))
-					AfterSexHuman(partner, pawn, false, props.sexType, true);
+					AfterSexHuman(partner, pawn, false, true);
+			}
+
+			InteractionDefExtension_HistoryEvents interactionEvents = props.dictionaryKey.GetModExtension<InteractionDefExtension_HistoryEvents>();
+			if (interactionEvents != null)
+			{
+				foreach (HistoryEventDef eventDef in interactionEvents.pawnEvents)
+					Find.HistoryEventsManager.RecordEvent(eventDef.CreateEvent(pawn));
+
+				foreach (HistoryEventDef eventDef in interactionEvents.partnerEvents)
+					Find.HistoryEventsManager.RecordEvent(eventDef.CreateEvent(partner));
 			}
 		}
 
-		public static void AfterSexHuman(Pawn human, Pawn partner, bool rape, xxx.rjwSextype sextype, bool isHumanReceiving = false)
+		public static void AfterSexHuman(Pawn human, Pawn partner, bool rape, bool isHumanReceiving = false)
 		{
-			if (partner.Dead)
-				Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithCorpse.CreateEvent(human));
-
 			if (IdeoUtility.IsIncest(human, partner))
 			{
 				Find.HistoryEventsManager.RecordEvent(VariousDefOf.RJWSI_IncestuosSex.CreateEvent(human));
@@ -162,15 +170,6 @@ namespace RJWSexperience.Ideology.Patches
 						Find.HistoryEventsManager.RecordEvent(VariousDefOf.WasRaped.CreateTaggedEvent(partner, HETag.BeenRaped + HETag.Gender(partner), human));
 					}
 				}
-				else
-				{
-					HistoryEventDef sexEventDef = IdeoUtility.GetSextypeEventDef(sextype);
-					if (sexEventDef != null)
-					{
-						Find.HistoryEventsManager.RecordEvent(sexEventDef.CreateEvent(human));
-						Find.HistoryEventsManager.RecordEvent(sexEventDef.CreateEvent(partner));
-					}
-				}
 			}
 		}
 
@@ -194,22 +193,28 @@ namespace RJWSexperience.Ideology.Patches
 	{
 		public static void Postfix(InteractionWithExtension interaction, InteractionPawn dominant, InteractionPawn submissive, ref InteractionScore __result)
 		{
+			InteractionDefExtension_HistoryEvents interactionEvents = interaction.Interaction.GetModExtension<InteractionDefExtension_HistoryEvents>();
+			if (interactionEvents == null)
+				return;
+
 			Ideo ideo = dominant.Pawn.Ideo;
 			if (ideo != null)
-				__result.Dominant = PreceptSextype(ideo, dominant.Pawn.GetStatValue(xxx.sex_drive_stat), __result.Dominant, interaction);
+				__result.Dominant = PreceptSextype(ideo, dominant.Pawn.GetStatValue(xxx.sex_drive_stat), __result.Dominant, interactionEvents.pawnEvents);
 
 			ideo = submissive.Pawn.Ideo;
 			if (ideo != null)
-				__result.Submissive = PreceptSextype(ideo, submissive.Pawn.GetStatValue(xxx.sex_drive_stat), __result.Submissive, interaction);
+				__result.Submissive = PreceptSextype(ideo, submissive.Pawn.GetStatValue(xxx.sex_drive_stat), __result.Submissive, interactionEvents.partnerEvents);
 		}
 
-		public static float PreceptSextype(Ideo ideo, float sexdrive, float score, InteractionWithExtension interaction)
+		public static float PreceptSextype(Ideo ideo, float sexdrive, float score, List<HistoryEventDef> historyEventDefs)
 		{
-			HistoryEventDef sexEventDef = IdeoUtility.GetSextypeEventDef(interaction.Extension.rjwSextype);
-			if (sexEventDef != null && ideo.MemberWillingToDo(new HistoryEvent(sexEventDef)))
+			foreach(HistoryEventDef eventDef in historyEventDefs)
 			{
-				float mult = 8.0f * Math.Max(0.3f, 1 / Math.Max(0.01f, sexdrive));
-				return score * mult;
+				if (ideo.MemberWillingToDo(new HistoryEvent(eventDef)))
+				{
+					float mult = 8.0f * Math.Max(0.3f, 1 / Math.Max(0.01f, sexdrive));
+					return score * mult;
+				}
 			}
 			return score;
 		}

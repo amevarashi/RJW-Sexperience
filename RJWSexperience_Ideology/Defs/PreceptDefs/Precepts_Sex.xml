@@ -11,71 +11,26 @@
   <HistoryEventDef>
     <defName>VaginalSex</defName>
     <label>vaginal sex</label>
-    <modExtensions>
-      <li Class="RJWSexperience.Ideology.HistoryEventDefExtension_AssociatedSextypes">
-        <sextypes>
-          <li>Vaginal</li>
-        </sextypes>
-      </li>
-    </modExtensions>
   </HistoryEventDef>
 
   <HistoryEventDef>
     <defName>AnalSex</defName>
     <label>anal sex</label>
-    <modExtensions>
-      <li Class="RJWSexperience.Ideology.HistoryEventDefExtension_AssociatedSextypes">
-        <sextypes>
-          <li>Anal</li>
-          <li>Rimming</li>
-        </sextypes>
-      </li>
-    </modExtensions>
   </HistoryEventDef>
 
   <HistoryEventDef>
     <defName>OralSex</defName>
     <label>oral sex</label>
-    <modExtensions>
-      <li Class="RJWSexperience.Ideology.HistoryEventDefExtension_AssociatedSextypes">
-        <sextypes>
-          <li>Cunnilingus</li>
-          <li>Fellatio</li>
-        </sextypes>
-      </li>
-    </modExtensions>
   </HistoryEventDef>
   
   <HistoryEventDef>
     <defName>PromiscuousSex</defName>
     <label>promiscuous sex</label>
-    <modExtensions>
-      <li Class="RJWSexperience.Ideology.HistoryEventDefExtension_AssociatedSextypes">
-        <sextypes>
-          <li>DoublePenetration</li>
-          <li>Scissoring</li>
-          <li>Sixtynine</li>
-          <li>Fisting</li>
-        </sextypes>
-      </li>
-    </modExtensions>
   </HistoryEventDef>
 
   <HistoryEventDef>
     <defName>MiscSex</defName>
     <label>sex</label>
-    <modExtensions>
-      <li Class="RJWSexperience.Ideology.HistoryEventDefExtension_AssociatedSextypes">
-        <sextypes>
-          <li>Masturbation</li>
-          <li>Boobjob</li>
-          <li>Handjob</li>
-          <li>Footjob</li>
-          <li>Fingering</li>
-          <li>MutualMasturbation</li>
-        </sextypes>
-      </li>
-    </modExtensions>
   </HistoryEventDef>
 
   <!-- Precepts -->
