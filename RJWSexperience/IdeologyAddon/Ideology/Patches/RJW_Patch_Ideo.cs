@@ -16,9 +16,26 @@ namespace RJWSexperience.Ideology.Patches
 		{
 			return new HistoryEvent(def, pawn.Named(HistoryEventArgsNames.Doer), tag.Named(HistoryEventArgsNamesCustom.Tag), partner.Named(HistoryEventArgsNamesCustom.Partner));
 		}
+
 		public static HistoryEvent CreateEvent(this HistoryEventDef def, Pawn pawn)
 		{
 			return new HistoryEvent(def, pawn.Named(HistoryEventArgsNames.Doer));
+		}
+
+		public static HistoryEvent CreateEventWithPartner(this HistoryEventDef def, Pawn pawn, Pawn partner)
+		{
+			HistoryEventDefExtension_PartnerDependentOverrides overrides = def.GetModExtension<HistoryEventDefExtension_PartnerDependentOverrides>();
+
+			if (overrides == null)
+				return new HistoryEvent(def, pawn.Named(HistoryEventArgsNames.Doer), partner.Named(HistoryEventArgsNamesCustom.Partner));
+
+			foreach (var rule in overrides.overrideRules)
+			{
+				if (rule.Applies(pawn, partner))
+					return rule.historyEventDef.CreateEventWithPartner(pawn, partner);
+			}
+
+			return new HistoryEvent(def, pawn.Named(HistoryEventArgsNames.Doer), partner.Named(HistoryEventArgsNamesCustom.Partner));
 		}
 
 		public static Faction GetFactionUsingPrecept(this Pawn baby, out Ideo ideo)
@@ -90,56 +107,60 @@ namespace RJWSexperience.Ideology.Patches
 	{
 		public static void Postfix(SexProps props)
 		{
-			Pawn pawn = props.pawn;
-			Pawn partner = props.partner;
+			InteractionDefExtension_HistoryEvents interactionEvents = props.dictionaryKey.GetModExtension<InteractionDefExtension_HistoryEvents>();
 
 			if (props.hasPartner())
 			{
-				if (xxx.is_human(pawn))
-					AfterSexHuman(pawn, partner, props.isRape);
-				else if (xxx.is_human(partner))
-					AfterSexHuman(partner, pawn, false, true);
+				if (xxx.is_human(props.pawn))
+					AfterSexHuman(props.pawn, props.partner, props.isRape);
+				else if (xxx.is_human(props.partner))
+					AfterSexHuman(props.partner, props.pawn, false);
+
+				if (xxx.is_human(props.partner) && props.isRape)
+				{
+					if (props.partner.IsPrisoner)
+						props.partner.guest.will = Math.Max(0, props.partner.guest.will - 0.2f);
+					if (props.partner.IsSlave)
+						RapeEffectSlave(props.partner);
+				}
+
+				if (interactionEvents != null)
+				{
+					foreach (HistoryEventDef eventDef in interactionEvents.pawnEvents)
+						Find.HistoryEventsManager.RecordEvent(eventDef.CreateEventWithPartner(props.pawn, props.partner));
+
+					foreach (HistoryEventDef eventDef in interactionEvents.partnerEvents)
+						Find.HistoryEventsManager.RecordEvent(eventDef.CreateEventWithPartner(props.partner, props.pawn));
+				}
 			}
-
-			InteractionDefExtension_HistoryEvents interactionEvents = props.dictionaryKey.GetModExtension<InteractionDefExtension_HistoryEvents>();
-			if (interactionEvents != null)
+			else
 			{
-				foreach (HistoryEventDef eventDef in interactionEvents.pawnEvents)
-					Find.HistoryEventsManager.RecordEvent(eventDef.CreateEvent(pawn));
-
-				foreach (HistoryEventDef eventDef in interactionEvents.partnerEvents)
-					Find.HistoryEventsManager.RecordEvent(eventDef.CreateEvent(partner));
+				if (interactionEvents != null)
+				{
+					foreach (HistoryEventDef eventDef in interactionEvents.pawnEvents)
+						Find.HistoryEventsManager.RecordEvent(eventDef.CreateEvent(props.pawn));
+				}
 			}
 		}
 
-		public static void AfterSexHuman(Pawn human, Pawn partner, bool rape, bool isHumanReceiving = false)
+		public static void AfterSexHuman(Pawn human, Pawn partner, bool rape)
 		{
-			HistoryEventDef incestEvent = GetIncestTypeEvent(human, partner);
-			Find.HistoryEventsManager.RecordEvent(incestEvent.CreateEvent(human));
-			Find.HistoryEventsManager.RecordEvent(incestEvent.CreateEvent(partner));
+			Find.HistoryEventsManager.RecordEvent(VariousDefOf.RSI_NonIncestuosSex.CreateEventWithPartner(human, partner));
+			Find.HistoryEventsManager.RecordEvent(VariousDefOf.RSI_NonIncestuosSex.CreateEventWithPartner(partner, human));
 
 			if (partner.IsAnimal())
 			{
-				string tag = HETag.Gender(human);
-				if (isHumanReceiving && rape)
-				{
-					tag += HETag.BeenRaped;
-
-					if (human.IsSlave)
-						RapeEffectSlave(human);
-				}
-
 				if (human.Ideo?.IsVeneratedAnimal(partner) ?? false)
-					Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithVeneratedAnimal.CreateTaggedEvent(human, tag, partner));
+					Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithVeneratedAnimal.CreateEventWithPartner(human, partner));
 				else
-					Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithNonVeneratedAnimal.CreateTaggedEvent(human, tag, partner));
+					Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithNonVeneratedAnimal.CreateEventWithPartner(human, partner));
 
 				if (human.Ideo != null && human.relations?.DirectRelationExists(PawnRelationDefOf.Bond, partner) == true)
-					Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithBondedAnimal.CreateTaggedEvent(human, tag, partner));
+					Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithBondedAnimal.CreateEventWithPartner(human, partner));
 				else
-					Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithNonBondAnimal.CreateTaggedEvent(human, tag, partner));
+					Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithNonBondAnimal.CreateEventWithPartner(human, partner));
 
-				Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithAnimal.CreateTaggedEvent(human, tag, partner));
+				Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithAnimal.CreateEventWithPartner(human, partner));
 			}
 			else if (xxx.is_human(partner))
 			{
@@ -149,13 +170,11 @@ namespace RJWSexperience.Ideology.Patches
 					{
 						Find.HistoryEventsManager.RecordEvent(VariousDefOf.RapedSlave.CreateTaggedEvent(human, HETag.Rape + HETag.Gender(human), partner));
 						Find.HistoryEventsManager.RecordEvent(VariousDefOf.WasRapedSlave.CreateTaggedEvent(partner, HETag.BeenRaped + HETag.Gender(partner), human));
-						RapeEffectSlave(partner);
 					}
 					else if (partner.IsPrisoner)
 					{
 						Find.HistoryEventsManager.RecordEvent(VariousDefOf.RapedPrisoner.CreateTaggedEvent(human, HETag.Rape + HETag.Gender(human), partner));
 						Find.HistoryEventsManager.RecordEvent(VariousDefOf.WasRapedPrisoner.CreateTaggedEvent(partner, HETag.BeenRaped + HETag.Gender(partner), human));
-						partner.guest.will = Math.Max(0, partner.guest.will - 0.2f);
 					}
 					else
 					{
@@ -164,17 +183,6 @@ namespace RJWSexperience.Ideology.Patches
 					}
 				}
 			}
-		}
-
-		private static HistoryEventDef GetIncestTypeEvent(Pawn pawn, Pawn partner)
-		{
-			if (IdeoUtility.IsIncest(pawn, partner, true))
-				return VariousDefOf.RSI_CloseRelativeSex;
-
-			if (IdeoUtility.IsIncest(pawn, partner, false))
-				return VariousDefOf.RSI_IncestuosSex;
-
-			return VariousDefOf.RSI_NonIncestuosSex;
 		}
 
 		public static void RapeEffectSlave(Pawn victim)

@@ -37,7 +37,7 @@ namespace RJWSexperience.Ideology
 			return true;
 		}
 
-		public static bool IsIncest(Pawn pawn, Pawn partner, bool close)
+		public static bool IsIncest(Pawn pawn, Pawn partner)
 		{
 			IEnumerable<PawnRelationDef> relations = pawn.GetRelations(partner);
 			if (relations.EnumerableNullOrEmpty())
@@ -45,15 +45,8 @@ namespace RJWSexperience.Ideology
 
 			foreach (PawnRelationDef relation in relations)
 			{
-				if (close)
-				{
-					if (relation.incestOpinionOffset < 0)
-						return true;
-				}
-				else if (relation.familyByBloodRelation)
-				{
+				if (relation.familyByBloodRelation)
 					return true;
-				}
 			}
 			return false;
 		}

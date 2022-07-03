@@ -12,21 +12,8 @@ namespace RJWSexperience.Ideology.Patches
 	{
 		public static void Postfix(Pawn firstPawn, Pawn secondPawn)
 		{
-			if (IdeoUtility.IsIncest(firstPawn, secondPawn, false))
-			{
-				if (IdeoUtility.IsIncest(firstPawn, secondPawn, true))
-				{
-					Find.HistoryEventsManager.RecordEvent(VariousDefOf.RSI_CloseRelativeMarriage.CreateEvent(firstPawn));
-					Find.HistoryEventsManager.RecordEvent(VariousDefOf.RSI_CloseRelativeMarriage.CreateEvent(secondPawn));
-				}
-				Find.HistoryEventsManager.RecordEvent(VariousDefOf.RSI_IncestuosMarriage.CreateEvent(firstPawn));
-				Find.HistoryEventsManager.RecordEvent(VariousDefOf.RSI_IncestuosMarriage.CreateEvent(secondPawn));
-			}
-			else
-			{
-				Find.HistoryEventsManager.RecordEvent(VariousDefOf.RSI_NonIncestuosMarriage.CreateEvent(firstPawn));
-				Find.HistoryEventsManager.RecordEvent(VariousDefOf.RSI_NonIncestuosMarriage.CreateEvent(secondPawn));
-			}
+			Find.HistoryEventsManager.RecordEvent(VariousDefOf.RSI_NonIncestuosMarriage.CreateEventWithPartner(firstPawn, secondPawn));
+			Find.HistoryEventsManager.RecordEvent(VariousDefOf.RSI_NonIncestuosMarriage.CreateEventWithPartner(secondPawn, firstPawn));
 		}
 	}
 
@@ -36,7 +23,7 @@ namespace RJWSexperience.Ideology.Patches
 		public static void Postfix(Pawn otherPawn, Pawn ___pawn, ref float __result)
 		{
 			Ideo ideo = ___pawn.Ideo;
-			if (ideo?.HasPrecept(VariousDefOf.Incestuos_IncestOnly) == true && IdeoUtility.IsIncest(___pawn, otherPawn, false))
+			if (ideo?.HasPrecept(VariousDefOf.Incestuos_IncestOnly) == true && IdeoUtility.IsIncest(___pawn, otherPawn))
 			{
 				__result *= 8f;
 			}

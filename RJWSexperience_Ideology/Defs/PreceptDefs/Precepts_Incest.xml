@@ -21,6 +21,50 @@
   <HistoryEventDef>
     <defName>RSI_NonIncestuosMarriage</defName>
     <label>Non-incestuos marriage</label>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.HistoryEventDefExtension_PartnerDependentOverrides">
+        <overrideRules>
+          <li>
+            <filter>
+              <hasOneOfRelations>
+                <li>Parent</li>
+                <li>Child</li>
+                <li>Sibling</li>
+                <li>HalfSibling</li>
+                <li>Grandparent</li>
+                <li>Grandchild</li>
+                <li>NephewOrNiece</li>
+                <li>UncleOrAunt</li>
+              </hasOneOfRelations>
+            </filter>
+            <historyEventDef>RSI_CloseRelativeMarriage</historyEventDef>
+          </li>
+          <li>
+            <filter>
+              <hasOneOfRelations>
+                <li>Parent</li>
+                <li>Child</li>
+                <li>Sibling</li>
+                <li>HalfSibling</li>
+                <li>Grandparent</li>
+                <li>Grandchild</li>
+                <li>NephewOrNiece</li>
+                <li>UncleOrAunt</li>
+                <li>GreatGrandparent</li>
+                <li>GreatGrandchild</li>
+                <li>GranduncleOrGrandaunt</li>
+                <li>GrandnephewOrGrandniece</li>
+                <li>CousinOnceRemoved</li>
+                <li>SecondCousin</li>
+                <li>Cousin</li>
+                <li>Kin</li>
+              </hasOneOfRelations>
+            </filter>
+            <historyEventDef>RSI_IncestuosMarriage</historyEventDef>
+          </li>
+        </overrideRules>
+      </li>
+    </modExtensions>
   </HistoryEventDef>
 
   <HistoryEventDef>
@@ -36,6 +80,50 @@
   <HistoryEventDef>
     <defName>RSI_NonIncestuosSex</defName>
     <label>Non-incestuos sex</label>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.HistoryEventDefExtension_PartnerDependentOverrides">
+        <overrideRules>
+          <li>
+            <filter>
+              <hasOneOfRelations>
+                <li>Parent</li>
+                <li>Child</li>
+                <li>Sibling</li>
+                <li>HalfSibling</li>
+                <li>Grandparent</li>
+                <li>Grandchild</li>
+                <li>NephewOrNiece</li>
+                <li>UncleOrAunt</li>
+              </hasOneOfRelations>
+            </filter>
+            <historyEventDef>RSI_CloseRelativeSex</historyEventDef>
+          </li>
+          <li>
+            <filter>
+              <hasOneOfRelations>
+                <li>Parent</li>
+                <li>Child</li>
+                <li>Sibling</li>
+                <li>HalfSibling</li>
+                <li>Grandparent</li>
+                <li>Grandchild</li>
+                <li>NephewOrNiece</li>
+                <li>UncleOrAunt</li>
+                <li>GreatGrandparent</li>
+                <li>GreatGrandchild</li>
+                <li>GranduncleOrGrandaunt</li>
+                <li>GrandnephewOrGrandniece</li>
+                <li>CousinOnceRemoved</li>
+                <li>SecondCousin</li>
+                <li>Cousin</li>
+                <li>Kin</li>
+              </hasOneOfRelations>
+            </filter>
+            <historyEventDef>RSI_IncestuosSex</historyEventDef>
+          </li>
+        </overrideRules>
+      </li>
+    </modExtensions>
   </HistoryEventDef>
 
   <!-- Precepts -->

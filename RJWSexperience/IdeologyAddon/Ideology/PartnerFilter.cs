@@ -21,6 +21,10 @@ namespace RJWSexperience.Ideology
 		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
 		public List<PawnRelationDef> hasNoneOfRelations;
 
+		private bool initialized = false;
+		private HashSet<PawnRelationDef> hasOneOfRelationsHashed;
+		private HashSet<PawnRelationDef> hasNoneOfRelationsHashed;
+
 		public bool Applies(Pawn pawn, Pawn partner)
 		{
 			if (isAnimal != null && isAnimal != partner.IsAnimal())
@@ -35,34 +39,48 @@ namespace RJWSexperience.Ideology
 			//if (isAlien != null && isAlien != partner)
 			//	return false;
 
-			if (!hasOneOfRelations.NullOrEmpty())
+			if (!CheckRelations(pawn, partner))
+				return false;
+
+			return true;
+		}
+
+		private bool CheckRelations(Pawn pawn, Pawn partner)
+		{
+			if (!initialized)
+				Initialize();
+
+			if (hasNoneOfRelationsHashed == null && hasOneOfRelationsHashed == null)
+				return true;
+
+			IEnumerable<PawnRelationDef> relations = pawn.GetRelations(partner);
+
+			if (hasOneOfRelationsHashed != null)
 			{
-				if (pawn.relations == null)
+				if (relations.EnumerableNullOrEmpty())
 					return false;
 
-				bool found = false;
-				foreach (PawnRelationDef relationDef in hasOneOfRelations)
-				{
-					if (pawn.relations?.DirectRelationExists(relationDef, partner) == true)
-					{
-						found = true;
-						break;
-					}
-				}
-				if (!found)
+				if (!hasOneOfRelationsHashed.Overlaps(relations))
 					return false;
 			}
 
-			if (!hasNoneOfRelations.NullOrEmpty() && pawn.relations != null)
+			if (hasNoneOfRelationsHashed != null && !relations.EnumerableNullOrEmpty() && hasNoneOfRelationsHashed.Overlaps(relations))
 			{
-				foreach (PawnRelationDef relationDef in hasNoneOfRelations)
-				{
-					if (pawn.relations.DirectRelationExists(relationDef, partner))
-						return false;
-				}
+				return false;
 			}
 
 			return true;
+		}
+
+		private void Initialize()
+		{
+			if (!hasNoneOfRelations.NullOrEmpty())
+				hasNoneOfRelationsHashed = new HashSet<PawnRelationDef>(hasNoneOfRelations);
+
+			if (!hasOneOfRelations.NullOrEmpty())
+				hasOneOfRelationsHashed = new HashSet<PawnRelationDef>(hasOneOfRelations);
+
+			initialized = true;
 		}
 	}
 }
