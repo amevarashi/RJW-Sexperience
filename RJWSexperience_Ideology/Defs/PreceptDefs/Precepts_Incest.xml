@@ -9,32 +9,32 @@
   </IssueDef>
 
   <HistoryEventDef>
-    <defName>RJWSI_CloseRelativeMarriage</defName>
+    <defName>RSI_CloseRelativeMarriage</defName>
     <label>Marriage between close relatives</label>
   </HistoryEventDef>
 
   <HistoryEventDef>
-    <defName>Incestuos_Marriage</defName>
+    <defName>RSI_IncestuosMarriage</defName>
     <label>Incestuos marriage</label>
   </HistoryEventDef>
 
   <HistoryEventDef>
-    <defName>RJWSI_NonIncestuosMarriage</defName>
+    <defName>RSI_NonIncestuosMarriage</defName>
     <label>Non-incestuos marriage</label>
   </HistoryEventDef>
 
   <HistoryEventDef>
-    <defName>RJWSI_CloseRelativeSex</defName>
+    <defName>RSI_CloseRelativeSex</defName>
     <label>Sex between close relatives</label>
   </HistoryEventDef>
 
   <HistoryEventDef>
-    <defName>RJWSI_IncestuosSex</defName>
+    <defName>RSI_IncestuosSex</defName>
     <label>Incestuos sex</label>
   </HistoryEventDef>
 
   <HistoryEventDef>
-    <defName>RJWSI_NonIncestuosSex</defName>
+    <defName>RSI_NonIncestuosSex</defName>
     <label>Non-incestuos sex</label>
   </HistoryEventDef>
 
@@ -62,11 +62,11 @@
     <defaultSelectionWeight>100</defaultSelectionWeight>
     <comps>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>RJWSI_CloseRelativeMarriage</eventDef>
+        <eventDef>RSI_CloseRelativeMarriage</eventDef>
         <thought>IncestuosMarriage_Disapproved</thought>
       </li>
       <li Class="PreceptComp_KnowsMemoryThought">
-        <eventDef>RJWSI_CloseRelativeSex</eventDef>
+        <eventDef>RSI_CloseRelativeSex</eventDef>
         <thought>Sex_Know_Incest_Disapproved</thought>
       </li>
     </comps>
@@ -107,15 +107,15 @@
     <defaultSelectionWeight>100</defaultSelectionWeight>
     <comps>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>Incestuos_Marriage</eventDef>
+        <eventDef>RSI_IncestuosMarriage</eventDef>
         <thought>IncestuosMarriage_Disapproved</thought>
       </li>
       <li Class="PreceptComp_KnowsMemoryThought">
-        <eventDef>Incestuos_Marriage</eventDef>
+        <eventDef>RSI_IncestuosMarriage</eventDef>
         <thought>Sex_Know_IncestMarriage_Disapproved</thought>
       </li>
       <li Class="PreceptComp_KnowsMemoryThought">
-        <eventDef>RJWSI_IncestuosSex</eventDef>
+        <eventDef>RSI_IncestuosSex</eventDef>
         <thought>Sex_Know_Incest_Disapproved</thought>
       </li>
     </comps>
@@ -164,15 +164,15 @@
     <defaultSelectionWeight>100</defaultSelectionWeight>
     <comps>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>Incestuos_Marriage</eventDef>
+        <eventDef>RSI_IncestuosMarriage</eventDef>
         <thought>IncestuosMarriage_Forbidden</thought>
       </li>
       <li Class="PreceptComp_KnowsMemoryThought">
-        <eventDef>Incestuos_Marriage</eventDef>
+        <eventDef>RSI_IncestuosMarriage</eventDef>
         <thought>Sex_Know_IncestMarriage_Forbidden</thought>
       </li>
       <li Class="PreceptComp_KnowsMemoryThought">
-        <eventDef>RJWSI_IncestuosSex</eventDef>
+        <eventDef>RSI_IncestuosSex</eventDef>
         <thought>Sex_Know_Incest_Forbidden</thought>
       </li>
     </comps>
@@ -223,11 +223,11 @@
     </conflictingMemes>
     <comps>
       <li Class="PreceptComp_KnowsMemoryThought">
-        <eventDef>RJWSI_NonIncestuosMarriage</eventDef>
+        <eventDef>RSI_NonIncestuosMarriage</eventDef>
         <thought>Sex_Know_IncestMarriage_Violated</thought>
       </li>
       <li Class="PreceptComp_KnowsMemoryThought">
-        <eventDef>RJWSI_NonIncestuosSex</eventDef>
+        <eventDef>RSI_NonIncestuosSex</eventDef>
         <thought>Sex_Know_Incest_Violated</thought>
       </li>
     </comps>

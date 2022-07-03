@@ -16,16 +16,16 @@ namespace RJWSexperience.Ideology.Patches
 			{
 				if (IdeoUtility.IsIncest(firstPawn, secondPawn, true))
 				{
-					Find.HistoryEventsManager.RecordEvent(VariousDefOf.RJWSI_CloseRelativeMarriage.CreateEvent(firstPawn));
-					Find.HistoryEventsManager.RecordEvent(VariousDefOf.RJWSI_CloseRelativeMarriage.CreateEvent(secondPawn));
+					Find.HistoryEventsManager.RecordEvent(VariousDefOf.RSI_CloseRelativeMarriage.CreateEvent(firstPawn));
+					Find.HistoryEventsManager.RecordEvent(VariousDefOf.RSI_CloseRelativeMarriage.CreateEvent(secondPawn));
 				}
-				Find.HistoryEventsManager.RecordEvent(VariousDefOf.Incestuos_Marriage.CreateEvent(firstPawn));
-				Find.HistoryEventsManager.RecordEvent(VariousDefOf.Incestuos_Marriage.CreateEvent(secondPawn));
+				Find.HistoryEventsManager.RecordEvent(VariousDefOf.RSI_IncestuosMarriage.CreateEvent(firstPawn));
+				Find.HistoryEventsManager.RecordEvent(VariousDefOf.RSI_IncestuosMarriage.CreateEvent(secondPawn));
 			}
 			else
 			{
-				Find.HistoryEventsManager.RecordEvent(VariousDefOf.RJWSI_NonIncestuosMarriage.CreateEvent(firstPawn));
-				Find.HistoryEventsManager.RecordEvent(VariousDefOf.RJWSI_NonIncestuosMarriage.CreateEvent(secondPawn));
+				Find.HistoryEventsManager.RecordEvent(VariousDefOf.RSI_NonIncestuosMarriage.CreateEvent(firstPawn));
+				Find.HistoryEventsManager.RecordEvent(VariousDefOf.RSI_NonIncestuosMarriage.CreateEvent(secondPawn));
 			}
 		}
 	}

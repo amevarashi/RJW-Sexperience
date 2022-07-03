@@ -114,21 +114,9 @@ namespace RJWSexperience.Ideology.Patches
 
 		public static void AfterSexHuman(Pawn human, Pawn partner, bool rape, bool isHumanReceiving = false)
 		{
-			if (IdeoUtility.IsIncest(human, partner, false))
-			{
-				if (IdeoUtility.IsIncest(human, partner, true))
-				{
-					Find.HistoryEventsManager.RecordEvent(VariousDefOf.RJWSI_CloseRelativeSex.CreateEvent(human));
-					Find.HistoryEventsManager.RecordEvent(VariousDefOf.RJWSI_CloseRelativeSex.CreateEvent(partner));
-				}
-				Find.HistoryEventsManager.RecordEvent(VariousDefOf.RJWSI_IncestuosSex.CreateEvent(human));
-				Find.HistoryEventsManager.RecordEvent(VariousDefOf.RJWSI_IncestuosSex.CreateEvent(partner));
-			}
-			else
-			{
-				Find.HistoryEventsManager.RecordEvent(VariousDefOf.RJWSI_NonIncestuosSex.CreateEvent(human));
-				Find.HistoryEventsManager.RecordEvent(VariousDefOf.RJWSI_NonIncestuosSex.CreateEvent(partner));
-			}
+			HistoryEventDef incestEvent = GetIncestTypeEvent(human, partner);
+			Find.HistoryEventsManager.RecordEvent(incestEvent.CreateEvent(human));
+			Find.HistoryEventsManager.RecordEvent(incestEvent.CreateEvent(partner));
 
 			if (partner.IsAnimal())
 			{
@@ -176,6 +164,17 @@ namespace RJWSexperience.Ideology.Patches
 					}
 				}
 			}
+		}
+
+		private static HistoryEventDef GetIncestTypeEvent(Pawn pawn, Pawn partner)
+		{
+			if (IdeoUtility.IsIncest(pawn, partner, true))
+				return VariousDefOf.RSI_CloseRelativeSex;
+
+			if (IdeoUtility.IsIncest(pawn, partner, false))
+				return VariousDefOf.RSI_IncestuosSex;
+
+			return VariousDefOf.RSI_NonIncestuosSex;
 		}
 
 		public static void RapeEffectSlave(Pawn victim)
