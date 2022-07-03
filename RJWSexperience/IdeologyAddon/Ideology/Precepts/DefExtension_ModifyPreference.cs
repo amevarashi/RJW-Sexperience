@@ -25,57 +25,18 @@ namespace RJWSexperience.Ideology.Precepts
 			[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
 			public float multiplier = 1f;
 			[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
-			public Filter filter;
+			public PartnerFilter filter;
 
 			public bool Applies(Pawn pawn, Pawn partner)
 			{
 				if (filter == null)
 					return true;
 
-				if (filter.isAnimal != null && filter.isAnimal != partner.IsAnimal())
-					return false;
-
-				if (filter.isVeneratedAnimal != null && filter.isVeneratedAnimal != pawn.Ideo.IsVeneratedAnimal(partner))
-					return false;
-
-				if (filter.isSlave != null && filter.isSlave != partner.IsSlave)
-					return false;
-
-				//if (filter.isAlien != null && filter.isAlien != partner)
-				//	return false;
-
-				if (!filter.hasOneOfRelations.NullOrEmpty())
-				{
-					if (pawn.relations == null)
-						return false;
-
-					bool found = false;
-					foreach (PawnRelationDef relationDef in filter.hasOneOfRelations)
-					{
-						if (pawn.relations?.DirectRelationExists(relationDef, partner) == true)
-						{
-							found = true;
-							break;
-						}
-					}
-					if (!found)
-						return false;
-				}
-
-				if (!filter.hasNoneOfRelations.NullOrEmpty() && pawn.relations != null)
-				{
-					foreach (PawnRelationDef relationDef in filter.hasNoneOfRelations)
-					{
-						if (pawn.relations.DirectRelationExists(relationDef, partner))
-							return false;
-					}
-				}
-
-				return true;
+				return filter.Applies(pawn, partner);
 			}
 		}
 
-		public class Filter
+		public class PartnerFilter
 		{
 			[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
 			public bool? isAnimal;
@@ -89,6 +50,50 @@ namespace RJWSexperience.Ideology.Precepts
 			public List<PawnRelationDef> hasOneOfRelations;
 			[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
 			public List<PawnRelationDef> hasNoneOfRelations;
+
+			public bool Applies(Pawn pawn, Pawn partner)
+			{
+				if (isAnimal != null && isAnimal != partner.IsAnimal())
+					return false;
+
+				if (isVeneratedAnimal != null && isVeneratedAnimal != pawn.Ideo.IsVeneratedAnimal(partner))
+					return false;
+
+				if (isSlave != null && isSlave != partner.IsSlave)
+					return false;
+
+				//if (isAlien != null && isAlien != partner)
+				//	return false;
+
+				if (!hasOneOfRelations.NullOrEmpty())
+				{
+					if (pawn.relations == null)
+						return false;
+
+					bool found = false;
+					foreach (PawnRelationDef relationDef in hasOneOfRelations)
+					{
+						if (pawn.relations?.DirectRelationExists(relationDef, partner) == true)
+						{
+							found = true;
+							break;
+						}
+					}
+					if (!found)
+						return false;
+				}
+
+				if (!hasNoneOfRelations.NullOrEmpty() && pawn.relations != null)
+				{
+					foreach (PawnRelationDef relationDef in hasNoneOfRelations)
+					{
+						if (pawn.relations.DirectRelationExists(relationDef, partner))
+							return false;
+					}
+				}
+
+				return true;
+			}
 		}
 	}
 }
