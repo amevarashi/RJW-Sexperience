@@ -11,59 +11,6 @@ using Verse;
 
 namespace RJWSexperience.Ideology.Patches
 {
-	public static class RJWUtility_Ideo
-	{
-		public static HistoryEvent CreateTaggedEvent(this HistoryEventDef def, Pawn pawn, string tag, Pawn partner)
-		{
-			return new HistoryEvent(def, pawn.Named(HistoryEventArgsNames.Doer), tag.Named(ArgsNamesCustom.Tag), partner.Named(ArgsNamesCustom.Partner));
-		}
-
-		public static HistoryEvent CreateEvent(this HistoryEventDef def, Pawn pawn)
-		{
-			return new HistoryEvent(def, pawn.Named(HistoryEventArgsNames.Doer));
-		}
-
-		public static HistoryEvent CreateEventWithPartner(this HistoryEventDef def, Pawn pawn, Pawn partner)
-		{
-			DefExtension_PartnerDependentOverrides overrides = def.GetModExtension<DefExtension_PartnerDependentOverrides>();
-
-			if (overrides == null)
-				return new HistoryEvent(def, pawn.Named(HistoryEventArgsNames.Doer), partner.Named(ArgsNamesCustom.Partner));
-
-			foreach (var rule in overrides.overrideRules)
-			{
-				if (rule.Applies(pawn, partner))
-					return rule.historyEventDef.CreateEventWithPartner(pawn, partner);
-			}
-
-			return new HistoryEvent(def, pawn.Named(HistoryEventArgsNames.Doer), partner.Named(ArgsNamesCustom.Partner));
-		}
-
-		public static Faction GetFactionUsingPrecept(this Pawn baby, out Ideo ideo)
-		{
-			Faction playerfaction = Find.FactionManager.OfPlayer;
-			Ideo mainideo = playerfaction.ideos.PrimaryIdeo;
-			if (mainideo != null)
-			{
-				if (mainideo.HasPrecept(VariousDefOf.BabyFaction_AlwaysFather))
-				{
-					Pawn parent = baby.GetFather() ?? baby.GetMother();
-
-					ideo = parent.Ideo;
-					return parent.Faction;
-				}
-				else if (mainideo.HasPrecept(VariousDefOf.BabyFaction_AlwaysColony))
-				{
-					ideo = mainideo;
-					return playerfaction;
-				}
-			}
-			Pawn mother = baby.GetMother();
-			ideo = mother?.Ideo;
-			return mother?.Faction ?? baby.Faction;
-		}
-	}
-
 	[HarmonyPatch(typeof(xxx), "is_rapist")]
 	public static class RJW_Patch_is_rapist
 	{
@@ -128,10 +75,10 @@ namespace RJWSexperience.Ideology.Patches
 				if (interactionEvents != null)
 				{
 					foreach (HistoryEventDef eventDef in interactionEvents.pawnEvents)
-						Find.HistoryEventsManager.RecordEvent(eventDef.CreateEventWithPartner(props.pawn, props.partner));
+						eventDef.RecordEventWithPartner(props.pawn, props.partner);
 
 					foreach (HistoryEventDef eventDef in interactionEvents.partnerEvents)
-						Find.HistoryEventsManager.RecordEvent(eventDef.CreateEventWithPartner(props.partner, props.pawn));
+						eventDef.RecordEventWithPartner(props.partner, props.pawn);
 				}
 			}
 			else
@@ -146,22 +93,12 @@ namespace RJWSexperience.Ideology.Patches
 
 		public static void AfterSexHuman(Pawn human, Pawn partner, bool rape)
 		{
-			Find.HistoryEventsManager.RecordEvent(VariousDefOf.RSI_NonIncestuosSex.CreateEventWithPartner(human, partner));
-			Find.HistoryEventsManager.RecordEvent(VariousDefOf.RSI_NonIncestuosSex.CreateEventWithPartner(partner, human));
+			VariousDefOf.RSI_NonIncestuosSex.RecordEventWithPartner(human, partner);
+			VariousDefOf.RSI_NonIncestuosSex.RecordEventWithPartner(partner, human);
 
 			if (partner.IsAnimal())
 			{
-				if (human.Ideo?.IsVeneratedAnimal(partner) ?? false)
-					Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithVeneratedAnimal.CreateEventWithPartner(human, partner));
-				else
-					Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithNonVeneratedAnimal.CreateEventWithPartner(human, partner));
-
-				if (human.Ideo != null && human.relations?.DirectRelationExists(PawnRelationDefOf.Bond, partner) == true)
-					Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithBondedAnimal.CreateEventWithPartner(human, partner));
-				else
-					Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithNonBondAnimal.CreateEventWithPartner(human, partner));
-
-				Find.HistoryEventsManager.RecordEvent(VariousDefOf.SexWithAnimal.CreateEventWithPartner(human, partner));
+				VariousDefOf.RSI_SexWithAnimal.RecordEventWithPartner(human, partner);
 			}
 			else if (xxx.is_human(partner))
 			{

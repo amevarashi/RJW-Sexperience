@@ -12,8 +12,8 @@ namespace RJWSexperience.Ideology.Patches
 	{
 		public static void Postfix(Pawn firstPawn, Pawn secondPawn)
 		{
-			Find.HistoryEventsManager.RecordEvent(VariousDefOf.RSI_NonIncestuosMarriage.CreateEventWithPartner(firstPawn, secondPawn));
-			Find.HistoryEventsManager.RecordEvent(VariousDefOf.RSI_NonIncestuosMarriage.CreateEventWithPartner(secondPawn, firstPawn));
+			VariousDefOf.RSI_NonIncestuosMarriage.RecordEventWithPartner(firstPawn, secondPawn);
+			VariousDefOf.RSI_NonIncestuosMarriage.RecordEventWithPartner(secondPawn, firstPawn);
 		}
 	}
 

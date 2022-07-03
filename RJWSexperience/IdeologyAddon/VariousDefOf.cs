@@ -3,41 +3,38 @@ using Verse;
 
 namespace RJWSexperience.Ideology
 {
+	[DefOf]
 	public static class VariousDefOf
 	{
-		public static readonly JobDef RapeVictim = DefDatabase<JobDef>.GetNamed("RapeVictim");
-		public static readonly JobDef Gangbang = DefDatabase<JobDef>.GetNamed("Gangbang");
-		public static readonly JobDef GettinGangbang = DefDatabase<JobDef>.GetNamed("GettinGangbang");
-		public static readonly JobDef DrugSex = DefDatabase<JobDef>.GetNamed("DrugSex");
-		public static readonly JobDef GettinDrugSex = DefDatabase<JobDef>.GetNamed("GettinDrugSex");
-		public static readonly JobDef DrugMasturbate = DefDatabase<JobDef>.GetNamed("DrugMasturbate");
+		public static readonly JobDef RapeVictim;
+		public static readonly JobDef Gangbang;
+		public static readonly JobDef GettinGangbang;
+		public static readonly JobDef DrugSex;
+		public static readonly JobDef GettinDrugSex;
+		public static readonly JobDef DrugMasturbate;
 
-		[MayRequireIdeology] public static readonly MemeDef Zoophile = DefDatabase<MemeDef>.GetNamed("Zoophile");
-		[MayRequireIdeology] public static readonly MemeDef Rapist = DefDatabase<MemeDef>.GetNamed("Rapist");
-		[MayRequireIdeology] public static readonly MemeDef Necrophile = DefDatabase<MemeDef>.GetNamed("Necrophile");
-		[MayRequireIdeology] public static readonly HistoryEventDef SexWithAnimal = DefDatabase<HistoryEventDef>.GetNamed("SexWithAnimal");
-		[MayRequireIdeology] public static readonly HistoryEventDef SexWithVeneratedAnimal = DefDatabase<HistoryEventDef>.GetNamed("SexWithVeneratedAnimal");
-		[MayRequireIdeology] public static readonly HistoryEventDef SexWithNonVeneratedAnimal = DefDatabase<HistoryEventDef>.GetNamed("SexWithNonVeneratedAnimal");
-		[MayRequireIdeology] public static readonly HistoryEventDef SexWithBondedAnimal = DefDatabase<HistoryEventDef>.GetNamed("SexWithBondedAnimal");
-		[MayRequireIdeology] public static readonly HistoryEventDef SexWithNonBondAnimal = DefDatabase<HistoryEventDef>.GetNamed("SexWithNonBondAnimal");
-		[MayRequireIdeology] public static readonly HistoryEventDef Raped = DefDatabase<HistoryEventDef>.GetNamed("Raped");
-		[MayRequireIdeology] public static readonly HistoryEventDef RapedSlave = DefDatabase<HistoryEventDef>.GetNamed("RapedSlave");
-		[MayRequireIdeology] public static readonly HistoryEventDef RapedPrisoner = DefDatabase<HistoryEventDef>.GetNamed("RapedPrisoner");
-		[MayRequireIdeology] public static readonly HistoryEventDef WasRaped = DefDatabase<HistoryEventDef>.GetNamed("WasRaped");
-		[MayRequireIdeology] public static readonly HistoryEventDef WasRapedSlave = DefDatabase<HistoryEventDef>.GetNamed("WasRapedSlave");
-		[MayRequireIdeology] public static readonly HistoryEventDef WasRapedPrisoner = DefDatabase<HistoryEventDef>.GetNamed("WasRapedPrisoner");
-		[MayRequireIdeology] public static readonly HistoryEventDef RSI_NonIncestuosMarriage = DefDatabase<HistoryEventDef>.GetNamed("RSI_NonIncestuosMarriage");
-		[MayRequireIdeology] public static readonly HistoryEventDef RSI_NonIncestuosSex = DefDatabase<HistoryEventDef>.GetNamed("RSI_NonIncestuosSex");
-		[MayRequireIdeology] public static readonly HistoryEventDef Virgin_TakenF = DefDatabase<HistoryEventDef>.GetNamed("Virgin_TakenF");
-		[MayRequireIdeology] public static readonly HistoryEventDef Virgin_TakenM = DefDatabase<HistoryEventDef>.GetNamed("Virgin_TakenM");
-		[MayRequireIdeology] public static readonly HistoryEventDef Virgin_TookF = DefDatabase<HistoryEventDef>.GetNamed("Virgin_TookF");
-		[MayRequireIdeology] public static readonly HistoryEventDef Virgin_TookM = DefDatabase<HistoryEventDef>.GetNamed("Virgin_TookM");
-		[MayRequireIdeology] public static readonly PreceptDef Bestiality_OnlyVenerated = DefDatabase<PreceptDef>.GetNamed("Bestiality_OnlyVenerated");
-		[MayRequireIdeology] public static readonly PreceptDef Incestuos_IncestOnly = DefDatabase<PreceptDef>.GetNamed("Incestuos_IncestOnly");
-		[MayRequireIdeology] public static readonly PreceptDef Incestuos_Disapproved_CloseOnly = DefDatabase<PreceptDef>.GetNamed("Incestuos_Disapproved_CloseOnly");
-		[MayRequireIdeology] public static readonly PreceptDef BabyFaction_AlwaysFather = DefDatabase<PreceptDef>.GetNamed("BabyFaction_AlwaysFather");
-		[MayRequireIdeology] public static readonly PreceptDef BabyFaction_AlwaysColony = DefDatabase<PreceptDef>.GetNamed("BabyFaction_AlwaysColony");
-		[MayRequireIdeology] public static readonly PreceptDef Submissive_Male = DefDatabase<PreceptDef>.GetNamed("Submissive_Male");
-		[MayRequireIdeology] public static readonly PreceptDef Submissive_Female = DefDatabase<PreceptDef>.GetNamed("Submissive_Female");
+		[MayRequireIdeology] public static readonly MemeDef Zoophile;
+		[MayRequireIdeology] public static readonly MemeDef Rapist;
+		[MayRequireIdeology] public static readonly MemeDef Necrophile;
+		[MayRequireIdeology] public static readonly HistoryEventDef RSI_SexWithAnimal;
+		[MayRequireIdeology] public static readonly HistoryEventDef Raped;
+		[MayRequireIdeology] public static readonly HistoryEventDef RapedSlave;
+		[MayRequireIdeology] public static readonly HistoryEventDef RapedPrisoner;
+		[MayRequireIdeology] public static readonly HistoryEventDef WasRaped;
+		[MayRequireIdeology] public static readonly HistoryEventDef WasRapedSlave;
+		[MayRequireIdeology] public static readonly HistoryEventDef WasRapedPrisoner;
+		[MayRequireIdeology] public static readonly HistoryEventDef RSI_NonIncestuosMarriage;
+		[MayRequireIdeology] public static readonly HistoryEventDef RSI_NonIncestuosSex;
+		[MayRequireIdeology] public static readonly HistoryEventDef Virgin_TakenF;
+		[MayRequireIdeology] public static readonly HistoryEventDef Virgin_TakenM;
+		[MayRequireIdeology] public static readonly HistoryEventDef Virgin_TookF;
+		[MayRequireIdeology] public static readonly HistoryEventDef Virgin_TookM;
+		[MayRequireIdeology] public static readonly PreceptDef Bestiality_OnlyVenerated;
+		[MayRequireIdeology] public static readonly PreceptDef Incestuos_IncestOnly;
+		[MayRequireIdeology] public static readonly PreceptDef Incestuos_Disapproved_CloseOnly;
+		[MayRequireIdeology] public static readonly PreceptDef BabyFaction_AlwaysFather;
+		[MayRequireIdeology] public static readonly PreceptDef BabyFaction_AlwaysColony;
+		[MayRequireIdeology] public static readonly PreceptDef Submissive_Male;
+		[MayRequireIdeology] public static readonly PreceptDef Submissive_Female;
 	}
 }

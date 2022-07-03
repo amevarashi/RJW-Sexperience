@@ -9,27 +9,64 @@
   </IssueDef>
 
   <HistoryEventDef>
-    <defName>SexWithAnimal</defName>
+    <defName>RSI_SexWithAnimal</defName>
     <label>sex with animal</label>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.HistoryEvents.DefExtension_PartnerDependentSecondaryEvents">
+        <generationRules>
+          <li>
+            <filter>
+              <isVeneratedAnimal>true</isVeneratedAnimal>
+            </filter>
+            <historyEventDef>RSI_SexWithVeneratedAnimal</historyEventDef>
+          </li>
+          <li>
+            <filter>
+              <isAnimal>true</isAnimal>
+              <isVeneratedAnimal>false</isVeneratedAnimal>
+            </filter>
+            <historyEventDef>RSI_SexWithNonVeneratedAnimal</historyEventDef>
+          </li>
+          <li>
+            <filter>
+              <isAnimal>true</isAnimal>
+              <hasOneOfRelations>
+                <li>Bond</li>
+              </hasOneOfRelations>
+            </filter>
+            <historyEventDef>RSI_SexWithBondedAnimal</historyEventDef>
+          </li>
+          <li>
+            <filter>
+              <isAnimal>true</isAnimal>
+              <hasNoneOfRelations>
+                <li>Bond</li>
+              </hasNoneOfRelations>
+            </filter>
+            <historyEventDef>RSI_SexWithNonBondAnimal</historyEventDef>
+          </li>
+        </generationRules>
+      </li>
+    </modExtensions>
   </HistoryEventDef>
 
   <HistoryEventDef>
-    <defName>SexWithVeneratedAnimal</defName>
+    <defName>RSI_SexWithVeneratedAnimal</defName>
     <label>sex with venerated animal</label>
   </HistoryEventDef>
 
   <HistoryEventDef>
-    <defName>SexWithNonVeneratedAnimal</defName>
+    <defName>RSI_SexWithNonVeneratedAnimal</defName>
     <label>sex with non venerated animal</label>
   </HistoryEventDef>
 
   <HistoryEventDef>
-    <defName>SexWithBondedAnimal</defName>
+    <defName>RSI_SexWithBondedAnimal</defName>
     <label>Sex with bonded</label>
   </HistoryEventDef>
 
   <HistoryEventDef>
-    <defName>SexWithNonBondAnimal</defName>
+    <defName>RSI_SexWithNonBondAnimal</defName>
     <label>Sex with non Bonded</label>
   </HistoryEventDef>
 
@@ -52,21 +89,21 @@
     </associatedMemes>
     <comps>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>SexWithVeneratedAnimal</eventDef>
+        <eventDef>RSI_SexWithVeneratedAnimal</eventDef>
         <thought>Bestiality_Abhorrent</thought>
       </li>
       <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>SexWithVeneratedAnimal</eventDef>
+        <eventDef>RSI_SexWithVeneratedAnimal</eventDef>
         <thought>Bestiality_Know_Abhorrent</thought>
         <tag>BeenRaped</tag>
         <exclusive>true</exclusive>
       </li>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>SexWithAnimal</eventDef>
+        <eventDef>RSI_SexWithAnimal</eventDef>
         <thought>Bestiality_Abhorrent</thought>
       </li>
       <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>SexWithAnimal</eventDef>
+        <eventDef>RSI_SexWithAnimal</eventDef>
         <thought>Bestiality_Know_Abhorrent</thought>
         <tag>BeenRaped</tag>
         <exclusive>true</exclusive>
@@ -106,21 +143,21 @@
     </associatedMemes>
     <comps>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>SexWithVeneratedAnimal</eventDef>
+        <eventDef>RSI_SexWithVeneratedAnimal</eventDef>
         <thought>Bestiality_Horrible</thought>
       </li>
       <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>SexWithVeneratedAnimal</eventDef>
+        <eventDef>RSI_SexWithVeneratedAnimal</eventDef>
         <thought>Bestiality_Know_Horrible</thought>
         <tag>BeenRaped</tag>
         <exclusive>true</exclusive>
       </li>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>SexWithAnimal</eventDef>
+        <eventDef>RSI_SexWithAnimal</eventDef>
         <thought>Bestiality_Horrible</thought>
       </li>
       <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>SexWithAnimal</eventDef>
+        <eventDef>RSI_SexWithAnimal</eventDef>
         <thought>Bestiality_Know_Horrible</thought>
         <tag>BeenRaped</tag>
         <exclusive>true</exclusive>
@@ -160,21 +197,21 @@
     </associatedMemes>
     <comps>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>SexWithVeneratedAnimal</eventDef>
+        <eventDef>RSI_SexWithVeneratedAnimal</eventDef>
         <thought>Bestiality_Disapproved</thought>
       </li>
       <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>SexWithVeneratedAnimal</eventDef>
+        <eventDef>RSI_SexWithVeneratedAnimal</eventDef>
         <thought>Bestiality_Know_Disapproved</thought>
         <tag>BeenRaped</tag>
         <exclusive>true</exclusive>
       </li>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>SexWithAnimal</eventDef>
+        <eventDef>RSI_SexWithAnimal</eventDef>
         <thought>Bestiality_Disapproved</thought>
       </li>
       <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>SexWithAnimal</eventDef>
+        <eventDef>RSI_SexWithAnimal</eventDef>
         <thought>Bestiality_Know_Disapproved</thought>
         <tag>BeenRaped</tag>
         <exclusive>true</exclusive>
@@ -227,23 +264,23 @@
     </requiredMemes>
     <comps>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>SexWithNonVeneratedAnimal</eventDef>
+        <eventDef>RSI_SexWithNonVeneratedAnimal</eventDef>
         <thought>Bestiality_Nonvenerated_Disapproved</thought>
         <onlyForNonSlaves>true</onlyForNonSlaves>
       </li>
       <li Class="PreceptComp_KnowsMemoryThought">
-        <eventDef>SexWithNonVeneratedAnimal</eventDef>
+        <eventDef>RSI_SexWithNonVeneratedAnimal</eventDef>
         <thought>Bestiality_Nonvenerated_Know_Disapproved</thought>
         <description>Someone sex with any animal</description>
         <onlyForNonSlaves>true</onlyForNonSlaves>
       </li>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>SexWithVeneratedAnimal</eventDef>
+        <eventDef>RSI_SexWithVeneratedAnimal</eventDef>
         <thought>Bestiality_Honorable</thought>
         <onlyForNonSlaves>true</onlyForNonSlaves>
       </li>
       <li Class="PreceptComp_KnowsMemoryThought">
-        <eventDef>SexWithVeneratedAnimal</eventDef>
+        <eventDef>RSI_SexWithVeneratedAnimal</eventDef>
         <thought>Bestiality_Know_Honorable</thought>
         <description>Someone sex with animal</description>
         <onlyForNonSlaves>true</onlyForNonSlaves>
@@ -290,23 +327,23 @@
     </requiredMemes>
     <comps>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>SexWithNonBondAnimal</eventDef>
+        <eventDef>RSI_SexWithNonBondAnimal</eventDef>
         <thought>Bestiality_NonBonded_Disapproved</thought>
         <onlyForNonSlaves>true</onlyForNonSlaves>
       </li>
       <li Class="PreceptComp_KnowsMemoryThought">
-        <eventDef>SexWithNonBondAnimal</eventDef>
+        <eventDef>RSI_SexWithNonBondAnimal</eventDef>
         <thought>Bestiality_NonBonded_Know_Disapproved</thought>
         <description>Someone sex with any animal</description>
         <onlyForNonSlaves>true</onlyForNonSlaves>
       </li>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>SexWithBondedAnimal</eventDef>
+        <eventDef>RSI_SexWithBondedAnimal</eventDef>
         <thought>Bestiality_Bond_Approved</thought>
         <onlyForNonSlaves>true</onlyForNonSlaves>
       </li>
       <li Class="PreceptComp_KnowsMemoryThought">
-        <eventDef>SexWithBondedAnimal</eventDef>
+        <eventDef>RSI_SexWithBondedAnimal</eventDef>
         <thought>Bestiality_Bond_Approved_Know</thought>
         <description>Someone sex with non bonded animal</description>
         <onlyForNonSlaves>true</onlyForNonSlaves>
@@ -357,23 +394,23 @@
     </requiredMemes>
     <comps>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>SexWithAnimal</eventDef>
+        <eventDef>RSI_SexWithAnimal</eventDef>
         <thought>Bestiality_Honorable</thought>
         <onlyForNonSlaves>true</onlyForNonSlaves>
       </li>
       <li Class="PreceptComp_KnowsMemoryThought">
-        <eventDef>SexWithAnimal</eventDef>
+        <eventDef>RSI_SexWithAnimal</eventDef>
         <thought>Bestiality_Know_Honorable</thought>
         <description>Someone sex with animal</description>
         <onlyForNonSlaves>true</onlyForNonSlaves>
       </li>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>SexWithVeneratedAnimal</eventDef>
+        <eventDef>RSI_SexWithVeneratedAnimal</eventDef>
         <thought>Bestiality_Honorable</thought>
         <onlyForNonSlaves>true</onlyForNonSlaves>
       </li>
       <li Class="PreceptComp_KnowsMemoryThought">
-        <eventDef>SexWithVeneratedAnimal</eventDef>
+        <eventDef>RSI_SexWithVeneratedAnimal</eventDef>
         <thought>Bestiality_Know_Honorable</thought>
         <description>Someone sex with animal</description>
         <onlyForNonSlaves>true</onlyForNonSlaves>
