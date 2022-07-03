@@ -92,21 +92,17 @@
         <eventDef>RSI_SexWithVeneratedAnimal</eventDef>
         <thought>Bestiality_Abhorrent</thought>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
+      <li Class="PreceptComp_KnowsMemoryThought">
         <eventDef>RSI_SexWithVeneratedAnimal</eventDef>
         <thought>Bestiality_Know_Abhorrent</thought>
-        <tag>BeenRaped</tag>
-        <exclusive>true</exclusive>
       </li>
       <li Class="PreceptComp_SelfTookMemoryThought">
         <eventDef>RSI_SexWithAnimal</eventDef>
         <thought>Bestiality_Abhorrent</thought>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
+      <li Class="PreceptComp_KnowsMemoryThought">
         <eventDef>RSI_SexWithAnimal</eventDef>
         <thought>Bestiality_Know_Abhorrent</thought>
-        <tag>BeenRaped</tag>
-        <exclusive>true</exclusive>
       </li>
     </comps>
     <modExtensions>
@@ -146,21 +142,17 @@
         <eventDef>RSI_SexWithVeneratedAnimal</eventDef>
         <thought>Bestiality_Horrible</thought>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
+      <li Class="PreceptComp_KnowsMemoryThought">
         <eventDef>RSI_SexWithVeneratedAnimal</eventDef>
         <thought>Bestiality_Know_Horrible</thought>
-        <tag>BeenRaped</tag>
-        <exclusive>true</exclusive>
       </li>
       <li Class="PreceptComp_SelfTookMemoryThought">
         <eventDef>RSI_SexWithAnimal</eventDef>
         <thought>Bestiality_Horrible</thought>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
+      <li Class="PreceptComp_KnowsMemoryThought">
         <eventDef>RSI_SexWithAnimal</eventDef>
         <thought>Bestiality_Know_Horrible</thought>
-        <tag>BeenRaped</tag>
-        <exclusive>true</exclusive>
       </li>
     </comps>
     <modExtensions>
@@ -200,21 +192,17 @@
         <eventDef>RSI_SexWithVeneratedAnimal</eventDef>
         <thought>Bestiality_Disapproved</thought>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
+      <li Class="PreceptComp_KnowsMemoryThought">
         <eventDef>RSI_SexWithVeneratedAnimal</eventDef>
         <thought>Bestiality_Know_Disapproved</thought>
-        <tag>BeenRaped</tag>
-        <exclusive>true</exclusive>
       </li>
       <li Class="PreceptComp_SelfTookMemoryThought">
         <eventDef>RSI_SexWithAnimal</eventDef>
         <thought>Bestiality_Disapproved</thought>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
+      <li Class="PreceptComp_KnowsMemoryThought">
         <eventDef>RSI_SexWithAnimal</eventDef>
         <thought>Bestiality_Know_Disapproved</thought>
-        <tag>BeenRaped</tag>
-        <exclusive>true</exclusive>
       </li>
     </comps>
     <modExtensions>
