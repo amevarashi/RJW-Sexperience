@@ -1,6 +1,6 @@
-﻿namespace RJWSexperience.Ideology
+﻿namespace RJWSexperience.Ideology.HistoryEvents
 {
-	public static class HistoryEventArgsNamesCustom
+	public static class ArgsNamesCustom
 	{
 		public const string Tag = "TAG";
 		public const string Partner = "PARTNER";

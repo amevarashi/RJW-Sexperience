@@ -17,13 +17,13 @@ namespace RJWSexperience.Ideology.Precepts
 
 		public override void Notify_MemberWitnessedAction(HistoryEvent ev, Precept precept, Pawn member)
 		{
-			if (!applyonpartner && ev.args.TryGetArg(HistoryEventArgsNamesCustom.Partner, out Pawn pawn) && pawn == member)
+			if (!applyonpartner && ev.args.TryGetArg(HistoryEvents.ArgsNamesCustom.Partner, out Pawn pawn) && pawn == member)
 			{
 				return;
 			}
 			if (tag != null)
 			{
-				if (ev.args.TryGetArg(HistoryEventArgsNamesCustom.Tag, out string tags))
+				if (ev.args.TryGetArg(HistoryEvents.ArgsNamesCustom.Tag, out string tags))
 				{
 					if (IdeoUtility.ContainAll(tags, tag.Replace(" ", "").Split(',')) ^ exclusive) base.Notify_MemberWitnessedAction(ev, precept, member);
 				}

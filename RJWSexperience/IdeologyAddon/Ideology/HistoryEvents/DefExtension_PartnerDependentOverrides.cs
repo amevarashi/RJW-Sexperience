@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Verse;
 
-namespace RJWSexperience.Ideology
+namespace RJWSexperience.Ideology.HistoryEvents
 {
-	public class HistoryEventDefExtension_PartnerDependentOverrides : DefModExtension
+	public class DefExtension_PartnerDependentOverrides : DefModExtension
 	{
 		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
 		public List<PartnerDependentOverride> overrideRules = new List<PartnerDependentOverride>();

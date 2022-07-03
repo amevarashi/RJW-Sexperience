@@ -3,6 +3,7 @@ using RimWorld;
 using rjw;
 using rjw.Modules.Interactions.Internals.Implementation;
 using rjw.Modules.Interactions.Objects;
+using RJWSexperience.Ideology.HistoryEvents;
 using RJWSexperience.Ideology.Precepts;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace RJWSexperience.Ideology.Patches
 	{
 		public static HistoryEvent CreateTaggedEvent(this HistoryEventDef def, Pawn pawn, string tag, Pawn partner)
 		{
-			return new HistoryEvent(def, pawn.Named(HistoryEventArgsNames.Doer), tag.Named(HistoryEventArgsNamesCustom.Tag), partner.Named(HistoryEventArgsNamesCustom.Partner));
+			return new HistoryEvent(def, pawn.Named(HistoryEventArgsNames.Doer), tag.Named(ArgsNamesCustom.Tag), partner.Named(ArgsNamesCustom.Partner));
 		}
 
 		public static HistoryEvent CreateEvent(this HistoryEventDef def, Pawn pawn)
@@ -24,10 +25,10 @@ namespace RJWSexperience.Ideology.Patches
 
 		public static HistoryEvent CreateEventWithPartner(this HistoryEventDef def, Pawn pawn, Pawn partner)
 		{
-			HistoryEventDefExtension_PartnerDependentOverrides overrides = def.GetModExtension<HistoryEventDefExtension_PartnerDependentOverrides>();
+			DefExtension_PartnerDependentOverrides overrides = def.GetModExtension<DefExtension_PartnerDependentOverrides>();
 
 			if (overrides == null)
-				return new HistoryEvent(def, pawn.Named(HistoryEventArgsNames.Doer), partner.Named(HistoryEventArgsNamesCustom.Partner));
+				return new HistoryEvent(def, pawn.Named(HistoryEventArgsNames.Doer), partner.Named(ArgsNamesCustom.Partner));
 
 			foreach (var rule in overrides.overrideRules)
 			{
@@ -35,7 +36,7 @@ namespace RJWSexperience.Ideology.Patches
 					return rule.historyEventDef.CreateEventWithPartner(pawn, partner);
 			}
 
-			return new HistoryEvent(def, pawn.Named(HistoryEventArgsNames.Doer), partner.Named(HistoryEventArgsNamesCustom.Partner));
+			return new HistoryEvent(def, pawn.Named(HistoryEventArgsNames.Doer), partner.Named(ArgsNamesCustom.Partner));
 		}
 
 		public static Faction GetFactionUsingPrecept(this Pawn baby, out Ideo ideo)
@@ -168,18 +169,18 @@ namespace RJWSexperience.Ideology.Patches
 				{
 					if (partner.IsSlave)
 					{
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.RapedSlave.CreateTaggedEvent(human, HETag.Rape + HETag.Gender(human), partner));
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.WasRapedSlave.CreateTaggedEvent(partner, HETag.BeenRaped + HETag.Gender(partner), human));
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.RapedSlave.CreateTaggedEvent(human, Tag.Rape + Tag.Gender(human), partner));
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.WasRapedSlave.CreateTaggedEvent(partner, Tag.BeenRaped + Tag.Gender(partner), human));
 					}
 					else if (partner.IsPrisoner)
 					{
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.RapedPrisoner.CreateTaggedEvent(human, HETag.Rape + HETag.Gender(human), partner));
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.WasRapedPrisoner.CreateTaggedEvent(partner, HETag.BeenRaped + HETag.Gender(partner), human));
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.RapedPrisoner.CreateTaggedEvent(human, Tag.Rape + Tag.Gender(human), partner));
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.WasRapedPrisoner.CreateTaggedEvent(partner, Tag.BeenRaped + Tag.Gender(partner), human));
 					}
 					else
 					{
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.Raped.CreateTaggedEvent(human, HETag.Rape + HETag.Gender(human), partner));
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.WasRaped.CreateTaggedEvent(partner, HETag.BeenRaped + HETag.Gender(partner), human));
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.Raped.CreateTaggedEvent(human, Tag.Rape + Tag.Gender(human), partner));
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.WasRaped.CreateTaggedEvent(partner, Tag.BeenRaped + Tag.Gender(partner), human));
 					}
 				}
 			}

@@ -43,12 +43,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Ideology\HistoryEventDefExtension_PartnerDependentOverrides.cs" />
+    <Compile Include="Ideology\HistoryEvents\DefExtension_PartnerDependentOverrides.cs" />
     <Compile Include="Ideology\InteractionDefExtension_HistoryEvents.cs" />
     <Compile Include="Ideology\GoodwillSituationWorker_MemeCompatibility.cs" />
     <Compile Include="Harmony.cs" />
-    <Compile Include="Ideology\HETag.cs" />
-    <Compile Include="Ideology\HistoryEventArgsNamesCustom.cs" />
+    <Compile Include="Ideology\HistoryEvents\Tag.cs" />
+    <Compile Include="Ideology\HistoryEvents\ArgsNamesCustom.cs" />
     <Compile Include="Ideology\IssueUtility.cs" />
     <Compile Include="Ideology\Keyed.cs" />
     <Compile Include="Ideology\Patches\RJW_Patch_ChancePerHour.cs" />

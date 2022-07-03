@@ -11,13 +11,11 @@ namespace RJWSexperience.Ideology.Precepts
 		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
 		public bool exclusive = false;
 
-		public PreceptComp_SelfTookThoughtTagged() { }
-
 		public override void Notify_MemberTookAction(HistoryEvent ev, Precept precept, bool canApplySelfTookThoughts)
 		{
 			if (tag != null)
 			{
-				if (ev.args.TryGetArg(HistoryEventArgsNamesCustom.Tag, out string tags))
+				if (ev.args.TryGetArg(HistoryEvents.ArgsNamesCustom.Tag, out string tags))
 				{
 					if (IdeoUtility.ContainAll(tags, tag.Replace(" ", "").Split(',')) ^ exclusive)
 					{
@@ -42,7 +40,7 @@ namespace RJWSexperience.Ideology.Precepts
 				return;
 			}
 			Pawn arg = ev.args.GetArg<Pawn>(HistoryEventArgsNames.Doer);
-			Pawn partner = ev.args.GetArg<Pawn>(HistoryEventArgsNamesCustom.Partner);
+			Pawn partner = ev.args.GetArg<Pawn>(HistoryEvents.ArgsNamesCustom.Partner);
 			if (arg.needs?.mood != null && (!this.onlyForNonSlaves || !arg.IsSlave))
 			{
 				if (this.thought.minExpectationForNegativeThought != null && ExpectationsUtility.CurrentExpectationFor(arg).order < this.thought.minExpectationForNegativeThought.order)

@@ -1,8 +1,8 @@
 ﻿using Verse;
 
-namespace RJWSexperience.Ideology
+namespace RJWSexperience.Ideology.HistoryEvents
 {
-	public static class HETag
+	public static class Tag
 	{
 		public const string BeenRaped = "[BeenRaped]";
 		public const string Rape = "[Rape]";
