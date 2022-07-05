@@ -30,8 +30,6 @@ namespace RJWSexperience.Ideology
 		[MayRequireIdeology] public static readonly HistoryEventDef Virgin_TookF;
 		[MayRequireIdeology] public static readonly HistoryEventDef Virgin_TookM;
 		[MayRequireIdeology] public static readonly PreceptDef Bestiality_OnlyVenerated;
-		[MayRequireIdeology] public static readonly PreceptDef Incestuos_IncestOnly;
-		[MayRequireIdeology] public static readonly PreceptDef Incestuos_Disapproved_CloseOnly;
 		[MayRequireIdeology] public static readonly PreceptDef BabyFaction_AlwaysFather;
 		[MayRequireIdeology] public static readonly PreceptDef BabyFaction_AlwaysColony;
 		[MayRequireIdeology] public static readonly PreceptDef Submissive_Male;

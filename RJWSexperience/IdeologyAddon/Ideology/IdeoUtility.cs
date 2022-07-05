@@ -1,12 +1,8 @@
 ﻿using RimWorld;
-using rjw;
-using System;
-using System.Collections.Generic;
 using Verse;
 
 namespace RJWSexperience.Ideology
 {
-	[StaticConstructorOnStartup]
 	public static class IdeoUtility
 	{
 		public static bool IsSubmissive(this Pawn pawn)
@@ -35,20 +31,6 @@ namespace RJWSexperience.Ideology
 					return false;
 			}
 			return true;
-		}
-
-		public static bool IsIncest(Pawn pawn, Pawn partner)
-		{
-			IEnumerable<PawnRelationDef> relations = pawn.GetRelations(partner);
-			if (relations.EnumerableNullOrEmpty())
-				return false;
-
-			foreach (PawnRelationDef relation in relations)
-			{
-				if (relation.familyByBloodRelation)
-					return true;
-			}
-			return false;
 		}
 
 		public static float GetPreceptsMtbMultiplier<T>(Ideo ideo) where T : Precepts.DefExtension_ModifyMtb
