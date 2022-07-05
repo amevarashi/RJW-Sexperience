@@ -106,18 +106,18 @@ namespace RJWSexperience.Ideology.Patches
 				{
 					if (partner.IsSlave)
 					{
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.RapedSlave.CreateTaggedEvent(human, Tag.Rape + Tag.Gender(human), partner));
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.WasRapedSlave.CreateTaggedEvent(partner, Tag.BeenRaped + Tag.Gender(partner), human));
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.RapedSlave.CreateTaggedEvent(human, Tag.Gender(human), partner));
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.WasRapedSlave.CreateTaggedEvent(partner, Tag.Gender(partner), human));
 					}
 					else if (partner.IsPrisoner)
 					{
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.RapedPrisoner.CreateTaggedEvent(human, Tag.Rape + Tag.Gender(human), partner));
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.WasRapedPrisoner.CreateTaggedEvent(partner, Tag.BeenRaped + Tag.Gender(partner), human));
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.RapedPrisoner.CreateTaggedEvent(human, Tag.Gender(human), partner));
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.WasRapedPrisoner.CreateTaggedEvent(partner, Tag.Gender(partner), human));
 					}
 					else
 					{
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.Raped.CreateTaggedEvent(human, Tag.Rape + Tag.Gender(human), partner));
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.WasRaped.CreateTaggedEvent(partner, Tag.BeenRaped + Tag.Gender(partner), human));
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.Raped.CreateTaggedEvent(human, Tag.Gender(human), partner));
+						Find.HistoryEventsManager.RecordEvent(VariousDefOf.WasRaped.CreateTaggedEvent(partner, Tag.Gender(partner), human));
 					}
 				}
 			}
