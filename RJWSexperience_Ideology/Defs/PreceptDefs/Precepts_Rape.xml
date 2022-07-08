@@ -9,17 +9,35 @@
   </IssueDef>
 
   <HistoryEventDef>
-    <defName>Raped</defName>
+    <defName>RSI_Raped</defName>
     <label>raped</label>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.HistoryEvents.DefExtension_PartnerDependentOverrides">
+        <overrideRules>
+          <li>
+            <filter>
+              <isSlave>true</isSlave>
+            </filter>
+            <historyEventDef>RSI_RapedSlave</historyEventDef>
+          </li>
+          <li>
+            <filter>
+              <isPrisoner>true</isPrisoner>
+            </filter>
+            <historyEventDef>RSI_RapedPrisoner</historyEventDef>
+          </li>
+        </overrideRules>
+      </li>
+    </modExtensions>
   </HistoryEventDef>
 
   <HistoryEventDef>
-    <defName>RapedSlave</defName>
+    <defName>RSI_RapedSlave</defName>
     <label>raped slave</label>
   </HistoryEventDef>
 
   <HistoryEventDef>
-    <defName>RapedPrisoner</defName>
+    <defName>RSI_RapedPrisoner</defName>
     <label>raped prisoner</label>
   </HistoryEventDef>
   
@@ -37,6 +55,7 @@
     <defName>WasRapedPrisoner</defName>
     <label>was raped</label>
   </HistoryEventDef>
+  
   <!-- Precepts -->
 
   <PreceptDef>
@@ -59,41 +78,39 @@
       <li>Collectivist</li>
     </associatedMemes>
     <comps>
+      <li Class="PreceptComp_UnwillingToDo">
+        <eventDef>RSI_Raped</eventDef>
+      </li>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>Raped</eventDef>
+        <eventDef>RSI_Raped</eventDef>
         <thought>Rape_Abhorrent</thought>
       </li>
       <li Class="PreceptComp_KnowsMemoryThought">
-        <eventDef>Raped</eventDef>
+        <eventDef>RSI_Raped</eventDef>
         <thought>Rape_Know_Abhorrent</thought>
         <description>Someone raped other</description>
       </li>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>RapedPrisoner</eventDef>
+        <eventDef>RSI_RapedPrisoner</eventDef>
         <thought>Rape_Horrible</thought>
         <description>Raped prisoner</description>
       </li>
       <li Class="PreceptComp_KnowsMemoryThought">
-        <eventDef>RapedPrisoner</eventDef>
+        <eventDef>RSI_RapedPrisoner</eventDef>
         <thought>Rape_Know_Horrible</thought>
         <description>Someone raped prisoner</description>
       </li>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>RapedSlave</eventDef>
+        <eventDef>RSI_RapedSlave</eventDef>
         <thought>Rape_Disapproved</thought>
         <description>Raped slave</description>
       </li>
       <li Class="PreceptComp_KnowsMemoryThought">
-        <eventDef>RapedSlave</eventDef>
+        <eventDef>RSI_RapedSlave</eventDef>
         <thought>Rape_Know_Disapproved</thought>
         <description>Someone raped slave</description>
       </li>
     </comps>
-    <modExtensions>
-      <li Class="RJWSexperience.Ideology.Precepts.DefExtension_ModifyRapeCPMtb">
-        <disable>true</disable>
-      </li>
-    </modExtensions>
   </PreceptDef>
 
   <PreceptDef>
@@ -116,21 +133,21 @@
     </associatedMemes>
     <comps>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>Raped</eventDef>
+        <eventDef>RSI_Raped</eventDef>
         <thought>Rape_Horrible</thought>
       </li>
       <li Class="PreceptComp_KnowsMemoryThought">
-        <eventDef>Raped</eventDef>
+        <eventDef>RSI_Raped</eventDef>
         <thought>Rape_Know_Horrible</thought>
         <description>Someone raped other</description>
       </li>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>RapedPrisoner</eventDef>
+        <eventDef>RSI_RapedPrisoner</eventDef>
         <thought>Rape_Disapproved</thought>
         <description>Raped prisoner</description>
       </li>
       <li Class="PreceptComp_KnowsMemoryThought">
-        <eventDef>RapedPrisoner</eventDef>
+        <eventDef>RSI_RapedPrisoner</eventDef>
         <thought>Rape_Know_Disapproved</thought>
         <description>Someone raped prisoner</description>
       </li>
@@ -162,11 +179,11 @@
     </associatedMemes>
     <comps>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>Raped</eventDef>
+        <eventDef>RSI_Raped</eventDef>
         <thought>Rape_Disapproved</thought>
       </li>
       <li Class="PreceptComp_KnowsMemoryThought">
-        <eventDef>Raped</eventDef>
+        <eventDef>RSI_Raped</eventDef>
         <thought>Rape_Know_Disapproved</thought>
         <description>Someone raped other</description>
       </li>
@@ -208,34 +225,34 @@
     </statFactors>
     <comps>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>Raped</eventDef>
+        <eventDef>RSI_Raped</eventDef>
         <thought>BloodlustStoleSomeLovin</thought>
         <onlyForNonSlaves>true</onlyForNonSlaves>
       </li>
       <li Class="PreceptComp_KnowsMemoryThought">
-        <eventDef>Raped</eventDef>
+        <eventDef>RSI_Raped</eventDef>
         <thought>Rape_Know_Honorable</thought>
         <description>Someone raped other</description>
         <onlyForNonSlaves>true</onlyForNonSlaves>
       </li>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>RapedPrisoner</eventDef>
+        <eventDef>RSI_RapedPrisoner</eventDef>
         <thought>BloodlustStoleSomeLovin</thought>
         <onlyForNonSlaves>true</onlyForNonSlaves>
       </li>
       <li Class="PreceptComp_KnowsMemoryThought">
-        <eventDef>RapedPrisoner</eventDef>
+        <eventDef>RSI_RapedPrisoner</eventDef>
         <thought>Rape_Know_Honorable</thought>
         <description>Someone raped other</description>
         <onlyForNonSlaves>true</onlyForNonSlaves>
       </li>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>RapedSlave</eventDef>
+        <eventDef>RSI_RapedSlave</eventDef>
         <thought>BloodlustStoleSomeLovin</thought>
         <onlyForNonSlaves>true</onlyForNonSlaves>
       </li>
       <li Class="PreceptComp_KnowsMemoryThought">
-        <eventDef>RapedSlave</eventDef>
+        <eventDef>RSI_RapedSlave</eventDef>
         <thought>Rape_Know_Honorable</thought>
         <description>Someone raped other</description>
         <onlyForNonSlaves>true</onlyForNonSlaves>

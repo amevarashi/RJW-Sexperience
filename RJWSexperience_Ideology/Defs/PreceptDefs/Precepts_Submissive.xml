@@ -32,53 +32,54 @@
       <li>FemaleSupremacy</li>
     </requiredMemes>
     <comps>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
+      <li Class="PreceptComp_UnwillingToDo_Gendered">
+        <eventDef>RSI_Raped</eventDef>
+        <gender>Male</gender>
+      </li>
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
         <eventDef>WasRaped</eventDef>
         <thought>BeenRaped_Submissive</thought>
-        <tag>Male</tag>
+        <gender>Male</gender>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
         <eventDef>WasRaped</eventDef>
         <thought>BeenRaped_NotSubmissive</thought>
-        <tag>Female</tag>
+        <gender>Female</gender>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>Raped</eventDef>
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_KnowsMemoryThought_Gendered">
+        <eventDef>RSI_Raped</eventDef>
         <thought>Raped_Know_NotBeingSubmissive</thought>
-        <description>not obedient</description>
-        <tag>Female</tag>
+        <doersGender>Male</doersGender>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
         <eventDef>WasRapedPrisoner</eventDef>
         <thought>BeenRaped_Submissive</thought>
-        <tag>Male</tag>
+        <gender>Male</gender>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
         <eventDef>WasRapedPrisoner</eventDef>
         <thought>BeenRaped_NotSubmissive</thought>
-        <tag>Female</tag>
+        <gender>Female</gender>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>RapedPrisoner</eventDef>
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_KnowsMemoryThought_Gendered">
+        <eventDef>RSI_RapedPrisoner</eventDef>
         <thought>Raped_Know_NotBeingSubmissive</thought>
-        <description>not obedient</description>
-        <tag>Female</tag>
+        <doersGender>Male</doersGender>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
         <eventDef>WasRapedSlave</eventDef>
         <thought>BeenRaped_Submissive</thought>
-        <tag>Male</tag>
+        <gender>Male</gender>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
         <eventDef>WasRapedSlave</eventDef>
         <thought>BeenRaped_NotSubmissive</thought>
-        <tag>Female</tag>
+        <gender>Female</gender>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>RapedSlave</eventDef>
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_KnowsMemoryThought_Gendered">
+        <eventDef>RSI_RapedSlave</eventDef>
         <thought>Raped_Know_NotBeingSubmissive</thought>
-        <description>not obedient</description>
-        <tag>Female</tag>
+        <doersGender>Male</doersGender>
       </li>
     </comps>
   </PreceptDef>
@@ -95,60 +96,60 @@
       <li>MaleSupremacy</li>
     </requiredMemes>
     <comps>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
+      <li Class="PreceptComp_UnwillingToDo_Gendered">
+        <eventDef>RSI_Raped</eventDef>
+        <gender>Female</gender>
+      </li>
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
         <eventDef>WasRaped</eventDef>
         <thought>BeenRaped_Submissive</thought>
-        <tag>Female</tag>
+        <gender>Female</gender>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
         <eventDef>WasRaped</eventDef>
         <thought>BeenRaped_NotSubmissive</thought>
-        <tag>Male</tag>
+        <gender>Male</gender>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>Raped</eventDef>
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_KnowsMemoryThought_Gendered">
+        <eventDef>RSI_Raped</eventDef>
         <thought>Raped_Know_NotBeingSubmissive</thought>
-        <description>not obedient</description>
-        <tag>Male</tag>
+        <doersGender>Female</doersGender>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
         <eventDef>WasRapedPrisoner</eventDef>
         <thought>BeenRaped_Submissive</thought>
-        <tag>Female</tag>
+        <gender>Female</gender>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
         <eventDef>WasRapedPrisoner</eventDef>
         <thought>BeenRaped_NotSubmissive</thought>
-        <tag>Male</tag>
+        <gender>Male</gender>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>RapedPrisoner</eventDef>
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_KnowsMemoryThought_Gendered">
+        <eventDef>RSI_RapedPrisoner</eventDef>
         <thought>Raped_Know_NotBeingSubmissive</thought>
-        <description>not obedient</description>
-        <tag>Male</tag>
+        <doersGender>Female</doersGender>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
         <eventDef>WasRapedSlave</eventDef>
         <thought>BeenRaped_Submissive</thought>
-        <tag>Female</tag>
+        <gender>Female</gender>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
         <eventDef>WasRapedSlave</eventDef>
         <thought>BeenRaped_NotSubmissive</thought>
-        <tag>Male</tag>
+        <gender>Male</gender>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>RapedSlave</eventDef>
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_KnowsMemoryThought_Gendered">
+        <eventDef>RSI_RapedSlave</eventDef>
         <thought>Raped_Know_NotBeingSubmissive</thought>
-        <description>not obedient</description>
-        <tag>Male</tag>
+        <doersGender>Female</doersGender>
       </li>
     </comps>
   </PreceptDef>
 
   
   <!-- Thoughts -->
-  
 
   <ThoughtDef>
     <defName>BeenRaped_Submissive</defName>

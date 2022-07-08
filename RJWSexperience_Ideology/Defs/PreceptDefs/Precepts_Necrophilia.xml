@@ -28,6 +28,9 @@
       <li>Necrophile</li>
     </conflictingMemes>
     <comps>
+      <li Class="PreceptComp_UnwillingToDo">
+        <eventDef>SexWithCorpse</eventDef>
+      </li>
       <li Class="PreceptComp_SelfTookMemoryThought">
         <eventDef>SexWithCorpse</eventDef>
         <thought>Necrophilia_Abhorrent</thought>
@@ -37,11 +40,6 @@
         <thought>Necrophilia_Know_Abhorrent</thought>
       </li>
     </comps>
-    <modExtensions>
-      <li Class="RJWSexperience.Ideology.Precepts.DefExtension_ModifyNecroMtb">
-        <disable>true</disable>
-      </li>
-    </modExtensions>
   </PreceptDef>
 
   <PreceptDef>

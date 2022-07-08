@@ -3,7 +3,6 @@ using RimWorld;
 using rjw;
 using rjw.Modules.Interactions.Internals.Implementation;
 using rjw.Modules.Interactions.Objects;
-using RJWSexperience.Ideology.HistoryEvents;
 using RJWSexperience.Ideology.Precepts;
 using System;
 using System.Collections.Generic;
@@ -104,21 +103,14 @@ namespace RJWSexperience.Ideology.Patches
 			{
 				if (rape)
 				{
+					VariousDefOf.RSI_Raped.RecordEventWithPartner(human, partner);
+
 					if (partner.IsSlave)
-					{
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.RapedSlave.CreateTaggedEvent(human, Tag.Gender(human), partner));
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.WasRapedSlave.CreateTaggedEvent(partner, Tag.Gender(partner), human));
-					}
+						VariousDefOf.WasRapedSlave.RecordEventWithPartner(partner, human);
 					else if (partner.IsPrisoner)
-					{
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.RapedPrisoner.CreateTaggedEvent(human, Tag.Gender(human), partner));
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.WasRapedPrisoner.CreateTaggedEvent(partner, Tag.Gender(partner), human));
-					}
+						VariousDefOf.WasRapedPrisoner.RecordEventWithPartner(partner, human);
 					else
-					{
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.Raped.CreateTaggedEvent(human, Tag.Gender(human), partner));
-						Find.HistoryEventsManager.RecordEvent(VariousDefOf.WasRaped.CreateTaggedEvent(partner, Tag.Gender(partner), human));
-					}
+						VariousDefOf.WasRaped.RecordEventWithPartner(partner, human);
 				}
 			}
 		}
@@ -147,22 +139,20 @@ namespace RJWSexperience.Ideology.Patches
 			if (interactionEvents == null)
 				return;
 
-			Ideo ideo = dominant.Pawn.Ideo;
-			if (ideo != null)
-				__result.Dominant = PreceptSextype(ideo, dominant.Pawn.GetStatValue(xxx.sex_drive_stat), __result.Dominant, interactionEvents.pawnEvents);
+			if (dominant.Pawn.Ideo != null)
+				__result.Dominant = PreceptSextype(dominant.Pawn, submissive.Pawn, __result.Dominant, interactionEvents.pawnEvents);
 
-			ideo = submissive.Pawn.Ideo;
-			if (ideo != null)
-				__result.Submissive = PreceptSextype(ideo, submissive.Pawn.GetStatValue(xxx.sex_drive_stat), __result.Submissive, interactionEvents.partnerEvents);
+			if (submissive.Pawn.Ideo != null)
+				__result.Submissive = PreceptSextype(submissive.Pawn, dominant.Pawn, __result.Submissive, interactionEvents.partnerEvents);
 		}
 
-		public static float PreceptSextype(Ideo ideo, float sexdrive, float score, List<HistoryEventDef> historyEventDefs)
+		public static float PreceptSextype(Pawn pawn, Pawn partner, float score, List<HistoryEventDef> historyEventDefs)
 		{
 			foreach(HistoryEventDef eventDef in historyEventDefs)
 			{
-				if (ideo.MemberWillingToDo(new HistoryEvent(eventDef)))
+				if (eventDef.CreateEventWithPartner(pawn, partner).DoerWillingToDo())
 				{
-					float mult = 8.0f * Math.Max(0.3f, 1 / Math.Max(0.01f, sexdrive));
+					float mult = 8.0f * Math.Max(0.3f, 1 / Math.Max(0.01f, pawn.GetStatValue(xxx.sex_drive_stat)));
 					return score * mult;
 				}
 			}

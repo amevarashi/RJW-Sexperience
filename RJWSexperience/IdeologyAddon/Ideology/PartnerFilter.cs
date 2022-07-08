@@ -15,6 +15,8 @@ namespace RJWSexperience.Ideology
 		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
 		public bool? isSlave;
 		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
+		public bool? isPrisoner;
+		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
 		public bool? isAlien;
 		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
 		public List<PawnRelationDef> hasOneOfRelations;
@@ -34,6 +36,9 @@ namespace RJWSexperience.Ideology
 				return false;
 
 			if (isSlave != null && isSlave != partner.IsSlave)
+				return false;
+
+			if (isPrisoner != null && isPrisoner != partner.IsPrisoner)
 				return false;
 
 			//if (isAlien != null && isAlien != partner)
