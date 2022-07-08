@@ -49,7 +49,6 @@
     <Compile Include="Ideology\InteractionDefExtension_HistoryEvents.cs" />
     <Compile Include="Ideology\GoodwillSituationWorker_MemeCompatibility.cs" />
     <Compile Include="Harmony.cs" />
-    <Compile Include="Ideology\HistoryEvents\Tag.cs" />
     <Compile Include="Ideology\HistoryEvents\ArgsNamesCustom.cs" />
     <Compile Include="Ideology\IssueUtility.cs" />
     <Compile Include="Ideology\Keyed.cs" />
@@ -65,11 +64,9 @@
     <Compile Include="Ideology\Precepts\DefExtension_ModifyPreference.cs" />
     <Compile Include="Ideology\Precepts\DefExtension_MultipleMemesRequired.cs" />
     <Compile Include="Ideology\PartnerFilter.cs" />
-    <Compile Include="Ideology\Precepts\PreceptComp_KnowsMemoryThoughtTagged.cs" />
     <Compile Include="Ideology\Rituals\JobGiver_GangbangConsensual.cs" />
     <Compile Include="Ideology\Rituals\LordJob_Rituals.cs" />
     <Compile Include="Ideology\Patches\RJW_Patch_Ideo.cs" />
-    <Compile Include="Ideology\Precepts\PreceptComp_SelftTookThoughtExtended.cs" />
     <Compile Include="Ideology\Patches\Sexperience_Patch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ideology\Patches\Rimworld_Patch.cs" />

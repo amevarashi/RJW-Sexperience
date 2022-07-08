@@ -22,11 +22,6 @@ namespace RJWSexperience.Ideology
 			Find.HistoryEventsManager.RecordEvent(def.CreateEventWithPartner(pawn, partner));
 		}
 
-		public static HistoryEvent CreateTaggedEvent(this HistoryEventDef def, Pawn pawn, string tag, Pawn partner)
-		{
-			return new HistoryEvent(def, pawn.Named(HistoryEventArgsNames.Doer), tag.Named(ArgsNamesCustom.Tag), partner.Named(ArgsNamesCustom.Partner));
-		}
-
 		public static HistoryEvent CreateEvent(this HistoryEventDef def, Pawn pawn)
 		{
 			return new HistoryEvent(def, pawn.Named(HistoryEventArgsNames.Doer));
