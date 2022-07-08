@@ -10,10 +10,9 @@ namespace RJWSexperience.Ideology.Patches
 		public static void Postfix(Pawn pawn, Pawn partner, SexProps props, int degree)
 		{
 			string tag = "";
-			if (props.isRape)
+			if (props.isRape && pawn != props.pawn)
 			{
-				if (pawn == props.pawn && props.isRapist) tag += Tag.Rape;
-				else tag += Tag.BeenRaped;
+				tag += Tag.BeenRaped;
 			}
 			if (!pawn.relations.DirectRelationExists(PawnRelationDefOf.Spouse, partner))
 			{
