@@ -15,12 +15,12 @@ namespace RJWSexperience
 		/// For ideo patch
 		/// </summary>
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Redundancy", "RCS1163:Unused parameter.", Justification = "All parameters are needed for the ideology patch")]
-		public static void ThrowVirginHIstoryEvent(Pawn pawn, Pawn partner, SexProps props, int degree)
+		public static void ThrowVirginHistoryEvent(Pawn exVirgin, Pawn partner, SexProps props, int degree)
 		{
 			//for non-ideo
 			if (partner.Ideo == null)
 			{
-				partner.needs?.mood?.thoughts?.memories.TryGainMemory(xxx.took_virginity, pawn);
+				partner.needs?.mood?.thoughts?.memories.TryGainMemory(xxx.took_virginity, exVirgin);
 			}
 		}
 

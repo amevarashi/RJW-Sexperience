@@ -91,7 +91,7 @@ namespace RJWSexperience
 			}
 
 			if (removedDegree != null)
-				RJWUtility.ThrowVirginHIstoryEvent(pawn, partner, props, (int)removedDegree);
+				RJWUtility.ThrowVirginHistoryEvent(pawn, partner, props, (int)removedDegree);
 		}
 	}
 }

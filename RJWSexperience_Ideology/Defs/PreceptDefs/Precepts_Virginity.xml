@@ -14,23 +14,37 @@
   </IssueDef>
 
   <HistoryEventDef>
-    <defName>Virgin_TakenF</defName>
+    <defName>RSI_VirginTaken</defName>
     <label>virgin taken</label>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.HistoryEvents.DefExtension_PartnerDependentSecondaryEvents">
+        <generationRules>
+          <li>
+            <filter>
+              <hasNoneOfRelations>
+                <li>Spouse</li>
+              </hasNoneOfRelations>
+            </filter>
+            <historyEventDef>RSI_VirginTakenNotSpouse</historyEventDef>
+          </li>
+        </generationRules>
+      </li>
+    </modExtensions>
   </HistoryEventDef>
 
   <HistoryEventDef>
-    <defName>Virgin_TakenM</defName>
-    <label>virgin taken</label>
+    <defName>RSI_TookVirgin</defName>
+    <label>took virgin</label>
   </HistoryEventDef>
 
   <HistoryEventDef>
-    <defName>Virgin_TookF</defName>
-    <label>virgin took</label>
+    <defName>RSI_VirginStolen</defName>
+    <label>virgin stolen</label>
   </HistoryEventDef>
 
   <HistoryEventDef>
-    <defName>Virgin_TookM</defName>
-    <label>virgin took</label>
+    <defName>RSI_VirginTakenNotSpouse</defName>
+    <label>virgin was taken by a stranger</label>
   </HistoryEventDef>
 
   <!-- Precepts -->
@@ -67,19 +81,18 @@
     <displayOrderInImpact>1000</displayOrderInImpact>
     <defaultSelectionWeight>80</defaultSelectionWeight>
     <comps>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
-        <eventDef>Virgin_TakenF</eventDef>
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
+        <eventDef>RSI_VirginStolen</eventDef>
         <thought>Virgin_Precious_Taken_Forcefully</thought>
-        <tag>BeenRaped</tag>
+        <gender>Female</gender>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
-        <eventDef>Virgin_TakenF</eventDef>
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
+        <eventDef>RSI_VirginTaken</eventDef>
         <thought>Virgin_Precious_Taken</thought>
-        <tag>BeenRaped</tag>
-        <exclusive>true</exclusive>
+        <gender>Female</gender>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
-        <eventDef>Virgin_TookF</eventDef>
+      <li Class="PreceptComp_SelfTookMemoryThought">
+        <eventDef>RSI_TookVirgin</eventDef>
         <thought>TookVirginity</thought>
       </li>
     </comps>
@@ -95,19 +108,18 @@
     <displayOrderInImpact>1000</displayOrderInImpact>
     <defaultSelectionWeight>1</defaultSelectionWeight>
     <comps>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
-        <eventDef>Virgin_TakenM</eventDef>
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
+        <eventDef>RSI_VirginStolen</eventDef>
         <thought>Virgin_Precious_Taken_Forcefully</thought>
-        <tag>BeenRaped</tag>
+        <gender>Male</gender>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
-        <eventDef>Virgin_TakenM</eventDef>
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
+        <eventDef>RSI_VirginTaken</eventDef>
         <thought>Virgin_Precious_Taken</thought>
-        <tag>BeenRaped</tag>
-        <exclusive>true</exclusive>
+        <gender>Male</gender>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
-        <eventDef>Virgin_TookM</eventDef>
+      <li Class="PreceptComp_SelfTookMemoryThought">
+        <eventDef>RSI_TookVirgin</eventDef>
         <thought>TookVirginity</thought>
       </li>
     </comps>
@@ -132,24 +144,23 @@
       <li>MaleSupremacy</li>
     </associatedMemes>
     <comps>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
-        <eventDef>Virgin_TakenF</eventDef>
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
+        <eventDef>RSI_VirginStolen</eventDef>
         <thought>Virgin_Precious_Taken_Forcefully</thought>
-        <tag>BeenRaped</tag>
+        <gender>Female</gender>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
-        <eventDef>Virgin_TakenF</eventDef>
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
+        <eventDef>RSI_VirginTaken</eventDef>
         <thought>Virgin_Precious_Taken</thought>
-        <tag>BeenRaped</tag>
-        <exclusive>true</exclusive>
+        <gender>Female</gender>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>Virgin_TakenF</eventDef>
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_KnowsMemoryThought_Gendered">
+        <eventDef>RSI_VirginTakenNotSpouse</eventDef>
         <thought>Virgin_OnlyForSpouse_Know_Taken</thought>
-        <tag>Female, NotSpouse</tag>
+        <doersGender>Female</doersGender>
       </li>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>Virgin_TookF</eventDef>
+        <eventDef>RSI_TookVirgin</eventDef>
         <thought>TookVirginity</thought>
       </li>
     </comps>
@@ -174,24 +185,23 @@
       <li>FemaleSupremacy</li>
     </associatedMemes>
     <comps>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
-        <eventDef>Virgin_TakenM</eventDef>
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
+        <eventDef>RSI_VirginStolen</eventDef>
         <thought>Virgin_Precious_Taken_Forcefully</thought>
-        <tag>BeenRaped</tag>
+        <gender>Male</gender>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
-        <eventDef>Virgin_TakenM</eventDef>
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
+        <eventDef>RSI_VirginTaken</eventDef>
         <thought>Virgin_Precious_Taken</thought>
-        <tag>BeenRaped</tag>
-        <exclusive>true</exclusive>
+        <gender>Male</gender>
       </li>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_KnowsMemoryThoughtTagged">
-        <eventDef>Virgin_TakenM</eventDef>
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_KnowsMemoryThought_Gendered">
+        <eventDef>RSI_VirginTakenNotSpouse</eventDef>
         <thought>Virgin_OnlyForSpouse_Know_Taken</thought>
-        <tag>Male, NotSpouse</tag>
+        <doersGender>Male</doersGender>
       </li>
       <li Class="PreceptComp_SelfTookMemoryThought">
-        <eventDef>Virgin_TookM</eventDef>
+        <eventDef>RSI_TookVirgin</eventDef>
         <thought>TookVirginity</thought>
       </li>
     </comps>
@@ -210,11 +220,10 @@
       <li>FemaleSupremacy</li>
     </associatedMemes>
     <comps>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
-        <eventDef>Virgin_TakenF</eventDef>
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
+        <eventDef>RSI_VirginTaken</eventDef>
         <thought>Virgin_Shameful_Taken</thought>
-        <tag>BeenRaped</tag>
-        <exclusive>true</exclusive>
+        <gender>Female</gender>
       </li>
     </comps>
   </PreceptDef>
@@ -232,11 +241,10 @@
       <li>MaleSupremacy</li>
     </associatedMemes>
     <comps>
-      <li Class="RJWSexperience.Ideology.Precepts.PreceptComp_SelfTookThoughtTagged">
-        <eventDef>Virgin_TakenM</eventDef>
+      <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
+        <eventDef>RSI_VirginTaken</eventDef>
         <thought>Virgin_Shameful_Taken</thought>
-        <tag>BeenRaped</tag>
-        <exclusive>true</exclusive>
+        <gender>Male</gender>
       </li>
     </comps>
   </PreceptDef>
@@ -250,8 +258,8 @@
     <stackLimit>1</stackLimit>
     <stages>
       <li>
-        <label>Lost virginity</label>
-        <description>I lost my virginity forcefully.</description>
+        <label>Virginity stolen</label>
+        <description>My virginity was taken forcefully.</description>
         <baseMoodEffect>-10</baseMoodEffect>
         <baseOpinionOffset>-200</baseOpinionOffset>
       </li>
@@ -265,17 +273,17 @@
     <stackLimit>1</stackLimit>
     <stages>
       <li>
-        <label>Lost virginity by {0}</label>
+        <label>Lost virginity to {0}</label>
         <description>I am no longer virgin.</description>
         <baseMoodEffect>-5</baseMoodEffect>
       </li>
       <li>
-        <label>Lost virginity by {0}</label>
+        <label>Lost virginity to {0}</label>
         <description>I am no longer virgin.</description>
         <baseMoodEffect>-3</baseMoodEffect>
       </li>
       <li>
-        <label>Lost virginity by {0}</label>
+        <label>Lost virginity to {0}</label>
         <description>I am no longer virgin.</description>
         <baseMoodEffect>-1</baseMoodEffect>
       </li>
@@ -304,17 +312,17 @@
     <stackLimit>1</stackLimit>
     <stages>
       <li>
-        <label>Lost virginity by {0}</label>
+        <label>Lost virginity to {0}</label>
         <description>Finally!</description>
         <baseMoodEffect>5</baseMoodEffect>
       </li>
       <li>
-        <label>Lost virginity by {0}</label>
+        <label>Lost virginity to {0}</label>
         <description>Finally!</description>
         <baseMoodEffect>10</baseMoodEffect>
       </li>
       <li>
-        <label>Lost virginity by {0}</label>
+        <label>Lost virginity to {0}</label>
         <description>Finally!</description>
         <baseMoodEffect>20</baseMoodEffect>
       </li>

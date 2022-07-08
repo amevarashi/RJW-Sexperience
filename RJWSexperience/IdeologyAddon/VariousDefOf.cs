@@ -24,10 +24,9 @@ namespace RJWSexperience.Ideology
 		[MayRequireIdeology] public static readonly HistoryEventDef RSI_NonIncestuosMarriage;
 		[MayRequireIdeology] public static readonly HistoryEventDef RSI_NonIncestuosSex;
 		[MayRequireIdeology] public static readonly HistoryEventDef SexWithCorpse;
-		[MayRequireIdeology] public static readonly HistoryEventDef Virgin_TakenF;
-		[MayRequireIdeology] public static readonly HistoryEventDef Virgin_TakenM;
-		[MayRequireIdeology] public static readonly HistoryEventDef Virgin_TookF;
-		[MayRequireIdeology] public static readonly HistoryEventDef Virgin_TookM;
+		[MayRequireIdeology] public static readonly HistoryEventDef RSI_VirginTaken;
+		[MayRequireIdeology] public static readonly HistoryEventDef RSI_VirginStolen;
+		[MayRequireIdeology] public static readonly HistoryEventDef RSI_TookVirgin;
 		[MayRequireIdeology] public static readonly PreceptDef Bestiality_OnlyVenerated;
 		[MayRequireIdeology] public static readonly PreceptDef BabyFaction_AlwaysFather;
 		[MayRequireIdeology] public static readonly PreceptDef BabyFaction_AlwaysColony;
