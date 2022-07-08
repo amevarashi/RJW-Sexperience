@@ -88,6 +88,9 @@
       <li>HumanPrimacy</li>
     </associatedMemes>
     <comps>
+      <li Class="PreceptComp_UnwillingToDo">
+        <eventDef>RSI_SexWithAnimal</eventDef>
+      </li>
       <li Class="PreceptComp_SelfTookMemoryThought">
         <eventDef>RSI_SexWithVeneratedAnimal</eventDef>
         <thought>Bestiality_Abhorrent</thought>
@@ -115,9 +118,6 @@
             <multiplier>0.05</multiplier>
           </li>
         </rules>
-      </li>
-      <li Class="RJWSexperience.Ideology.Precepts.DefExtension_ModifyBestialityMtb">
-        <disable>true</disable>
       </li>
     </modExtensions>
   </PreceptDef>

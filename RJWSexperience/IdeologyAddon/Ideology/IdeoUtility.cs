@@ -43,9 +43,6 @@ namespace RJWSexperience.Ideology
 				if (defExtension == null)
 					continue;
 
-				if (defExtension.disable)
-					return -1f;
-
 				finalMultiplier *= defExtension.multiplier;
 			}
 			return finalMultiplier;

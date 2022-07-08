@@ -7,7 +7,5 @@ namespace RJWSexperience.Ideology.Precepts
 	{
 		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
 		public float multiplier = 1f;
-		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
-		public bool disable = false;
 	}
 }

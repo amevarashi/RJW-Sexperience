@@ -11,8 +11,15 @@ namespace RJWSexperience.Ideology.Patches
 	{
 		public static void Postfix(Pawn pawn, ref float __result)
 		{
-			if (__result > 0f && pawn.Ideo != null) // ideo is null if don't have dlc
-				__result *= IdeoUtility.GetPreceptsMtbMultiplier<DefExtension_ModifyBestialityMtb>(pawn.Ideo);
+			if (__result < 0f || pawn.Ideo == null) // ideo is null if don't have dlc
+				return;
+
+			if (!VariousDefOf.RSI_SexWithAnimal.CreateEvent(pawn).DoerWillingToDo())
+			{
+				__result = -2f;
+				return;
+			}
+			__result *= IdeoUtility.GetPreceptsMtbMultiplier<DefExtension_ModifyBestialityMtb>(pawn.Ideo);
 		}
 	}
 
