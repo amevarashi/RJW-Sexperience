@@ -19,8 +19,6 @@ namespace RJWSexperience.Ideology
 		[MayRequireIdeology] public static readonly HistoryEventDef RSI_SexWithAnimal;
 		[MayRequireIdeology] public static readonly HistoryEventDef RSI_Raped;
 		[MayRequireIdeology] public static readonly HistoryEventDef RSI_WasRaped;
-		[MayRequireIdeology] public static readonly HistoryEventDef RSI_WasRapedSlave;
-		[MayRequireIdeology] public static readonly HistoryEventDef RSI_WasRapedPrisoner;
 		[MayRequireIdeology] public static readonly HistoryEventDef RSI_NonIncestuosMarriage;
 		[MayRequireIdeology] public static readonly HistoryEventDef RSI_NonIncestuosSex;
 		[MayRequireIdeology] public static readonly HistoryEventDef RSI_SexWithCorpse;

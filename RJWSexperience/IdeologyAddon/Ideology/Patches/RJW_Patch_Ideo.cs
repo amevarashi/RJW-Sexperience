@@ -102,13 +102,7 @@ namespace RJWSexperience.Ideology.Patches
 			else if (xxx.is_human(partner) && rape)
 			{
 				VariousDefOf.RSI_Raped.RecordEventWithPartner(human, partner);
-
-				if (partner.IsSlave)
-					VariousDefOf.RSI_WasRapedSlave.RecordEventWithPartner(partner, human);
-				else if (partner.IsPrisoner)
-					VariousDefOf.RSI_WasRapedPrisoner.RecordEventWithPartner(partner, human);
-				else
-					VariousDefOf.RSI_WasRaped.RecordEventWithPartner(partner, human);
+				VariousDefOf.RSI_WasRaped.RecordEventWithPartner(partner, human);
 			}
 		}
 

@@ -48,6 +48,28 @@
   <HistoryEventDef>
     <defName>RSI_WasRaped</defName>
     <label>was raped</label>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.HistoryEvents.DefExtension_PartnerDependentOverrides">
+        <overrideRules>
+          <li>
+            <filter>
+              <doer>
+                <isSlave>true</isSlave>
+              </doer>
+            </filter>
+            <historyEventDef>RSI_WasRapedSlave</historyEventDef>
+          </li>
+          <li>
+            <filter>
+              <doer>
+                <isPrisoner>true</isPrisoner>
+              </doer>
+            </filter>
+            <historyEventDef>RSI_WasRapedPrisoner</historyEventDef>
+          </li>
+        </overrideRules>
+      </li>
+    </modExtensions>
   </HistoryEventDef>
 
   <HistoryEventDef>
