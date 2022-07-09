@@ -11,8 +11,7 @@ namespace RJWSexperience.Ideology.Patches
 
 			if (props.isRape && exVirgin == props.partner)
 				VariousDefOf.RSI_VirginStolen.RecordEventWithPartner(exVirgin, partner);
-
-			if (degree != femaleAfterSurgery)
+			else if (degree != femaleAfterSurgery)
 				VariousDefOf.RSI_VirginTaken.RecordEventWithPartner(exVirgin, partner);
 
 			VariousDefOf.RSI_TookVirgin.RecordEventWithPartner(partner, exVirgin);
