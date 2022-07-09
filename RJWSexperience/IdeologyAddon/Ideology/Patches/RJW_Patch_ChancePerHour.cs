@@ -47,7 +47,7 @@ namespace RJWSexperience.Ideology.Patches
 			if (__result < 0f || pawn.Ideo == null) // ideo is null if don't have dlc
 				return;
 
-			if (!VariousDefOf.SexWithCorpse.CreateEvent(pawn).DoerWillingToDo())
+			if (!VariousDefOf.RSI_SexWithCorpse.CreateEvent(pawn).DoerWillingToDo())
 			{
 				__result = -2f;
 				return;

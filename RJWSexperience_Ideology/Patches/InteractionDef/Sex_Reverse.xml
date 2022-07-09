@@ -6,10 +6,10 @@
 		<value>
 			<li Class="RJWSexperience.Ideology.InteractionDefExtension_HistoryEvents">
 				<pawnEvents>
-					<li>VaginalSex</li>
+					<li>RSI_VaginalSex</li>
 				</pawnEvents>
 				<partnerEvents>
-					<li>VaginalSex</li>
+					<li>RSI_VaginalSex</li>
 				</partnerEvents>
 			</li>
 		</value>
@@ -20,10 +20,10 @@
 		<value>
 			<li Class="RJWSexperience.Ideology.InteractionDefExtension_HistoryEvents">
 				<pawnEvents>
-					<li>AnalSex</li>
+					<li>RSI_AnalSex</li>
 				</pawnEvents>
 				<partnerEvents>
-					<li>AnalSex</li>
+					<li>RSI_AnalSex</li>
 				</partnerEvents>
 			</li>
 		</value>
@@ -34,10 +34,10 @@
 		<value>
 			<li Class="RJWSexperience.Ideology.InteractionDefExtension_HistoryEvents">
 				<pawnEvents>
-					<li>OralSex</li>
+					<li>RSI_OralSex</li>
 				</pawnEvents>
 				<partnerEvents>
-					<li>OralSex</li>
+					<li>RSI_OralSex</li>
 				</partnerEvents>
 			</li>
 		</value>
@@ -48,10 +48,10 @@
 		<value>
 			<li Class="RJWSexperience.Ideology.InteractionDefExtension_HistoryEvents">
 				<pawnEvents>
-					<li>MiscSex</li>
+					<li>RSI_MiscSex</li>
 				</pawnEvents>
 				<partnerEvents>
-					<li>MiscSex</li>
+					<li>RSI_MiscSex</li>
 				</partnerEvents>
 			</li>
 		</value>
@@ -62,10 +62,10 @@
 		<value>
 			<li Class="RJWSexperience.Ideology.InteractionDefExtension_HistoryEvents">
 				<pawnEvents>
-					<li>PromiscuousSex</li>
+					<li>RSI_PromiscuousSex</li>
 				</pawnEvents>
 				<partnerEvents>
-					<li>PromiscuousSex</li>
+					<li>RSI_PromiscuousSex</li>
 				</partnerEvents>
 			</li>
 		</value>

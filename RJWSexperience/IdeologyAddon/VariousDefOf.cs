@@ -18,12 +18,12 @@ namespace RJWSexperience.Ideology
 		[MayRequireIdeology] public static readonly MemeDef Necrophile;
 		[MayRequireIdeology] public static readonly HistoryEventDef RSI_SexWithAnimal;
 		[MayRequireIdeology] public static readonly HistoryEventDef RSI_Raped;
-		[MayRequireIdeology] public static readonly HistoryEventDef WasRaped;
-		[MayRequireIdeology] public static readonly HistoryEventDef WasRapedSlave;
-		[MayRequireIdeology] public static readonly HistoryEventDef WasRapedPrisoner;
+		[MayRequireIdeology] public static readonly HistoryEventDef RSI_WasRaped;
+		[MayRequireIdeology] public static readonly HistoryEventDef RSI_WasRapedSlave;
+		[MayRequireIdeology] public static readonly HistoryEventDef RSI_WasRapedPrisoner;
 		[MayRequireIdeology] public static readonly HistoryEventDef RSI_NonIncestuosMarriage;
 		[MayRequireIdeology] public static readonly HistoryEventDef RSI_NonIncestuosSex;
-		[MayRequireIdeology] public static readonly HistoryEventDef SexWithCorpse;
+		[MayRequireIdeology] public static readonly HistoryEventDef RSI_SexWithCorpse;
 		[MayRequireIdeology] public static readonly HistoryEventDef RSI_VirginTaken;
 		[MayRequireIdeology] public static readonly HistoryEventDef RSI_VirginStolen;
 		[MayRequireIdeology] public static readonly HistoryEventDef RSI_TookVirgin;

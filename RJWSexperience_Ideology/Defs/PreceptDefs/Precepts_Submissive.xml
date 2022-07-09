@@ -37,12 +37,12 @@
         <gender>Male</gender>
       </li>
       <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
-        <eventDef>WasRaped</eventDef>
+        <eventDef>RSI_WasRaped</eventDef>
         <thought>BeenRaped_Submissive</thought>
         <gender>Male</gender>
       </li>
       <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
-        <eventDef>WasRaped</eventDef>
+        <eventDef>RSI_WasRaped</eventDef>
         <thought>BeenRaped_NotSubmissive</thought>
         <gender>Female</gender>
       </li>
@@ -52,12 +52,12 @@
         <doersGender>Male</doersGender>
       </li>
       <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
-        <eventDef>WasRapedPrisoner</eventDef>
+        <eventDef>RSI_WasRapedPrisoner</eventDef>
         <thought>BeenRaped_Submissive</thought>
         <gender>Male</gender>
       </li>
       <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
-        <eventDef>WasRapedPrisoner</eventDef>
+        <eventDef>RSI_WasRapedPrisoner</eventDef>
         <thought>BeenRaped_NotSubmissive</thought>
         <gender>Female</gender>
       </li>
@@ -67,12 +67,12 @@
         <doersGender>Male</doersGender>
       </li>
       <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
-        <eventDef>WasRapedSlave</eventDef>
+        <eventDef>RSI_WasRapedSlave</eventDef>
         <thought>BeenRaped_Submissive</thought>
         <gender>Male</gender>
       </li>
       <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
-        <eventDef>WasRapedSlave</eventDef>
+        <eventDef>RSI_WasRapedSlave</eventDef>
         <thought>BeenRaped_NotSubmissive</thought>
         <gender>Female</gender>
       </li>
@@ -101,12 +101,12 @@
         <gender>Female</gender>
       </li>
       <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
-        <eventDef>WasRaped</eventDef>
+        <eventDef>RSI_WasRaped</eventDef>
         <thought>BeenRaped_Submissive</thought>
         <gender>Female</gender>
       </li>
       <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
-        <eventDef>WasRaped</eventDef>
+        <eventDef>RSI_WasRaped</eventDef>
         <thought>BeenRaped_NotSubmissive</thought>
         <gender>Male</gender>
       </li>
@@ -116,12 +116,12 @@
         <doersGender>Female</doersGender>
       </li>
       <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
-        <eventDef>WasRapedPrisoner</eventDef>
+        <eventDef>RSI_WasRapedPrisoner</eventDef>
         <thought>BeenRaped_Submissive</thought>
         <gender>Female</gender>
       </li>
       <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
-        <eventDef>WasRapedPrisoner</eventDef>
+        <eventDef>RSI_WasRapedPrisoner</eventDef>
         <thought>BeenRaped_NotSubmissive</thought>
         <gender>Male</gender>
       </li>
@@ -131,12 +131,12 @@
         <doersGender>Female</doersGender>
       </li>
       <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
-        <eventDef>WasRapedSlave</eventDef>
+        <eventDef>RSI_WasRapedSlave</eventDef>
         <thought>BeenRaped_Submissive</thought>
         <gender>Female</gender>
       </li>
       <li Class="RJWSexperience.Ideology.Precepts.Comp_SelfTookMemoryThought_Gendered">
-        <eventDef>WasRapedSlave</eventDef>
+        <eventDef>RSI_WasRapedSlave</eventDef>
         <thought>BeenRaped_NotSubmissive</thought>
         <gender>Male</gender>
       </li>

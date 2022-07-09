@@ -49,7 +49,7 @@ namespace RJWSexperience.Ideology.Patches
 		}
 	}
 
-	[HarmonyPatch(typeof(SexUtility), "Aftersex", new Type[] { typeof(SexProps) })]
+	[HarmonyPatch(typeof(SexUtility), nameof(SexUtility.Aftersex), new Type[] { typeof(SexProps) })]
 	public static class RJW_Patch_Aftersex
 	{
 		public static void Postfix(SexProps props)
@@ -99,19 +99,16 @@ namespace RJWSexperience.Ideology.Patches
 			{
 				VariousDefOf.RSI_SexWithAnimal.RecordEventWithPartner(human, partner);
 			}
-			else if (xxx.is_human(partner))
+			else if (xxx.is_human(partner) && rape)
 			{
-				if (rape)
-				{
-					VariousDefOf.RSI_Raped.RecordEventWithPartner(human, partner);
+				VariousDefOf.RSI_Raped.RecordEventWithPartner(human, partner);
 
-					if (partner.IsSlave)
-						VariousDefOf.WasRapedSlave.RecordEventWithPartner(partner, human);
-					else if (partner.IsPrisoner)
-						VariousDefOf.WasRapedPrisoner.RecordEventWithPartner(partner, human);
-					else
-						VariousDefOf.WasRaped.RecordEventWithPartner(partner, human);
-				}
+				if (partner.IsSlave)
+					VariousDefOf.RSI_WasRapedSlave.RecordEventWithPartner(partner, human);
+				else if (partner.IsPrisoner)
+					VariousDefOf.RSI_WasRapedPrisoner.RecordEventWithPartner(partner, human);
+				else
+					VariousDefOf.RSI_WasRaped.RecordEventWithPartner(partner, human);
 			}
 		}
 

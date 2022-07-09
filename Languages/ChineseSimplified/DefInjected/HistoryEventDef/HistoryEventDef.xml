@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Issues -->
+
+  <RSI_SexWithAnimal.label>和动物做爱</RSI_SexWithAnimal.label>
+  <RSI_SexWithVeneratedAnimal.label>和圣兽做爱</RSI_SexWithVeneratedAnimal.label>
+  <RSI_IncestuosMarriage.label>族内通婚</RSI_IncestuosMarriage.label>
+  <RSI_Raped.label>被强奸</RSI_Raped.label>
+  <RSI_RapedSlave.label>强奸了奴隶</RSI_RapedSlave.label>
+  <RSI_RapedPrisoner.label>强奸了囚犯</RSI_RapedPrisoner.label>
+  <RSI_WasRaped.label>被强奸</RSI_WasRaped.label>
+  <RSI_WasRapedSlave.label>奴隶被强奸</RSI_WasRapedSlave.label>
+  <RSI_WasRapedPrisoner.label>囚犯被强奸</RSI_WasRapedPrisoner.label>
+  <RSI_VaginalSex.label>阴道容纳性交</RSI_VaginalSex.label>
+  <RSI_AnalSex.label>肛门容纳性交</RSI_AnalSex.label>
+  <RSI_OralSex.label>口腔容纳性交</RSI_OralSex.label>
+  <RSI_MiscSex.label>做爱</RSI_MiscSex.label>
+  <RSI_PromiscuousSex.label>乱交</RSI_PromiscuousSex.label>
+
+</LanguageData>

@@ -42,17 +42,17 @@
   </HistoryEventDef>
   
   <HistoryEventDef>
-    <defName>WasRaped</defName>
+    <defName>RSI_WasRaped</defName>
     <label>was raped</label>
   </HistoryEventDef>
 
   <HistoryEventDef>
-    <defName>WasRapedSlave</defName>
+    <defName>RSI_WasRapedSlave</defName>
     <label>was raped</label>
   </HistoryEventDef>
 
   <HistoryEventDef>
-    <defName>WasRapedPrisoner</defName>
+    <defName>RSI_WasRapedPrisoner</defName>
     <label>was raped</label>
   </HistoryEventDef>
   
