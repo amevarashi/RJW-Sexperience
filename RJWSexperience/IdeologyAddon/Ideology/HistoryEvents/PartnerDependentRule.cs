@@ -9,14 +9,8 @@ namespace RJWSexperience.Ideology.HistoryEvents
 		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
 		public HistoryEventDef historyEventDef;
 		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
-		public PartnerFilter filter;
+		public TwoPawnFilter filter;
 
-		public bool Applies(Pawn pawn, Pawn partner)
-		{
-			if (filter == null)
-				return false;
-
-			return filter.Applies(pawn, partner);
-		}
+		public bool Applies(Pawn pawn, Pawn partner) => filter?.Applies(pawn, partner) == true;
 	}
 }

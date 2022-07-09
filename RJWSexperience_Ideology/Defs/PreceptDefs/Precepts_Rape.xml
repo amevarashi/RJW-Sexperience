@@ -16,13 +16,17 @@
         <overrideRules>
           <li>
             <filter>
-              <isSlave>true</isSlave>
+              <partner>
+                <isSlave>true</isSlave>
+              </partner>
             </filter>
             <historyEventDef>RSI_RapedSlave</historyEventDef>
           </li>
           <li>
             <filter>
-              <isPrisoner>true</isPrisoner>
+              <partner>
+                <isPrisoner>true</isPrisoner>
+              </partner>
             </filter>
             <historyEventDef>RSI_RapedPrisoner</historyEventDef>
           </li>

@@ -1,6 +1,4 @@
-﻿using RimWorld;
-using rjw;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Verse;
 
@@ -25,7 +23,7 @@ namespace RJWSexperience.Ideology.Precepts
 			[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
 			public float multiplier = 1f;
 			[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
-			public PartnerFilter filter;
+			public TwoPawnFilter filter;
 
 			public bool Applies(Pawn pawn, Pawn partner)
 			{

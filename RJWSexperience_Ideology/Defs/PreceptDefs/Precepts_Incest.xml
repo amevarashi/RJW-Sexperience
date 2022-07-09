@@ -26,39 +26,43 @@
         <overrideRules>
           <li>
             <filter>
-              <hasOneOfRelations>
-                <li>Parent</li>
-                <li>Child</li>
-                <li>Sibling</li>
-                <li>HalfSibling</li>
-                <li>Grandparent</li>
-                <li>Grandchild</li>
-                <li>NephewOrNiece</li>
-                <li>UncleOrAunt</li>
-              </hasOneOfRelations>
+              <relations>
+                <hasOneOfRelations>
+                  <li>Parent</li>
+                  <li>Child</li>
+                  <li>Sibling</li>
+                  <li>HalfSibling</li>
+                  <li>Grandparent</li>
+                  <li>Grandchild</li>
+                  <li>NephewOrNiece</li>
+                  <li>UncleOrAunt</li>
+                </hasOneOfRelations>
+              </relations>
             </filter>
             <historyEventDef>RSI_CloseRelativeMarriage</historyEventDef>
           </li>
           <li>
             <filter>
-              <hasOneOfRelations>
-                <li>Parent</li>
-                <li>Child</li>
-                <li>Sibling</li>
-                <li>HalfSibling</li>
-                <li>Grandparent</li>
-                <li>Grandchild</li>
-                <li>NephewOrNiece</li>
-                <li>UncleOrAunt</li>
-                <li>GreatGrandparent</li>
-                <li>GreatGrandchild</li>
-                <li>GranduncleOrGrandaunt</li>
-                <li>GrandnephewOrGrandniece</li>
-                <li>CousinOnceRemoved</li>
-                <li>SecondCousin</li>
-                <li>Cousin</li>
-                <li>Kin</li>
-              </hasOneOfRelations>
+              <relations>
+                <hasOneOfRelations>
+                  <li>Parent</li>
+                  <li>Child</li>
+                  <li>Sibling</li>
+                  <li>HalfSibling</li>
+                  <li>Grandparent</li>
+                  <li>Grandchild</li>
+                  <li>NephewOrNiece</li>
+                  <li>UncleOrAunt</li>
+                  <li>GreatGrandparent</li>
+                  <li>GreatGrandchild</li>
+                  <li>GranduncleOrGrandaunt</li>
+                  <li>GrandnephewOrGrandniece</li>
+                  <li>CousinOnceRemoved</li>
+                  <li>SecondCousin</li>
+                  <li>Cousin</li>
+                  <li>Kin</li>
+                </hasOneOfRelations>
+              </relations>
             </filter>
             <historyEventDef>RSI_IncestuosMarriage</historyEventDef>
           </li>
@@ -85,39 +89,43 @@
         <overrideRules>
           <li>
             <filter>
-              <hasOneOfRelations>
-                <li>Parent</li>
-                <li>Child</li>
-                <li>Sibling</li>
-                <li>HalfSibling</li>
-                <li>Grandparent</li>
-                <li>Grandchild</li>
-                <li>NephewOrNiece</li>
-                <li>UncleOrAunt</li>
-              </hasOneOfRelations>
+              <relations>
+                <hasOneOfRelations>
+                  <li>Parent</li>
+                  <li>Child</li>
+                  <li>Sibling</li>
+                  <li>HalfSibling</li>
+                  <li>Grandparent</li>
+                  <li>Grandchild</li>
+                  <li>NephewOrNiece</li>
+                  <li>UncleOrAunt</li>
+                </hasOneOfRelations>
+              </relations>
             </filter>
             <historyEventDef>RSI_CloseRelativeSex</historyEventDef>
           </li>
           <li>
             <filter>
-              <hasOneOfRelations>
-                <li>Parent</li>
-                <li>Child</li>
-                <li>Sibling</li>
-                <li>HalfSibling</li>
-                <li>Grandparent</li>
-                <li>Grandchild</li>
-                <li>NephewOrNiece</li>
-                <li>UncleOrAunt</li>
-                <li>GreatGrandparent</li>
-                <li>GreatGrandchild</li>
-                <li>GranduncleOrGrandaunt</li>
-                <li>GrandnephewOrGrandniece</li>
-                <li>CousinOnceRemoved</li>
-                <li>SecondCousin</li>
-                <li>Cousin</li>
-                <li>Kin</li>
-              </hasOneOfRelations>
+              <relations>
+                <hasOneOfRelations>
+                  <li>Parent</li>
+                  <li>Child</li>
+                  <li>Sibling</li>
+                  <li>HalfSibling</li>
+                  <li>Grandparent</li>
+                  <li>Grandchild</li>
+                  <li>NephewOrNiece</li>
+                  <li>UncleOrAunt</li>
+                  <li>GreatGrandparent</li>
+                  <li>GreatGrandchild</li>
+                  <li>GranduncleOrGrandaunt</li>
+                  <li>GrandnephewOrGrandniece</li>
+                  <li>CousinOnceRemoved</li>
+                  <li>SecondCousin</li>
+                  <li>Cousin</li>
+                  <li>Kin</li>
+                </hasOneOfRelations>
+              </relations>
             </filter>
             <historyEventDef>RSI_IncestuosSex</historyEventDef>
           </li>
@@ -163,19 +171,21 @@
         <rules>
           <li>
             <filter>
-              <hasOneOfRelations>
-                <li>Parent</li>
-                <li>Child</li>
-                <li>Sibling</li>
-                <li>HalfSibling</li>
-                <li>Grandparent</li>
-                <li>Grandchild</li>
-                <li>NephewOrNiece</li>
-                <li>UncleOrAunt</li>
-              </hasOneOfRelations>
-              <hasNoneOfRelations>
-                <li>Spouse</li>
-              </hasNoneOfRelations>
+              <relations>
+                <hasOneOfRelations>
+                  <li>Parent</li>
+                  <li>Child</li>
+                  <li>Sibling</li>
+                  <li>HalfSibling</li>
+                  <li>Grandparent</li>
+                  <li>Grandchild</li>
+                  <li>NephewOrNiece</li>
+                  <li>UncleOrAunt</li>
+                </hasOneOfRelations>
+                <hasNoneOfRelations>
+                  <li>Spouse</li>
+                </hasNoneOfRelations>
+              </relations>
             </filter>
             <multiplier>0.5</multiplier>
           </li>
@@ -212,27 +222,29 @@
         <rules>
           <li>
             <filter>
-              <hasOneOfRelations>
-                <li>Parent</li>
-                <li>Child</li>
-                <li>Sibling</li>
-                <li>HalfSibling</li>
-                <li>Grandparent</li>
-                <li>Grandchild</li>
-                <li>NephewOrNiece</li>
-                <li>UncleOrAunt</li>
-                <li>GreatGrandparent</li>
-                <li>GreatGrandchild</li>
-                <li>GranduncleOrGrandaunt</li>
-                <li>GrandnephewOrGrandniece</li>
-                <li>CousinOnceRemoved</li>
-                <li>SecondCousin</li>
-                <li>Cousin</li>
-                <li>Kin</li>
-              </hasOneOfRelations>
-              <hasNoneOfRelations>
-                <li>Spouse</li>
-              </hasNoneOfRelations>
+              <relations>
+                <hasOneOfRelations>
+                  <li>Parent</li>
+                  <li>Child</li>
+                  <li>Sibling</li>
+                  <li>HalfSibling</li>
+                  <li>Grandparent</li>
+                  <li>Grandchild</li>
+                  <li>NephewOrNiece</li>
+                  <li>UncleOrAunt</li>
+                  <li>GreatGrandparent</li>
+                  <li>GreatGrandchild</li>
+                  <li>GranduncleOrGrandaunt</li>
+                  <li>GrandnephewOrGrandniece</li>
+                  <li>CousinOnceRemoved</li>
+                  <li>SecondCousin</li>
+                  <li>Cousin</li>
+                  <li>Kin</li>
+                </hasOneOfRelations>
+                <hasNoneOfRelations>
+                  <li>Spouse</li>
+                </hasNoneOfRelations>
+              </relations>
             </filter>
             <multiplier>0.5</multiplier>
           </li>
@@ -269,27 +281,29 @@
         <rules>
           <li>
             <filter>
-              <hasOneOfRelations>
-                <li>Parent</li>
-                <li>Child</li>
-                <li>Sibling</li>
-                <li>HalfSibling</li>
-                <li>Grandparent</li>
-                <li>Grandchild</li>
-                <li>NephewOrNiece</li>
-                <li>UncleOrAunt</li>
-                <li>GreatGrandparent</li>
-                <li>GreatGrandchild</li>
-                <li>GranduncleOrGrandaunt</li>
-                <li>GrandnephewOrGrandniece</li>
-                <li>CousinOnceRemoved</li>
-                <li>SecondCousin</li>
-                <li>Cousin</li>
-                <li>Kin</li>
-              </hasOneOfRelations>
-              <hasNoneOfRelations>
-                <li>Spouse</li>
-              </hasNoneOfRelations>
+              <relations>
+                <hasOneOfRelations>
+                  <li>Parent</li>
+                  <li>Child</li>
+                  <li>Sibling</li>
+                  <li>HalfSibling</li>
+                  <li>Grandparent</li>
+                  <li>Grandchild</li>
+                  <li>NephewOrNiece</li>
+                  <li>UncleOrAunt</li>
+                  <li>GreatGrandparent</li>
+                  <li>GreatGrandchild</li>
+                  <li>GranduncleOrGrandaunt</li>
+                  <li>GrandnephewOrGrandniece</li>
+                  <li>CousinOnceRemoved</li>
+                  <li>SecondCousin</li>
+                  <li>Cousin</li>
+                  <li>Kin</li>
+                </hasOneOfRelations>
+                <hasNoneOfRelations>
+                  <li>Spouse</li>
+                </hasNoneOfRelations>
+              </relations>
             </filter>
             <multiplier>0.1</multiplier>
           </li>
@@ -324,24 +338,26 @@
         <rules>
           <li>
             <filter>
-              <hasOneOfRelations>
-                <li>Parent</li>
-                <li>Child</li>
-                <li>Sibling</li>
-                <li>HalfSibling</li>
-                <li>Grandparent</li>
-                <li>Grandchild</li>
-                <li>NephewOrNiece</li>
-                <li>UncleOrAunt</li>
-                <li>GreatGrandparent</li>
-                <li>GreatGrandchild</li>
-                <li>GranduncleOrGrandaunt</li>
-                <li>GrandnephewOrGrandniece</li>
-                <li>CousinOnceRemoved</li>
-                <li>SecondCousin</li>
-                <li>Cousin</li>
-                <li>Kin</li>
-              </hasOneOfRelations>
+              <relations>
+                <hasOneOfRelations>
+                  <li>Parent</li>
+                  <li>Child</li>
+                  <li>Sibling</li>
+                  <li>HalfSibling</li>
+                  <li>Grandparent</li>
+                  <li>Grandchild</li>
+                  <li>NephewOrNiece</li>
+                  <li>UncleOrAunt</li>
+                  <li>GreatGrandparent</li>
+                  <li>GreatGrandchild</li>
+                  <li>GranduncleOrGrandaunt</li>
+                  <li>GrandnephewOrGrandniece</li>
+                  <li>CousinOnceRemoved</li>
+                  <li>SecondCousin</li>
+                  <li>Cousin</li>
+                  <li>Kin</li>
+                </hasOneOfRelations>
+              </relations>
             </filter>
             <multiplier>2.0</multiplier>
           </li>

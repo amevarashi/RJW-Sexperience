@@ -21,9 +21,11 @@
         <generationRules>
           <li>
             <filter>
-              <hasNoneOfRelations>
-                <li>Spouse</li>
-              </hasNoneOfRelations>
+              <relations>
+                <hasNoneOfRelations>
+                  <li>Spouse</li>
+                </hasNoneOfRelations>
+              </relations>
             </filter>
             <historyEventDef>RSI_VirginTakenNotSpouse</historyEventDef>
           </li>

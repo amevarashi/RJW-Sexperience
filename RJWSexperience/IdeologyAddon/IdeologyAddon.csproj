@@ -52,6 +52,9 @@
     <Compile Include="Ideology\HistoryEvents\ArgsNamesCustom.cs" />
     <Compile Include="Ideology\IssueUtility.cs" />
     <Compile Include="Ideology\Keyed.cs" />
+    <Compile Include="Ideology\RelationFilter.cs" />
+    <Compile Include="Ideology\TwoPawnFilter.cs" />
+    <Compile Include="Ideology\SinglePawnFilter.cs" />
     <Compile Include="Ideology\Precepts\Comp_SelfTookMemoryThought_Gendered.cs" />
     <Compile Include="Ideology\Precepts\Comp_KnowsMemoryThought_Gendered.cs" />
     <Compile Include="Ideology\RJWUtility_Ideo.cs" />
@@ -63,7 +66,6 @@
     <Compile Include="Ideology\Precepts\DefExtension_ModifyBestialityMtb.cs" />
     <Compile Include="Ideology\Precepts\DefExtension_ModifyPreference.cs" />
     <Compile Include="Ideology\Precepts\DefExtension_MultipleMemesRequired.cs" />
-    <Compile Include="Ideology\PartnerFilter.cs" />
     <Compile Include="Ideology\Rituals\JobGiver_GangbangConsensual.cs" />
     <Compile Include="Ideology\Rituals\LordJob_Rituals.cs" />
     <Compile Include="Ideology\Patches\RJW_Patch_Ideo.cs" />

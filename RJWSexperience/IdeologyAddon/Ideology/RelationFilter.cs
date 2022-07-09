@@ -1,21 +1,14 @@
 ﻿using RimWorld;
-using rjw;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Verse;
 
 namespace RJWSexperience.Ideology
 {
-	public class PartnerFilter
+	public class RelationFilter
 	{
 		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
-		public bool? isAnimal;
-		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
 		public bool? isVeneratedAnimal;
-		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
-		public bool? isSlave;
-		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
-		public bool? isPrisoner;
 		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
 		public bool? isAlien;
 		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
@@ -29,16 +22,7 @@ namespace RJWSexperience.Ideology
 
 		public bool Applies(Pawn pawn, Pawn partner)
 		{
-			if (isAnimal != null && isAnimal != partner.IsAnimal())
-				return false;
-
 			if (isVeneratedAnimal != null && isVeneratedAnimal != pawn.Ideo.IsVeneratedAnimal(partner))
-				return false;
-
-			if (isSlave != null && isSlave != partner.IsSlave)
-				return false;
-
-			if (isPrisoner != null && isPrisoner != partner.IsPrisoner)
 				return false;
 
 			//if (isAlien != null && isAlien != partner)

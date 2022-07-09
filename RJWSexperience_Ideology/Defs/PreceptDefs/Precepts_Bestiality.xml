@@ -16,32 +16,46 @@
         <generationRules>
           <li>
             <filter>
-              <isVeneratedAnimal>true</isVeneratedAnimal>
+              <relations>
+                <isVeneratedAnimal>true</isVeneratedAnimal>
+              </relations>
             </filter>
             <historyEventDef>RSI_SexWithVeneratedAnimal</historyEventDef>
           </li>
           <li>
             <filter>
-              <isAnimal>true</isAnimal>
-              <isVeneratedAnimal>false</isVeneratedAnimal>
+              <partner>
+                <isAnimal>true</isAnimal>
+              </partner>
+              <relations>
+                <isVeneratedAnimal>false</isVeneratedAnimal>
+              </relations>
             </filter>
             <historyEventDef>RSI_SexWithNonVeneratedAnimal</historyEventDef>
           </li>
           <li>
             <filter>
-              <isAnimal>true</isAnimal>
-              <hasOneOfRelations>
-                <li>Bond</li>
-              </hasOneOfRelations>
+              <partner>
+                <isAnimal>true</isAnimal>
+              </partner>
+              <relations>
+                <hasOneOfRelations>
+                  <li>Bond</li>
+                </hasOneOfRelations>
+              </relations>
             </filter>
             <historyEventDef>RSI_SexWithBondedAnimal</historyEventDef>
           </li>
           <li>
             <filter>
-              <isAnimal>true</isAnimal>
-              <hasNoneOfRelations>
-                <li>Bond</li>
-              </hasNoneOfRelations>
+              <partner>
+                <isAnimal>true</isAnimal>
+              </partner>
+              <relations>
+                <hasNoneOfRelations>
+                  <li>Bond</li>
+                </hasNoneOfRelations>
+              </relations>
             </filter>
             <historyEventDef>RSI_SexWithNonBondAnimal</historyEventDef>
           </li>
@@ -113,7 +127,9 @@
         <rules>
           <li>
             <filter>
-              <isAnimal>true</isAnimal>
+              <partner>
+                <isAnimal>true</isAnimal>
+              </partner>
             </filter>
             <multiplier>0.05</multiplier>
           </li>
@@ -160,7 +176,9 @@
         <rules>
           <li>
             <filter>
-              <isAnimal>true</isAnimal>
+              <partner>
+                <isAnimal>true</isAnimal>
+              </partner>
             </filter>
             <multiplier>0.1</multiplier>
           </li>
@@ -210,7 +228,9 @@
         <rules>
           <li>
             <filter>
-              <isAnimal>true</isAnimal>
+              <partner>
+                <isAnimal>true</isAnimal>
+              </partner>
             </filter>
             <multiplier>0.5</multiplier>
           </li>
@@ -279,14 +299,20 @@
         <rules>
           <li>
             <filter>
-              <isVeneratedAnimal>true</isVeneratedAnimal>
+              <relations>
+                <isVeneratedAnimal>true</isVeneratedAnimal>
+              </relations>
             </filter>
             <multiplier>2.0</multiplier>
           </li>
           <li>
             <filter>
-              <isAnimal>true</isAnimal>
-              <isVeneratedAnimal>false</isVeneratedAnimal>
+              <partner>
+                <isAnimal>true</isAnimal>
+              </partner>
+              <relations>
+                <isVeneratedAnimal>false</isVeneratedAnimal>
+              </relations>
             </filter>
             <multiplier>0.05</multiplier>
           </li>
@@ -342,19 +368,27 @@
         <rules>
           <li>
             <filter>
-              <isAnimal>true</isAnimal>
-              <hasOneOfRelations>
-                <li>Bond</li>
-              </hasOneOfRelations>
+              <partner>
+                <isAnimal>true</isAnimal>
+              </partner>
+              <relations>
+                <hasOneOfRelations>
+                  <li>Bond</li>
+                </hasOneOfRelations>
+              </relations>
             </filter>
             <multiplier>2.0</multiplier>
           </li>
           <li>
             <filter>
-              <isAnimal>true</isAnimal>
-              <hasNoneOfRelations>
-                <li>Bond</li>
-              </hasNoneOfRelations>
+              <partner>
+                <isAnimal>true</isAnimal>
+              </partner>
+              <relations>
+                <hasNoneOfRelations>
+                  <li>Bond</li>
+                </hasNoneOfRelations>
+              </relations>
             </filter>
             <multiplier>0.1</multiplier>
           </li>
@@ -409,7 +443,9 @@
         <rules>
           <li>
             <filter>
-              <isAnimal>true</isAnimal>
+              <partner>
+                <isAnimal>true</isAnimal>
+              </partner>
             </filter>
             <multiplier>2.0</multiplier>
           </li>
