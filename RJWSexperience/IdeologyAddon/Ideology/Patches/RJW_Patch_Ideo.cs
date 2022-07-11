@@ -10,7 +10,7 @@ using Verse;
 
 namespace RJWSexperience.Ideology.Patches
 {
-	[HarmonyPatch(typeof(xxx), "is_rapist")]
+	[HarmonyPatch(typeof(xxx), nameof(xxx.is_rapist))]
 	public static class RJW_Patch_is_rapist
 	{
 		public static void Postfix(Pawn pawn, ref bool __result)
@@ -23,7 +23,7 @@ namespace RJWSexperience.Ideology.Patches
 		}
 	}
 
-	[HarmonyPatch(typeof(xxx), "is_zoophile")]
+	[HarmonyPatch(typeof(xxx), nameof(xxx.is_zoophile))]
 	public static class RJW_Patch_is_zoophile
 	{
 		public static void Postfix(Pawn pawn, ref bool __result)
@@ -36,7 +36,7 @@ namespace RJWSexperience.Ideology.Patches
 		}
 	}
 
-	[HarmonyPatch(typeof(xxx), "is_necrophiliac")]
+	[HarmonyPatch(typeof(xxx), nameof(xxx.is_necrophiliac))]
 	public static class RJW_Patch_is_necrophiliac
 	{
 		public static void Postfix(Pawn pawn, ref bool __result)
@@ -92,17 +92,17 @@ namespace RJWSexperience.Ideology.Patches
 
 		public static void AfterSexHuman(Pawn human, Pawn partner, bool rape)
 		{
-			VariousDefOf.RSI_NonIncestuosSex.RecordEventWithPartner(human, partner);
-			VariousDefOf.RSI_NonIncestuosSex.RecordEventWithPartner(partner, human);
+			RsiHistoryEventDefOf.RSI_NonIncestuosSex.RecordEventWithPartner(human, partner);
+			RsiHistoryEventDefOf.RSI_NonIncestuosSex.RecordEventWithPartner(partner, human);
 
 			if (partner.IsAnimal())
 			{
-				VariousDefOf.RSI_SexWithAnimal.RecordEventWithPartner(human, partner);
+				RsiHistoryEventDefOf.RSI_SexWithAnimal.RecordEventWithPartner(human, partner);
 			}
 			else if (xxx.is_human(partner) && rape)
 			{
-				VariousDefOf.RSI_Raped.RecordEventWithPartner(human, partner);
-				VariousDefOf.RSI_WasRaped.RecordEventWithPartner(partner, human);
+				RsiHistoryEventDefOf.RSI_Raped.RecordEventWithPartner(human, partner);
+				RsiHistoryEventDefOf.RSI_WasRaped.RecordEventWithPartner(partner, human);
 			}
 		}
 
@@ -168,7 +168,7 @@ namespace RJWSexperience.Ideology.Patches
 		}
 	}
 
-	[HarmonyPatch(typeof(PawnDesignations_Breedee), "UpdateCanDesignateBreeding")]
+	[HarmonyPatch(typeof(PawnDesignations_Breedee), nameof(PawnDesignations_Breedee.UpdateCanDesignateBreeding))]
 	public static class RJW_Patch_UpdateCanDesignateBreeding
 	{
 		public static void Postfix(Pawn pawn, ref bool __result)
@@ -182,7 +182,7 @@ namespace RJWSexperience.Ideology.Patches
 		}
 	}
 
-	[HarmonyPatch(typeof(PawnDesignations_Comfort), "UpdateCanDesignateComfort")]
+	[HarmonyPatch(typeof(PawnDesignations_Comfort), nameof(PawnDesignations_Comfort.UpdateCanDesignateComfort))]
 	public static class RJW_PatchUpdateCanDesignateComfort
 	{
 		public static void Postfix(Pawn pawn, ref bool __result)
@@ -195,18 +195,46 @@ namespace RJWSexperience.Ideology.Patches
 		}
 	}
 
-	[HarmonyPatch(typeof(Hediff_BasePregnancy), "PostBirth")]
+	[HarmonyPatch(typeof(Hediff_BasePregnancy), nameof(Hediff_BasePregnancy.PostBirth))]
 	public static class RJW_Patch_PostBirth
 	{
-		public static void Postfix(Pawn mother, Pawn father, Pawn baby)
+		public static void Postfix(Pawn mother, Pawn baby)
 		{
 			if (!mother.IsAnimal())
 			{
 				Faction faction = baby.GetFactionUsingPrecept(out Ideo ideo);
-				if (baby.Faction != faction) baby.SetFaction(faction);
+				if (baby.Faction != faction)
+					baby.SetFaction(faction);
+
 				baby.ideo?.SetIdeo(ideo);
-				if (baby.Faction == Find.FactionManager.OfPlayer && !baby.IsSlave) baby.guest?.SetGuestStatus(null, GuestStatus.Guest);
+
+				if (baby.Faction == Find.FactionManager.OfPlayer && !baby.IsSlave)
+					baby.guest?.SetGuestStatus(null, GuestStatus.Guest);
 			}
+		}
+
+		private static Faction GetFactionUsingPrecept(this Pawn baby, out Ideo ideo)
+		{
+			Faction playerfaction = Find.FactionManager.OfPlayer;
+			Ideo mainideo = playerfaction.ideos.PrimaryIdeo;
+			if (mainideo != null)
+			{
+				if (mainideo.HasPrecept(VariousDefOf.BabyFaction_AlwaysFather))
+				{
+					Pawn parent = baby.GetFather() ?? baby.GetMother();
+
+					ideo = parent.Ideo;
+					return parent.Faction;
+				}
+				else if (mainideo.HasPrecept(VariousDefOf.BabyFaction_AlwaysColony))
+				{
+					ideo = mainideo;
+					return playerfaction;
+				}
+			}
+			Pawn mother = baby.GetMother();
+			ideo = mother?.Ideo;
+			return mother?.Faction ?? baby.Faction;
 		}
 	}
 }

@@ -14,7 +14,7 @@ namespace RJWSexperience.Ideology.Patches
 			if (__result < 0f || pawn.Ideo == null) // ideo is null if don't have dlc
 				return;
 
-			if (!VariousDefOf.RSI_SexWithAnimal.CreateEvent(pawn).DoerWillingToDo())
+			if (!RsiHistoryEventDefOf.RSI_SexWithAnimal.CreateEvent(pawn).DoerWillingToDo())
 			{
 				__result = -2f;
 				return;
@@ -31,7 +31,7 @@ namespace RJWSexperience.Ideology.Patches
 			if (__result < 0f || pawn.Ideo == null) // ideo is null if don't have dlc
 				return;
 
-			if (!VariousDefOf.RSI_Raped.CreateEvent(pawn).DoerWillingToDo())
+			if (!RsiHistoryEventDefOf.RSI_Raped.CreateEvent(pawn).DoerWillingToDo())
 			{
 				__result = -2f;
 				return;
@@ -47,7 +47,7 @@ namespace RJWSexperience.Ideology.Patches
 			if (__result < 0f || pawn.Ideo == null) // ideo is null if don't have dlc
 				return;
 
-			if (!VariousDefOf.RSI_SexWithCorpse.CreateEvent(pawn).DoerWillingToDo())
+			if (!RsiHistoryEventDefOf.RSI_SexWithCorpse.CreateEvent(pawn).DoerWillingToDo())
 			{
 				__result = -2f;
 				return;

@@ -4,8 +4,7 @@ namespace RJWSexperience
 {
 	public static class Keyed
 	{
-		public static string MemeStatFactor(string value) => "MemeStatFactor".Translate(value);
-
+		public static readonly string MemeStatFactor = "MemeStatFactor".Translate();
 		public static readonly string RSVictimCondition = "RSVictimCondition".Translate();
 		public static readonly string RSBreederCondition = "RSBreederCondition".Translate();
 		public static readonly string RSNotHuman = "RSNotHuman".Translate();

@@ -10,11 +10,11 @@ namespace RJWSexperience.Ideology.Patches
 			const int femaleAfterSurgery = 1;
 
 			if (props.isRape && exVirgin == props.partner)
-				VariousDefOf.RSI_VirginStolen.RecordEventWithPartner(exVirgin, partner);
+				RsiHistoryEventDefOf.RSI_VirginStolen.RecordEventWithPartner(exVirgin, partner);
 			else if (degree != femaleAfterSurgery)
-				VariousDefOf.RSI_VirginTaken.RecordEventWithPartner(exVirgin, partner);
+				RsiHistoryEventDefOf.RSI_VirginTaken.RecordEventWithPartner(exVirgin, partner);
 
-			VariousDefOf.RSI_TookVirgin.RecordEventWithPartner(partner, exVirgin);
+			RsiHistoryEventDefOf.RSI_TookVirgin.RecordEventWithPartner(partner, exVirgin);
 		}
 	}
 }

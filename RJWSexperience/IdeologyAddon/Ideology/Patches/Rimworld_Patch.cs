@@ -7,31 +7,29 @@ using Verse;
 
 namespace RJWSexperience.Ideology.Patches
 {
-	[HarmonyPatch(typeof(MarriageCeremonyUtility), "Married")]
+	[HarmonyPatch(typeof(MarriageCeremonyUtility), nameof(MarriageCeremonyUtility.Married))]
 	public static class Rimworld_Patch_Marriage
 	{
 		public static void Postfix(Pawn firstPawn, Pawn secondPawn)
 		{
-			VariousDefOf.RSI_NonIncestuosMarriage.RecordEventWithPartner(firstPawn, secondPawn);
-			VariousDefOf.RSI_NonIncestuosMarriage.RecordEventWithPartner(secondPawn, firstPawn);
+			RsiHistoryEventDefOf.RSI_NonIncestuosMarriage.RecordEventWithPartner(firstPawn, secondPawn);
+			RsiHistoryEventDefOf.RSI_NonIncestuosMarriage.RecordEventWithPartner(secondPawn, firstPawn);
 		}
 	}
 
 	[HarmonyPatch(typeof(RitualOutcomeEffectWorker_FromQuality), "GiveMemoryToPawn")]
-	public static class Rimworld_Patch_GiveMemoryToPawn
+	public static class Rimworld_Patch_RitualOutcome_DontGiveMemoryToAnimals
 	{
-		public static bool Prefix(Pawn pawn, ThoughtDef memory, LordJob_Ritual jobRitual)
+		public static bool Prefix(Pawn pawn)
 		{
-			if (pawn.IsAnimal()) return false;
-
-			return true;
+			return !pawn.IsAnimal();
 		}
 	}
 
-	[HarmonyPatch(typeof(IdeoFoundation), "CanAdd")]
+	[HarmonyPatch(typeof(IdeoFoundation), nameof(IdeoFoundation.CanAdd))]
 	public static class Rimworld_Patch_IdeoFoundation
 	{
-		public static void Postfix(PreceptDef precept, bool checkDuplicates, ref IdeoFoundation __instance, ref AcceptanceReport __result)
+		public static void Postfix(PreceptDef precept, ref IdeoFoundation __instance, ref AcceptanceReport __result)
 		{
 			DefExtension_MultipleMemesRequired extension = precept.GetModExtension<DefExtension_MultipleMemesRequired>();
 

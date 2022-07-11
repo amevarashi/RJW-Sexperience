@@ -2,10 +2,7 @@
 <LanguageData>
   <RS_Mod_Title>RJW Sexperience</RS_Mod_Title>
 
-  <LustStatFactor>음란함: x{0}%</LustStatFactor>
-  <SlaveStatFactor>노예: x{0}%</SlaveStatFactor>
-  <SlaveStatFactorDefault>노예가 아님: x100%</SlaveStatFactorDefault>
-  <MemeStatFactor>문화 요소: x{0}%</MemeStatFactor>
+  <MemeStatFactor>문화 요소</MemeStatFactor>
   <RSVictimCondition>노예, 죄수, 순종적인 성별만 가능합니다.</RSVictimCondition>
   <RSBreederCondition>부적절한 동물: 번식할수 없거나 규율에의해 금지된 동물입니다.</RSBreederCondition>
   <RSNotHuman>사람이 아님</RSNotHuman>

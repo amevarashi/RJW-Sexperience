@@ -2,10 +2,8 @@
 <LanguageData>
   <RS_Mod_Title>RJW 性经验</RS_Mod_Title>
 
-  <LustStatFactor>性欲: x{0}%</LustStatFactor>
-  <SlaveStatFactor>囚犯: x{0}%</SlaveStatFactor>
-  <SlaveStatFactorDefault>非囚犯: x100%</SlaveStatFactorDefault>
-  <MemeStatFactor>迷因: x{0}%</MemeStatFactor>
+  <Lust>性欲</Lust>
+  <MemeStatFactor>迷因</MemeStatFactor>
 
   <RSOption_1_Label>开启随机性记录</RSOption_1_Label>
   <RSOption_1_Desc>随机化小人的性记录。</RSOption_1_Desc>

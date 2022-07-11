@@ -50,9 +50,9 @@
     <Compile Include="Ideology\GoodwillSituationWorker_MemeCompatibility.cs" />
     <Compile Include="Harmony.cs" />
     <Compile Include="Ideology\HistoryEvents\ArgsNamesCustom.cs" />
-    <Compile Include="Ideology\IssueUtility.cs" />
     <Compile Include="Ideology\Keyed.cs" />
     <Compile Include="Ideology\RelationFilter.cs" />
+    <Compile Include="Ideology\RsiHistoryEventDefOf.cs" />
     <Compile Include="Ideology\TwoPawnFilter.cs" />
     <Compile Include="Ideology\SinglePawnFilter.cs" />
     <Compile Include="Ideology\Precepts\Comp_SelfTookMemoryThought_Gendered.cs" />
@@ -83,7 +83,7 @@
     <Compile Include="Thoughts\ThoughtDefExtension_StageFromOpinion.cs" />
     <Compile Include="Thoughts\Thought_IncreaseRecord.cs" />
     <Compile Include="Thoughts\Thought_Opinionbased.cs" />
-    <Compile Include="VariousDefOf.cs" />
+    <Compile Include="Ideology\VariousDefOf.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Rimworld.Ref">

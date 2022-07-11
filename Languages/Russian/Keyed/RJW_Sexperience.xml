@@ -2,10 +2,7 @@
 <LanguageData>
   <RS_Mod_Title>RJW Sexperience</RS_Mod_Title>
 
-  <LustStatFactor>Похоть: x{0}%</LustStatFactor>
-  <SlaveStatFactor>Раб: x{0}%</SlaveStatFactor>
-  <SlaveStatFactorDefault>Не раб: x100%</SlaveStatFactorDefault>
-  <MemeStatFactor>Принцип идеологии: x{0}%</MemeStatFactor>
+  <MemeStatFactor>Принцип идеологии</MemeStatFactor>
   <RSVictimCondition>раб, заключенный, подчиненный только по полу</RSVictimCondition>
   <RSBreederCondition>неподходящее животное: не может размножаться или запрещено правилами</RSBreederCondition>
   <RSNotHuman>не человек</RSNotHuman>

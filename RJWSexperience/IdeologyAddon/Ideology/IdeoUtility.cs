@@ -19,20 +19,6 @@ namespace RJWSexperience.Ideology
 			return false;
 		}
 
-		public static bool ContainAll(string str, string[] tags)
-		{
-			if (tags.NullOrEmpty())
-				return true;
-
-			string lstr = str.ToLower();
-			for (int i = 0; i < tags.Length; i++)
-			{
-				if (!lstr.Contains('[' + tags[i].ToLower() + ']'))
-					return false;
-			}
-			return true;
-		}
-
 		public static float GetPreceptsMtbMultiplier<T>(Ideo ideo) where T : Precepts.DefExtension_ModifyMtb
 		{
 			float finalMultiplier = 1f;

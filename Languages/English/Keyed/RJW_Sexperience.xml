@@ -3,7 +3,7 @@
   <RS_Mod_Title>RJW Sexperience</RS_Mod_Title>
 
   <!-- Sex status screen -->
-  <MemeStatFactor>Meme: x{0}%</MemeStatFactor>
+  <MemeStatFactor>Meme</MemeStatFactor>
   <RSVictimCondition>slave, prisoner, submissive gender only</RSVictimCondition>
   <RSBreederCondition>improper animal: cannot breed or forbidden by precepts</RSBreederCondition>
   <RSNotHuman>not human</RSNotHuman>
