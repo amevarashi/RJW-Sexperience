@@ -4,6 +4,7 @@ using rjw;
 using RJWSexperience.Cum;
 using RJWSexperience.Logs;
 using RJWSexperience.SexHistory;
+using System;
 using UnityEngine;
 using Verse;
 
@@ -153,6 +154,38 @@ namespace RJWSexperience
 			__result = bucket.RandomAdjacentCell8Way();
 			log.Message($"Bucket location: {__result}");
 			return false;
+		}
+	}
+
+	[HarmonyPatch(typeof(SexUtility), nameof(SexUtility.Aftersex), new Type[] { typeof(SexProps) })]
+	public static class RJW_Patch_SexUtility_Aftersex_RapeEffects
+	{
+		public static void Postfix(SexProps props)
+		{
+			if (!props.hasPartner() || !props.isRape || !xxx.is_human(props.partner))
+				return;
+
+			if (props.partner.IsPrisoner)
+				RapeEffectPrisoner(props.partner);
+
+			if (props.partner.IsSlave)
+				RapeEffectSlave(props.partner);
+		}
+
+		private static void RapeEffectPrisoner(Pawn victim)
+		{
+			victim.guest.will = Math.Max(0, victim.guest.will - 0.2f);
+		}
+
+		private static void RapeEffectSlave(Pawn victim)
+		{
+			Need_Suppression suppression = victim.needs.TryGetNeed<Need_Suppression>();
+			if (suppression != null)
+			{
+				Hediff broken = victim.health.hediffSet.GetFirstHediffOfDef(xxx.feelingBroken);
+				if (broken != null) suppression.CurLevel += (0.3f * broken.Severity) + 0.05f;
+				else suppression.CurLevel += 0.05f;
+			}
 		}
 	}
 }

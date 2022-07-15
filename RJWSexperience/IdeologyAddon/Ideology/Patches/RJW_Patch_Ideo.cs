@@ -51,7 +51,7 @@ namespace RJWSexperience.Ideology.Patches
 	}
 
 	[HarmonyPatch(typeof(SexUtility), nameof(SexUtility.Aftersex), new Type[] { typeof(SexProps) })]
-	public static class RJW_Patch_Aftersex
+	public static class RJW_Patch_SexUtility_Aftersex_RecordHistoryEvents
 	{
 		public static void Postfix(SexProps props)
 		{
@@ -61,16 +61,8 @@ namespace RJWSexperience.Ideology.Patches
 			{
 				if (xxx.is_human(props.pawn))
 					AfterSexHuman(props.pawn, props.partner);
-				else if (xxx.is_human(props.partner))
+				if (xxx.is_human(props.partner))
 					AfterSexHuman(props.partner, props.pawn);
-
-				if (xxx.is_human(props.partner) && props.isRape)
-				{
-					if (props.partner.IsPrisoner)
-						props.partner.guest.will = Math.Max(0, props.partner.guest.will - 0.2f);
-					if (props.partner.IsSlave)
-						RapeEffectSlave(props.partner);
-				}
 
 				if (interactionEvents != null)
 				{
@@ -91,26 +83,12 @@ namespace RJWSexperience.Ideology.Patches
 			}
 		}
 
-		public static void AfterSexHuman(Pawn human, Pawn partner)
+		private static void AfterSexHuman(Pawn human, Pawn partner)
 		{
 			RsiHistoryEventDefOf.RSI_NonIncestuosSex.RecordEventWithPartner(human, partner);
-			RsiHistoryEventDefOf.RSI_NonIncestuosSex.RecordEventWithPartner(partner, human);
 
 			if (partner.IsAnimal())
-			{
 				RsiHistoryEventDefOf.RSI_SexWithAnimal.RecordEventWithPartner(human, partner);
-			}
-		}
-
-		public static void RapeEffectSlave(Pawn victim)
-		{
-			Need_Suppression suppression = victim.needs.TryGetNeed<Need_Suppression>();
-			if (suppression != null)
-			{
-				Hediff broken = victim.health.hediffSet.GetFirstHediffOfDef(xxx.feelingBroken);
-				if (broken != null) suppression.CurLevel += (0.3f * broken.Severity) + 0.05f;
-				else suppression.CurLevel += 0.05f;
-			}
 		}
 	}
 
