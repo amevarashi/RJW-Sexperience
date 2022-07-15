@@ -59,9 +59,9 @@ namespace RJWSexperience.Ideology.Patches
 			if (props.hasPartner())
 			{
 				if (xxx.is_human(props.pawn))
-					AfterSexHuman(props.pawn, props.partner, props.isRape);
+					AfterSexHuman(props.pawn, props.partner);
 				else if (xxx.is_human(props.partner))
-					AfterSexHuman(props.partner, props.pawn, false);
+					AfterSexHuman(props.partner, props.pawn);
 
 				if (xxx.is_human(props.partner) && props.isRape)
 				{
@@ -90,7 +90,7 @@ namespace RJWSexperience.Ideology.Patches
 			}
 		}
 
-		public static void AfterSexHuman(Pawn human, Pawn partner, bool rape)
+		public static void AfterSexHuman(Pawn human, Pawn partner)
 		{
 			RsiHistoryEventDefOf.RSI_NonIncestuosSex.RecordEventWithPartner(human, partner);
 			RsiHistoryEventDefOf.RSI_NonIncestuosSex.RecordEventWithPartner(partner, human);
@@ -98,11 +98,6 @@ namespace RJWSexperience.Ideology.Patches
 			if (partner.IsAnimal())
 			{
 				RsiHistoryEventDefOf.RSI_SexWithAnimal.RecordEventWithPartner(human, partner);
-			}
-			else if (xxx.is_human(partner) && rape)
-			{
-				RsiHistoryEventDefOf.RSI_Raped.RecordEventWithPartner(human, partner);
-				RsiHistoryEventDefOf.RSI_WasRaped.RecordEventWithPartner(partner, human);
 			}
 		}
 

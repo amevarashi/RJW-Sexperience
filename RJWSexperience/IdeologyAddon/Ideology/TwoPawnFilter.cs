@@ -18,7 +18,7 @@ namespace RJWSexperience.Ideology
 			if (doer?.Applies(pawn) == false)
 				return false;
 
-			if (this.partner?.Applies(pawn) == false)
+			if (this.partner?.Applies(partner) == false)
 				return false;
 
 			if (relations?.Applies(pawn, partner) == false)

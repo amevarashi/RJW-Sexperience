@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Patch>
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>/Defs/InteractionDef[defName="Rape_Vaginal"]</xpath>
+		<value>
+			<li Class="RJWSexperience.Ideology.InteractionDefExtension_HistoryEvents">
+				<pawnEvents>
+					<li>RSI_VaginalSex</li>
+					<li>RSI_Raped</li>
+				</pawnEvents>
+				<partnerEvents>
+					<!--<li>RSI_VaginalSex</li>-->
+					<li>RSI_WasRaped</li>
+				</partnerEvents>
+			</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>/Defs/InteractionDef[defName="Rape_Anal" or defName="Rape_Rimming"]</xpath>
+		<value>
+			<li Class="RJWSexperience.Ideology.InteractionDefExtension_HistoryEvents">
+				<pawnEvents>
+					<li>RSI_AnalSex</li>
+					<li>RSI_Raped</li>
+				</pawnEvents>
+				<partnerEvents>
+					<!--<li>RSI_AnalSex</li>-->
+					<li>RSI_WasRaped</li>
+				</partnerEvents>
+			</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>/Defs/InteractionDef[defName="Rape_Beakjob" or defName="Rape_Cunnilingus" or defName="Rape_Fellatio" or defName="Rape_Oral"]</xpath>
+		<value>
+			<li Class="RJWSexperience.Ideology.InteractionDefExtension_HistoryEvents">
+				<pawnEvents>
+					<li>RSI_OralSex</li>
+					<li>RSI_Raped</li>
+				</pawnEvents>
+				<partnerEvents>
+					<!--<li>RSI_OralSex</li>-->
+					<li>RSI_WasRaped</li>
+				</partnerEvents>
+			</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>/Defs/InteractionDef[defName="Rape_Breastjob" or defName="Rape_Fingering" or defName="Rape_Footjob" or defName="Rape_Handjob"]</xpath>
+		<value>
+			<li Class="RJWSexperience.Ideology.InteractionDefExtension_HistoryEvents">
+				<pawnEvents>
+					<li>RSI_MiscSex</li>
+					<li>RSI_Raped</li>
+				</pawnEvents>
+				<partnerEvents>
+					<!--<li>RSI_MiscSex</li>-->
+					<li>RSI_WasRaped</li>
+				</partnerEvents>
+			</li>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>/Defs/InteractionDef[defName="Rape_DoublePenetration" or defName="Rape_DoublePenetrationM" or defName="Rape_Fisting" or defName="Rape_Scissoring"]</xpath>
+		<value>
+			<li Class="RJWSexperience.Ideology.InteractionDefExtension_HistoryEvents">
+				<pawnEvents>
+					<li>RSI_PromiscuousSex</li>
+					<li>RSI_Raped</li>
+				</pawnEvents>
+				<partnerEvents>
+					<!--<li>RSI_PromiscuousSex</li>-->
+					<li>RSI_WasRaped</li>
+				</partnerEvents>
+			</li>
+		</value>
+	</Operation>
+</Patch>
