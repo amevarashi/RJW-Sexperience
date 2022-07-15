@@ -1,10 +1,9 @@
 ﻿using RimWorld;
-using RJWSexperience.Ideology.HistoryEvents;
 using Verse;
 
-namespace RJWSexperience.Ideology
+namespace RJWSexperience.Ideology.HistoryEvents
 {
-	public static class RJWUtility_Ideo
+	public static class HistoryEventDefExtensionMethods
 	{
 		public static void RecordEventWithPartner(this HistoryEventDef def, Pawn pawn, Pawn partner)
 		{

@@ -1,4 +1,5 @@
 ﻿using rjw;
+using RJWSexperience.Ideology.HistoryEvents;
 using Verse;
 
 namespace RJWSexperience.Ideology.Patches

@@ -57,7 +57,7 @@
     <Compile Include="Ideology\SinglePawnFilter.cs" />
     <Compile Include="Ideology\Precepts\Comp_SelfTookMemoryThought_Gendered.cs" />
     <Compile Include="Ideology\Precepts\Comp_KnowsMemoryThought_Gendered.cs" />
-    <Compile Include="Ideology\RJWUtility_Ideo.cs" />
+    <Compile Include="Ideology\HistoryEvents\HistoryEventDefExtensionMethods.cs" />
     <Compile Include="Ideology\Patches\RJW_Patch_ChancePerHour.cs" />
     <Compile Include="Ideology\Precepts\DefExtension_ModifyMtb.cs" />
     <Compile Include="Ideology\Precepts\DefExtension_ModifyFappinMtb.cs" />

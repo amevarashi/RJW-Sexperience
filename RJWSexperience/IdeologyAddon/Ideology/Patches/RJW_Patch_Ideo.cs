@@ -3,6 +3,7 @@ using RimWorld;
 using rjw;
 using rjw.Modules.Interactions.Internals.Implementation;
 using rjw.Modules.Interactions.Objects;
+using RJWSexperience.Ideology.HistoryEvents;
 using RJWSexperience.Ideology.Precepts;
 using System;
 using System.Collections.Generic;

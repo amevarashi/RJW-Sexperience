@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using RimWorld;
 using rjw;
+using RJWSexperience.Ideology.HistoryEvents;
 using RJWSexperience.Ideology.Precepts;
 using Verse;
 
