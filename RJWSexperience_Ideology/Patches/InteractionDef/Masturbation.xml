@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Patch>
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>/Defs/InteractionDef[defName="Masturbation_AutoBreastjob" or defName="Masturbation_AutoFellatio" or defName="Masturbation_Breastjob" or defName="Masturbation_HandjobA" or defName="Masturbation_HandjobP" or defName="Masturbation_HandjobV"]</xpath>
+		<value>
+			<li Class="RJWSexperience.Ideology.InteractionDefExtension_HistoryEvents">
+				<pawnEvents>
+					<li>RSI_Masturbated</li>
+				</pawnEvents>
+			</li>
+		</value>
+	</Operation>
+</Patch>

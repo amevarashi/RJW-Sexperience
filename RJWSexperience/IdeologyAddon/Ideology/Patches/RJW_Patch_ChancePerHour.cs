@@ -62,8 +62,15 @@ namespace RJWSexperience.Ideology.Patches
 	{
 		public static void Postfix(Pawn p, ref float __result)
 		{
-			if (__result > 0f && p.Ideo != null) // ideo is null if don't have dlc
-				__result *= IdeoUtility.GetPreceptsMtbMultiplier<DefExtension_ModifyFappinMtb>(p.Ideo);
+			if (__result < 0f || p.Ideo == null) // ideo is null if don't have dlc
+				return;
+
+			if (!RsiHistoryEventDefOf.RSI_Masturbated.CreateEvent(p).DoerWillingToDo())
+			{
+				__result = -2f;
+				return;
+			}
+			__result *= IdeoUtility.GetPreceptsMtbMultiplier<DefExtension_ModifyFappinMtb>(p.Ideo);
 		}
 	}
 }

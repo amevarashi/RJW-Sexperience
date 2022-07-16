@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Issues -->
+  <IssueDef>
+    <defName>Masturbation</defName>
+    <label>masturbation</label>
+    <iconPath>UI/Issues/Bestiality</iconPath>
+  </IssueDef>
+
+  <HistoryEventDef>
+    <defName>RSI_Masturbated</defName>
+    <label>masturbated</label>
+  </HistoryEventDef>
+
+  <!-- Precepts -->
+  <PreceptDef>
+    <defName>Masturbation_Abhorrent</defName>
+    <issue>Masturbation</issue>
+    <label>abhorrent</label>
+    <description>Masturbation is unacceptable.</description>
+    <impact>Medium</impact>
+    <displayOrderInIssue>40</displayOrderInIssue>
+    <displayOrderInImpact>100</displayOrderInImpact>
+    <comps>
+      <li Class="PreceptComp_UnwillingToDo">
+        <eventDef>RSI_Masturbated</eventDef>
+      </li>
+    </comps>
+  </PreceptDef>
+
+  <PreceptDef>
+    <defName>Masturbation_Disapproved</defName>
+    <issue>Masturbation</issue>
+    <label>disapproved</label>
+    <description>Masturbation is somewhat shameful.</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <displayOrderInImpact>100</displayOrderInImpact>
+    <modExtensions>
+      <li Class="RJWSexperience.Ideology.Precepts.DefExtension_ModifyFappinMtb">
+        <multiplier>2.0</multiplier>
+      </li>
+    </modExtensions>
+  </PreceptDef>
+
+</Defs>

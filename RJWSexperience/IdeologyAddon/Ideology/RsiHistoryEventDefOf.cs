@@ -13,5 +13,6 @@ namespace RJWSexperience.Ideology
 		[MayRequireIdeology] public static readonly HistoryEventDef RSI_VirginTaken;
 		[MayRequireIdeology] public static readonly HistoryEventDef RSI_VirginStolen;
 		[MayRequireIdeology] public static readonly HistoryEventDef RSI_TookVirgin;
+		[MayRequireIdeology] public static readonly HistoryEventDef RSI_Masturbated;
 	}
 }
