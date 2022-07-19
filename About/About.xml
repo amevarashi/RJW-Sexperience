@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
 	<name>RJW Sexperience</name>
-	<author>a</author>
-	<authors>
-		<li>amevarashi</li>
-	</authors>
+	<author>amevarashi</author>
 	<supportedVersions>
 		<li>1.3</li>
 	</supportedVersions>
@@ -27,9 +24,7 @@
 	</loadAfter>
 	<packageId>rjw.sexperience</packageId>
 	<description><![CDATA[
-Original mod by moreorganstodump (a), updated for RJW 4.9 by c0ffee
-
-This submod adds new stuff to RJW:
+This is a submod for RJW that adds:
 - Sex skill
 - Lust stat
 - Cum as collectable resource, cum buckets and cum addiction
@@ -42,6 +37,12 @@ Ideology content:
 - Memes: lewd, rapist, zoophile and necrophile memes
 - Rituals: consensual gangbang, rape gangbang, consensual animal gangbang, rape animal gangbang and drug orgy
 - Precepts: baby faction, bestiality, incest, necrophilia, rape, allowed sex type, social affection, submissive gender, virginity
-- HumpShroom bong and HumpShroom Autobong]]>
+- HumpShroom bong and HumpShroom Autobong
+
+Credits:
+moreorganstodump	Original Author
+c0ffee				RJW 4.9.0 update
+Vegapnk				Cum-Per-Penis, Multifilling Cumbuckets, Sex fills Cumbucket
+Hawkeye32			Bound Only bestiality precept]]>
 	</description>
 </ModMetaData>

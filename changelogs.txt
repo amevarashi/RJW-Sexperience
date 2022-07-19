@@ -1,3 +1,16 @@
+Version Beta 1.0.5.0
+ - Updated mod description
+ - Added stealth change of "virgin" trait to "virgin?" when game generates a child for a virgin mother
+ - Added basic Abhorrent and Disapproved Masturbation precepts. Abhorrent stops pawns from masturbating, Disapproved cuts masturbation chance by 2. No mood, no social impact
+ - Removed SecondaryRomanceChanceFactor multiplication for blood relatives if IncestOnly precept is active
+ - Changed Rape Abhorrent precept to forbid rape
+ - Changed Necrophilia Abhorrent precept to forbid necrophilia
+ - Changed Bestiality Abhorrent precept to forbid bestiality
+ - Changed rape to apply sextype thoughts to rapist
+ 
+ by Hawkeye32
+  - Bond Only bestiality precept
+
 Version Beta 1.0.4.4
  - Fixed an error in vaginal necro with a virgin
  - Added option to hide Sex History button for the drafted pawns
