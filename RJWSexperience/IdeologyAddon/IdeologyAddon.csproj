@@ -43,9 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Ideology\HistoryEvents\DefExtension_PartnerDependentSecondaryEvents.cs" />
-    <Compile Include="Ideology\HistoryEvents\DefExtension_PartnerDependentOverrides.cs" />
-    <Compile Include="Ideology\HistoryEvents\PartnerDependentRule.cs" />
+    <Compile Include="Ideology\HistoryEvents\DefExtension_SecondaryEvents.cs" />
+    <Compile Include="Ideology\HistoryEvents\DefExtension_EventOverrides.cs" />
+    <Compile Include="Ideology\HistoryEvents\TwoPawnEventRule.cs" />
     <Compile Include="Ideology\InteractionDefExtension_HistoryEvents.cs" />
     <Compile Include="Ideology\GoodwillSituationWorker_MemeCompatibility.cs" />
     <Compile Include="Harmony.cs" />

@@ -22,7 +22,7 @@
     <defName>RSI_NonIncestuosMarriage</defName>
     <label>Non-incestuos marriage</label>
     <modExtensions>
-      <li Class="RJWSexperience.Ideology.HistoryEvents.DefExtension_PartnerDependentOverrides">
+      <li Class="RJWSexperience.Ideology.HistoryEvents.DefExtension_EventOverrides">
         <overrideRules>
           <li>
             <filter>
@@ -85,7 +85,7 @@
     <defName>RSI_NonIncestuosSex</defName>
     <label>Non-incestuos sex</label>
     <modExtensions>
-      <li Class="RJWSexperience.Ideology.HistoryEvents.DefExtension_PartnerDependentOverrides">
+      <li Class="RJWSexperience.Ideology.HistoryEvents.DefExtension_EventOverrides">
         <overrideRules>
           <li>
             <filter>

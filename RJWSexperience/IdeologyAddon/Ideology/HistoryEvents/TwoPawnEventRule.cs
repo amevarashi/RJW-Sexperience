@@ -4,7 +4,7 @@ using Verse;
 
 namespace RJWSexperience.Ideology.HistoryEvents
 {
-	public class PartnerDependentRule
+	public class TwoPawnEventRule
 	{
 		[SuppressMessage("Minor Code Smell", "S1104:Fields should not have public accessibility", Justification = "Field value loaded from XML")]
 		public HistoryEventDef historyEventDef;

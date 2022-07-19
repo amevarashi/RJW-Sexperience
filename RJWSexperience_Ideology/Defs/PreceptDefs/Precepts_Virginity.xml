@@ -17,7 +17,7 @@
     <defName>RSI_VirginTaken</defName>
     <label>virgin taken</label>
     <modExtensions>
-      <li Class="RJWSexperience.Ideology.HistoryEvents.DefExtension_PartnerDependentSecondaryEvents">
+      <li Class="RJWSexperience.Ideology.HistoryEvents.DefExtension_SecondaryEvents">
         <generationRules>
           <li>
             <filter>

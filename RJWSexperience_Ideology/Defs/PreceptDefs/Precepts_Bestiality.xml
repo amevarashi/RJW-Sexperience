@@ -12,7 +12,7 @@
     <defName>RSI_SexWithAnimal</defName>
     <label>sex with animal</label>
     <modExtensions>
-      <li Class="RJWSexperience.Ideology.HistoryEvents.DefExtension_PartnerDependentSecondaryEvents">
+      <li Class="RJWSexperience.Ideology.HistoryEvents.DefExtension_SecondaryEvents">
         <generationRules>
           <li>
             <filter>
