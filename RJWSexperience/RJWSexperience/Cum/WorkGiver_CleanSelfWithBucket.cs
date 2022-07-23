@@ -1,8 +1,4 @@
 ﻿using RimWorld;
-using rjw;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Verse;
 using Verse.AI;
 
@@ -14,7 +10,7 @@ namespace RJWSexperience.Cum
 		public override PathEndMode PathEndMode => PathEndMode.ClosestTouch;
 		public override bool ShouldSkip(Pawn pawn, bool forced = false)
 		{
-			return !pawn.health.hediffSet.HasHediff(RJW_SemenoOverlayHediffDefOf.Hediff_Bukkake);
+			return VariousDefOf.Hediff_CumController == null || !pawn.health.hediffSet.HasHediff(VariousDefOf.Hediff_CumController);
 		}
 
 		public override bool HasJobOnThing(Pawn pawn, Thing t, bool forced = false)

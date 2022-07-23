@@ -1,5 +1,4 @@
 ﻿using RimWorld;
-using rjw;
 using System.Collections.Generic;
 using Verse;
 using Verse.AI;
@@ -32,7 +31,7 @@ namespace RJWSexperience  // Used in Menstruation with this namespace
 			this.FailOn(delegate
 			{
 				List<Hediff> hediffs = pawn.health.hediffSet.hediffs;
-				return !hediffs.Exists(x => x.def == RJW_SemenoOverlayHediffDefOf.Hediff_Bukkake);
+				return !hediffs.Exists(x => x.def == VariousDefOf.Hediff_CumController);
 			});
 			yield return Toils_Goto.GotoThing(TargetIndex.B, PathEndMode.ClosestTouch);
 			Toil cleaning = new Toil
@@ -49,7 +48,7 @@ namespace RJWSexperience  // Used in Menstruation with this namespace
 
 		protected void CleaningInit()
 		{
-			hediffcache = pawn.health.hediffSet.hediffs.Find(x => x.def == RJW_SemenoOverlayHediffDefOf.Hediff_Semen || x.def == RJW_SemenoOverlayHediffDefOf.Hediff_InsectSpunk);
+			hediffcache = pawn.health.hediffSet.hediffs.Find(x => x.def == VariousDefOf.Hediff_Cum || x.def == VariousDefOf.Hediff_InsectSpunk);
 			if (hediffcache == null)
 			{
 				pawn.jobs.EndCurrentJob(JobCondition.Succeeded);
