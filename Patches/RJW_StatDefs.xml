@@ -1,27 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Patch>
-	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/StatDef[defName="SexAbility"]/capacityFactors</xpath>
-		<value>
-			<capacityFactors>
-			</capacityFactors>
-		</value>
-	</Operation>
-
-	<Operation Class="PatchOperationAdd">
-		<xpath>Defs/StatDef[defName="SexAbility"]</xpath>
-		<value>
-			<skillNeedFactors>
-				<li Class="rjw_CORE_EXPOSED.SkillNeed_BaseBonus">
-					<skill>Sex</skill>
-					<baseValue>0.40</baseValue>
-					<bonusPerLevel>0.15</bonusPerLevel>
-				</li>
-			</skillNeedFactors>
-		</value>
-	</Operation>
-	
 	<Operation Class="PatchOperationAdd">
 		<xpath>Defs/StatDef[defName="SexFrequency"]/parts</xpath>
 		<value>
@@ -37,6 +16,4 @@
 			</li>
 		</value>
 	</Operation>
-
-
 </Patch>

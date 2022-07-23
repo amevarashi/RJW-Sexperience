@@ -19,31 +19,13 @@ namespace RJWSexperience
 			{
 				if (__instance.Sexprops.isRape && __instance.Sexprops.isReceiver)
 				{
-					__instance.pawn?.skills?.Learn(VariousDefOf.SexSkill, 0.05f, true);
+					__instance.pawn?.skills?.Learn(VariousDefOf.Sex, 0.05f, true);
 				}
 				else
 				{
-					__instance.pawn?.skills?.Learn(VariousDefOf.SexSkill, 0.35f, true);
+					__instance.pawn?.skills?.Learn(VariousDefOf.Sex, 0.35f, true);
 				}
 			}
-		}
-	}
-
-	[HarmonyPatch(typeof(WhoringHelper), "WhoreAbilityAdjustmentMin")]
-	public static class RJW_Patch_WhoreAbilityAdjustmentMin
-	{
-		public static void Postfix(Pawn whore, ref float __result)
-		{
-			__result *= whore.GetSexStat();
-		}
-	}
-
-	[HarmonyPatch(typeof(WhoringHelper), "WhoreAbilityAdjustmentMax")]
-	public static class RJW_Patch_WhoreAbilityAdjustmentMax
-	{
-		public static void Postfix(Pawn whore, ref float __result)
-		{
-			__result *= whore.GetSexStat();
 		}
 	}
 
@@ -81,7 +63,7 @@ namespace RJWSexperience
 	{
 		public static void Postfix(Pawn pawn)
 		{
-			SkillRecord sexskill = pawn.skills.GetSkill(VariousDefOf.SexSkill);
+			SkillRecord sexskill = pawn.skills.GetSkill(VariousDefOf.Sex);
 			if (sexskill != null)
 			{
 				sexskill.passion = Passion.Major;

@@ -460,13 +460,13 @@ namespace RJWSexperience.SexHistory.UI
 				TooltipHandler.TipRegion(tmp, RJWUIUtility.GetStatExplanation(pawn, xxx.sex_satisfaction, pawn.Dead ? 0 : pawn.GetStatValue(xxx.sex_satisfaction)));
 			}
 
-			SkillRecord skill = pawn.skills?.GetSkill(VariousDefOf.SexSkill);
+			SkillRecord skill = pawn.skills?.GetSkill(VariousDefOf.Sex);
 			p = skill?.Level ?? 0;
 			tmp = listmain.GetRect(FONTHEIGHT);
-			FillableBarLabeled(tmp, String.Format(Keyed.RS_SexSkill + ": {0}, {1:P2}", p, skill?.xpSinceLastLevel / skill?.XpRequiredForLevelUp), p / 20, HistoryUtility.Tzeentch, Texture2D.blackTexture, null, String.Format(xxx.sex_stat.LabelCap.CapitalizeFirst() + ": {0:P2}", pawn.Dead ? 0 : pawn.GetStatValue(xxx.sex_stat)), HistoryUtility.PassionBG[(int)(skill?.passion ?? 0)]);
+			FillableBarLabeled(tmp, $"{Keyed.RS_SexSkill}: {p}, {skill?.xpSinceLastLevel / skill?.XpRequiredForLevelUp:P2}", p / 20, HistoryUtility.Tzeentch, Texture2D.blackTexture, null, $"{VariousDefOf.SexAbility.LabelCap.CapitalizeFirst()}: {pawn.GetSexStat():P2}", HistoryUtility.PassionBG[(int)(skill?.passion ?? 0)]);
 			if (Mouse.IsOver(tmp))
 			{
-				TooltipHandler.TipRegion(tmp, RJWUIUtility.GetStatExplanation(pawn, xxx.sex_stat, pawn.Dead ? 0 : pawn.GetStatValue(xxx.sex_stat)));
+				TooltipHandler.TipRegion(tmp, RJWUIUtility.GetStatExplanation(pawn, VariousDefOf.SexAbility, pawn.GetSexStat()));
 			}
 
 			listmain.Gap(1f);

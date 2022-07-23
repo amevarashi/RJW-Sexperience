@@ -99,7 +99,6 @@ namespace RJWSexperience
 				pawn.records.SetTo(xxx.CountOfSexWithHumanlikes, 0);
 				pawn.records.SetTo(xxx.CountOfSexWithInsects, 0);
 				pawn.records.SetTo(xxx.CountOfSexWithOthers, 0);
-				pawn.records.SetTo(xxx.CountOfWhore, 0);
 			}
 
 			return true;

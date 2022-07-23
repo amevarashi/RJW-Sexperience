@@ -45,7 +45,7 @@ namespace RJWSexperience.Cum
 
 			try
 			{
-				res = part.FluidAmmount * part.FluidModifier * pawn.BodySize / pawn.RaceProps.baseBodySize * Rand.Range(0.8f, 1.2f) * RJWSettings.cum_on_body_amount_adjust * 0.3f;
+				res = part.FluidAmmount * part.FluidModifier * pawn.BodySize / pawn.RaceProps.baseBodySize * Rand.Range(0.8f, 1.2f) * 0.3f;
 			}
 			catch (NullReferenceException)
 			{

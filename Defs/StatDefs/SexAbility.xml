@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<StatDef>
+		<defName>SexAbility</defName>
+		<label>sex ability</label>
+		<description>Measures whether or not a pawn is capable of sex, and how good they are at it</description>
+		<category>PawnSocial</category>
+		<defaultBaseValue>1.0</defaultBaseValue>
+		<minValue>0.0</minValue>
+		<toStringStyle>PercentTwo</toStringStyle>
+		<!--<capacityFactors>
+			<li>
+				<capacity>Manipulation</capacity>
+				<weight>0.5</weight>
+				<max>1.5</max>
+			</li>
+			<li>
+				<capacity>Consciousness</capacity>
+				<weight>1.0</weight>
+			</li>
+		</capacityFactors>-->
+		<skillNeedFactors>
+			<li Class="SkillNeed_BaseBonus">
+				<skill>Sex</skill>
+				<baseValue>0.40</baseValue>
+				<bonusPerLevel>0.15</bonusPerLevel>
+			</li>
+		</skillNeedFactors>
+		<parts>
+			<li Class="StatPart_Food">
+				<factorUrgentlyHungry>0.9</factorUrgentlyHungry>
+				<factorStarving>0.8</factorStarving>
+			</li>
+			<li Class="StatPart_Rest">
+				<factorTired>0.9</factorTired>
+				<factorVeryTired>0.7</factorVeryTired>
+				<factorExhausted>0.5</factorExhausted>
+			</li>
+		</parts>
+	</StatDef>
+</Defs>
