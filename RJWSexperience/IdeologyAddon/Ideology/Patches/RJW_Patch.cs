@@ -6,7 +6,7 @@ using Verse;
 
 namespace RJWSexperience.Ideology
 {
-	/*
+	
 	[HarmonyPatch(typeof(JobDriver_Sex), "Orgasm")]
 	public static class RJW_Patch_Orgasm_IdeoConversion
 	{
@@ -37,5 +37,5 @@ namespace RJWSexperience.Ideology
 			
 		}
 	}
-	*/
+	
 }

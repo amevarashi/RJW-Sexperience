@@ -1,4 +1,5 @@
 ﻿using RimWorld;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Verse;
@@ -45,5 +46,26 @@ namespace RJWSexperience.Ideology
 				}
 			return false;
 		}
-	}
+
+        internal static void ConvertPawnBySex(Pawn pawn, Pawn partner, float severity = 0.01f)
+        {
+			// Important Note: This is called on "orgasm" - hence when a pawn has the orgasm he is the "pawn" here.
+			// If Bob fucks Alice, Alice has the orgasm and Alice is the Pawn while Bob is the Partner.
+			// Hence, the Conversion happens from Partner -> Pawn and not the other way round!
+
+			// Short Circuit: Either pawn is null, exit early and do nothing
+			if (pawn == null || partner == null) return;
+			bool sameIdeo = pawn.Ideo == partner.Ideo;
+			// Option A: Partner has same Ideo as Pawn, increase certainty
+			if (sameIdeo)
+            {
+				pawn.ideo.OffsetCertainty(severity);
+            }
+			// Option B: Partner as different Ideo, try to convert
+			else
+			{
+				pawn.ideo.IdeoConversionAttempt(severity, partner.Ideo);
+			}
+		}
+    }
 }

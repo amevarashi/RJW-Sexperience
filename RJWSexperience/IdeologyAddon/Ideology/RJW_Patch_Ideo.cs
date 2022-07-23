@@ -381,6 +381,7 @@ namespace RJWSexperience.Ideology
 		}
 	}
 
+<<<<<<< HEAD
 	[HarmonyPatch(typeof(Hediff_BasePregnancy), "PostBirth")]
 	public static class RJW_Patch_PostBirth
 	{
@@ -395,4 +396,43 @@ namespace RJWSexperience.Ideology
 			}
 		}
 	}
+
+    [HarmonyPatch(typeof(JobDriver_Sex), "Roll_Orgasm_Duration_Reset")]
+    public static class RJW_Patch_Orgasm_IdeoConversion
+    {
+        public static void Postfix(JobDriver_Sex __instance)
+        {
+            
+            // ShortCuts: Exit Early if Pawn or Partner are null (can happen with Animals or Masturbation)
+			// TODO: From my Tests, this does still invoke on masturbation
+            if (__instance.pawn == null || __instance.Partner == null)
+                return;
+            // Orgasm is called "all the time" - it exits early when the sex is still going. 
+            // Hence, we hijack the "Roll_Orgasm_Duration_Reset" which is fired after the real orgasm happened
+            // But we have to check for one edge case, namely the function is also done when sex is initialized (which we catch by checking for orgasm > 0
+            if (__instance.orgasms <= 0) return;
+
+            if (__instance.Partner.Ideo.HasPrecept(VariousDefOf.Proselyzing_By_Orgasm))
+            {
+                // Pawn is the one having the orgasm
+                // Partner is "giving" the orgasm, hence the pawn will be converted towards the partners ideology
+                IdeoUtility.ConvertPawnBySex(__instance.pawn, __instance.Partner,0.03f);
+            }
+        }
+    }
+
+	// TODO: This does not work as intended!
+	// Something is wrong with this, it's not called correctly.
+    [HarmonyPatch(typeof(SexUtility), "Aftersex", new Type[] { typeof(SexProps) })]
+    public static class RJW_Patch_Aftersex_IdeoConversion
+    {
+        // This is not exactly where I should put it (Maybe after The JobDriver_Sex Finishes??)
+        public static void Postfix(SexProps props)
+        {
+            IdeoUtility.ConvertPawnBySex(props.pawn, props.partner, props.orgasms*0.03f);
+        }
+
+    }
+
+
 }
