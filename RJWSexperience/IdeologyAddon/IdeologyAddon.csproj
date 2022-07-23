@@ -31,9 +31,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="RJW">
-      <HintPath>..\..\..\rjw\1.3\Assemblies\RJW.dll</HintPath>
+    <Reference Include="0Harmony, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Lib.Harmony.2.2.0\lib\net472\0Harmony.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="RJW">
+      <HintPath>..\..\..\rjw-vegapnk\1.3\Assemblies\RJW.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,6 +53,11 @@
     <Compile Include="Harmony.cs" />
     <Compile Include="Ideology\Keyed.cs" />
     <Compile Include="Ideology\PreceptDefExtension_MultipleMemesRequired.cs" />
+    <Compile Include="Ideology\PreceptDef_RequirementExtended.cs" />
+    <Compile Include="Ideology\Precept_Workers\ThoughtWorker_Precept_NonPregnant.cs" />
+    <Compile Include="Ideology\Precept_Workers\ThoughtWorker_Precept_NonPregnant_Social.cs" />
+    <Compile Include="Ideology\Precept_Workers\ThoughtWorker_Precept_Pregnant.cs" />
+    <Compile Include="Ideology\Precept_Workers\ThoughtWorker_Precept_Pregnant_Social.cs" />
     <Compile Include="Ideology\Rituals\JobGiver_GangbangConsensual.cs" />
     <Compile Include="Ideology\Rituals\LordJob_Rituals.cs" />
     <Compile Include="Ideology\RJW_Patch_Ideo.cs" />

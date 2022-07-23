@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<!-- This Precept was based on the "Blindness Precept" from ideology -->
+
+  <!-- Issue -->
+
+  <IssueDef>
+    <defName>Pregnancy</defName>
+    <label>pregnancy</label>
+    <iconPath>UI/Issues/Birth</iconPath>
+  </IssueDef>
+
+  <!-- Precepts -->
+  <PreceptDef>
+    <defName>Pregnancy_Holy</defName>
+    <issue>Pregnancy</issue>
+    <label>holy</label>
+    <description>To be pregnant is a duty worthy of respect. Women carry our society into the next generation.</description>
+    <impact>Medium</impact>
+    <displayOrderInIssue>10</displayOrderInIssue>
+    <comps>
+      <li Class="PreceptComp_SituationalThought">
+        <thought>Pregnancy_Respected_Pregnant</thought>
+      </li>
+      <li Class="PreceptComp_SituationalThought">
+        <thought>Pregnancy_Respected_Pregnant_Social</thought>
+      </li>
+    </comps>
+  </PreceptDef>
+
+  <PreceptDef>
+    <defName>Pregnancy_Elevated</defName>
+    <issue>Pregnancy</issue>
+    <label>elevated</label>
+    <description>Being pregnant is considered noble.</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <comps>
+      <li Class="PreceptComp_SituationalThought">
+        <thought>Pregnancy_Elevated_Pregnant</thought>
+      </li>
+      <li Class="PreceptComp_SituationalThought">
+        <thought>Pregnancy_Elevated_Pregnant_Social</thought>
+      </li>
+    </comps>
+  </PreceptDef>
+
+<PreceptDef>
+    <defName>Pregnancy_NoRules</defName>
+    <issue>Pregnancy</issue>
+    <label>indifferent</label>
+    <description>There are no thoughts about pregnancy.</description>
+    <impact>Low</impact>
+    <displayOrderInIssue>30</displayOrderInIssue>
+    <comps>
+    </comps>
+  </PreceptDef>
+
+  <PreceptDef>
+    <defName>Pregnancy_Required</defName>
+    <issue>Pregnancy</issue>
+    <impact>High</impact>
+    <displayOrderInIssue>40</displayOrderInIssue>
+    <label>breeding</label>
+    <description>Women should be pregnant - those who are not, are seen unworthy.</description>
+    <comps>
+      <li Class="PreceptComp_SituationalThought">
+        <thought>Pregnancy_Respected_Pregnant</thought>
+      </li>
+      <li Class="PreceptComp_SituationalThought">
+        <thought>Pregnancy_Respected_Pregnant_Social</thought>
+      </li>
+      <li Class="PreceptComp_SituationalThought">
+        <thought>Pregnancy_Horrible_NonPregnant</thought>
+      </li>
+      <li Class="PreceptComp_SituationalThought">
+        <thought>Pregnancy_Horrible_NonPregnant_Social</thought>
+      </li>
+    </comps>
+  </PreceptDef>
+
+  <PreceptDef>
+    <defName>Pregnancy_Horrible</defName>
+    <issue>Pregnancy</issue>
+    <impact>Low</impact>
+    <displayOrderInIssue>50</displayOrderInIssue>
+    <label>horrible</label>
+    <description>Being Pregnant is unclean. Take care and stay pure. </description>
+    <comps>
+      <li Class="PreceptComp_SituationalThought">
+        <thought>Pregnancy_Horrible_Pregnant</thought>
+      </li>
+      <li Class="PreceptComp_SituationalThought">
+        <thought>Pregnancy_Horrible_Pregnant_Social</thought>
+      </li>
+    <comps>
+    </comps>
+  </PreceptDef>
+
+  <!-- Thoughts : Pregnant -->
+
+  <ThoughtDef>
+    <defName>Pregnancy_Respected_Pregnant</defName>
+    <workerClass>RJWSexperience.Ideology.Ideology.Precept_Workers.ThoughtWorker_Precept_Pregnant</workerClass>
+    <thoughtClass>Thought_Situational</thoughtClass>
+    <stages>
+      <li>
+        <label>pregnant</label>
+        <description>I am pregnant. This makes me a pillar of society.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Pregnancy_Elevated_Pregnant</defName>
+    <workerClass>RJWSexperience.Ideology.Ideology.Precept_Workers.ThoughtWorker_Precept_Pregnant</workerClass>
+    <thoughtClass>Thought_Situational</thoughtClass>
+    <stages>
+      <li>
+        <label>pregnant</label>
+        <description>I am soon making our colony stronger.</description>
+        <baseMoodEffect>10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef>
+    <defName>Pregnancy_Respected_Pregnant_Social</defName>
+    <workerClass>RJWSexperience.Ideology.Ideology.Precept_Workers.ThoughtWorker_Precept_Pregnant_Social</workerClass>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <stages>
+      <li>
+        <label>pregnant</label>
+        <baseOpinionOffset>10</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Pregnancy_Elevated_Pregnant_Social</defName>
+    <workerClass>RJWSexperience.Ideology.Ideology.Precept_Workers.ThoughtWorker_Precept_Pregnant_Social</workerClass>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <stages>
+      <li>
+        <label>pregnant</label>
+        <baseOpinionOffset>20</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Pregnancy_Horrible_Pregnant_Social</defName>
+    <workerClass>RJWSexperience.Ideology.Ideology.Precept_Workers.ThoughtWorker_Precept_Pregnant_Social</workerClass>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <stages>
+      <li>
+        <label>pregnant</label>
+        <baseOpinionOffset>-20</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+  <ThoughtDef>
+    <defName>Pregnancy_Horrible_Pregnant</defName>
+    <workerClass>RJWSexperience.Ideology.Ideology.Precept_Workers.ThoughtWorker_Precept_Pregnant</workerClass>
+    <thoughtClass>Thought_Situational</thoughtClass>
+    <stages>
+      <li>
+        <label>pregnant</label>
+        <description>How did I end up like this? I never wanted to be pregnant!</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Thoughts: Not Pregnant -->
+  <ThoughtDef>
+    <defName>Pregnancy_Horrible_NonPregnant</defName>
+    <workerClass>RJWSexperience.Ideology.Ideology.Precept_Workers.ThoughtWorker_Precept_NonPregnant_Social</workerClass>
+    <thoughtClass>Thought_Situational</thoughtClass>
+    <doNotApplyToQuestLodgers>true</doNotApplyToQuestLodgers>
+    <stages>
+      <li>
+        <label>not pregnant</label>
+        <description>I wish to be pregnant.</description>
+        <baseMoodEffect>-6</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>Pregnancy_Horrible_NonPregnant_Social</defName>
+    <workerClass>RJWSexperience.Ideology.Ideology.Precept_Workers.ThoughtWorker_Precept_NonPregnant_Social</workerClass>
+    <thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <stages>
+      <li>
+        <label>unfertilized</label>
+        <baseOpinionOffset>-5</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+</Defs>
