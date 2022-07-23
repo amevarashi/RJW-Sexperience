@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Issues -->
+  <IssueDef>
+    <defName>GenitalSize</defName>
+    <label>Size Matters</label>
+    <iconPath>UI/Memes/SexualDissolutely</iconPath>
+  </IssueDef>
+
+  <!-- Precepts Male -->
+
+  <PreceptDef>
+    <defName>GenitalSize_Big_Better</defName>
+    <issue>GenitalSize</issue>
+    <description>The size matters.</description>
+    <label>Bigger = Better</label>
+    <impact>High</impact>
+    <displayOrderInIssue>20</displayOrderInIssue>
+    <displayOrderInImpact>200</displayOrderInImpact>
+    <comps>
+      <li Class="PreceptComp_SituationalThought">
+        <thought>GenitalSize_Approved</thought>
+      </li>
+      <li Class="PreceptComp_SituationalThought">
+        <thought>GenitalSize_Approved_Social</thought>
+      </li>
+    </comps>
+  </PreceptDef>
+
+  <PreceptDef>
+    <defName>GenitalSize_NoRules</defName>
+    <issue>GenitalSize</issue>
+    <description>The size is unimportant.</description>
+    <label>No Rules</label>
+    <impact>High</impact>
+    <displayOrderInIssue>10</displayOrderInIssue>
+    <displayOrderInImpact>100</displayOrderInImpact>
+    <comps>
+    </comps>
+  </PreceptDef>
+
+  <PreceptDef>
+    <defName>GenitalSize_Smaller_Better</defName>
+    <issue>GenitalSize</issue>
+    <description>The greeks actually believed, that a big genital is an animalistic feature. Important members are known for their small genitals.</description>
+    <label>Smaller = Better</label>
+    <impact>High</impact>
+    <displayOrderInIssue>30</displayOrderInIssue>
+    <displayOrderInImpact>200</displayOrderInImpact>
+    <comps>
+      <li Class="PreceptComp_SituationalThought">
+        <thought>GenitalSize_Disapproved</thought>
+      </li>
+      <li Class="PreceptComp_SituationalThought">
+        <thought>GenitalSize_Disapproved_Social</thought>
+      </li>
+    </comps>
+  </PreceptDef>
+
+  <!-- Thoughts - Mood -->
+
+  <ThoughtDef>
+    <defName>GenitalSize_Approved</defName>
+		<thoughtClass>Thought_Situational</thoughtClass>
+    <workerClass>RJWSexperience.Ideology.ThoughtWorker_Precept_GenitalSize_Approved</workerClass>
+    <stages>
+      <li>
+        <label>Despised Genitalsize</label>
+        <description>I ... I am okay the way I am!</description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+      <li>
+        <label>Unwanted Genitalsize</label>
+        <description>I think I am below average.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>Normal Genitals</label>
+        <description>I guess I am the average.</description>
+        <baseMoodEffect>0</baseMoodEffect>
+      </li>
+      <li>
+        <label>Appreciated Genitals</label>
+        <description>I think I am above average.</description>
+        <baseMoodEffect>+5</baseMoodEffect>
+      </li>
+      <li>
+        <label>Venerated Genitals</label>
+        <description>Don't want to be the elephant in the room, but parts of me are.</description>
+        <baseMoodEffect>+10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <ThoughtDef>
+    <defName>GenitalSize_Disapproved</defName>
+    <workerClass>RJWSexperience.Ideology.ThoughtWorker_Precept_GenitalSize_Disapproved</workerClass>
+		<thoughtClass>Thought_Situational</thoughtClass>
+    <stages>
+      <li>
+        <label>Venerated Genitals</label>
+        <description>I do not need great genitals, as I am a being of supreme intellect and grace.</description>
+        <baseMoodEffect>+10</baseMoodEffect>
+      </li>
+      <li>
+        <label>Appreciated Genitals</label>
+        <description>I think I am below average.</description>
+        <baseMoodEffect>+5</baseMoodEffect>
+      </li>
+      <li>
+        <label>Normal Genitals</label>
+        <description>I guess I am the average.</description>
+        <baseMoodEffect>0</baseMoodEffect>
+      </li>
+      <li>
+        <label>Unwanted Genitals</label>
+        <description>I think I am above average.</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>Despised Genitals</label>
+        <description>I am closer to an animal, than to a human. Why did I have to be born this way? </description>
+        <baseMoodEffect>-10</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  <!-- Social-Thoughts (Opinion)-->
+  
+  <ThoughtDef>
+    <defName>GenitalSize_Approved_Social</defName>
+    <workerClass>RJWSexperience.Ideology.ThoughtWorker_Precept_GenitalSize_Approved_Social</workerClass>
+		<thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <stages>
+      <li>
+        <label>Unwanted Genitals</label>
+        <baseOpinionOffset>-5</baseOpinionOffset>
+      </li>
+      <li>
+        <label>Normal Genitals</label>
+        <baseOpinionOffset>0</baseOpinionOffset>
+      </li>
+      <li>
+        <label>Favorable Genitals</label>
+        <baseOpinionOffset>+5</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+
+  
+  <ThoughtDef>
+    <defName>GenitalSize_Disapproved_Social</defName>
+    <workerClass>RJWSexperience.Ideology.ThoughtWorker_Precept_GenitalSize_Disapproved_Social</workerClass>
+		<thoughtClass>Thought_SituationalSocial</thoughtClass>
+    <stages>
+      <li>
+        <label>Unwanted Genitals</label>
+        <baseOpinionOffset>-5</baseOpinionOffset>
+      </li>
+      <li>
+        <label>Normal Genitals</label>
+        <baseOpinionOffset>0</baseOpinionOffset>
+      </li>
+      <li>
+        <label>Favorable Genitals</label>
+        <baseOpinionOffset>+5</baseOpinionOffset>
+      </li>
+    </stages>
+  </ThoughtDef>
+  
+</Defs>

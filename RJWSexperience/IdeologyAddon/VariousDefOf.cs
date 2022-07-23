@@ -74,5 +74,8 @@ namespace RJWSexperience.Ideology
         [MayRequireIdeology] public static readonly PreceptDef Necrophilia_Approved = DefDatabase<PreceptDef>.GetNamed("Necrophilia_Approved");
         [MayRequireIdeology] public static readonly PreceptDef Proselyzing_By_Orgasm = DefDatabase<PreceptDef>.GetNamed("Proselyzing_By_Orgasm");
         [MayRequireIdeology] public static readonly PreceptDef Proselyzing_By_Sex = DefDatabase<PreceptDef>.GetNamed("Proselyzing_By_Sex");
+        [MayRequireIdeology] public static readonly PreceptDef GenitalSize_Approved = DefDatabase<PreceptDef>.GetNamed("GenitalSize_Approved");
+        [MayRequireIdeology] public static readonly PreceptDef GenitalSize_Disapproved = DefDatabase<PreceptDef>.GetNamed("GenitalSize_Disapproved");
+        [MayRequireIdeology] public static readonly PreceptDef GenitalSize_NoRules = DefDatabase<PreceptDef>.GetNamed("GenitalSize_NoRules");
     }
 }
