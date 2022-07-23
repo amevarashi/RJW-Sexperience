@@ -1,9 +1,5 @@
 ﻿using RimWorld;
-<<<<<<< HEAD
-using System;
-=======
 using rjw;
->>>>>>> SizeMattersPrecept
 using System.Collections.Generic;
 using System.Linq;
 using Verse;
@@ -71,7 +67,7 @@ namespace RJWSexperience.Ideology
 				pawn.ideo.IdeoConversionAttempt(severity, partner.Ideo);
 			}
 		}
-    }
+
 		public static float getGenitalSize(Pawn p)
 		{
 			if (p == null)

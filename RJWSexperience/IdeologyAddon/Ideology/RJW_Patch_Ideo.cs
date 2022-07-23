@@ -381,7 +381,6 @@ namespace RJWSexperience.Ideology
 		}
 	}
 
-<<<<<<< HEAD
 	[HarmonyPatch(typeof(Hediff_BasePregnancy), "PostBirth")]
 	public static class RJW_Patch_PostBirth
 	{
