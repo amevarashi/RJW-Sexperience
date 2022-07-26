@@ -55,8 +55,10 @@ namespace RJWSexperience  // Used in Menstruation with this namespace
 			}
 			else
 			{
-				progress = 0;
+				progress = 0f;
 				severitycache = hediffcache.Severity;
+				if (float.IsNaN(severitycache)) //TODO: Figure out WHY NaN is here
+					severitycache = 0.1f;
 			}
 		}
 
@@ -73,8 +75,8 @@ namespace RJWSexperience  // Used in Menstruation with this namespace
 		{
 			if (hediffcache != null)
 			{
-				float cumamount = hediffcache.Severity * 10;
-				hediffcache.Severity = 0;
+				float cumamount = hediffcache.Severity * 10f;
+				hediffcache.Severity = 0f;
 				Bucket.AddCum(cumamount);
 			}
 			CleaningInit();
