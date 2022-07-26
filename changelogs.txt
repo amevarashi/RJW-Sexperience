@@ -1,3 +1,7 @@
+Version 1.1.0.0
+ - Requires RJW 5.0 or later
+ - Removed Ideology content
+
 Version Beta 1.0.5.0
  - Updated mod description
  - Added stealth change of "virgin" trait to "virgin?" when game generates a child for a virgin mother
