@@ -10,10 +10,4 @@
 	<CumBucket.label>정액통</CumBucket.label>
 	<CumBucket.description>정액을 모으기위한 통입니다.</CumBucket.description>
 
-	<Burnbong_Aphrodisiac.label>러스트봉</Burnbong_Aphrodisiac.label>
-	<Burnbong_Aphrodisiac.description>최음버섯이 들어있는 목재 구조물입니다. 불을 붙이면 완전히 불타 없어질 때 까지 엄청난 양의 최음향을 내뿜습니다.</Burnbong_Aphrodisiac.description>
-
-	<Autobong_Aphrodisiac.label>발정기계</Autobong_Aphrodisiac.label>
-	<Autobong_Aphrodisiac.description>주위에 최음 구름을 형성하는 자동 최음버섯 연소 기계입니다. 최음 구름 속에서 사람들은 서서히 발정날 것입니다.</Autobong_Aphrodisiac.description>
-
 </LanguageData>

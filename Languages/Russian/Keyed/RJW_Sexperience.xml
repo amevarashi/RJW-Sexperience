@@ -2,12 +2,6 @@
 <LanguageData>
   <RS_Mod_Title>RJW Sexperience</RS_Mod_Title>
 
-  <MemeStatFactor>Принцип идеологии</MemeStatFactor>
-  <RSVictimCondition>раб, заключенный, подчиненный только по полу</RSVictimCondition>
-  <RSBreederCondition>неподходящее животное: не может размножаться или запрещено правилами</RSBreederCondition>
-  <RSNotHuman>не человек</RSNotHuman>
-  <RSNotAnimal>не животное</RSNotAnimal>
-  <RSShouldCanFuck>требуется способность к сексу</RSShouldCanFuck>
   <RSTotalGatheredCum>Всего собрано спермы: </RSTotalGatheredCum>  
 
   <RS_LostVirgin>{1} лишил {0} девственности.</RS_LostVirgin>
