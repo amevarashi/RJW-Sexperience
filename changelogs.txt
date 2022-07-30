@@ -1,3 +1,6 @@
+Version 1.1.0.1
+ - Fix incompatibility with Performance Optimizer
+
 Version 1.1.0.0
  - Requires RJW 5.0 or later
  - Removed Ideology content
