@@ -61,17 +61,31 @@ namespace RJWSexperience.SexHistory.UI
 		protected List<SexPartnerHistoryRecord> partnerList;
 		protected PartnerOrderMode orderMode;
 
-		private static readonly GUIStyleState fontstylestate = new GUIStyleState() { textColor = Color.white };
-		private static readonly GUIStyleState boxstylestate = GUI.skin.textArea.normal;
-		private static readonly GUIStyleState buttonstylestate = GUI.skin.button.normal;
-		private static readonly GUIStyle fontstylecenter = new GUIStyle() { alignment = TextAnchor.MiddleCenter, normal = fontstylestate };
-		private static readonly GUIStyle fontstyleright = new GUIStyle() { alignment = TextAnchor.MiddleRight, normal = fontstylestate };
-		private static readonly GUIStyle fontstyleleft = new GUIStyle() { alignment = TextAnchor.MiddleLeft, normal = fontstylestate };
-		private static readonly GUIStyle boxstyle = new GUIStyle(GUI.skin.textArea) { hover = boxstylestate, onHover = boxstylestate, onNormal = boxstylestate };
-		private static readonly GUIStyle buttonstyle = new GUIStyle(GUI.skin.button) { hover = buttonstylestate, onHover = buttonstylestate, onNormal = buttonstylestate };
+		private static GUIStyle fontStyleCenter;
+		private static GUIStyle fontStyleRight;
+		private static GUIStyle fontStyleLeft;
+		private static GUIStyle boxStyle;
+		private static GUIStyle buttonStyle;
 
 		private static Vector2 LastWindowPosition { get; set; }
 		private Vector2 scroll;
+
+		private static void InitStyles()
+		{
+			if (fontStyleCenter != null)
+			{
+				return;
+			}
+
+			GUIStyleState fontStyleState = new GUIStyleState() { textColor = Color.white };
+			GUIStyleState boxStyleState = GUI.skin.textArea.normal;
+			GUIStyleState buttonStyleState = GUI.skin.button.normal;
+			fontStyleCenter = new GUIStyle() { alignment = TextAnchor.MiddleCenter, normal = fontStyleState };
+			fontStyleRight = new GUIStyle() { alignment = TextAnchor.MiddleRight, normal = fontStyleState };
+			fontStyleLeft = new GUIStyle() { alignment = TextAnchor.MiddleLeft, normal = fontStyleState };
+			boxStyle = new GUIStyle(GUI.skin.textArea) { hover = boxStyleState, onHover = boxStyleState, onNormal = boxStyleState };
+			buttonStyle = new GUIStyle(GUI.skin.button) { hover = buttonStyleState, onHover = buttonStyleState, onNormal = buttonStyleState };
+		}
 
 		public SexStatusWindow(Pawn pawn, SexHistoryComp history)
 		{
@@ -103,6 +117,12 @@ namespace RJWSexperience.SexHistory.UI
 		}
 
 		public override Vector2 InitialSize => new Vector2(WINDOW_WIDTH, WINDOW_HEIGHT);
+
+		public override void PreOpen()
+		{
+			base.PreOpen();
+			InitStyles();
+		}
 
 		public override void PreClose()
 		{
@@ -244,10 +264,10 @@ namespace RJWSexperience.SexHistory.UI
 				if (history.Raped > 0) rapeInfo += Keyed.RS_Raped + history.Raped + " ";
 				if (history.RapedMe > 0) rapeInfo += Keyed.RS_RapedMe + history.RapedMe;
 
-				GUI.Label(nameRect, partner?.Name?.ToStringFull ?? history.Label.CapitalizeFirst(), fontstyleleft);
-				GUI.Label(sexinfoRect, Keyed.RS_Sex_Count + history.TotalSexCount + " " + rapeInfo, fontstyleleft);
-				GUI.Label(sexinfoRect2, Keyed.RS_Orgasms + history.OrgasmCount, fontstyleleft);
-				GUI.Label(sexinfoRect2, pawn.GetRelationsString(partner) + " ", fontstyleright);
+				GUI.Label(nameRect, partner?.Name?.ToStringFull ?? history.Label.CapitalizeFirst(), fontStyleLeft);
+				GUI.Label(sexinfoRect, Keyed.RS_Sex_Count + history.TotalSexCount + " " + rapeInfo, fontStyleLeft);
+				GUI.Label(sexinfoRect2, Keyed.RS_Orgasms + history.OrgasmCount, fontStyleLeft);
+				GUI.Label(sexinfoRect2, pawn.GetRelationsString(partner) + " ", fontStyleRight);
 				float p = history.BestSatisfaction / BASESAT;
 				FillableBarLabeled(bestsexRect, String.Format(Keyed.RS_Best_Sextype + ": {0}", Keyed.Sextype[(int)history.BestSextype]), p / 2, HistoryUtility.SextypeColor[(int)history.BestSextype], Texture2D.blackTexture, null, String.Format("{0:P2}", p));
 
@@ -272,8 +292,8 @@ namespace RJWSexperience.SexHistory.UI
 		{
 			Rect labelRect = new Rect(rect.x, rect.y, rect.width, FONTHEIGHT);
 			Rect infoRect = new Rect(rect.x, rect.y + FONTHEIGHT, rect.width, rect.height - FONTHEIGHT);
-			GUI.Label(labelRect, label, fontstyleleft);
-			GUI.Label(labelRect, rightlabel, fontstyleright);
+			GUI.Label(labelRect, label, fontStyleLeft);
+			GUI.Label(labelRect, rightlabel, fontStyleRight);
 			DrawInfoWithPortrait(infoRect, history, tooltip);
 		}
 
@@ -288,7 +308,7 @@ namespace RJWSexperience.SexHistory.UI
 			DrawSexInfoCard(listmain.GetRect(CARDHEIGHT), history.GetFirstPartnerHistory, Keyed.RS_First_Sex_Partner, Keyed.RS_First_Sex_Partner_ToolTip, RJWUIUtility.GetSexDays(history.FirstSexTickAbs));
 			DrawSexInfoCard(listmain.GetRect(CARDHEIGHT), history.GetMostPartnerHistory, Keyed.RS_Most_Sex_Partner, Keyed.RS_Most_Sex_Partner_ToolTip, RJWUIUtility.GetSexDays(history.MostSexTickAbs));
 			DrawSexInfoCard(listmain.GetRect(CARDHEIGHT), history.GetBestSexPartnerHistory, Keyed.RS_Best_Sex_Partner, Keyed.RS_Best_Sex_Partner_ToolTip, RJWUIUtility.GetSexDays(history.BestSexTickAbs));
-			GUI.Label(listmain.GetRect(FONTHEIGHT), Keyed.RS_PreferRace, fontstyleleft);
+			GUI.Label(listmain.GetRect(FONTHEIGHT), Keyed.RS_PreferRace, fontStyleLeft);
 			DrawPreferRace(listmain.GetRect(66f + 15f));
 			listmain.GetRect(15f);
 			listmain.End();
@@ -305,18 +325,18 @@ namespace RJWSexperience.SexHistory.UI
 			if (history.PreferRace != null)
 			{
 				Widgets.DrawTextureFitted(portraitRect, RJWUIUtility.GetRaceIcon(history.PreferRacePawn, portraitRect.size), 1.0f);
-				GUI.Label(infoRect1, history.PreferRace?.label.CapitalizeFirst() ?? Keyed.None, fontstyleleft);
-				GUI.Label(infoRect2, Keyed.RS_Sex_Count + history.PreferRaceSexCount, fontstyleleft);
+				GUI.Label(infoRect1, history.PreferRace?.label.CapitalizeFirst() ?? Keyed.None, fontStyleLeft);
+				GUI.Label(infoRect2, Keyed.RS_Sex_Count + history.PreferRaceSexCount, fontStyleLeft);
 				if (history.PreferRace != pawn.def)
 				{
 					if (history.PreferRace.race.Animal ^ pawn.def.race.Animal)
 					{
-						GUI.Label(infoRect1, Keyed.RS_Bestiality + " ", fontstyleright);
+						GUI.Label(infoRect1, Keyed.RS_Bestiality + " ", fontStyleRight);
 						FillableBarLabeled(infoRect3, Keyed.RS_Sex_Info(Keyed.RS_Bestiality, history.BestialityCount.ToString()), history.BestialityCount / 100f, Texture2D.linearGrayTexture, Texture2D.blackTexture);
 					}
 					else
 					{
-						GUI.Label(infoRect1, Keyed.RS_Interspecies + " ", fontstyleright);
+						GUI.Label(infoRect1, Keyed.RS_Interspecies + " ", fontStyleRight);
 						FillableBarLabeled(infoRect3, Keyed.RS_Sex_Info(Keyed.RS_Interspecies, history.InterspeciesCount.ToString()), history.InterspeciesCount / 100f, Texture2D.linearGrayTexture, Texture2D.blackTexture);
 					}
 				}
@@ -324,7 +344,7 @@ namespace RJWSexperience.SexHistory.UI
 			else
 			{
 				Widgets.DrawTextureFitted(portraitRect, HistoryUtility.UnknownPawn, 1.0f);
-				GUI.Label(infoRect1, Keyed.None, fontstyleleft);
+				GUI.Label(infoRect1, Keyed.None, fontStyleLeft);
 			}
 		}
 
@@ -351,7 +371,7 @@ namespace RJWSexperience.SexHistory.UI
 				}
 			}
 
-			GUI.Box(portraitRect, "", boxstyle);
+			GUI.Box(portraitRect, "", boxStyle);
 			Widgets.DrawTextureFitted(portraitRect, PortraitsCache.Get(pawn, portraitRect.size, Rot4.South, default, 1, true, true, false, false), 1.0f);
 			Widgets.DrawHighlightIfMouseover(portraitRect);
 			if (Widgets.ButtonInvisible(portraitRect))
@@ -360,10 +380,10 @@ namespace RJWSexperience.SexHistory.UI
 				selectedPawn = null;
 			}
 
-			GUI.Box(nameRect, "", boxstyle);
-			GUI.Label(nameRect.TopHalf(), pawn.Name?.ToStringFull ?? pawn.Label, fontstylecenter);
-			if (pawn.story != null) GUI.Label(nameRect.BottomHalf(), pawn.ageTracker.AgeBiologicalYears + ", " + pawn.story.Title, fontstylecenter);
-			else GUI.Label(nameRect.BottomHalf(), pawn.ageTracker.AgeBiologicalYears + ", " + pawn.def.label, fontstylecenter);
+			GUI.Box(nameRect, "", boxStyle);
+			GUI.Label(nameRect.TopHalf(), pawn.Name?.ToStringFull ?? pawn.Label, fontStyleCenter);
+			if (pawn.story != null) GUI.Label(nameRect.BottomHalf(), pawn.ageTracker.AgeBiologicalYears + ", " + pawn.story.Title, fontStyleCenter);
+			else GUI.Label(nameRect.BottomHalf(), pawn.ageTracker.AgeBiologicalYears + ", " + pawn.def.label, fontStyleCenter);
 
 			Listing_Standard listmain = new Listing_Standard();
 			listmain.Begin(infoRect);
@@ -375,9 +395,9 @@ namespace RJWSexperience.SexHistory.UI
 			{
 				tmp = listmain.GetRect(FONTHEIGHT);
 				GUI.color = Color.red;
-				GUI.Box(tmp, "", boxstyle);
+				GUI.Box(tmp, "", boxStyle);
 				GUI.color = Color.white;
-				GUI.Label(tmp, virginity.Label, fontstylecenter);
+				GUI.Label(tmp, virginity.Label, fontStyleCenter);
 			}
 			else
 			{
@@ -500,7 +520,7 @@ namespace RJWSexperience.SexHistory.UI
 			float p;
 
 			//Sex statistics
-			GUI.Label(listmain.GetRect(FONTHEIGHT), " " + Keyed.RS_Statistics, fontstyleleft);
+			GUI.Label(listmain.GetRect(FONTHEIGHT), " " + Keyed.RS_Statistics, fontStyleLeft);
 			listmain.Gap(1f);
 			float maxSatisfaction = history.GetBestSextype(out _);
 			if (maxSatisfaction == 0f) maxSatisfaction = BASESAT;
@@ -531,7 +551,7 @@ namespace RJWSexperience.SexHistory.UI
 			//Partner list
 			Rect listLabelRect = listmain.GetRect(FONTHEIGHT);
 			Rect sortbtnRect = new Rect(listLabelRect.xMax - 80f, listLabelRect.y, 80f, listLabelRect.height);
-			GUI.Label(listLabelRect, " " + Keyed.RS_PartnerList, fontstyleleft);
+			GUI.Label(listLabelRect, " " + Keyed.RS_PartnerList, fontStyleLeft);
 			if (Widgets.ButtonText(sortbtnRect, orderMode.Translate()))
 			{
 				SoundDefOf.Click.PlayOneShotOnCamera();
@@ -542,7 +562,7 @@ namespace RJWSexperience.SexHistory.UI
 			listmain.Gap(1f);
 
 			Rect scrollRect = listmain.GetRect(CARDHEIGHT + 1f);
-			GUI.Box(scrollRect, "", buttonstyle);
+			GUI.Box(scrollRect, "", buttonStyle);
 			if (!partnerList.NullOrEmpty())
 			{
 				Rect listRect = new Rect(scrollRect.x, scrollRect.y, LISTPAWNSIZE * partnerList.Count, scrollRect.height - 30f);
@@ -564,7 +584,7 @@ namespace RJWSexperience.SexHistory.UI
 
 				DrawPawn(pawnRect, partnerList[i]);
 				Widgets.DrawHighlightIfMouseover(pawnRect);
-				GUI.Label(labelRect, partnerList[i].Label, fontstylecenter);
+				GUI.Label(labelRect, partnerList[i].Label, fontStyleCenter);
 				if (Widgets.ButtonInvisible(pawnRect))
 				{
 					selectedPawn = partnerList[i];
@@ -621,8 +641,8 @@ namespace RJWSexperience.SexHistory.UI
 		public static void FillableBarLabeled(Rect rect, string label, float fillPercent, Texture2D filltexture, Texture2D bgtexture, string tooltip = null, string rightlabel = "", Texture2D border = null)
 		{
 			Widgets.FillableBar(rect, Math.Min(fillPercent, 1.0f), filltexture, bgtexture, true);
-			GUI.Label(rect, "  " + label.CapitalizeFirst(), fontstyleleft);
-			GUI.Label(rect, rightlabel.CapitalizeFirst() + "  ", fontstyleright);
+			GUI.Label(rect, "  " + label.CapitalizeFirst(), fontStyleLeft);
+			GUI.Label(rect, rightlabel.CapitalizeFirst() + "  ", fontStyleRight);
 			Widgets.DrawHighlightIfMouseover(rect);
 			if (tooltip != null) TooltipHandler.TipRegion(rect, tooltip);
 			if (border != null)
