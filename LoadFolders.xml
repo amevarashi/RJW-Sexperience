@@ -2,6 +2,7 @@
 <loadFolders>
 	<v1.3>
 		<li>/</li>
-		<li IfModActive="Ludeon.RimWorld.Ideology">RJWSexperience_Ideology</li>
+		<li IfModActive="vanillaexpanded.skills">Mod Compatibility/Vanilla Skills Expanded</li>
+		<li IfModActive="rjw.cum">Mod Compatibility/RJW Cum</li>
 	</v1.3>
 </loadFolders>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <Defs>
-	<JobDef MayRequire="rjw.cum">
+	<JobDef>
 		<defName>CleanSelfwithBucket</defName>
-		<driverClass>RJWSexperience.JobDriver_CleanSelfWithBucket</driverClass>
+		<driverClass>RJWSexperienceCum.JobDriver_CleanSelfWithBucket</driverClass>
 		<reportString>collecting cum</reportString>
 		<casualInterruptible>true</casualInterruptible>
 	</JobDef>

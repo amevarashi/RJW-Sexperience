@@ -1,9 +1,9 @@
-﻿using RimWorld;
+﻿using RJWSexperience;
 using System.Collections.Generic;
 using Verse;
 using Verse.AI;
 
-namespace RJWSexperience  // Used in Menstruation with this namespace
+namespace RJWSexperienceCum
 {
 	public class JobDriver_CleanSelfWithBucket : JobDriver
 	{
@@ -31,7 +31,7 @@ namespace RJWSexperience  // Used in Menstruation with this namespace
 			this.FailOn(delegate
 			{
 				List<Hediff> hediffs = pawn.health.hediffSet.hediffs;
-				return !hediffs.Exists(x => x.def == VariousDefOf.Hediff_CumController);
+				return !hediffs.Exists(x => x.def == HediffDefOf.Hediff_CumController);
 			});
 			yield return Toils_Goto.GotoThing(TargetIndex.B, PathEndMode.ClosestTouch);
 			Toil cleaning = new Toil
@@ -48,7 +48,7 @@ namespace RJWSexperience  // Used in Menstruation with this namespace
 
 		protected void CleaningInit()
 		{
-			hediffcache = pawn.health.hediffSet.hediffs.Find(x => x.def == VariousDefOf.Hediff_Cum || x.def == VariousDefOf.Hediff_InsectSpunk);
+			hediffcache = pawn.health.hediffSet.hediffs.Find(x => x.def == HediffDefOf.Hediff_Cum || x.def == HediffDefOf.Hediff_InsectSpunk);
 			if (hediffcache == null)
 			{
 				pawn.jobs.EndCurrentJob(JobCondition.Succeeded);
@@ -84,7 +84,7 @@ namespace RJWSexperience  // Used in Menstruation with this namespace
 
 		protected void Finish()
 		{
-			if (pawn.CurJobDef == JobDefOf.Wait_MaintainPosture)
+			if (pawn.CurJobDef == RimWorld.JobDefOf.Wait_MaintainPosture)
 			{
 				pawn.jobs.EndCurrentJob(JobCondition.InterruptForced);
 			}

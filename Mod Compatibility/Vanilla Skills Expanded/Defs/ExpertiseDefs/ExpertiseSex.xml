@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Defs>
+	<!-- Sex ExpertiseDefs by Rain -->
+	<VSE.Expertise.ExpertiseDef>
+		<defName>Sensualist</defName>
+		<label>Sensualising</label>
+		<skill>Sex</skill>
+		<description>An expert in sex and sensuous activities.</description>
+		<statOffsets>
+			<SexAbility>0.05</SexAbility>
+		</statOffsets>
+	</VSE.Expertise.ExpertiseDef>
+
+	<VSE.Expertise.ExpertiseDef>
+		<defName>Rapist</defName>
+		<label>Raping</label>
+		<skill>Sex</skill>
+		<description>An experienced rapist.</description>
+		<statOffsets>
+			<Vulnerability>-0.025</Vulnerability>
+			<!-- Pawn gets more out of sex but isn't necessarily good at sex -->
+			<SexSatisfaction>0.025</SexSatisfaction>
+		</statOffsets>
+	</VSE.Expertise.ExpertiseDef>
+
+	<VSE.Expertise.ExpertiseDef>
+		<defName>Victim</defName>
+		<label>Rapee</label>
+		<skill>Sex</skill>
+		<description>An expertise in getting raped.</description>
+		<statOffsets>
+			<Vulnerability>0.025</Vulnerability>
+			<SexSatisfaction>-0.025</SexSatisfaction>
+		</statOffsets>
+	</VSE.Expertise.ExpertiseDef>
+
+	<VSE.Expertise.ExpertiseDef>
+		<defName>Submissive</defName>
+		<label>Submitting</label>
+		<skill>Sex</skill>
+		<description>An expert in sexual submission.</description>
+		<statOffsets>
+			<Vulnerability>0.025</Vulnerability>
+			<SexSatisfaction>0.025</SexSatisfaction>
+		</statOffsets>
+	</VSE.Expertise.ExpertiseDef>
+
+	<VSE.Expertise.ExpertiseDef>
+		<defName>Dominant</defName>
+		<label>Dominating</label>
+		<skill>Sex</skill>
+		<description>An expert in sexual domination.</description>
+		<statOffsets>
+			<Vulnerability>-0.025</Vulnerability>
+			<SexSatisfaction>0.025</SexSatisfaction>
+		</statOffsets>
+	</VSE.Expertise.ExpertiseDef>
+
+	<VSE.Expertise.ExpertiseDef>
+		<defName>Hypersexuality</defName>
+		<label>Sexualizing</label>
+		<skill>Sex</skill>
+		<description>A sex craved individual.</description>
+		<statOffsets>
+			<SexFrequency>0.05</SexFrequency>
+		</statOffsets>
+	</VSE.Expertise.ExpertiseDef>
+
+	<VSE.Expertise.ExpertiseDef>
+		<defName>Prude</defName>
+		<label>Pruding</label>
+		<skill>Sex</skill>
+		<description>An experienced person in sex but decided they do not like it.</description>
+		<statOffsets>
+			<SexFrequency>-0.05</SexFrequency>
+		</statOffsets>
+	</VSE.Expertise.ExpertiseDef>
+</Defs>

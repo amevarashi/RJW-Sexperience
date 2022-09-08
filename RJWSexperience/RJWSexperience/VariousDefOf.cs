@@ -28,14 +28,10 @@ namespace RJWSexperience
 		public static readonly ChemicalDef Cum;
 		public static readonly NeedDef Chemical_Cum;
 		public static readonly TraitDef Virgin;
-		public static readonly JobDef CleanSelfwithBucket;
 		public static readonly KeyBindingDef OpenSexStatistics;
 		public static readonly StatDef SexAbility;
 
 		public static readonly HediffDef CumAddiction;
 		public static readonly HediffDef CumTolerance;
-		[MayRequire("rjw.cum")] public static readonly HediffDef Hediff_CumController;
-		[MayRequire("rjw.cum")] public static readonly HediffDef Hediff_Cum; //for humans & animals
-		[MayRequire("rjw.cum")] public static readonly HediffDef Hediff_InsectSpunk;
 	}
 }
