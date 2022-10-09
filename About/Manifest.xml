@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Manifest>
 	<identifier>RJWSexperience</identifier>
-	<version>1.1.1.0</version>
+	<version>1.1.1.1</version>
 	<dependencies>
 		<li>RimJobWorld >= 5.0.0.0</li>
 	</dependencies>

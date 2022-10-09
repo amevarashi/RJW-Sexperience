@@ -1,3 +1,6 @@
+Version 1.1.1.1
+ - Fix sex history window crashing for a pawns with a modded passion
+
 Version 1.1.1.0
  - Fix def error when loading game without RJW Cum mod
 
