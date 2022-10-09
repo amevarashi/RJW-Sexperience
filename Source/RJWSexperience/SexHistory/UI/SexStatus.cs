@@ -408,7 +408,7 @@ namespace RJWSexperience.SexHistory.UI
 
 			tmp = listmain.GetRect(FONTHEIGHT);
 			p = pawn.records.GetValue(VariousDefOf.Lust);
-			FillableBarLabeled(tmp, String.Format(Keyed.Lust + ": {0:0.00}", p), Mathf.Clamp01(p.Normalization(-SexperienceMod.Settings.LustLimit * 3, SexperienceMod.Settings.LustLimit * 3)), HistoryUtility.Slaanesh, Texture2D.blackTexture, null, String.Format(xxx.sex_drive_stat.LabelCap.CapitalizeFirst() + ": {0:P2}", pawn.Dead ? 0 : pawn.GetStatValue(xxx.sex_drive_stat)));
+			FillableBarLabeled(tmp, String.Format(Keyed.Lust + ": {0:0.00}", p), Mathf.Clamp01(p.Normalization(-SexperienceMod.Settings.LustLimit * 3, SexperienceMod.Settings.LustLimit * 3)), HistoryUtility.Slaanesh, Texture2D.blackTexture, null, String.Format(xxx.sex_drive_stat.LabelCap + ": {0:P2}", pawn.Dead ? 0 : pawn.GetStatValue(xxx.sex_drive_stat)));
 			listmain.Gap(1f);
 			if (Mouse.IsOver(tmp))
 			{
@@ -458,12 +458,12 @@ namespace RJWSexperience.SexHistory.UI
 			if (p < history.BeenRapedCount)
 			{
 				p = history.BeenRapedCount;
-				FillableBarLabeled(tmp, String.Format(Keyed.RS_BeenRaped + ": {0}", p), p / 50, Texture2D.grayTexture, Texture2D.blackTexture, null, String.Format(xxx.vulnerability_stat.LabelCap.CapitalizeFirst() + ": {0:P2}", pawn.Dead ? 0 : pawn.GetStatValue(xxx.vulnerability_stat)));
+				FillableBarLabeled(tmp, String.Format(Keyed.RS_BeenRaped + ": {0}", p), p / 50, Texture2D.grayTexture, Texture2D.blackTexture, null, String.Format(xxx.vulnerability_stat.LabelCap + ": {0:P2}", pawn.Dead ? 0 : pawn.GetStatValue(xxx.vulnerability_stat)));
 				listmain.Gap(1f);
 			}
 			else
 			{
-				FillableBarLabeled(tmp, String.Format(Keyed.RS_RapedSomeone + ": {0}", p), p / 50, HistoryUtility.Khorne, Texture2D.blackTexture, null, String.Format(xxx.vulnerability_stat.LabelCap.CapitalizeFirst() + ": {0:P2}", pawn.Dead ? 0 : pawn.GetStatValue(xxx.vulnerability_stat)));
+				FillableBarLabeled(tmp, String.Format(Keyed.RS_RapedSomeone + ": {0}", p), p / 50, HistoryUtility.Khorne, Texture2D.blackTexture, null, String.Format(xxx.vulnerability_stat.LabelCap + ": {0:P2}", pawn.Dead ? 0 : pawn.GetStatValue(xxx.vulnerability_stat)));
 				listmain.Gap(1f);
 			}
 			if (Mouse.IsOver(tmp))
@@ -473,7 +473,7 @@ namespace RJWSexperience.SexHistory.UI
 
 			p = pawn.Dead ? 0 : pawn.GetStatValue(xxx.sex_satisfaction);
 			tmp = listmain.GetRect(FONTHEIGHT);
-			FillableBarLabeled(tmp, String.Format(xxx.sex_satisfaction.LabelCap.CapitalizeFirst() + ": {0:P2}", p), p / 2, HistoryUtility.Satisfaction, Texture2D.blackTexture);
+			FillableBarLabeled(tmp, String.Format(xxx.sex_satisfaction.LabelCap + ": {0:P2}", p), p / 2, HistoryUtility.Satisfaction, Texture2D.blackTexture);
 			listmain.Gap(1f);
 			if (Mouse.IsOver(tmp))
 			{
@@ -483,7 +483,7 @@ namespace RJWSexperience.SexHistory.UI
 			SkillRecord skill = pawn.skills?.GetSkill(VariousDefOf.Sex);
 			p = skill?.Level ?? 0;
 			tmp = listmain.GetRect(FONTHEIGHT);
-			FillableBarLabeled(tmp, $"{Keyed.RS_SexSkill}: {p}, {skill?.xpSinceLastLevel / skill?.XpRequiredForLevelUp:P2}", p / 20, HistoryUtility.Tzeentch, Texture2D.blackTexture, null, $"{VariousDefOf.SexAbility.LabelCap.CapitalizeFirst()}: {pawn.GetSexStat():P2}", HistoryUtility.PassionBG[(int)(skill?.passion ?? 0)]);
+			FillableBarLabeled(tmp, $"{Keyed.RS_SexSkill}: {p}, {skill?.xpSinceLastLevel / skill?.XpRequiredForLevelUp:P2}", p / 20, HistoryUtility.Tzeentch, Texture2D.blackTexture, null, $"{VariousDefOf.SexAbility.LabelCap}: {pawn.GetSexStat():P2}", HistoryUtility.GetPassionBG(skill?.passion));
 			if (Mouse.IsOver(tmp))
 			{
 				TooltipHandler.TipRegion(tmp, RJWUIUtility.GetStatExplanation(pawn, VariousDefOf.SexAbility, pawn.GetSexStat()));

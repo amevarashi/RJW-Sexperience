@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using RimWorld;
+using System;
+using UnityEngine;
 using Verse;
 
 namespace RJWSexperience.SexHistory
@@ -47,11 +49,31 @@ namespace RJWSexperience.SexHistory
 			Texture2D.linearGrayTexture    //? = 20
 		};
 
-		public static readonly Texture2D[] PassionBG = new Texture2D[]
+		private static readonly Texture2D[] PassionBG = new Texture2D[]
 		{
 			Texture2D.blackTexture,    //None = 0,
-			SolidColorMaterials.NewSolidColorTexture(0.800f, 0.800f, 0.800f, 1.0f),    //Minor = 1,
-			SolidColorMaterials.NewSolidColorTexture(1.000f, 0.875f, 0.000f, 1.0f)     //Major = 2,
+			SolidColorMaterials.NewSolidColorTexture(0.800f, 0.800f, 0.800f, 1.0f),    //Minor = 1, Gray
+			SolidColorMaterials.NewSolidColorTexture(1.000f, 0.875f, 0.000f, 1.0f),    //Major = 2, Golden
+			Texture2D.blackTexture,    // VSE Apathy = 3
+			SolidColorMaterials.NewSolidColorTexture(0.500f, 0.875f, 0.000f, 1.0f),    //VSE Natural = 4, Light Green
+			SolidColorMaterials.NewSolidColorTexture(1.000f, 0.375f, 0.000f, 1.0f),    //VSE Critical = 5, Reddish
 		};
+
+		public static Texture2D GetPassionBG(Passion? passion)
+		{
+			int passionIndex = (int)(passion ?? 0);
+
+			// Vanilla Skills Expanded adds new passion levels
+			if (passionIndex < 0)
+			{
+				passionIndex = 0;
+			}
+			else if (passionIndex >= PassionBG.Length)
+			{
+				passionIndex = 0;
+			}
+
+			return PassionBG[passionIndex];
+		}
 	}
 }
