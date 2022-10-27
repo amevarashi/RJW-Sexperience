@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<RecordDef>
+		<defName>VaginalSexCount</defName>
+		<label>vaginal intercourses</label>
+		<description>The number of times of vaginal sex.</description>
+		<type>Int</type>
+	</RecordDef>
+
+	<RecordDef>
+		<defName>AnalSexCount</defName>
+		<label>anal intercourses</label>
+		<description>The number of times of anal sex.</description>
+		<type>Int</type>
+	</RecordDef>
+	
+	<RecordDef>
+		<defName>OralSexCount</defName>
+		<label>oral intercourses</label>
+		<description>The number of times of received oral sex.</description>
+		<type>Int</type>
+	</RecordDef>
+
+	<RecordDef>
+		<defName>BlowjobCount</defName>
+		<label>blowjobs</label>
+		<description>The number of times of blowjob.</description>
+		<type>Int</type>
+	</RecordDef>
+	
+	<RecordDef>
+		<defName>CunnilingusCount</defName>
+		<label>cunnilingus</label>
+		<description>The number of times of cunnilingus.</description>
+		<type>Int</type>
+	</RecordDef>
+	
+	<RecordDef>
+		<defName>GenitalCaressCount</defName>
+		<label>genital touched</label>
+		<description>The number of times of handjob/fingering.</description>
+		<type>Int</type>
+	</RecordDef>
+
+	<RecordDef>
+		<defName>HandjobCount</defName>
+		<label>handjobs</label>
+		<description>The number of times of handjob.</description>
+		<type>Int</type>
+	</RecordDef>
+
+	<RecordDef>
+		<defName>FingeringCount</defName>
+		<label>fingerings</label>
+		<description>The number of times of fingering.</description>
+		<type>Int</type>
+	</RecordDef>
+	
+	<RecordDef>
+		<defName>FootjobCount</defName>
+		<label>footjob</label>
+		<description>The number of times of footjob.</description>
+		<type>Int</type>
+	</RecordDef>
+
+	<RecordDef>
+		<defName>MiscSexualBehaviorCount</defName>
+		<label>misc. intercourses</label>
+		<description>The number of times of something sexual.</description>
+		<type>Int</type>
+	</RecordDef>
+
+	<RecordDef>
+		<defName>OrgasmCount</defName>
+		<label>orgasms</label>
+		<description>The number of times of orgasm.</description>
+		<type>Int</type>
+	</RecordDef>
+
+	<RecordDef>
+		<defName>SexPartnerCount</defName>
+		<label>sex partners</label>
+		<description>The number of sex partners.</description>
+		<type>Int</type>
+	</RecordDef>
+</Defs>

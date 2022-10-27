@@ -9,14 +9,14 @@ namespace RJWSexperience
 	[HarmonyPatch(typeof(PawnGenerator), "GeneratePawn", new Type[] { typeof(PawnGenerationRequest) })]
 	public static class Rimworld_Patch_GeneratePawn
 	{
-		public static void Postfix(PawnGenerationRequest request, ref Pawn __result)
+		public static void Postfix(ref Pawn __result)
 		{
 			if (__result == null)
 				return;
 
 			bool doVirginTrait = true;
 
-			if (SexperienceMod.Settings.History.EnableRecordRandomizer && !request.Newborn && xxx.is_human(__result))
+			if (SexperienceMod.Settings.History.EnableRecordRandomizer && __result.DevelopmentalStage != DevelopmentalStage.Newborn && xxx.is_human(__result))
 				doVirginTrait = SexHistory.RecordRandomizer.Randomize(__result);
 
 			if (doVirginTrait)

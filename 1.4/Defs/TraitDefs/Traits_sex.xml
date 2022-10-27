@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+	<TraitDef>
+		<defName>Virgin</defName>
+		<commonality>0.0</commonality>
+		<commonalityFemale>0.0</commonalityFemale>
+		<degreeDatas>
+			<li>
+				<label>damaged virgin</label>
+				<labelMale>BUGGED! MALE CANNOT HAS THIS TRAIT</labelMale>
+				<description>[PAWN_nameDef] never experienced. However, her hymen had damaged for some reason.</description>
+				<degree>-1</degree>
+				<marketValueFactorOffset>0.05</marketValueFactorOffset>
+				<statOffsets>
+					<SexFrequency>-0.2</SexFrequency>
+				</statOffsets>
+				<skillGains>
+					<li>
+						<key>Sex</key>
+						<value>-4</value>
+					</li>
+				</skillGains>
+			</li>
+			<li>
+				<label>virgin</label>
+				<description>[PAWN_nameDef] never experienced.</description>
+				<degree>0</degree>
+				<statOffsets>
+					<SexFrequency>0.2</SexFrequency>
+				</statOffsets>
+				<skillGains>
+					<li>
+						<key>Sex</key>
+						<value>-4</value>
+					</li>
+				</skillGains>
+			</li>
+			<li>
+				<label>virgin?</label>
+				<labelMale>BUGGED! MALE CANNOT HAS THIS TRAIT</labelMale>
+				<description>[PAWN_nameDef] looks experienced. But the hymen is still threre.</description>
+				<marketValueFactorOffset>0.10</marketValueFactorOffset>
+				<degree>1</degree>
+			</li>
+			<li>
+				<label>virgin</label>
+				<labelMale>BUGGED! MALE CANNOT HAS THIS TRAIT</labelMale>
+				<description>[PAWN_nameDef] never experienced.</description>
+				<degree>2</degree>
+				<statOffsets>
+					<SexFrequency>-0.2</SexFrequency>
+				</statOffsets>
+				<skillGains>
+					<li>
+						<key>Sex</key>
+						<value>-4</value>
+					</li>
+				</skillGains>
+				<marketValueFactorOffset>0.20</marketValueFactorOffset>
+			</li>
+		</degreeDatas>
+		<modExtensions>
+			<!-- Compatibility with [SYR] Trait Value by AerosAtar -->
+			<li Class="SyrTraitValue.TraitValueExtension" MayRequire="syrchalis.traitvalue">
+				<traitValues>
+					<li>-1, 10</li>
+					<li>0, 0</li>
+					<li>1, 10</li>
+					<li>2, 10</li>
+				</traitValues>
+			</li>
+		</modExtensions>
+	</TraitDef>
+</Defs>
