@@ -53,7 +53,7 @@ namespace RJWSexperience.Virginity
 				return null;
 
 			int degree = virgin.Degree;
-			if (pawn.gender == Gender.Female && degree > 0 && !pawn.Dead)
+			if (pawn.gender == Gender.Female && degree > 0 && pawn.Spawned && !pawn.Dead)
 			{
 				FilthMaker.TryMakeFilth(pawn.Position, pawn.Map, ThingDefOf.Filth_Blood, pawn.LabelShort, 1, FilthSourceFlags.Pawn);
 			}
