@@ -11,7 +11,7 @@ namespace RJWSexperience.SexHistory
 	{
 		private static readonly rjw.Modules.Shared.Logs.ILog log = LogManager.GetLogger<DebugLogProvider>("RecordRandomizer");
 
-		private static Settings.SettingsTabHistory Settings => SexperienceMod.Settings.History;
+		private static Configurations Settings => SexperienceMod.Settings;
 
 		public static bool Randomize(Pawn pawn)
 		{

@@ -1,132 +1,69 @@
 ﻿using RimWorld;
+using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 
 namespace RJWSexperience.Settings
 {
-	public class SettingsTabHistory : IExposable, IResettable, ITab
+	public class SettingsTabHistory : SettingsTab
 	{
-		public string Label => Keyed.TabLabelHistory;
+		public SettingsTabHistory(Configurations settings) : base(
+			settings,
+			Keyed.TabLabelHistory,
+			new List<ISettingHandle> {
+				settings.EnableRecordRandomizer,
+				settings.MaxLustDeviation,
+				settings.AvgLust,
+				settings.MaxSexCountDeviation,
+				settings.SexPerYear,
+				settings.MinSexableFromLifestage,
+				settings.MinSexablePercent,
+				settings.VirginRatio,
+				settings.SlavesBeenRapedExp,
+				settings.EnableSexHistory,
+				settings.HideGizmoWhenDrafted,
+				settings.HideGizmoWithRJW
+			}
+		) { }
 
-		// Defaults
-		public const bool EnableStatRandomizerDefault = true;
-		public const float MaxLustDeviationDefault = 400f;
-		public const float AvgLustDefault = 0f;
-		public const float MaxSexCountDeviationDefault = 90f;
-		public const float SexPerYearDefault = 30f;
-		public const bool MinSexableFromLifestageDefault = true;
-		public const float MinSexablePercentDefault = 0.2f;
-		public const float VirginRatioDefault = 0.01f;
-		public const bool SlavesBeenRapedExpDefault = true;
-		public const bool EnableSexHistoryDefault = true;
-		public const bool HideGizmoWhenDraftedDefault = true;
-		public const bool HideGizmoWithRJWDefault = true;
-
-		// Private attributes
-		private bool enableRecordRandomizer = EnableStatRandomizerDefault;
-		private float maxLustDeviation = MaxLustDeviationDefault;
-		private float avgLust = AvgLustDefault;
-		private float maxSexCountDeviation = MaxSexCountDeviationDefault;
-		private float sexPerYear = SexPerYearDefault;
-		private bool minSexableFromLifestage = MinSexableFromLifestageDefault;
-		private float minSexablePercent = MinSexablePercentDefault;
-		private float virginRatio = VirginRatioDefault;
-		private bool slavesBeenRapedExp = SlavesBeenRapedExpDefault;
-		private bool enableSexHistory = EnableSexHistoryDefault;
-		private bool hideGizmoWhenDrafted = HideGizmoWhenDraftedDefault;
-		private bool hideGizmoWithRJW = HideGizmoWithRJWDefault;
-
-		//Public read-only properties
-		public bool EnableRecordRandomizer => enableRecordRandomizer;
-		public float MaxLustDeviation => maxLustDeviation;
-		public float AvgLust => avgLust;
-		public float MaxSexCountDeviation => maxSexCountDeviation;
-		public float SexPerYear => sexPerYear;
-		public bool MinSexableFromLifestage => minSexableFromLifestage;
-		public float MinSexablePercent => minSexablePercent;
-		public float VirginRatio => virginRatio;
-		public bool SlavesBeenRapedExp => slavesBeenRapedExp;
-		public bool EnableSexHistory => enableSexHistory;
-		public bool HideGizmoWhenDrafted => hideGizmoWhenDrafted;
-		public bool HideGizmoWithRJW => hideGizmoWithRJW;
-
-		public static SettingsTabHistory CreateDefault()
-		{
-			SettingsTabHistory history = new SettingsTabHistory();
-			history.Reset();
-			return history;
-		}
-
-		public void Reset()
-		{
-			enableRecordRandomizer = EnableStatRandomizerDefault;
-			maxLustDeviation = MaxLustDeviationDefault;
-			avgLust = AvgLustDefault;
-			maxSexCountDeviation = MaxSexCountDeviationDefault;
-			sexPerYear = SexPerYearDefault;
-			minSexableFromLifestage = MinSexableFromLifestageDefault;
-			minSexablePercent = MinSexablePercentDefault;
-			virginRatio = VirginRatioDefault;
-			slavesBeenRapedExp = SlavesBeenRapedExpDefault;
-			enableSexHistory = EnableSexHistoryDefault;
-			hideGizmoWhenDrafted = HideGizmoWhenDraftedDefault;
-			hideGizmoWithRJW = HideGizmoWithRJWDefault;
-		}
-
-		public void ExposeData()
-		{
-			Scribe_Values.Look(ref enableRecordRandomizer, "EnableRecordRandomizer", EnableStatRandomizerDefault);
-			Scribe_Values.Look(ref maxLustDeviation, "MaxLustDeviation", MaxLustDeviationDefault);
-			Scribe_Values.Look(ref avgLust, "AvgLust", AvgLustDefault);
-			Scribe_Values.Look(ref maxSexCountDeviation, "MaxSexCountDeviation", MaxSexCountDeviationDefault);
-			Scribe_Values.Look(ref sexPerYear, "SexPerYear", SexPerYearDefault);
-			Scribe_Values.Look(ref minSexableFromLifestage, "MinSexableFromLifestage", MinSexableFromLifestageDefault);
-			Scribe_Values.Look(ref minSexablePercent, "MinSexablePercent", MinSexablePercentDefault);
-			Scribe_Values.Look(ref virginRatio, "VirginRatio", VirginRatioDefault);
-			Scribe_Values.Look(ref slavesBeenRapedExp, "SlavesBeenRapedExp", SlavesBeenRapedExpDefault);
-			Scribe_Values.Look(ref enableSexHistory, "EnableSexHistory", EnableSexHistoryDefault);
-			Scribe_Values.Look(ref hideGizmoWhenDrafted, "HideGizmoWhenDrafted", HideGizmoWhenDraftedDefault);
-			Scribe_Values.Look(ref hideGizmoWithRJW, "HideGizmoWithRJW", HideGizmoWithRJWDefault);
-		}
-
-		public void DoTabContents(Rect inRect)
+		public override void DoTabContents(Rect inRect)
 		{
 			const float lineHeight = SettingsWidgets.lineHeight;
 
 			Listing_Standard listmain = new Listing_Standard();
 			listmain.Begin(inRect);
 
-			listmain.CheckboxLabeled(Keyed.Option_1_Label, ref enableRecordRandomizer, Keyed.Option_1_Desc);
-			if (enableRecordRandomizer)
+			listmain.CheckboxLabeled(Keyed.Option_1_Label, settings.EnableRecordRandomizer, Keyed.Option_1_Desc);
+			if (settings.EnableRecordRandomizer)
 			{
 				float sectionHeight = 12f;
-				if (!minSexableFromLifestage)
+				if (!settings.MinSexableFromLifestage)
 					sectionHeight += 2f;
 
 				Listing_Standard section = listmain.BeginSection(lineHeight * sectionHeight);
 
-				SettingsWidgets.SliderOption(section.GetRect(lineHeight * 2f), Keyed.Option_3_Label + " " + maxLustDeviation, Keyed.Option_3_Desc, ref maxLustDeviation, 0f, 2000f, 1f);
-				SettingsWidgets.SliderOption(section.GetRect(lineHeight * 2f), Keyed.Option_4_Label + " " + avgLust, Keyed.Option_4_Desc, ref avgLust, -1000f, 1000f, 1f);
-				SettingsWidgets.SliderOption(section.GetRect(lineHeight * 2f), Keyed.Option_5_Label + " " + maxSexCountDeviation, Keyed.Option_5_Desc, ref maxSexCountDeviation, 0f, 2000f, 1f);
-				SettingsWidgets.SliderOption(section.GetRect(lineHeight * 2f), Keyed.Option_6_Label + " " + sexPerYear, Keyed.Option_6_Desc, ref sexPerYear, 0f, 2000f, 1f);
+				section.SliderOption(Keyed.Option_3_Label + " {0}", Keyed.Option_3_Desc, settings.MaxLustDeviation, new FloatRange(0f, 1000f), 1f);
+				section.SliderOption(Keyed.Option_4_Label + " {0}", Keyed.Option_4_Desc, settings.AvgLust, new FloatRange(-200f, 200f), 1f);
+				section.SliderOption(Keyed.Option_5_Label + " {0}", Keyed.Option_5_Desc, settings.MaxSexCountDeviation, new FloatRange(0f, 1000f), 1f);
+				section.SliderOption(Keyed.Option_6_Label + " {0}", Keyed.Option_6_Desc, settings.SexPerYear, new FloatRange(0f, 2000f), 1f);
 
-				section.CheckboxLabeled(Keyed.Option_MinSexableFromLifestage_Label, ref minSexableFromLifestage, Keyed.Option_MinSexableFromLifestage_Desc);
+				section.CheckboxLabeled(Keyed.Option_MinSexableFromLifestage_Label, settings.MinSexableFromLifestage, Keyed.Option_MinSexableFromLifestage_Desc);
 
-				if (!minSexableFromLifestage)
-					SettingsWidgets.SliderOption(section.GetRect(lineHeight * 2f), $"{Keyed.Option_9_Label} {minSexablePercent:P1}   {ThingDefOf.Human.race.lifeExpectancy * minSexablePercent} human years", Keyed.Option_9_Desc, ref minSexablePercent, 0, 1, 0.001f);
+				if (!settings.MinSexableFromLifestage)
+					section.SliderOption($"{Keyed.Option_9_Label} {{0:P1}}  {ThingDefOf.Human.race.lifeExpectancy * settings.MinSexablePercent} human years", Keyed.Option_9_Desc, settings.MinSexablePercent, FloatRange.ZeroToOne, 0.001f);
 
-				SettingsWidgets.SliderOption(section.GetRect(lineHeight * 2f), $"{Keyed.Option_10_Label} {virginRatio:P1}", Keyed.Option_10_Desc, ref virginRatio, 0f, 1f, 0.001f);
-				section.CheckboxLabeled(Keyed.Option_7_Label, ref slavesBeenRapedExp, Keyed.Option_7_Desc);
+				section.SliderOption(Keyed.Option_10_Label + " {0:P1}", Keyed.Option_10_Desc, settings.VirginRatio, FloatRange.ZeroToOne, 0.001f);
+				section.CheckboxLabeled(Keyed.Option_7_Label, settings.SlavesBeenRapedExp, Keyed.Option_7_Desc);
 
 				listmain.EndSection(section);
 			}
 
-			listmain.CheckboxLabeled(Keyed.Option_EnableSexHistory_Label, ref enableSexHistory, Keyed.Option_EnableSexHistory_Desc);
+			listmain.CheckboxLabeled(Keyed.Option_EnableSexHistory_Label, settings.EnableSexHistory, Keyed.Option_EnableSexHistory_Desc);
 
-			if (enableSexHistory)
+			if (settings.EnableSexHistory)
 			{
-				listmain.CheckboxLabeled(Keyed.Option_HideGizmoWhenDrafted_Label, ref hideGizmoWhenDrafted, Keyed.Option_HideGizmoWhenDrafted_Desc);
-				listmain.CheckboxLabeled(Keyed.Option_HideGizmoWithRJW_Label, ref hideGizmoWithRJW, Keyed.Option_HideGizmoWithRJW_Desc);
+				listmain.CheckboxLabeled(Keyed.Option_HideGizmoWhenDrafted_Label, settings.HideGizmoWhenDrafted, Keyed.Option_HideGizmoWhenDrafted_Desc);
+				listmain.CheckboxLabeled(Keyed.Option_HideGizmoWithRJW_Label, settings.HideGizmoWithRJW, Keyed.Option_HideGizmoWithRJW_Desc);
 			}
 
 			if (listmain.ButtonText(Keyed.Button_ResetToDefault))

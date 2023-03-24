@@ -1,36 +1,18 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using Verse;
 
 namespace RJWSexperience.Settings
 {
-	public class SettingsTabDebug : IExposable, IResettable, ITab
+	public class SettingsTabDebug : SettingsTab
 	{
-		public string Label => Keyed.TabLabelDebug;
+		public SettingsTabDebug(Configurations settings) : base(settings, Keyed.TabLabelDebug, new List<ISettingHandle> { settings.DevMode }) { }
 
-		// Defaults
-		public const bool DevModeDefault = false;
-
-		// Private attributes
-		private bool devMode;
-
-		//Public read-only properties
-		public bool DevMode => devMode;
-
-		public void Reset()
-		{
-			devMode = DevModeDefault;
-		}
-
-		public void ExposeData()
-		{
-			Scribe_Values.Look(ref devMode, "DevMode", DevModeDefault);
-		}
-
-		public void DoTabContents(Rect inRect)
+		public override void DoTabContents(Rect inRect)
 		{
 			Listing_Standard listmain = new Listing_Standard();
 			listmain.Begin(inRect);
-			listmain.CheckboxLabeled(Keyed.Option_Debug_Label, ref devMode, Keyed.Option_Debug_Desc);
+			listmain.CheckboxLabeled(Keyed.Option_Debug_Label, settings.DevMode, Keyed.Option_Debug_Desc);
 
 			if (listmain.ButtonText(Keyed.Button_ResetToDefault))
 			{

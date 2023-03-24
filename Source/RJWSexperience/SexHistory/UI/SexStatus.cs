@@ -367,7 +367,7 @@ namespace RJWSexperience.SexHistory.UI
 				if (Widgets.ButtonInvisible(lockRect))
 				{
 					SoundDefOf.Click.PlayOneShotOnCamera();
-					settings.SelectionLocked = !settings.SelectionLocked;
+					settings.SelectionLocked.Value = !settings.SelectionLocked.Value;
 				}
 			}
 

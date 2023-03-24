@@ -4,6 +4,6 @@ namespace RJWSexperience.Logs
 {
 	public class DebugLogProvider : ILogProvider
 	{
-		public bool IsActive => SexperienceMod.Settings.Debug.DevMode;
+		public bool IsActive => SexperienceMod.Settings.DevMode;
 	}
 }

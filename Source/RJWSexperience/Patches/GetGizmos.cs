@@ -9,7 +9,7 @@ namespace RJWSexperience
 {
 	public static class Pawn_GetGizmos
 	{
-		private static Settings.SettingsTabHistory Settings => SexperienceMod.Settings.History;
+		private static Configurations Settings => SexperienceMod.Settings;
 
 		public static void DoConditionalPatch(Harmony harmony)
 		{

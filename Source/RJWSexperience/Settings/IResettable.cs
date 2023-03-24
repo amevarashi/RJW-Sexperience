@@ -1,6 +1,6 @@
 ﻿namespace RJWSexperience.Settings
 {
-	internal interface IResettable
+	public interface IResettable
 	{
 		void Reset();
 	}

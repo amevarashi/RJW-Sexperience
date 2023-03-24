@@ -11,7 +11,7 @@ namespace RJWSexperience
 	{
 		static DefInjection()
 		{
-			if (SexperienceMod.Settings.History.EnableSexHistory)
+			if (SexperienceMod.Settings.EnableSexHistory)
 				InjectRaces();
 		}
 

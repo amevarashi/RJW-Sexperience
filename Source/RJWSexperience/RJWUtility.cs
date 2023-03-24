@@ -15,6 +15,7 @@ namespace RJWSexperience
 		/// For ideo patch
 		/// </summary>
 		[System.Diagnostics.CodeAnalysis.SuppressMessage("Redundancy", "RCS1163:Unused parameter.", Justification = "All parameters are needed for the ideology patch")]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "All parameters are needed for the ideology patch")]
 		public static void ThrowVirginHistoryEvent(Pawn exVirgin, Pawn partner, SexProps props, int degree)
 		{
 			//for non-ideo

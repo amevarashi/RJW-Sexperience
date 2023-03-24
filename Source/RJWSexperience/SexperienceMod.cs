@@ -7,8 +7,7 @@ namespace RJWSexperience
 {
 	public class SexperienceMod : Mod
 	{
-		private static Configurations settings;
-		public static Configurations Settings { get => settings; }
+		public static Configurations Settings { get; private set; }
 
 		public ITab CurrentTab { get; private set; }
 
@@ -16,8 +15,7 @@ namespace RJWSexperience
 
 		public SexperienceMod(ModContentPack content) : base(content)
 		{
-			settings = GetSettings<Configurations>();
-			CurrentTab = settings;
+			Settings = GetSettings<Configurations>();
 			tabRecords = new List<TabRecord>();
 		}
 
@@ -34,13 +32,15 @@ namespace RJWSexperience
 		{
 			List<ITab> tabs = new List<ITab>
 			{
-				settings,
-				settings.History,
-				settings.Debug
+				new SettingsTabMain(Settings),
+				new SettingsTabHistory(Settings),
+				new SettingsTabDebug(Settings),
 			};
 
 			foreach (ITab tab in tabs)
 				tabRecords.Add(new TabRecord(tab.Label, delegate { this.CurrentTab = tab; }, delegate { return this?.CurrentTab == tab; }));
+
+			CurrentTab = tabs[0];
 		}
 
 		public override void DoSettingsWindowContents(Rect inRect)

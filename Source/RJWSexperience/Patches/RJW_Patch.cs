@@ -44,7 +44,7 @@ namespace RJWSexperience
 			LustUtility.UpdateLust(props, satisfaction, base_sat_per_fuck);
 			CumUtility.FillCumBuckets(props);
 			props.pawn.records?.Increment(VariousDefOf.OrgasmCount);
-			if (SexperienceMod.Settings.History.EnableSexHistory && props.partner != null)
+			if (SexperienceMod.Settings.EnableSexHistory && props.partner != null)
 				props.pawn.TryGetComp<SexHistoryComp>()?.RecordSatisfaction(props.partner, props, satisfaction);
 		}
 	}
@@ -80,7 +80,7 @@ namespace RJWSexperience
 		{
 			RJWUtility.UpdateSextypeRecords(props);
 
-			if (!SexperienceMod.Settings.History.EnableSexHistory || props.partner == null)
+			if (!SexperienceMod.Settings.EnableSexHistory || props.partner == null)
 				return;
 
 			props.pawn.TryGetComp<SexHistoryComp>()?.RecordSex(props.partner, props);

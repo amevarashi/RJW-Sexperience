@@ -39,7 +39,7 @@ namespace RJWSexperience // Used in Menstruation with this namespace
 
 			stringBuilder.Append(Keyed.RSTotalGatheredCum).AppendFormat("{0:0.##}ml", totalGathered);
 
-			if (SexperienceMod.Settings.Debug.DevMode)
+			if (SexperienceMod.Settings.DevMode)
 			{
 				stringBuilder.AppendLine();
 				stringBuilder.AppendLine($"[Debug] stored: {StoredStackCount}");

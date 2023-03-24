@@ -57,8 +57,14 @@
     <Compile Include="Logs\DebugLogProvider.cs" />
     <Compile Include="Logs\LogManager.cs" />
     <Compile Include="LustUtility.cs" />
+    <Compile Include="Patches\ConditionalDefLoad.cs" />
     <Compile Include="Patches\DefInjection.cs" />
     <Compile Include="Patches\GetGizmos.cs" />
+    <Compile Include="Settings\ISettingHandle.cs" />
+    <Compile Include="Settings\SettingHandle.cs" />
+    <Compile Include="Settings\SettingsContainer.cs" />
+    <Compile Include="Settings\SettingsTab.cs" />
+    <Compile Include="Settings\SettingsTabMain.cs" />
     <Compile Include="Virginity\Recipe_HymenSurgery.cs" />
     <Compile Include="Settings\SettingsTabHistory.cs" />
     <Compile Include="Settings\SettingsTabDebug.cs" />
@@ -90,7 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Rimworld.Ref">
-      <Version>1.4.3524</Version>
+      <Version>1.4.3641</Version>
     </PackageReference>
     <PackageReference Include="Lib.Harmony">
       <Version>2.2.2</Version>
