@@ -59,7 +59,6 @@
     <Compile Include="LustUtility.cs" />
     <Compile Include="Patches\ConditionalDefLoad.cs" />
     <Compile Include="Patches\DefInjection.cs" />
-    <Compile Include="Patches\GetGizmos.cs" />
     <Compile Include="Settings\ISettingHandle.cs" />
     <Compile Include="Settings\SettingHandle.cs" />
     <Compile Include="Settings\SettingsContainer.cs" />

@@ -15,15 +15,16 @@ namespace RJWSexperience
 				InjectRaces();
 		}
 
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Roslynator", "RCS1146:Use conditional access.", Justification = "race != null is needed")]
 		private static void InjectRaces()
 		{
 			IEnumerable<ThingDef> PawnDefs = DefDatabase<ThingDef>.AllDefs.Where(x => x.race != null && !x.race.IsMechanoid);
 			if (PawnDefs.EnumerableNullOrEmpty())
 				return;
 
-			CompProperties comp = new CompProperties(typeof(SexHistoryComp));
+			CompProperties compProperties = new CompProperties(typeof(SexHistoryComp));
 			foreach (ThingDef def in PawnDefs)
-				def.comps.Add(comp);
+				def.comps.Add(compProperties);
 
 			LogManager.GetLogger<DebugLogProvider>("StaticConstructorOnStartup").Message($"Injected SexHistoryComp into {PawnDefs.Count()} pawn Defs");
 		}

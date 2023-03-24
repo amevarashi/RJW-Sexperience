@@ -424,6 +424,20 @@ namespace RJWSexperience.SexHistory
 			return pawn?.IsVirgin() == true;
 		}
 
+		public override IEnumerable<Gizmo> CompGetGizmosExtra()
+		{
+			if (SexperienceMod.Settings.HideGizmoWhenDrafted && (parent as Pawn)?.Drafted == true)
+				yield break;
+
+			if (Find.Selector.NumSelected > 1)
+				yield break;
+
+			if (SexperienceMod.Settings.HideGizmoWithRJW && !RJWSettings.show_RJW_designation_box)
+				yield break;
+
+			yield return Gizmo;
+		}
+
 		public override void Initialize(CompProperties props)
 		{
 			base.Initialize(props);
