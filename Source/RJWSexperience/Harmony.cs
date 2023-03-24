@@ -16,7 +16,6 @@ namespace RJWSexperience
 		{
 			var har = new Harmony("RJW_Sexperience");
 			har.PatchAll(Assembly.GetExecutingAssembly());
-			Pawn_GetGizmos.DoConditionalPatch(har);
 
 			InjectIntoRjwInteractionServices();
 		}
