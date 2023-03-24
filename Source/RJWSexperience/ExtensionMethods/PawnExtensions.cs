@@ -59,7 +59,7 @@ namespace RJWSexperience
 				results.Add(building);
 			foreach (IntVec3 pos in GenAdjFast.AdjacentCells8Way(pawn.Position))
 			{
-				if (edifice[pos] is T adjBuilding)
+				if (pos.InBounds(pawn.Map) && edifice[pos] is T adjBuilding)
 					results.Add(adjBuilding);
 			}
 			return results;
