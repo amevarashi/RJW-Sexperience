@@ -223,7 +223,7 @@ namespace RJWSexperience.SexHistory.UI
 				DrawBaseSexInfoLeft(leftRect.ContractedBy(4f));
 
 				//Center section
-				DrawBaseSexInfoCenter(centerRect.ContractedBy(4f), history.parent as Pawn);
+				DrawBaseSexInfoCenter(centerRect.ContractedBy(4f), history.ParentPawn);
 
 				//Right section
 				DrawBaseSexInfoRight(rightRect.ContractedBy(4f));

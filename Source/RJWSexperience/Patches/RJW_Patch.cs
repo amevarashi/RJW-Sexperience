@@ -5,6 +5,7 @@ using RJWSexperience.Cum;
 using RJWSexperience.Logs;
 using RJWSexperience.SexHistory;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 
@@ -44,7 +45,7 @@ namespace RJWSexperience
 			LustUtility.UpdateLust(props, satisfaction, base_sat_per_fuck);
 			CumUtility.FillCumBuckets(props);
 			props.pawn.records?.Increment(VariousDefOf.OrgasmCount);
-			if (SexperienceMod.Settings.EnableSexHistory && props.partner != null)
+			if (SexperienceMod.Settings.EnableSexHistory && props.hasPartner())
 				props.pawn.TryGetComp<SexHistoryComp>()?.RecordSatisfaction(props.partner, props, satisfaction);
 		}
 	}
@@ -80,7 +81,7 @@ namespace RJWSexperience
 		{
 			RJWUtility.UpdateSextypeRecords(props);
 
-			if (!SexperienceMod.Settings.EnableSexHistory || props.partner == null)
+			if (!SexperienceMod.Settings.EnableSexHistory || !props.hasPartner())
 				return;
 
 			props.pawn.TryGetComp<SexHistoryComp>()?.RecordSex(props.partner, props);
@@ -93,7 +94,7 @@ namespace RJWSexperience
 	{
 		public static void Postfix(JobDriver_SexBaseInitiator __instance)
 		{
-			if (__instance.Partner != null)
+			if (__instance.Sexprops.hasPartner())
 			{
 				__instance.pawn.PoptheCherry(__instance.Partner, __instance.Sexprops);
 				__instance.Partner.PoptheCherry(__instance.pawn, __instance.Sexprops);
@@ -110,10 +111,10 @@ namespace RJWSexperience
 		/// <param name="pawn"></param>
 		/// <param name="partner"></param>
 		/// <param name="__result"></param>
-		/// <returns></returns>
+		/// <returns>Run original method</returns>
 		public static bool Prefix(Pawn pawn, Pawn partner, ref IntVec3 __result)
 		{
-			if (partner != null)
+			if (partner != null && partner != pawn)
 				return true; // Not masturbation
 
 			var log = LogManager.GetLogger<DebugLogProvider>("RJW_Patch_CasualSex_Helper_FindSexLocation");
@@ -129,13 +130,51 @@ namespace RJWSexperience
 
 			if (bucket == null)
 			{
-				log.Message("Bucket not found");
+				log.Message("404 Bucket not found");
 				return true;
 			}
 
-			__result = bucket.RandomAdjacentCell8Way();
-			log.Message($"Bucket location: {__result}");
-			return false;
+			Room bucketRoom = bucket.GetRoom();
+
+			List<IntVec3> cellsAroundBucket = GenAdjFast.AdjacentCells8Way(bucket.Position);
+			IntVec3 doorNearBucket = IntVec3.Invalid;
+
+			foreach (IntVec3 cell in cellsAroundBucket.InRandomOrder())
+			{
+				if (!cell.Standable(bucket.Map))
+				{
+					log.Message($"Discarded {cell}: not standable");
+					continue;
+				}
+
+				if (cell.GetRoom(bucket.Map) != bucketRoom)
+				{
+					if (cell.GetDoor(bucket.Map) != null)
+					{
+						doorNearBucket = cell;
+					}
+					else
+					{
+						log.Message($"Discarded {cell}: different room");
+					}
+
+					continue;
+				}
+
+				__result = cell;
+				log.Message($"Masturbate at location: {__result}");
+				return false;
+			}
+
+			if (doorNearBucket != IntVec3.Invalid)
+			{
+				__result = doorNearBucket;
+				log.Message($"No proper place found, go jack off in the doorway: {__result}");
+				return false;
+			}
+
+			log.Message($"Failed to find situable location near the bucket at {bucket.Position}");
+			return true;
 		}
 	}
 

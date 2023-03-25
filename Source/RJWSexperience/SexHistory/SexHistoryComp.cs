@@ -44,6 +44,8 @@ namespace RJWSexperience.SexHistory
 
 		public Gizmo Gizmo { get; private set; }
 
+		public Pawn ParentPawn => parent as Pawn;
+
 		public SexPartnerHistoryRecord GetFirstPartnerHistory => histories.TryGetValue(first);
 
 		public SexPartnerHistoryRecord GetMostPartnerHistory
@@ -245,17 +247,16 @@ namespace RJWSexperience.SexHistory
 
 		public void RecordSex(Pawn partner, SexProps props)
 		{
-			Pawn pawn = parent as Pawn;
 			RecordFirst(partner, props);
 			GetPartnerRecord(partner)?.RecordSex(props);
 			recentPartner = partner.ThingID;
 			recentSex = props.sexType;
 			sextypeCount[(int)props.sexType]++;
 			sextypeRecentTickAbs[(int)props.sexType] = GenTicks.TicksAbs;
-			if (partner.IsIncest(pawn)) incestuous++;
+			if (partner.IsIncest(ParentPawn)) incestuous++;
 			if (partner.Dead) corpsefuck++;
 			if (props.IsBestiality()) bestiality++;
-			else if (pawn.def != partner.def) interspecies++;
+			else if (ParentPawn.def != partner.def) interspecies++;
 			dirty = true;
 		}
 
@@ -275,7 +276,7 @@ namespace RJWSexperience.SexHistory
 				first = partner.ThingID;
 				SexHistoryComp history = partner.TryGetComp<SexHistoryComp>();
 				firstSexTickAbs = GenTicks.TicksAbs;
-				history?.TakeSomeonesVirgin(parent as Pawn);
+				history?.TakeSomeonesVirgin(ParentPawn);
 			}
 		}
 
@@ -288,12 +289,9 @@ namespace RJWSexperience.SexHistory
 				return record;
 			}
 
-			SexPartnerHistoryRecord newRecord = new SexPartnerHistoryRecord(partner, partner.IsIncest(parent as Pawn));
+			SexPartnerHistoryRecord newRecord = new SexPartnerHistoryRecord(partner, partner.IsIncest(ParentPawn));
 			histories.Add(partnerId, newRecord);
-			if (parent is Pawn pawn)
-			{
-				pawn.records.Increment(VariousDefOf.SexPartnerCount);
-			}
+			ParentPawn.records.Increment(VariousDefOf.SexPartnerCount);
 			return newRecord;
 		}
 
@@ -418,15 +416,15 @@ namespace RJWSexperience.SexHistory
 
 		protected bool VirginCheck()
 		{
-			if (histories.TryGetValue(first) != null) return false;
+			if (histories.TryGetValue(first) != null)
+				return false;
 
-			Pawn pawn = parent as Pawn;
-			return pawn?.IsVirgin() == true;
+			return ParentPawn.IsVirgin();
 		}
 
 		public override IEnumerable<Gizmo> CompGetGizmosExtra()
 		{
-			if (SexperienceMod.Settings.HideGizmoWhenDrafted && (parent as Pawn)?.Drafted == true)
+			if (SexperienceMod.Settings.HideGizmoWhenDrafted && ParentPawn.Drafted)
 				yield break;
 
 			if (Find.Selector.NumSelected > 1)
@@ -447,7 +445,7 @@ namespace RJWSexperience.SexHistory
 				hotKey = VariousDefOf.OpenSexStatistics,
 				action = delegate
 				{
-					UI.SexStatusWindow.ToggleWindow(parent as Pawn, this);
+					UI.SexStatusWindow.ToggleWindow(ParentPawn, this);
 				}
 			};
 		}
