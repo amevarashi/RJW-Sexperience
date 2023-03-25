@@ -24,7 +24,6 @@ namespace RJWSexperience
 		public readonly SettingHandle<bool> SlavesBeenRapedExp = new SettingHandle<bool>("SlavesBeenRapedExp", true);
 		public readonly SettingHandle<bool> EnableSexHistory = new SettingHandle<bool>("EnableSexHistory", true);
 		public readonly SettingHandle<bool> HideGizmoWhenDrafted = new SettingHandle<bool>("HideGizmoWhenDrafted", true);
-		public readonly SettingHandle<bool> HideGizmoWithRJW = new SettingHandle<bool>("HideGizmoWithRJW", false);
 
 		public readonly SettingHandle<bool> DevMode = new SettingHandle<bool>("DevMode", false);
 

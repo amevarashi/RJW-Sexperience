@@ -432,9 +432,6 @@ namespace RJWSexperience.SexHistory
 			if (Find.Selector.NumSelected > 1)
 				yield break;
 
-			if (SexperienceMod.Settings.HideGizmoWithRJW && !RJWSettings.show_RJW_designation_box)
-				yield break;
-
 			yield return Gizmo;
 		}
 

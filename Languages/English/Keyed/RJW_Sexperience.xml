@@ -84,8 +84,6 @@
   <RSOption_EnableSexHistory_Desc>* Needs a game restart\n\nEnables Sex History window, information collection for the said window and save/load of this information. Also enables sex partners count in the pawn's records.\n\n[Caution] Disabling this mid save will result in the loss of previously collected histories.</RSOption_EnableSexHistory_Desc>
   <RSOption_HideGizmoWhenDrafted_Label>Hide Sex History button when drafted</RSOption_HideGizmoWhenDrafted_Label>
   <RSOption_HideGizmoWhenDrafted_Desc>Hides Sex History Gizmo for currently drafted pawns</RSOption_HideGizmoWhenDrafted_Desc>
-  <RSOption_HideGizmoWithRJW_Label>Hide Sex History button with RJW designators</RSOption_HideGizmoWithRJW_Label>
-  <RSOption_HideGizmoWithRJW_Desc>Hides Sex History Gizmo if RJW designators are hidden</RSOption_HideGizmoWithRJW_Desc>
 
   <!-- Mod settings: Debug -->
   <RSOption_Debug_Label>Debug</RSOption_Debug_Label>
