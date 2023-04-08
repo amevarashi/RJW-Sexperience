@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+	<!-- backstory -->
+	<Operation Class="PatchOperationSequence">
+		<operations>
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/BackstoryDef[defName="rjw_vatgrown_sex_slave"]/skillGains</xpath>
+				<value>
+					<skillGains>
+						<li>
+							<key>Social</key>
+							<value>8</value>
+						</li>
+						<li>
+							<key>Sex</key>
+							<value>8</value>
+						</li>
+					</skillGains>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/BackstoryDef[defName="rjw_curious"]/skillGains</xpath>
+				<value>
+					<skillGains>
+						<li>
+							<key>Construction</key>
+							<value>2</value>
+						</li>
+						<li>
+							<key>Crafting</key>
+							<value>6</value>
+						</li>
+						<li>
+							<key>Sex</key>
+							<value>4</value>
+						</li>
+					</skillGains>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/BackstoryDef[defName="rjw_chatty"]/skillGains</xpath>
+				<value>
+					<skillGains>
+						<li>
+							<key>Social</key>
+							<value>8</value>
+						</li>
+						<li>
+							<key>Sex</key>
+							<value>2</value>
+						</li>
+					</skillGains>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/BackstoryDef[defName="rjw_broken"]/skillGains</xpath>
+				<value>
+					<skillGains>
+						<li>
+							<key>Social</key>
+							<value>-4</value>
+						</li>
+						<li>
+							<key>Intellectual</key>
+							<value>4</value>
+						</li>
+						<li>
+							<key>Artistic</key>
+							<value>4</value>
+						</li>
+						<li>
+							<key>Sex</key>
+							<value>5</value>
+						</li>
+					</skillGains>
+				</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/BackstoryDef[defName="rjw_homekeeper"]/skillGains</xpath>
+				<value>
+					<skillGains>
+						<li>
+							<key>Cooking</key>
+							<value>4</value>
+						</li>
+						<li>
+							<key>Sex</key>
+							<value>5</value>
+						</li>
+					</skillGains>
+				</value>
+			</li>
+		</operations>
+	</Operation>
+</Patch>
