@@ -90,15 +90,15 @@ namespace RJWSexperience.SexHistory
 			}
 		}
 		public int VirginsTaken => virginsTaken;
-		public List<SexPartnerHistoryRecord> PartnerList
+		public IEnumerable<SexPartnerHistoryRecord> PartnerList
 		{
 			get
 			{
-				List<SexPartnerHistoryRecord> res = null;
+				IEnumerable<SexPartnerHistoryRecord> res = Enumerable.Empty<SexPartnerHistoryRecord>();
 				Update();
 				if (!histories.NullOrEmpty())
 				{
-					res = histories.Values.ToList();
+					res = histories.Values;
 				}
 				return res;
 			}
@@ -443,10 +443,7 @@ namespace RJWSexperience.SexHistory
 				icon = HistoryUtility.HistoryIcon,
 				defaultIconColor = HistoryUtility.HistoryColor,
 				hotKey = VariousDefOf.OpenSexStatistics,
-				action = delegate
-				{
-					UI.SexStatusWindow.ToggleWindow(ParentPawn, this);
-				}
+				action = () => UI.SexStatusWindow.ToggleWindow(this)
 			};
 		}
 	}

@@ -30,6 +30,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="RJW">
       <HintPath>..\..\..\rjw\1.4\Assemblies\RJW.dll</HintPath>
@@ -64,6 +67,12 @@
     <Compile Include="Settings\SettingsContainer.cs" />
     <Compile Include="Settings\SettingsTab.cs" />
     <Compile Include="Settings\SettingsTabMain.cs" />
+    <Compile Include="SexHistory\UI\BarInfo.cs" />
+    <Compile Include="SexHistory\UI\PartnerPortraitInfo.cs" />
+    <Compile Include="SexHistory\UI\PreferedRaceCard.cs" />
+    <Compile Include="SexHistory\UI\InfoCard.cs" />
+    <Compile Include="SexHistory\UI\PartnerOrderMode.cs" />
+    <Compile Include="SexHistory\UI\SexStatusViewModel.cs" />
     <Compile Include="Virginity\Recipe_HymenSurgery.cs" />
     <Compile Include="Settings\SettingsTabHistory.cs" />
     <Compile Include="Settings\SettingsTabDebug.cs" />
@@ -86,8 +95,8 @@
     <Compile Include="Cum\Thought_AteCum.cs" />
     <Compile Include="Thoughts\Thought_Recordbased.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SexHistory\UI\RJWUIUtility.cs" />
-    <Compile Include="SexHistory\UI\SexStatus.cs" />
+    <Compile Include="SexHistory\UI\UIUtility.cs" />
+    <Compile Include="SexHistory\UI\SexStatusWindow.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="VariousDefOf.cs" />
     <Compile Include="Virginity\TraitDegree.cs" />

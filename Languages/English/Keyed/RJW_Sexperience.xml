@@ -43,6 +43,7 @@
   <RS_Ago>ago</RS_Ago>
   <RS_LastSex>last sex</RS_LastSex>
   <RS_HadBestSexDaysAgo>Had best sex {0}.</RS_HadBestSexDaysAgo>
+  <RS_PawnLockDesc>Lock displayed pawn.\n\nWhen unlocked, window will automatically switch to a currently selected pawn.</RS_PawnLockDesc>
 
   <!-- Settings tab labels -->
   <RSTabLabelMain>Main</RSTabLabelMain>

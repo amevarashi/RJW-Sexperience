@@ -1,6 +1,5 @@
 ﻿using rjw;
 using RJWSexperience.ExtensionMethods;
-using System.Collections.Generic;
 using Verse;
 
 namespace RJWSexperience.SexHistory
@@ -131,33 +130,5 @@ namespace RJWSexperience.SexHistory
 			}
 			partner = Find.WorldPawns.AllPawnsAliveOrDead.Find(x => x.ThingID.Equals(partnerID));
 		}
-
-		#region OrderComparers
-
-		public class RecentOrderComparer : IComparer<SexPartnerHistoryRecord>
-		{
-			public int Compare(SexPartnerHistoryRecord x, SexPartnerHistoryRecord y)
-			{
-				return y.RecentSexTickAbs.CompareTo(x.RecentSexTickAbs);
-			}
-		}
-
-		public class MostOrderComparer : IComparer<SexPartnerHistoryRecord>
-		{
-			public int Compare(SexPartnerHistoryRecord x, SexPartnerHistoryRecord y)
-			{
-				return y.TotalSexCount.CompareTo(x.TotalSexCount);
-			}
-		}
-
-		public class NameOrderComparer : IComparer<SexPartnerHistoryRecord>
-		{
-			public int Compare(SexPartnerHistoryRecord x, SexPartnerHistoryRecord y)
-			{
-				return x.Label.CompareTo(y.Label);
-			}
-		}
-
-		#endregion OrderComparers
 	}
 }
