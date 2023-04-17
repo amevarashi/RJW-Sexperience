@@ -17,7 +17,7 @@ namespace RJWSexperience.Virginity
 			{
 				if (Rand.Chance(hymenSurgeryChance))
 				{
-					Trait virgin = new Trait(VariousDefOf.Virgin, TraitDegree.FemaleAfterSurgery, true);
+					Trait virgin = new Trait(RsDefOf.Trait.Virgin, TraitDegree.FemaleAfterSurgery, true);
 					pawn.story.traits.GainTrait(virgin);
 				}
 				return;
@@ -36,19 +36,19 @@ namespace RJWSexperience.Virginity
 				int degree = TraitDegree.MaleVirgin;
 				if (pawn.gender == Gender.Female)
 					degree = TraitDegree.FemaleVirgin;
-				Trait virgin = new Trait(VariousDefOf.Virgin, degree, true);
+				Trait virgin = new Trait(RsDefOf.Trait.Virgin, degree, true);
 				pawn.story.traits.GainTrait(virgin);
 			}
 			else if (pawn.gender == Gender.Female)
 			{
-				Trait virgin = new Trait(VariousDefOf.Virgin, TraitDegree.FemaleAfterSurgery, true);
+				Trait virgin = new Trait(RsDefOf.Trait.Virgin, TraitDegree.FemaleAfterSurgery, true);
 				pawn.story.traits.GainTrait(virgin);
 			}
 		}
 
 		public static int? RemoveVirginTrait(Pawn pawn)
 		{
-			Trait virgin = pawn.story?.traits?.GetTrait(VariousDefOf.Virgin);
+			Trait virgin = pawn.story?.traits?.GetTrait(RsDefOf.Trait.Virgin);
 			if (virgin == null)
 				return null;
 

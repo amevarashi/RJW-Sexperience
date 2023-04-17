@@ -10,20 +10,18 @@ namespace RJWSexperience.Cum.FilterWorkers
 			return def.IsIngestible && def.IsProcessedFood;
 		}
 
-		protected bool IsCum(Thing t) => IsCum(t.def);
-
-		protected bool IsCum(ThingDef t) => t == VariousDefOf.GatheredCum;
+		protected bool IsCum(ThingDef t) => t == RsDefOf.Thing.GatheredCum;
 
 		protected bool IsFoodWithCum(Thing food)
 		{
 			CompIngredients compIngredients = food.TryGetComp<CompIngredients>();
 
-			if (compIngredients == null)
+			if (compIngredients?.ingredients == null)
 				return false;
 
-			foreach (ThingDef ingredient in compIngredients.ingredients)
+			for (int i = 0; i < compIngredients.ingredients.Count; i++)
 			{
-				if (IsCum(ingredient))
+				if (IsCum(compIngredients.ingredients[i]))
 					return true;
 			}
 

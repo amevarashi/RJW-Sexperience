@@ -32,11 +32,11 @@ namespace RJWSexperience
 			if (!pawn.relations.DirectRelationExists(PawnRelationDefOf.Parent, newMother))
 				return;
 
-			Trait virgin = newMother.story?.traits?.GetTrait(VariousDefOf.Virgin, Virginity.TraitDegree.FemaleVirgin);
+			Trait virgin = newMother.story?.traits?.GetTrait(RsDefOf.Trait.Virgin, Virginity.TraitDegree.FemaleVirgin);
 			if (virgin != null)
 			{
 				newMother.story.traits.RemoveTrait(virgin);
-				newMother.story.traits.GainTrait(new Trait(VariousDefOf.Virgin, Virginity.TraitDegree.FemaleAfterSurgery));
+				newMother.story.traits.GainTrait(new Trait(RsDefOf.Trait.Virgin, Virginity.TraitDegree.FemaleAfterSurgery));
 			}
 		}
 	}

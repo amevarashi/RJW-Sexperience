@@ -24,7 +24,7 @@ namespace RJWSexperience
 				val *= GetLustFactor(pawn);
 		}
 
-		protected float GetLustFactor(Pawn pawn) => LustUtility.GetLustFactor(pawn.records.GetValue(VariousDefOf.Lust));
+		protected float GetLustFactor(Pawn pawn) => LustUtility.GetLustFactor(pawn.records.GetValue(RsDefOf.Record.Lust));
 	}
 
 	/// <summary>

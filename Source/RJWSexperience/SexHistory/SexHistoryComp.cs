@@ -291,7 +291,7 @@ namespace RJWSexperience.SexHistory
 
 			SexPartnerHistoryRecord newRecord = new SexPartnerHistoryRecord(partner, partner.IsIncest(ParentPawn));
 			histories.Add(partnerId, newRecord);
-			ParentPawn.records.Increment(VariousDefOf.SexPartnerCount);
+			ParentPawn.records.Increment(RsDefOf.Record.SexPartnerCount);
 			return newRecord;
 		}
 
@@ -442,7 +442,7 @@ namespace RJWSexperience.SexHistory
 				defaultLabel = Keyed.RS_Sex_History,
 				icon = HistoryUtility.HistoryIcon,
 				defaultIconColor = HistoryUtility.HistoryColor,
-				hotKey = VariousDefOf.OpenSexStatistics,
+				hotKey = RsDefOf.KeyBinding.OpenSexStatistics,
 				action = () => UI.SexStatusWindow.ToggleWindow(this)
 			};
 		}

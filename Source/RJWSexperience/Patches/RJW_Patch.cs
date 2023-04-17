@@ -20,11 +20,11 @@ namespace RJWSexperience
 			{
 				if (__instance.Sexprops.isRape && __instance.Sexprops.isReceiver)
 				{
-					__instance.pawn?.skills?.Learn(VariousDefOf.Sex, 0.05f, true);
+					__instance.pawn?.skills?.Learn(RsDefOf.Skill.Sex, 0.05f, true);
 				}
 				else
 				{
-					__instance.pawn?.skills?.Learn(VariousDefOf.Sex, 0.35f, true);
+					__instance.pawn?.skills?.Learn(RsDefOf.Skill.Sex, 0.35f, true);
 				}
 			}
 		}
@@ -44,7 +44,7 @@ namespace RJWSexperience
 		{
 			LustUtility.UpdateLust(props, satisfaction, base_sat_per_fuck);
 			CumUtility.FillCumBuckets(props);
-			props.pawn.records?.Increment(VariousDefOf.OrgasmCount);
+			props.pawn.records?.Increment(RsDefOf.Record.OrgasmCount);
 			if (SexperienceMod.Settings.EnableSexHistory && props.hasPartner())
 				props.pawn.TryGetComp<SexHistoryComp>()?.RecordSatisfaction(props.partner, props, satisfaction);
 		}
@@ -64,7 +64,7 @@ namespace RJWSexperience
 	{
 		public static void Postfix(Pawn pawn)
 		{
-			SkillRecord sexskill = pawn.skills.GetSkill(VariousDefOf.Sex);
+			SkillRecord sexskill = pawn.skills.GetSkill(RsDefOf.Skill.Sex);
 			if (sexskill != null)
 			{
 				sexskill.passion = Passion.Major;

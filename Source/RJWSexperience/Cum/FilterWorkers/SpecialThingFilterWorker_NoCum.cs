@@ -6,7 +6,7 @@ namespace RJWSexperience.Cum.FilterWorkers
 	{
 		public override bool Matches(Thing t)
 		{
-			return !IsCum(t) && !IsFoodWithCum(t);
+			return !IsCum(t.def) && !IsFoodWithCum(t);
 		}
 	}
 }

@@ -27,7 +27,7 @@ namespace RJWSexperience
 		public static float GetSexStat(this Pawn pawn)
 		{
 			if (xxx.is_human(pawn) && !pawn.Dead)
-				return pawn.GetStatValue(VariousDefOf.SexAbility);
+				return pawn.GetStatValue(RsDefOf.Stat.SexAbility);
 			return 1.0f;
 		}
 
@@ -70,7 +70,7 @@ namespace RJWSexperience
 		/// </summary>
 		public static bool IsVirgin(this Pawn pawn)
 		{
-			return pawn.records.GetValue(VariousDefOf.VaginalSexCount) == 0;
+			return pawn.records.GetValue(RsDefOf.Record.VaginalSexCount) == 0;
 		}
 
 		/// <summary>

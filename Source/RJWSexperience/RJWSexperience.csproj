@@ -98,7 +98,7 @@
     <Compile Include="SexHistory\UI\UIUtility.cs" />
     <Compile Include="SexHistory\UI\SexStatusWindow.cs" />
     <Compile Include="Utility.cs" />
-    <Compile Include="VariousDefOf.cs" />
+    <Compile Include="RsDefOf.cs" />
     <Compile Include="Virginity\TraitDegree.cs" />
     <Compile Include="Virginity\TraitHandler.cs" />
   </ItemGroup>

@@ -26,14 +26,10 @@ namespace RJWSexperience.Virginity
 			if (billDoer == null)
 				return;
 
-			TaleRecorder.RecordTale(TaleDefOf.DidSurgery, new object[]
-			{
-				billDoer,
-				pawn
-			});
+			TaleRecorder.RecordTale(TaleDefOf.DidSurgery, billDoer, pawn);
 			TraitHandler.AddVirginTrait(pawn);
 		}
 
-		private static bool HasHymen(Pawn pawn) => pawn.story?.traits?.GetTrait(VariousDefOf.Virgin)?.Degree > 0;
+		private static bool HasHymen(Pawn pawn) => pawn.story?.traits?.GetTrait(RsDefOf.Trait.Virgin)?.Degree > 0;
 	}
 }

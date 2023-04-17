@@ -12,8 +12,8 @@ namespace RJWSexperience.Cum
 		{
 			int amount = ingested.stackCount * (int)unitAmount;
 			Logs.LogManager.GetLogger<IngestionOutcomeDoer_RecordEatenCum, Logs.DebugLogProvider>().Message($"Record {pawn.NameShortColored} eating {amount} ml of cum");
-			pawn.records.Increment(VariousDefOf.NumofEatenCum);
-			pawn.records.AddTo(VariousDefOf.AmountofEatenCum, amount);
+			pawn.records.Increment(RsDefOf.Record.NumofEatenCum);
+			pawn.records.AddTo(RsDefOf.Record.AmountofEatenCum, amount);
 		}
 	}
 }

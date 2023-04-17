@@ -125,7 +125,7 @@ namespace RJWSexperience.Cum
 			const float allOf = 1000f;
 
 			log.Message($"FeedCum({pawn.NameShortColored}, {amount})");
-			Thing cum = ThingMaker.MakeThing(VariousDefOf.GatheredCum);
+			Thing cum = ThingMaker.MakeThing(RsDefOf.Thing.GatheredCum);
 			cum.stackCount = (int)Math.Ceiling(amount);
 			log.Message($"Created a stack of {cum.stackCount} cum");
 			cum.Ingested(pawn, allOf);

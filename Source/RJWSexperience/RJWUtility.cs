@@ -58,52 +58,52 @@ namespace RJWSexperience
 				{
 					case xxx.rjwSextype.Vaginal:
 					case xxx.rjwSextype.Scissoring:
-						IncreaseSameRecords(pawn, partner, VariousDefOf.VaginalSexCount);
+						IncreaseSameRecords(pawn, partner, RsDefOf.Record.VaginalSexCount);
 						break;
 					case xxx.rjwSextype.Anal:
-						IncreaseSameRecords(pawn, partner, VariousDefOf.AnalSexCount);
+						IncreaseSameRecords(pawn, partner, RsDefOf.Record.AnalSexCount);
 						break;
 					case xxx.rjwSextype.Oral:
 					case xxx.rjwSextype.Fellatio:
 						if (Genital_Helper.has_penis_fertile(giver) || Genital_Helper.has_penis_infertile(giver))
 						{
-							IncreaseRecords(giver, receiver, VariousDefOf.OralSexCount, VariousDefOf.BlowjobCount);
+							IncreaseRecords(giver, receiver, RsDefOf.Record.OralSexCount, RsDefOf.Record.BlowjobCount);
 						}
 						else if (Genital_Helper.has_penis_fertile(receiver) || Genital_Helper.has_penis_infertile(receiver))
 						{
-							IncreaseRecords(giver, receiver, VariousDefOf.BlowjobCount, VariousDefOf.OralSexCount);
+							IncreaseRecords(giver, receiver, RsDefOf.Record.BlowjobCount, RsDefOf.Record.OralSexCount);
 						}
 						break;
 					case xxx.rjwSextype.Sixtynine:
-						IncreaseSameRecords(pawn, partner, VariousDefOf.OralSexCount);
+						IncreaseSameRecords(pawn, partner, RsDefOf.Record.OralSexCount);
 						RecordDef recordpawn, recordpartner;
 						if (Genital_Helper.has_penis_fertile(pawn) || Genital_Helper.has_penis_infertile(pawn))
 						{
-							recordpartner = VariousDefOf.BlowjobCount;
+							recordpartner = RsDefOf.Record.BlowjobCount;
 						}
 						else
 						{
-							recordpartner = VariousDefOf.CunnilingusCount;
+							recordpartner = RsDefOf.Record.CunnilingusCount;
 						}
 
 						if (Genital_Helper.has_penis_fertile(partner) || Genital_Helper.has_penis_infertile(partner))
 						{
-							recordpawn = VariousDefOf.BlowjobCount;
+							recordpawn = RsDefOf.Record.BlowjobCount;
 						}
 						else
 						{
-							recordpawn = VariousDefOf.CunnilingusCount;
+							recordpawn = RsDefOf.Record.CunnilingusCount;
 						}
 						IncreaseRecords(pawn, partner, recordpawn, recordpartner);
 						break;
 					case xxx.rjwSextype.Cunnilingus:
 						if (Genital_Helper.has_vagina(giver))
 						{
-							IncreaseRecords(giver, receiver, VariousDefOf.OralSexCount, VariousDefOf.CunnilingusCount);
+							IncreaseRecords(giver, receiver, RsDefOf.Record.OralSexCount, RsDefOf.Record.CunnilingusCount);
 						}
 						else if (Genital_Helper.has_vagina(receiver))
 						{
-							IncreaseRecords(giver, receiver, VariousDefOf.CunnilingusCount, VariousDefOf.OralSexCount);
+							IncreaseRecords(giver, receiver, RsDefOf.Record.CunnilingusCount, RsDefOf.Record.OralSexCount);
 						}
 						break;
 					case xxx.rjwSextype.Masturbation:
@@ -111,29 +111,29 @@ namespace RJWSexperience
 					case xxx.rjwSextype.Handjob:
 						if (Genital_Helper.has_penis_fertile(giver) || Genital_Helper.has_penis_infertile(giver))
 						{
-							IncreaseRecords(giver, receiver, VariousDefOf.GenitalCaressCount, VariousDefOf.HandjobCount);
+							IncreaseRecords(giver, receiver, RsDefOf.Record.GenitalCaressCount, RsDefOf.Record.HandjobCount);
 						}
 						else
 						{
-							IncreaseRecords(giver, receiver, VariousDefOf.HandjobCount, VariousDefOf.GenitalCaressCount);
+							IncreaseRecords(giver, receiver, RsDefOf.Record.HandjobCount, RsDefOf.Record.GenitalCaressCount);
 						}
 						break;
 					case xxx.rjwSextype.Fingering:
 					case xxx.rjwSextype.Fisting:
 						if (Genital_Helper.has_vagina(giver))
 						{
-							IncreaseRecords(giver, receiver, VariousDefOf.GenitalCaressCount, VariousDefOf.FingeringCount);
+							IncreaseRecords(giver, receiver, RsDefOf.Record.GenitalCaressCount, RsDefOf.Record.FingeringCount);
 						}
 						else
 						{
-							IncreaseRecords(giver, receiver, VariousDefOf.FingeringCount, VariousDefOf.GenitalCaressCount);
+							IncreaseRecords(giver, receiver, RsDefOf.Record.FingeringCount, RsDefOf.Record.GenitalCaressCount);
 						}
 						break;
 					case xxx.rjwSextype.Footjob:
-						IncreaseSameRecords(pawn, partner, VariousDefOf.FootjobCount);
+						IncreaseSameRecords(pawn, partner, RsDefOf.Record.FootjobCount);
 						break;
 					default:
-						IncreaseSameRecords(pawn, partner, VariousDefOf.MiscSexualBehaviorCount);
+						IncreaseSameRecords(pawn, partner, RsDefOf.Record.MiscSexualBehaviorCount);
 						break;
 				}
 			}
@@ -154,7 +154,7 @@ namespace RJWSexperience
 		// Moved this method back because of Menstruation
 		public static Building_CumBucket FindClosestBucket(this Pawn pawn)
 		{
-			List<Building> buckets = pawn.Map.listerBuildings.allBuildingsColonist.FindAll(x => x is Building_CumBucket bucket && bucket.StoredStackCount < VariousDefOf.GatheredCum.stackLimit);
+			List<Building> buckets = pawn.Map.listerBuildings.allBuildingsColonist.FindAll(x => x is Building_CumBucket bucket && bucket.StoredStackCount < RsDefOf.Thing.GatheredCum.stackLimit);
 			if (buckets.NullOrEmpty())
 				return null;
 

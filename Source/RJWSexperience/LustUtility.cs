@@ -74,7 +74,7 @@ namespace RJWSexperience
 
 		public static void UpdateLust(SexProps props, float satisfaction, float baseSatisfaction)
 		{
-			float? lust = props.pawn.records?.GetValue(VariousDefOf.Lust);
+			float? lust = props.pawn.records?.GetValue(RsDefOf.Record.Lust);
 
 			if (lust == null)
 				return;
@@ -97,7 +97,7 @@ namespace RJWSexperience
 				return;
 
 			LogManager.GetLogger<DebugLogProvider>("LustUtility").Message($"{props.pawn.NameShortColored}'s lust changed by {lustDelta} (from {lust})");
-			props.pawn.records.AddTo(VariousDefOf.Lust, lustDelta);
+			props.pawn.records.AddTo(RsDefOf.Record.Lust, lustDelta);
 		}
 
 		private static float LustIncrementFactor(float lust)

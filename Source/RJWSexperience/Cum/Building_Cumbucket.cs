@@ -42,8 +42,8 @@ namespace RJWSexperience // Used in Menstruation with this namespace
 			if (SexperienceMod.Settings.DevMode)
 			{
 				stringBuilder.AppendLine();
-				stringBuilder.AppendLine($"[Debug] stored: {StoredStackCount}");
-				stringBuilder.Append($"[Debug] storedDecimalRemainder: {storedDecimalRemainder}");
+				stringBuilder.Append("[Debug] stored: ").Append(StoredStackCount).AppendLine();
+				stringBuilder.Append("[Debug] storedDecimalRemainder: ").Append(storedDecimalRemainder);
 			}
 
 			return stringBuilder.ToString();
@@ -51,7 +51,7 @@ namespace RJWSexperience // Used in Menstruation with this namespace
 
 		public void AddCum(float amount)
 		{
-			AddCum(amount, VariousDefOf.GatheredCum);
+			AddCum(amount, RsDefOf.Thing.GatheredCum);
 		}
 
 		public void AddCum(float amount, ThingDef cumDef)
@@ -69,7 +69,7 @@ namespace RJWSexperience // Used in Menstruation with this namespace
 			cum.stackCount = num;
 			if (cum.stackCount > 0 && !GenPlace.TryPlaceThing(cum, PositionHeld, Map, ThingPlaceMode.Direct, out Thing res))
 			{
-				FilthMaker.TryMakeFilth(PositionHeld, Map, VariousDefOf.FilthCum, num);
+				FilthMaker.TryMakeFilth(PositionHeld, Map, RsDefOf.Thing.FilthCum, num);
 			}
 			storedDecimalRemainder -= num;
 		}

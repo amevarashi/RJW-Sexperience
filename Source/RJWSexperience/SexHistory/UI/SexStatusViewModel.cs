@@ -163,7 +163,7 @@ namespace RJWSexperience.SexHistory.UI
 			}
 
 			SexTypes.Add(new BarInfo(
-				label: String.Format(Keyed.RS_Sex_Partners + ": {0} ({1})", _history.PartnerCount, Pawn.records.GetValue(VariousDefOf.SexPartnerCount)),
+				label: String.Format(Keyed.RS_Sex_Partners + ": {0} ({1})", _history.PartnerCount, Pawn.records.GetValue(RsDefOf.Record.SexPartnerCount)),
 				fillPercent: _history.PartnerCount / 50,
 				fillTexture: HistoryUtility.Partners));
 
@@ -178,7 +178,7 @@ namespace RJWSexperience.SexHistory.UI
 				fillTexture: HistoryUtility.TotalSex,
 				labelRight: Keyed.RS_SatAVG(_history.AVGSat));
 
-			float lust = Pawn.records.GetValue(VariousDefOf.Lust);
+			float lust = Pawn.records.GetValue(RsDefOf.Record.Lust);
 			float sexDrive = GetStatValue(xxx.sex_drive_stat);
 			float lustLimit = SexperienceMod.Settings.LustLimit * 3f;
 			Lust = new BarInfo(
@@ -212,14 +212,14 @@ namespace RJWSexperience.SexHistory.UI
 				fillPercent: _history.IncestuousCount / 50,
 				fillTexture: HistoryUtility.Nurgle);
 
-			float amountofEatenCum = Pawn.records.GetValue(VariousDefOf.AmountofEatenCum);
+			float amountofEatenCum = Pawn.records.GetValue(RsDefOf.Record.AmountofEatenCum);
 			ConsumedCum = new BarInfo(
-				label: String.Format(Keyed.RS_Cum_Swallowed + ": {0} mL, {1} " + Keyed.RS_NumofTimes, amountofEatenCum, Pawn.records.GetValue(VariousDefOf.NumofEatenCum)),
+				label: String.Format(Keyed.RS_Cum_Swallowed + ": {0} mL, {1} " + Keyed.RS_NumofTimes, amountofEatenCum, Pawn.records.GetValue(RsDefOf.Record.NumofEatenCum)),
 				fillPercent: amountofEatenCum / 1000,
 				fillTexture: Texture2D.linearGrayTexture);
 
-			Hediff cumHediff = Pawn.health.hediffSet.GetFirstHediffOfDef(VariousDefOf.CumAddiction)
-				?? Pawn.health.hediffSet.GetFirstHediffOfDef(VariousDefOf.CumTolerance);
+			Hediff cumHediff = Pawn.health.hediffSet.GetFirstHediffOfDef(RsDefOf.Hediff.CumAddiction)
+				?? Pawn.health.hediffSet.GetFirstHediffOfDef(RsDefOf.Hediff.CumTolerance);
 			if (cumHediff != null)
 			{
 				CumHediff = new BarInfo(
@@ -254,15 +254,15 @@ namespace RJWSexperience.SexHistory.UI
 				fillTexture: HistoryUtility.Satisfaction,
 				tooltip: GetStatTooltip(xxx.sex_satisfaction, sexSatisfaction));
 
-			SkillRecord skill = Pawn.skills?.GetSkill(VariousDefOf.Sex);
+			SkillRecord skill = Pawn.skills?.GetSkill(RsDefOf.Skill.Sex);
 			float sexSkillLevel = skill?.Level ?? 0f;
 			float sexStat = Pawn.GetSexStat();
 			SexSkill = new BarInfo(
 				label: $"{Keyed.RS_SexSkill}: {sexSkillLevel}, {skill?.xpSinceLastLevel / skill?.XpRequiredForLevelUp:P2}",
 				fillPercent: sexSkillLevel / 20,
 				fillTexture: HistoryUtility.Tzeentch,
-				tooltip: GetStatTooltip(VariousDefOf.SexAbility, sexStat),
-				labelRight: VariousDefOf.SexAbility.LabelCap + ": " + sexStat.ToStringPercent(),
+				tooltip: GetStatTooltip(RsDefOf.Stat.SexAbility, sexStat),
+				labelRight: RsDefOf.Stat.SexAbility.LabelCap + ": " + sexStat.ToStringPercent(),
 				border: HistoryUtility.GetPassionBG(skill?.passion));
 		}
 
@@ -294,7 +294,7 @@ namespace RJWSexperience.SexHistory.UI
 
 		private void UpdateVirginAndSexuality()
 		{
-			Trait virginity = Pawn.story?.traits?.GetTrait(VariousDefOf.Virgin);
+			Trait virginity = Pawn.story?.traits?.GetTrait(RsDefOf.Trait.Virgin);
 			if (virginity != null && virginity.Degree != Virginity.TraitDegree.FemaleAfterSurgery)
 			{
 				VirginLabel = virginity.Label;

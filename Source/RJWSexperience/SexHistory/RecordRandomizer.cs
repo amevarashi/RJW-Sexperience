@@ -95,8 +95,8 @@ namespace RJWSexperience.SexHistory
 				minValue = float.MinValue;
 
 			value = Mathf.Clamp(value, minValue, float.MaxValue);
-			float recordvalue = pawn.records.GetValue(VariousDefOf.Lust);
-			pawn.records.AddTo(VariousDefOf.Lust, value - recordvalue);
+			float recordvalue = pawn.records.GetValue(RsDefOf.Record.Lust);
+			pawn.records.AddTo(RsDefOf.Record.Lust, value - recordvalue);
 
 			return value;
 		}
@@ -145,7 +145,7 @@ namespace RJWSexperience.SexHistory
 			totalSexCount += RandomizeRecord(pawn, xxx.CountOfSexWithHumanlikes, avgsex, deviation);
 
 			if (totalSexCount > 0)
-				pawn.records.AddTo(VariousDefOf.SexPartnerCount, Math.Max(1, Rand.Range(0, totalSexCount / 7)));
+				pawn.records.AddTo(RsDefOf.Record.SexPartnerCount, Math.Max(1, Rand.Range(0, totalSexCount / 7)));
 
 			return totalSexCount;
 		}
@@ -170,67 +170,67 @@ namespace RJWSexperience.SexHistory
 			Gender prefer = PreferredGender(pawn);
 			int sex = (int)(totalsex * RJWPreferenceSettings.vaginal / totalweight);
 			totalsex -= sex;
-			pawn.records.AddTo(VariousDefOf.VaginalSexCount, sex);
+			pawn.records.AddTo(RsDefOf.Record.VaginalSexCount, sex);
 
 			sex = (int)(totalsex * RJWPreferenceSettings.anal / totalweight);
 			totalsex -= sex;
-			pawn.records.AddTo(VariousDefOf.AnalSexCount, sex);
+			pawn.records.AddTo(RsDefOf.Record.AnalSexCount, sex);
 
 			sex = (int)(totalsex * RJWPreferenceSettings.fellatio / totalweight);
 			totalsex -= sex;
-			if (prefer == Gender.Male) pawn.records.AddTo(VariousDefOf.BlowjobCount, sex);
-			else pawn.records.AddTo(VariousDefOf.OralSexCount, sex);
+			if (prefer == Gender.Male) pawn.records.AddTo(RsDefOf.Record.BlowjobCount, sex);
+			else pawn.records.AddTo(RsDefOf.Record.OralSexCount, sex);
 
 			sex = (int)(totalsex * RJWPreferenceSettings.cunnilingus / totalweight);
 			totalsex -= sex;
-			if (prefer == Gender.Male) pawn.records.AddTo(VariousDefOf.OralSexCount, sex);
-			else pawn.records.AddTo(VariousDefOf.CunnilingusCount, sex);
+			if (prefer == Gender.Male) pawn.records.AddTo(RsDefOf.Record.OralSexCount, sex);
+			else pawn.records.AddTo(RsDefOf.Record.CunnilingusCount, sex);
 
 			sex = (int)(totalsex * RJWPreferenceSettings.rimming / totalweight);
 			totalsex -= sex;
-			pawn.records.AddTo(VariousDefOf.MiscSexualBehaviorCount, sex);
+			pawn.records.AddTo(RsDefOf.Record.MiscSexualBehaviorCount, sex);
 
 			sex = (int)(totalsex * RJWPreferenceSettings.double_penetration / totalweight) / 2;
 			totalsex -= sex;
 			totalsex -= sex;
-			pawn.records.AddTo(VariousDefOf.VaginalSexCount, sex);
-			pawn.records.AddTo(VariousDefOf.AnalSexCount, sex);
+			pawn.records.AddTo(RsDefOf.Record.VaginalSexCount, sex);
+			pawn.records.AddTo(RsDefOf.Record.AnalSexCount, sex);
 
 			sex = (int)(totalsex * RJWPreferenceSettings.breastjob / totalweight);
 			totalsex -= sex;
-			pawn.records.AddTo(VariousDefOf.MiscSexualBehaviorCount, sex);
+			pawn.records.AddTo(RsDefOf.Record.MiscSexualBehaviorCount, sex);
 
 			sex = (int)(totalsex * RJWPreferenceSettings.handjob / totalweight);
 			totalsex -= sex;
-			if (prefer == Gender.Male) pawn.records.AddTo(VariousDefOf.HandjobCount, sex);
-			else pawn.records.AddTo(VariousDefOf.GenitalCaressCount, sex);
+			if (prefer == Gender.Male) pawn.records.AddTo(RsDefOf.Record.HandjobCount, sex);
+			else pawn.records.AddTo(RsDefOf.Record.GenitalCaressCount, sex);
 
 			sex = (int)(totalsex * RJWPreferenceSettings.fingering / totalweight);
 			totalsex -= sex;
-			if (prefer == Gender.Female) pawn.records.AddTo(VariousDefOf.FingeringCount, sex);
-			else pawn.records.AddTo(VariousDefOf.GenitalCaressCount, sex);
+			if (prefer == Gender.Female) pawn.records.AddTo(RsDefOf.Record.FingeringCount, sex);
+			else pawn.records.AddTo(RsDefOf.Record.GenitalCaressCount, sex);
 
 			sex = (int)(totalsex * RJWPreferenceSettings.mutual_masturbation / totalweight);
 			totalsex -= sex;
-			if (prefer == Gender.Male) pawn.records.AddTo(VariousDefOf.HandjobCount, sex);
-			else pawn.records.AddTo(VariousDefOf.FingeringCount, sex);
-			pawn.records.AddTo(VariousDefOf.GenitalCaressCount, sex);
+			if (prefer == Gender.Male) pawn.records.AddTo(RsDefOf.Record.HandjobCount, sex);
+			else pawn.records.AddTo(RsDefOf.Record.FingeringCount, sex);
+			pawn.records.AddTo(RsDefOf.Record.GenitalCaressCount, sex);
 
 			sex = (int)(totalsex * RJWPreferenceSettings.footjob / totalweight);
 			totalsex -= sex;
-			pawn.records.AddTo(VariousDefOf.FootjobCount, sex);
+			pawn.records.AddTo(RsDefOf.Record.FootjobCount, sex);
 
 			sex = (int)(totalsex * RJWPreferenceSettings.scissoring / totalweight);
 			totalsex -= sex;
-			pawn.records.AddTo(VariousDefOf.MiscSexualBehaviorCount, sex);
+			pawn.records.AddTo(RsDefOf.Record.MiscSexualBehaviorCount, sex);
 
 			sex = (int)(totalsex * RJWPreferenceSettings.fisting / totalweight);
 			totalsex -= sex;
-			pawn.records.AddTo(VariousDefOf.MiscSexualBehaviorCount, sex);
+			pawn.records.AddTo(RsDefOf.Record.MiscSexualBehaviorCount, sex);
 
-			pawn.records.AddTo(VariousDefOf.OralSexCount, totalsex);
-			if (prefer == Gender.Male) pawn.records.AddTo(VariousDefOf.BlowjobCount, totalsex);
-			else pawn.records.AddTo(VariousDefOf.CunnilingusCount, totalsex);
+			pawn.records.AddTo(RsDefOf.Record.OralSexCount, totalsex);
+			if (prefer == Gender.Male) pawn.records.AddTo(RsDefOf.Record.BlowjobCount, totalsex);
+			else pawn.records.AddTo(RsDefOf.Record.CunnilingusCount, totalsex);
 		}
 
 		private static Gender PreferredGender(Pawn pawn)

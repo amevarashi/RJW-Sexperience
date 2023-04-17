@@ -17,7 +17,7 @@ namespace RJWSexperience.Cum.Interactions
 			if (context.Internals.Submissive.Parts.Penises.Any())
 				return GetForCumAddict(context.Internals.Dominant.Pawn);
 
-			if (AddictionUtility.IsAddicted(context.Internals.Submissive.Pawn, VariousDefOf.Cum))
+			if (AddictionUtility.IsAddicted(context.Internals.Submissive.Pawn, RsDefOf.Chemical.Cum))
 				return GetForPartner();
 
 			return Enumerable.Empty<Weighted<LewdablePartKind>>();
@@ -28,7 +28,7 @@ namespace RJWSexperience.Cum.Interactions
 			if (context.Internals.Dominant.Parts.Penises.Any())
 				return GetForCumAddict(context.Internals.Submissive.Pawn);
 
-			if (AddictionUtility.IsAddicted(context.Internals.Dominant.Pawn, VariousDefOf.Cum))
+			if (AddictionUtility.IsAddicted(context.Internals.Dominant.Pawn, RsDefOf.Chemical.Cum))
 				return GetForPartner();
 
 			return Enumerable.Empty<Weighted<LewdablePartKind>>();
@@ -42,7 +42,7 @@ namespace RJWSexperience.Cum.Interactions
 			var log = LogManager.GetLogger<CumAddictPartKindUsageRule, DebugLogProvider>();
 			log.Message($"Called for {pawn.NameShortColored}");
 
-			if (!(pawn.needs?.TryGetNeed(VariousDefOf.Chemical_Cum) is Need_Chemical cumNeed))
+			if (!(pawn.needs?.TryGetNeed(RsDefOf.Need.Chemical_Cum) is Need_Chemical cumNeed))
 				yield break;
 
 			log.Message($"{pawn.NameShortColored} is cum addict, current desire level: {cumNeed.CurCategory}");
