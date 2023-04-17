@@ -112,7 +112,6 @@ namespace RJWSexperience.SexHistory.UI
 			{
 				if (window._context.Pawn != history.ParentPawn)
 				{
-					SoundDefOf.TabOpen.PlayOneShotOnCamera();
 					window.ChangePawn(history);
 				}
 			}
@@ -286,7 +285,6 @@ namespace RJWSexperience.SexHistory.UI
 
 			Listing_Standard listmain = new Listing_Standard();
 			listmain.Begin(infoRect);
-			//listmain.Gap(20f);
 
 			if (_context.VirginLabel != null)
 			{
