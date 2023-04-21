@@ -104,13 +104,13 @@ namespace RJWSexperience.SexHistory
 			recentSexTickAbs = GenTicks.TicksAbs;
 		}
 
-		public void RecordSatisfaction(SexProps props, float satisfaction)
+		public void RecordOrgasm(xxx.rjwSextype sextype, float satisfaction)
 		{
 			orgasms++;
 
 			if (satisfaction > bestSatisfaction)
 			{
-				bestSextype = props.sexType;
+				bestSextype = sextype;
 				bestSatisfaction = satisfaction;
 				bestSexTickAbs = GenTicks.TicksAbs;
 			}

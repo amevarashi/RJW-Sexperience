@@ -106,28 +106,28 @@ namespace RJWSexperience.SexHistory.UI
 
 			InfoCards.Add(new InfoCard(
 				pawn: Pawn,
-				partnerRecord: _history.GetRecentPartnersHistory,
+				partnerRecord: _history.RecentPartnerRecord,
 				label: Keyed.RS_Recent_Sex_Partner,
 				tooltipLabel: Keyed.RS_Recent_Sex_Partner_ToolTip,
 				lastSexTimeTicks: _history.RecentSexTickAbs));
 
 			InfoCards.Add(new InfoCard(
 				pawn: Pawn,
-				partnerRecord: _history.GetFirstPartnerHistory,
+				partnerRecord: _history.FirstPartnerRecord,
 				label: Keyed.RS_First_Sex_Partner,
 				tooltipLabel: Keyed.RS_First_Sex_Partner_ToolTip,
 				lastSexTimeTicks: _history.FirstSexTickAbs));
 
 			InfoCards.Add(new InfoCard(
 				pawn: Pawn,
-				partnerRecord: _history.GetMostPartnerHistory,
+				partnerRecord: _history.MostPartnerRecord,
 				label: Keyed.RS_Most_Sex_Partner,
 				tooltipLabel: Keyed.RS_Most_Sex_Partner_ToolTip,
 				lastSexTimeTicks: _history.MostSexTickAbs));
 
 			InfoCards.Add(new InfoCard(
 				pawn: Pawn,
-				partnerRecord: _history.GetBestSexPartnerHistory,
+				partnerRecord: _history.BestSexPartnerRecord,
 				label: Keyed.RS_Best_Sex_Partner,
 				tooltipLabel: Keyed.RS_Best_Sex_Partner_ToolTip,
 				lastSexTimeTicks: _history.BestSexTickAbs));

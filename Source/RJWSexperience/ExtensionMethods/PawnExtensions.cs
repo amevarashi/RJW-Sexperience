@@ -13,7 +13,7 @@ namespace RJWSexperience
 				return false;
 
 			IEnumerable<PawnRelationDef> relations = pawn.GetRelations(otherpawn);
-			if (relations.EnumerableNullOrEmpty())
+			if (relations == null)
 				return false;
 
 			foreach (PawnRelationDef relation in relations)
@@ -66,32 +66,31 @@ namespace RJWSexperience
 		}
 
 		/// <summary>
-		/// If the pawn is virgin, return true.
+		/// Check if the pawn is virgin
 		/// </summary>
 		public static bool IsVirgin(this Pawn pawn)
 		{
-			return pawn.records.GetValue(RsDefOf.Record.VaginalSexCount) == 0;
+			return pawn.records.GetValue(RsDefOf.Record.VaginalSexCount) == 0 ||
+				pawn.relations?.ChildrenCount > 0; // Male is a virgins unless he stick into vagina? Not sure it should work this way
 		}
 
 		/// <summary>
-		/// If pawn is virgin, lose his/her virginity.
+		/// Remove virginity if pawn is virgin and announce it
 		/// </summary>
-		public static void PoptheCherry(this Pawn pawn, Pawn partner, SexProps props)
+		public static void TryRemoveVirginity(this Pawn pawn, Pawn partner, SexProps props)
 		{
-			if (props?.sexType != xxx.rjwSextype.Vaginal)
-				return;
-
 			int? removedDegree = Virginity.TraitHandler.RemoveVirginTrait(pawn);
 
-			if (pawn.IsVirgin())
+			if (SexperienceMod.Settings.EnableSexHistory && pawn.IsVirgin())
 			{
-				pawn.TryGetComp<SexHistory.SexHistoryComp>()?.RecordFirst(partner, props);
-				if (removedDegree != null)
-					Messages.Message(Keyed.RS_LostVirgin(pawn.LabelShort, partner.LabelShort), MessageTypeDefOf.NeutralEvent, true);
+				pawn.TryGetComp<SexHistory.SexHistoryComp>()?.RecordFirst(partner);
 			}
 
-			if (removedDegree != null)
+			if (removedDegree != null && removedDegree != Virginity.TraitDegree.FemaleAfterSurgery)
+			{
+				Messages.Message(Keyed.RS_LostVirgin(pawn.LabelShort, partner.LabelShort), MessageTypeDefOf.NeutralEvent, true);
 				RJWUtility.ThrowVirginHistoryEvent(pawn, partner, props, (int)removedDegree);
+			}
 		}
 	}
 }

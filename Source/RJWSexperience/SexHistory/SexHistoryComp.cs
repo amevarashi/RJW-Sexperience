@@ -6,11 +6,14 @@ using Verse;
 
 namespace RJWSexperience.SexHistory
 {
+	/// <summary>
+	/// Stores pawn's sex history and handles its updates
+	/// </summary>
 	public class SexHistoryComp : ThingComp
 	{
 		public const int ARRLEN = 20;
 
-		protected Dictionary<string, SexPartnerHistoryRecord> histories = new Dictionary<string, SexPartnerHistoryRecord>();
+		protected Dictionary<string, SexPartnerHistoryRecord> partnerRecords = new Dictionary<string, SexPartnerHistoryRecord>();
 		protected string first = "";
 		protected bool dirty = true;
 		protected xxx.rjwSextype recentSex = xxx.rjwSextype.None;
@@ -43,17 +46,14 @@ namespace RJWSexperience.SexHistory
 		protected int bestSexTickAbsCache = 0;
 
 		public Gizmo Gizmo { get; private set; }
-
 		public Pawn ParentPawn => parent as Pawn;
-
-		public SexPartnerHistoryRecord GetFirstPartnerHistory => histories.TryGetValue(first);
-
-		public SexPartnerHistoryRecord GetMostPartnerHistory
+		public SexPartnerHistoryRecord FirstPartnerRecord => partnerRecords.TryGetValue(first);
+		public SexPartnerHistoryRecord MostPartnerRecord
 		{
 			get
 			{
 				Update();
-				return histories.TryGetValue(mostPartnerCache);
+				return partnerRecords.TryGetValue(mostPartnerCache);
 			}
 		}
 		public xxx.rjwSextype MostSextype
@@ -72,13 +72,13 @@ namespace RJWSexperience.SexHistory
 				return mostSatSextypeCache;
 			}
 		}
-		public SexPartnerHistoryRecord GetRecentPartnersHistory => histories.TryGetValue(recentPartner);
-		public SexPartnerHistoryRecord GetBestSexPartnerHistory
+		public SexPartnerHistoryRecord RecentPartnerRecord => partnerRecords.TryGetValue(recentPartner);
+		public SexPartnerHistoryRecord BestSexPartnerRecord
 		{
 			get
 			{
 				Update();
-				return histories.TryGetValue(bestPartnerCache);
+				return partnerRecords.TryGetValue(bestPartnerCache);
 			}
 		}
 		public float TotalSexHad
@@ -96,21 +96,14 @@ namespace RJWSexperience.SexHistory
 			{
 				IEnumerable<SexPartnerHistoryRecord> res = Enumerable.Empty<SexPartnerHistoryRecord>();
 				Update();
-				if (!histories.NullOrEmpty())
+				if (!partnerRecords.NullOrEmpty())
 				{
-					res = histories.Values;
+					res = partnerRecords.Values;
 				}
 				return res;
 			}
 		}
-		public int PartnerCount
-		{
-			get
-			{
-				if (histories == null) histories = new Dictionary<string, SexPartnerHistoryRecord>();
-				return histories.Count;
-			}
-		}
+		public int PartnerCount => partnerRecords?.Count ?? 0;
 		public int IncestuousCount => incestuous;
 		public int RapedCount
 		{
@@ -160,7 +153,6 @@ namespace RJWSexperience.SexHistory
 		public int FirstSexTickAbs => firstSexTickAbs;
 		public int MostSexTickAbs => mostSexTickAbsCache;
 		public int BestSexTickAbs => bestSexTickAbsCache;
-
 		public Pawn PreferRacePawn
 		{
 			get
@@ -186,9 +178,9 @@ namespace RJWSexperience.SexHistory
 
 		public int GetSextypeRecentTickAbs(int sextype) => sextypeRecentTickAbs[sextype];
 
-		public float GetAVGSat(int index)
+		public float GetAVGSat(int sextype)
 		{
-			float res = sextypeSat[index] / sextypeCount[index];
+			float res = sextypeSat[sextype] / sextypeCount[sextype];
 			return float.IsNaN(res) ? 0f : res;
 		}
 
@@ -213,7 +205,7 @@ namespace RJWSexperience.SexHistory
 				sextyperecenttickabssave = new List<int>();
 			}
 
-			Scribe_Collections.Look(ref histories, "histories", LookMode.Value, LookMode.Deep);
+			Scribe_Collections.Look(ref partnerRecords, "histories", LookMode.Value, LookMode.Deep);
 			Scribe_Values.Look(ref first, "first", string.Empty);
 			Scribe_Values.Look(ref recentSex, "recentsex", xxx.rjwSextype.None);
 			Scribe_Values.Look(ref recentSat, "recentsat", 0);
@@ -228,8 +220,8 @@ namespace RJWSexperience.SexHistory
 			Scribe_Collections.Look(ref sextypesatsave, "sextypesatsave", LookMode.Value);
 			Scribe_Collections.Look(ref sextyperecenttickabssave, "sextyperecenttickabssave", LookMode.Value);
 
-			if (histories == null)
-				histories = new Dictionary<string, SexPartnerHistoryRecord>();
+			if (partnerRecords == null)
+				partnerRecords = new Dictionary<string, SexPartnerHistoryRecord>();
 
 			if (Scribe.mode == LoadSaveMode.LoadingVars)
 			{
@@ -237,7 +229,7 @@ namespace RJWSexperience.SexHistory
 				sextypeSat = sextypesatsave?.ToArray() ?? new float[ARRLEN];
 				sextypeRecentTickAbs = sextyperecenttickabssave?.ToArray() ?? new int[ARRLEN];
 
-				foreach (KeyValuePair<string, SexPartnerHistoryRecord> element in histories)
+				foreach (KeyValuePair<string, SexPartnerHistoryRecord> element in partnerRecords)
 				{
 					element.Value.PartnerID = element.Key;
 				}
@@ -247,50 +239,52 @@ namespace RJWSexperience.SexHistory
 
 		public void RecordSex(Pawn partner, SexProps props)
 		{
-			RecordFirst(partner, props);
-			GetPartnerRecord(partner)?.RecordSex(props);
+			SexPartnerHistoryRecord partnerRecord = GetPartnerRecord(partner);
+			partnerRecord.RecordSex(props);
 			recentPartner = partner.ThingID;
 			recentSex = props.sexType;
 			sextypeCount[(int)props.sexType]++;
 			sextypeRecentTickAbs[(int)props.sexType] = GenTicks.TicksAbs;
-			if (partner.IsIncest(ParentPawn)) incestuous++;
+			if (partnerRecord.Incest) incestuous++;
 			if (partner.Dead) corpsefuck++;
 			if (props.IsBestiality()) bestiality++;
 			else if (ParentPawn.def != partner.def) interspecies++;
 			dirty = true;
 		}
 
-		public void RecordSatisfaction(Pawn partner, SexProps props, float satisfaction)
+		public void RecordOrgasm(Pawn partner, SexProps props, float satisfaction)
 		{
-			RecordFirst(partner, props);
-			GetPartnerRecord(partner)?.RecordSatisfaction(props, satisfaction);
+			GetPartnerRecord(partner).RecordOrgasm(props.sexType, satisfaction);
 			recentSat = satisfaction;
-			sextypeSat[(int)props.sexType] += satisfaction;
+			sextypeSat[(int)props.sexType] += satisfaction; // Several orgasmsms in one sex are messing with this
 			dirty = true;
 		}
 
-		public void RecordFirst(Pawn partner, SexProps props)
+		/// <summary>
+		/// Record first partner and time of sex. No checks are performed, the caller should make sure it is the first time.
+		/// </summary>
+		/// <param name="partner"></param>
+		public void RecordFirst(Pawn partner)
 		{
-			if (VirginCheck() && props.sexType == xxx.rjwSextype.Vaginal)
-			{
-				first = partner.ThingID;
-				SexHistoryComp history = partner.TryGetComp<SexHistoryComp>();
-				firstSexTickAbs = GenTicks.TicksAbs;
-				history?.TakeSomeonesVirgin(ParentPawn);
-			}
+			first = partner.ThingID;
+			firstSexTickAbs = GenTicks.TicksAbs;
+			partner.TryGetComp<SexHistoryComp>()?.TakeSomeonesVirgin(ParentPawn);
 		}
 
+		/// <summary>
+		/// Retrive an existing partner record or add a new one. Increments SexPartnerCount when new record is added
+		/// </summary>
 		protected SexPartnerHistoryRecord GetPartnerRecord(Pawn partner)
 		{
 			string partnerId = partner.ThingID;
 
-			if (histories.TryGetValue(partnerId, out SexPartnerHistoryRecord record))
+			if (partnerRecords.TryGetValue(partnerId, out SexPartnerHistoryRecord record))
 			{
 				return record;
 			}
 
 			SexPartnerHistoryRecord newRecord = new SexPartnerHistoryRecord(partner, partner.IsIncest(ParentPawn));
-			histories.Add(partnerId, newRecord);
+			partnerRecords.Add(partnerId, newRecord);
 			ParentPawn.records.Increment(RsDefOf.Record.SexPartnerCount);
 			return newRecord;
 		}
@@ -328,7 +322,7 @@ namespace RJWSexperience.SexHistory
 			Dictionary<ThingDef, int> racetotalsat = new Dictionary<ThingDef, int>();
 			List<Pawn> allpartners = new List<Pawn>();
 
-			foreach (KeyValuePair<string, SexPartnerHistoryRecord> element in histories)
+			foreach (KeyValuePair<string, SexPartnerHistoryRecord> element in partnerRecords)
 			{
 				SexPartnerHistoryRecord h = element.Value;
 
@@ -386,9 +380,9 @@ namespace RJWSexperience.SexHistory
 			mostPartnerCache = mostID;
 			bestPartnerCache = bestID;
 
-			recentSexTickAbsCache = histories.TryGetValue(recentPartner)?.RecentSexTickAbs ?? 0;
-			mostSexTickAbsCache = histories.TryGetValue(mostPartnerCache)?.RecentSexTickAbs ?? 0;
-			bestSexTickAbsCache = histories.TryGetValue(bestPartnerCache)?.BestSexTickAbs ?? 0;
+			recentSexTickAbsCache = partnerRecords.TryGetValue(recentPartner)?.RecentSexTickAbs ?? 0;
+			mostSexTickAbsCache = partnerRecords.TryGetValue(mostPartnerCache)?.RecentSexTickAbs ?? 0;
+			bestSexTickAbsCache = partnerRecords.TryGetValue(bestPartnerCache)?.BestSexTickAbs ?? 0;
 
 			racetotalsat.Clear();
 			allpartners.Clear();
@@ -413,14 +407,6 @@ namespace RJWSexperience.SexHistory
 		}
 
 		#endregion Cache update
-
-		protected bool VirginCheck()
-		{
-			if (histories.TryGetValue(first) != null)
-				return false;
-
-			return ParentPawn.IsVirgin();
-		}
 
 		public override IEnumerable<Gizmo> CompGetGizmosExtra()
 		{

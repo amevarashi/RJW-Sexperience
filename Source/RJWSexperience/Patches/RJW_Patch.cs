@@ -11,7 +11,7 @@ using Verse;
 
 namespace RJWSexperience
 {
-	[HarmonyPatch(typeof(JobDriver_Sex), "Orgasm")]
+	[HarmonyPatch(typeof(JobDriver_Sex), "Orgasm")] // Despite the name, called every tick
 	public static class RJW_Patch_Orgasm
 	{
 		public static void Postfix(JobDriver_Sex __instance)
@@ -30,7 +30,7 @@ namespace RJWSexperience
 		}
 	}
 
-	[HarmonyPatch(typeof(SexUtility), nameof(SexUtility.SatisfyPersonal))]
+	[HarmonyPatch(typeof(SexUtility), nameof(SexUtility.SatisfyPersonal))] // Actual on orgasm method
 	public static class RJW_Patch_SatisfyPersonal
 	{
 		private const float base_sat_per_fuck = 0.4f;
@@ -46,7 +46,7 @@ namespace RJWSexperience
 			CumUtility.FillCumBuckets(props);
 			props.pawn.records?.Increment(RsDefOf.Record.OrgasmCount);
 			if (SexperienceMod.Settings.EnableSexHistory && props.hasPartner())
-				props.pawn.TryGetComp<SexHistoryComp>()?.RecordSatisfaction(props.partner, props, satisfaction);
+				props.pawn.TryGetComp<SexHistoryComp>()?.RecordOrgasm(props.partner, props, satisfaction);
 		}
 	}
 
@@ -94,10 +94,10 @@ namespace RJWSexperience
 	{
 		public static void Postfix(JobDriver_SexBaseInitiator __instance)
 		{
-			if (__instance.Sexprops.hasPartner())
+			if (__instance.Sexprops.hasPartner() && __instance.Sexprops.sexType == xxx.rjwSextype.Vaginal)
 			{
-				__instance.pawn.PoptheCherry(__instance.Partner, __instance.Sexprops);
-				__instance.Partner.PoptheCherry(__instance.pawn, __instance.Sexprops);
+				__instance.pawn.TryRemoveVirginity(__instance.Partner, __instance.Sexprops);
+				__instance.Partner.TryRemoveVirginity(__instance.pawn, __instance.Sexprops);
 			}
 		}
 	}
@@ -108,9 +108,7 @@ namespace RJWSexperience
 		/// <summary>
 		/// If masturbation and current map has a bucket, return location near the bucket
 		/// </summary>
-		/// <param name="pawn"></param>
-		/// <param name="partner"></param>
-		/// <param name="__result"></param>
+		/// <param name="__result">The place to stand near a bucket</param>
 		/// <returns>Run original method</returns>
 		public static bool Prefix(Pawn pawn, Pawn partner, ref IntVec3 __result)
 		{

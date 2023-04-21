@@ -1,5 +1,4 @@
 ﻿using RimWorld;
-using rjw;
 using Verse;
 
 namespace RJWSexperience.Virginity
@@ -46,6 +45,10 @@ namespace RJWSexperience.Virginity
 			}
 		}
 
+		/// <summary>
+		/// Remove virginity trait and spawn blood filth if applicable
+		/// </summary>
+		/// <returns>Degree of the removed trait</returns>
 		public static int? RemoveVirginTrait(Pawn pawn)
 		{
 			Trait virgin = pawn.story?.traits?.GetTrait(RsDefOf.Trait.Virgin);
