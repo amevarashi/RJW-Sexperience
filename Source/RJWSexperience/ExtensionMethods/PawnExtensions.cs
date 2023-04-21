@@ -31,38 +31,22 @@ namespace RJWSexperience
 			return 1.0f;
 		}
 
-		public static T GetAdjacentBuilding<T>(this Pawn pawn) where T : Building
-		{
-			if (!pawn.Spawned)
-				return null;
-
-			EdificeGrid edifice = pawn.Map.edificeGrid;
-			if (edifice[pawn.Position] is T building)
-				return building;
-			foreach (IntVec3 pos in GenAdjFast.AdjacentCells8Way(pawn.Position))
-			{
-				if (edifice[pos] is T adjBuilding)
-					return adjBuilding;
-			}
-			return null;
-		}
+		public static T GetAdjacentBuilding<T>(this Pawn pawn) where T : Building => GetAdjacentBuildings<T>(pawn).FirstOrFallback();
 
 		public static IEnumerable<T> GetAdjacentBuildings<T>(this Pawn pawn) where T : Building
 		{
-			var results = new List<T>();
-
 			if (!pawn.Spawned)
-				return results;
+				yield break;
 
 			EdificeGrid edifice = pawn.Map.edificeGrid;
 			if (edifice[pawn.Position] is T building)
-				results.Add(building);
+				yield return building;
+
 			foreach (IntVec3 pos in GenAdjFast.AdjacentCells8Way(pawn.Position))
 			{
 				if (pos.InBounds(pawn.Map) && edifice[pos] is T adjBuilding)
-					results.Add(adjBuilding);
+					yield return adjBuilding;
 			}
-			return results;
 		}
 
 		/// <summary>
