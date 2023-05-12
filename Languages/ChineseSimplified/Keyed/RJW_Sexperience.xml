@@ -2,14 +2,73 @@
 <LanguageData>
   <RS_Mod_Title>RJW 性经验</RS_Mod_Title>
 
-  <Lust>性欲</Lust>
+  <!-- Sex status screen -->
+  <!-- 统计 -->
+  <RSTotalGatheredCum>总获得精液量: </RSTotalGatheredCum>
+  <RS_LostVirgin>{1}夺走了{0}的处女.</RS_LostVirgin>
+  <RS_Best_Sextype>最佳做爱姿势</RS_Best_Sextype>
+  <RS_Recent_Sextype>最近做爱姿势</RS_Recent_Sextype>
+  <RS_Sex_Partners>炮友</RS_Sex_Partners>
+  <RS_Cum_Swallowed>吞下精液量</RS_Cum_Swallowed>
+  <RS_Selected_Partner>所选性伴侣信息</RS_Selected_Partner>
+  <RS_Sex_Info>{0}: {1} 次</RS_Sex_Info>
+  <RS_SAT_AVG>比率: {0}</RS_SAT_AVG>
+  <RS_Sex_Count>做爱次数: </RS_Sex_Count>
+  <RS_Orgasms>高潮次数: </RS_Orgasms>
+  <RS_Recent_Sex_Partner>最近做爱对象</RS_Recent_Sex_Partner>
+  <RS_Recent_Sex_Partner_ToolTip>最近做爱对象.</RS_Recent_Sex_Partner_ToolTip>
+  <RS_First_Sex_Partner>第一次做爱对象</RS_First_Sex_Partner>
+  <RS_First_Sex_Partner_ToolTip>第一次做爱的对象.</RS_First_Sex_Partner_ToolTip>
+  <RS_Most_Sex_Partner>最多次做爱对象</RS_Most_Sex_Partner>
+  <RS_Most_Sex_Partner_ToolTip>做了最多次的对象.</RS_Most_Sex_Partner_ToolTip>
+  <RS_Best_Sex_Partner>最舒适的做爱对象</RS_Best_Sex_Partner>
+  <RS_Best_Sex_Partner_ToolTip>做爱时最舒服的对象.</RS_Best_Sex_Partner_ToolTip>
+  <RS_VirginsTaken>夺走处女数</RS_VirginsTaken>
+  <RS_TotalSexHad>总做爱次数</RS_TotalSexHad>
+  <RS_TotalSexHad_ToolTip>做爱次数.</RS_TotalSexHad_ToolTip>
+  <RS_Raped>被强奸: </RS_Raped>
+  <RS_RapedMe>强奸了我: </RS_RapedMe>
+  <RS_Sex_History>性爱历史</RS_Sex_History>
+  <RS_Statistics>做爱统计</RS_Statistics>
+  <RS_PartnerList>炮友列表</RS_PartnerList>
+  <RS_Sexuality>性欲</RS_Sexuality>
+  <RS_BeenRaped>被谁强奸</RS_BeenRaped>
+  <RS_RapedSomeone>强奸了谁</RS_RapedSomeone>
+  <RS_PreferRace>钟爱种族</RS_PreferRace>
+  <RS_Bestiality>兽交</RS_Bestiality>
+  <RS_Interspecies>异种</RS_Interspecies>
+  <RS_Normal>正常</RS_Normal>
+  <RS_Necrophile>恋尸癖</RS_Necrophile>
+  <RS_SexSkill>性技</RS_SexSkill>
+  <RS_NumofTimes>次</RS_NumofTimes>
+  <RS_Ago>以前</RS_Ago>
+  <RS_LastSex>上次做爱</RS_LastSex>
+  <RS_HadBestSexDaysAgo>最爱性伴侣 {0}.</RS_HadBestSexDaysAgo>
+  <RS_PawnLockDesc>锁定显示的小人.\n\n非锁定状态下,窗口显示内容将会自动切换到选择的小人</RS_PawnLockDesc>
 
-  <RSOption_1_Label>开启随机性记录</RSOption_1_Label>
-  <RSOption_1_Desc>随机化小人的性记录。</RSOption_1_Desc>
+  <!-- Settings tab labels -->
+  <!-- 设置-选项卡标题 -->
+  <RSTabLabelMain>主要</RSTabLabelMain>
+  <RSTabLabelHistory>做爱记录</RSTabLabelHistory>
+  <RSTabLabelDebug>调试</RSTabLabelDebug>
+
+  <!-- Mod settings: Main -->
+  <!-- mod设置: 主体设置 -->
   <RSOption_2_Label>色欲值的影响</RSOption_2_Label>
   <RSOption_2_Desc>设置色欲值对性冲动的影响。</RSOption_2_Desc>
+  <RSOption_8_Label>限制欲望</RSOption_8_Label>
+  <RSOption_8_Desc>设置欲望的限制。\n如果欲望的绝对值接近或大于这个值，欲望将不太可能改变。</RSOption_8_Desc>
+  <RSOption_MaxSingleLustChange_Label>每种做爱的最大性欲变化值</RSOption_MaxSingleLustChange_Label>
+  <RSOption_MaxSingleLustChange_Desc>设置一次性行为可以改变多少性欲</RSOption_MaxSingleLustChange_Desc>
+  <RSOption_SexCanFillBuckets_Label>精液能装桶</RSOption_SexCanFillBuckets_Label>
+  <RSOption_SexCanFillBuckets_Desc>如果在精液桶附近进行了乳交、足交、打手枪将填满它</RSOption_SexCanFillBuckets_Desc>
+
+  <!-- Mod settings: Sex records -->
+  <!-- mod设置: 做爱记录 -->
+  <RSOption_1_Label>开启随机性记录</RSOption_1_Label>
+  <RSOption_1_Desc>随机化小人的性记录。</RSOption_1_Desc>
   <RSOption_3_Label>最大色欲值偏差</RSOption_3_Label>
-  <RSOption_3_Desc>设置色欲的最大偏差。根据平均值的不同，色欲值可能为负。</RSOption_3_Desc>
+  <RSOption_3_Desc>设置色欲的最大偏差。&#10;根据平均值的不同，色欲值可能为负。</RSOption_3_Desc>
   <RSOption_4_Label>平均色欲值</RSOption_4_Label>
   <RSOption_4_Desc>设置色欲值的均值。</RSOption_4_Desc>
   <RSOption_5_Label>最大性交次数偏差</RSOption_5_Label>
@@ -18,5 +77,69 @@
   <RSOption_6_Desc>设置平均每年的性交次数</RSOption_6_Desc>
   <RSOption_7_Label>允许奴隶被强奸获得性经验</RSOption_7_Label>
   <RSOption_7_Desc>奴隶被强奸获得性经验</RSOption_7_Desc>
+  <RSOption_9_Label>最小可做爱年龄</RSOption_9_Label>
+  <RSOption_9_Desc>设置最小的可以做爱的年龄.&#10;此值与RJW的最低性年龄无关。仅用于生成记录.</RSOption_9_Desc>
+  <RSOption_10_Label>处女比例</RSOption_10_Label>
+  <RSOption_10_Desc>不分年龄设置处女概率.</RSOption_10_Desc>
+  <RSOption_MinSexableFromLifestage_Label>Minimum sexable age from life stages</RSOption_MinSexableFromLifestage_Label>
+  <RSOption_MinSexableFromLifestage_Desc>仅用于生成记录. Get minimum sexable age from the first reproductive life stage. 更适合长寿种族</RSOption_MinSexableFromLifestage_Desc>
+  <RSOption_EnableBastardRelation_Label>Enable Bastard relation</RSOption_EnableBastardRelation_Label>
+  <RSOption_EnableBastardRelation_Desc>Child is marked as a bastard if they have only one parent or their parents are not (or was not) married</RSOption_EnableBastardRelation_Desc>
+  <RSOption_EnableSexHistory_Label>[Caution] 启用做爱历史*</RSOption_EnableSexHistory_Label>
+  <RSOption_EnableSexHistory_Desc>* 重启游戏生效\n\n启用性记录窗口, information collection for the said window and save/load of this information. Also enables sex partners count in the pawn's records.\n\n[警告] Disabling this mid save will result in the loss of previously collected histories.</RSOption_EnableSexHistory_Desc>
+  <RSOption_HideGizmoWhenDrafted_Label>Hide Sex History button when drafted</RSOption_HideGizmoWhenDrafted_Label>
+  <RSOption_HideGizmoWhenDrafted_Desc>Hides Sex History Gizmo for currently drafted pawns</RSOption_HideGizmoWhenDrafted_Desc>
 
+  <!-- Mod settings: Debug -->
+  <!-- mod设置——debug -->
+  <RSOption_Debug_Label>调试</RSOption_Debug_Label>
+  <RSOption_Debug_Desc>启用调试日志</RSOption_Debug_Desc>
+
+  <Button_ResetToDefault>重置为默认</Button_ResetToDefault>
+
+  <!-- Sex types -->
+  <!-- 做爱姿势 -->
+  <Vaginal>阴道</Vaginal>
+  <Anal>菊花</Anal>
+  <Oral>吞精</Oral>
+  <Masturbation>自慰</Masturbation>
+  <DoublePenetration>双插</DoublePenetration>
+  <Boobjob>乳交</Boobjob>
+  <Handjob>手交</Handjob>
+  <Footjob>足交</Footjob>
+  <Fingering>Fingering</Fingering>
+  <Scissoring>Scissoring</Scissoring>
+  <MutualMasturbation>相互自慰</MutualMasturbation>
+  <Fisting>拳交</Fisting>
+  <MechImplant>机械</MechImplant>
+  <Rimming>Rimming</Rimming>
+  <Fellatio>口交</Fellatio>
+  <Cunnilingus>舔阴</Cunnilingus>
+  <Sixtynine>69</Sixtynine>
+
+  <!-- Sexuality -->
+  <!-- 性取向 -->
+  <None>无</None>
+  <Asexual>无性恋</Asexual>
+  <Pansexual>泛性恋</Pansexual>
+  <Heterosexual>异性恋</Heterosexual>
+  <MostlyHeterosexual>主要是异性恋</MostlyHeterosexual>
+  <LeaningHeterosexual>双性恋，倾向异性恋</LeaningHeterosexual>
+  <Bisexual>双性恋</Bisexual>
+  <LeaningHomosexual>双性恋，倾向同性恋</LeaningHomosexual>
+  <MostlyHomosexual>主要是同性恋</MostlyHomosexual>
+  <Homosexual>同性恋</Homosexual>
+
+  <!-- Misc -->
+  <!-- 杂项 -->
+  <Lust>性欲</Lust>
+  <Unknown>未知</Unknown>
+  <Incest>乱伦</Incest>
+
+  <!-- Order mode -->
+  <!-- 排序规则 -->
+  <RS_PONormal>无序</RS_PONormal>
+  <RS_PoRecent>时间</RS_PoRecent>
+  <RS_PoMost>次数</RS_PoMost>
+  <RS_PoName>名字</RS_PoName>
 </LanguageData>
