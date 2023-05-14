@@ -81,14 +81,14 @@
   <RSOption_9_Desc>设置最小的可以做爱的年龄.&#10;此值与RJW的最低性年龄无关。仅用于生成记录.</RSOption_9_Desc>
   <RSOption_10_Label>处女比例</RSOption_10_Label>
   <RSOption_10_Desc>不分年龄设置处女概率.</RSOption_10_Desc>
-  <RSOption_MinSexableFromLifestage_Label>Minimum sexable age from life stages</RSOption_MinSexableFromLifestage_Label>
+  <RSOption_MinSexableFromLifestage_Label>最小可做爱年龄阶段</RSOption_MinSexableFromLifestage_Label>
   <RSOption_MinSexableFromLifestage_Desc>仅用于生成记录. Get minimum sexable age from the first reproductive life stage. 更适合长寿种族</RSOption_MinSexableFromLifestage_Desc>
-  <RSOption_EnableBastardRelation_Label>Enable Bastard relation</RSOption_EnableBastardRelation_Label>
-  <RSOption_EnableBastardRelation_Desc>Child is marked as a bastard if they have only one parent or their parents are not (or was not) married</RSOption_EnableBastardRelation_Desc>
+  <RSOption_EnableBastardRelation_Label>启用野种</RSOption_EnableBastardRelation_Label>
+  <RSOption_EnableBastardRelation_Desc>单亲或亲生父母非婚姻关系（或还未结婚）的小孩将被视作野种</RSOption_EnableBastardRelation_Desc>
   <RSOption_EnableSexHistory_Label>[Caution] 启用做爱历史*</RSOption_EnableSexHistory_Label>
-  <RSOption_EnableSexHistory_Desc>* 重启游戏生效\n\n启用性记录窗口, information collection for the said window and save/load of this information. Also enables sex partners count in the pawn's records.\n\n[警告] Disabling this mid save will result in the loss of previously collected histories.</RSOption_EnableSexHistory_Desc>
-  <RSOption_HideGizmoWhenDrafted_Label>Hide Sex History button when drafted</RSOption_HideGizmoWhenDrafted_Label>
-  <RSOption_HideGizmoWhenDrafted_Desc>Hides Sex History Gizmo for currently drafted pawns</RSOption_HideGizmoWhenDrafted_Desc>
+  <RSOption_EnableSexHistory_Desc>* 重启游戏生效\n\n启用性记录窗口, information collection for the said window and save/load of this information. Also enables sex partners count in the pawn's records.\n\n[Caution] Disabling this mid save will result in the loss of previously collected histories.</RSOption_EnableSexHistory_Desc>
+  <RSOption_HideGizmoWhenDrafted_Label>征召时隐藏性历史菜单</RSOption_HideGizmoWhenDrafted_Label>
+  <RSOption_HideGizmoWhenDrafted_Desc>隐藏当前所选的小人的性历史功能</RSOption_HideGizmoWhenDrafted_Desc>
 
   <!-- Mod settings: Debug -->
   <!-- mod设置——debug -->
@@ -107,15 +107,15 @@
   <Boobjob>乳交</Boobjob>
   <Handjob>手交</Handjob>
   <Footjob>足交</Footjob>
-  <Fingering>Fingering</Fingering>
-  <Scissoring>Scissoring</Scissoring>
+  <Fingering>指交</Fingering>
+  <Scissoring>磨豆腐</Scissoring>
   <MutualMasturbation>相互自慰</MutualMasturbation>
   <Fisting>拳交</Fisting>
   <MechImplant>机械</MechImplant>
-  <Rimming>Rimming</Rimming>
+  <Rimming>舔肛</Rimming>
   <Fellatio>口交</Fellatio>
   <Cunnilingus>舔阴</Cunnilingus>
-  <Sixtynine>69</Sixtynine>
+  <Sixtynine>69式</Sixtynine>
 
   <!-- Sexuality -->
   <!-- 性取向 -->
