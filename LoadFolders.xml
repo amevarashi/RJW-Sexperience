@@ -10,6 +10,8 @@
 		<li>/</li>
 		<li>1.4</li>
 		<li IfModActive="vanillaexpanded.skills">Mod Compatibility/Vanilla Skills Expanded</li>
+		<li IfModActive="vanillaracesexpanded.android">Mod Compatibility/Vanilla Races Expanded - Android</li>
+		<li IfModActive="vanillaracesexpanded.genie">Mod Compatibility/Vanilla Races Expanded - Genie</li>
 		<li IfModActive="rjw.cum">Mod Compatibility/RJW Cum</li>
 	</v1.4>
 </loadFolders>
