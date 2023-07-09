@@ -1,6 +1,5 @@
 ﻿using RimWorld;
 using rjw;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -58,18 +57,18 @@ namespace RJWSexperience.SexHistory.UI
 		public InfoCard SelectedPartnerCard { get; private set; }
 		public PreferedRaceCard PreferedRaceCard { get; private set; }
 		public List<BarInfo> SexTypes { get; } = new List<BarInfo>();
-		public BarInfo TotalSex { get; private set; }
-		public BarInfo Lust { get; private set; }
-		public BarInfo BestSextype { get; private set; }
-		public BarInfo RecentSextype { get; private set; }
-		public BarInfo Necro { get; private set; }
-		public BarInfo Incest { get; private set; }
-		public BarInfo ConsumedCum { get; private set; }
-		public BarInfo? CumHediff { get; private set; }
-		public BarInfo BeenRaped { get; private set; }
-		public BarInfo Raped { get; private set; }
-		public BarInfo SexSatisfaction { get; private set; }
-		public BarInfo SexSkill { get; private set; }
+		public BarInfo TotalSex { get; } = new BarInfo(HistoryUtility.TotalSex);
+		public BarInfo Lust { get; } = new BarInfo(HistoryUtility.Slaanesh);
+		public BarInfo BestSextype { get; } = new BarInfo();
+		public BarInfo RecentSextype { get; } = new BarInfo();
+		public BarInfo Necro { get; } = new BarInfo(HistoryUtility.Nurgle);
+		public BarInfo Incest { get; } = new BarInfo(HistoryUtility.Nurgle);
+		public BarInfo ConsumedCum { get; } = new BarInfo(Texture2D.linearGrayTexture);
+		public BarInfo CumHediff { get; } = new BarInfo(Texture2D.linearGrayTexture);
+		public BarInfo BeenRaped { get; } = new BarInfo(Texture2D.grayTexture);
+		public BarInfo Raped { get; } = new BarInfo(HistoryUtility.Khorne);
+		public BarInfo SexSatisfaction { get; } = new BarInfo(HistoryUtility.Satisfaction);
+		public BarInfo SexSkill { get; } = new BarInfo(HistoryUtility.Tzeentch);
 		public string VirginLabel { get; private set; }
 		public string SexualityLabel { get; private set; }
 		public string QuirksLabel { get; private set; }
@@ -163,107 +162,91 @@ namespace RJWSexperience.SexHistory.UI
 			}
 
 			SexTypes.Add(new BarInfo(
-				label: String.Format(Keyed.RS_Sex_Partners + ": {0} ({1})", _history.PartnerCount, Pawn.records.GetValue(RsDefOf.Record.SexPartnerCount)),
+				label: string.Format(Keyed.RS_Sex_Partners + ": {0} ({1})", _history.PartnerCount, Pawn.records.GetValue(RsDefOf.Record.SexPartnerCount)),
 				fillPercent: _history.PartnerCount / 50,
 				fillTexture: HistoryUtility.Partners));
 
 			SexTypes.Add(new BarInfo(
-				label: String.Format(Keyed.RS_VirginsTaken + ": {0:0}", _history.VirginsTaken),
+				label: string.Format(Keyed.RS_VirginsTaken + ": {0:0}", _history.VirginsTaken),
 				fillPercent: _history.VirginsTaken / 100,
 				fillTexture: HistoryUtility.Partners));
 
-			TotalSex = new BarInfo(
-				label: String.Format(Keyed.RS_TotalSexHad + ": {0:0} ({1:0})", _history.TotalSexHad, Pawn.records.GetValue(xxx.CountOfSex)),
-				fillPercent: _history.TotalSexHad / 100,
-				fillTexture: HistoryUtility.TotalSex,
-				labelRight: Keyed.RS_SatAVG(_history.AVGSat));
+			TotalSex.Label = string.Format(Keyed.RS_TotalSexHad + ": {0:0} ({1:0})", _history.TotalSexHad, Pawn.records.GetValue(xxx.CountOfSex));
+			TotalSex.FillPercent = _history.TotalSexHad / 100;
+			TotalSex.LabelRight = Keyed.RS_SatAVG(_history.AVGSat);
 
 			float lust = Pawn.records.GetValue(RsDefOf.Record.Lust);
 			float sexDrive = GetStatValue(xxx.sex_drive_stat);
 			float lustLimit = SexperienceMod.Settings.LustLimit * 3f;
-			Lust = new BarInfo(
-				label: String.Format(Keyed.Lust + ": {0:0.00}", lust),
-				fillPercent: Mathf.Clamp01(lust.Normalization(-lustLimit, lustLimit)),
-				fillTexture: HistoryUtility.Slaanesh,
-				tooltip: GetStatTooltip(xxx.sex_drive_stat, sexDrive),
-				labelRight: xxx.sex_drive_stat.LabelCap + ": " + sexDrive.ToStringPercent());
+			Lust.Label = string.Format(Keyed.Lust + ": {0:0.00}", lust);
+			Lust.FillPercent = lust.Normalization(-lustLimit, lustLimit);
+			Lust.Tooltip = GetStatTooltip(xxx.sex_drive_stat, sexDrive);
+			Lust.LabelRight = xxx.sex_drive_stat.LabelCap + ": " + sexDrive.ToStringPercent();
 
 			float bestSextypeRelativeSatisfaction = _history.GetBestSextype(out xxx.rjwSextype bestSextype) / UIUtility.BASESAT;
-			BestSextype = new BarInfo(
-				label: String.Format(Keyed.RS_Best_Sextype + ": {0}", Keyed.Sextype[(int)bestSextype]),
-				fillPercent: bestSextypeRelativeSatisfaction / 2,
-				fillTexture: HistoryUtility.SextypeColor[(int)bestSextype],
-				labelRight: Keyed.RS_SatAVG(bestSextypeRelativeSatisfaction));
+			BestSextype.Label = string.Format(Keyed.RS_Best_Sextype + ": {0}", Keyed.Sextype[(int)bestSextype]);
+			BestSextype.FillPercent = bestSextypeRelativeSatisfaction / 2;
+			BestSextype.FillTexture = HistoryUtility.SextypeColor[(int)bestSextype];
+			BestSextype.LabelRight = Keyed.RS_SatAVG(bestSextypeRelativeSatisfaction);
 
 			float recentSextypeRelativeSatisfaction = _history.GetRecentSextype(out xxx.rjwSextype recentSextype) / UIUtility.BASESAT;
-			RecentSextype = new BarInfo(
-				label: String.Format(Keyed.RS_Recent_Sextype + ": {0}", Keyed.Sextype[(int)recentSextype]),
-				fillPercent: recentSextypeRelativeSatisfaction / 2,
-				fillTexture: HistoryUtility.SextypeColor[(int)recentSextype],
-				labelRight: recentSextypeRelativeSatisfaction.ToStringPercent());
+			RecentSextype.Label = string.Format(Keyed.RS_Recent_Sextype + ": {0}", Keyed.Sextype[(int)recentSextype]);
+			RecentSextype.FillPercent = recentSextypeRelativeSatisfaction / 2;
+			RecentSextype.FillTexture = HistoryUtility.SextypeColor[(int)recentSextype];
+			RecentSextype.LabelRight = recentSextypeRelativeSatisfaction.ToStringPercent();
 
-			Necro = new BarInfo(
-				label: String.Format(Keyed.RS_Necrophile + ": {0}", _history.CorpseFuckCount),
-				fillPercent: _history.CorpseFuckCount / 50,
-				fillTexture: HistoryUtility.Nurgle);
+			Necro.Label = string.Format(Keyed.RS_Necrophile + ": {0}", _history.CorpseFuckCount);
+			Necro.FillPercent = _history.CorpseFuckCount / 50f;
 
-			Incest = new BarInfo(
-				label: String.Format(Keyed.Incest + ": {0}", _history.IncestuousCount),
-				fillPercent: _history.IncestuousCount / 50,
-				fillTexture: HistoryUtility.Nurgle);
+			Incest.Label = string.Format(Keyed.Incest + ": {0}", _history.IncestuousCount);
+			Incest.FillPercent = _history.IncestuousCount / 50f;
 
 			float amountofEatenCum = Pawn.records.GetValue(RsDefOf.Record.AmountofEatenCum);
-			ConsumedCum = new BarInfo(
-				label: String.Format(Keyed.RS_Cum_Swallowed + ": {0} mL, {1} " + Keyed.RS_NumofTimes, amountofEatenCum, Pawn.records.GetValue(RsDefOf.Record.NumofEatenCum)),
-				fillPercent: amountofEatenCum / 1000,
-				fillTexture: Texture2D.linearGrayTexture);
+			ConsumedCum.Label = string.Format(Keyed.RS_Cum_Swallowed + ": {0} mL, {1} " + Keyed.RS_NumofTimes, amountofEatenCum, Pawn.records.GetValue(RsDefOf.Record.NumofEatenCum));
+			ConsumedCum.FillPercent = amountofEatenCum / 1000;
 
 			Hediff cumHediff = Pawn.health.hediffSet.GetFirstHediffOfDef(RsDefOf.Hediff.CumAddiction)
 				?? Pawn.health.hediffSet.GetFirstHediffOfDef(RsDefOf.Hediff.CumTolerance);
 			if (cumHediff != null)
 			{
-				CumHediff = new BarInfo(
-					label: $"{cumHediff.Label}: {cumHediff.Severity.ToStringPercent()}",
-					fillPercent: cumHediff.Severity,
-					fillTexture: Texture2D.linearGrayTexture,
-					tooltip: new TipSignal(() => cumHediff.GetTooltip(Pawn, false), cumHediff.Label.GetHashCode()));
+				CumHediff.Label = $"{cumHediff.Label}: {cumHediff.Severity.ToStringPercent()}";
+				CumHediff.FillPercent = cumHediff.Severity;
+				CumHediff.Tooltip = new TipSignal(() => cumHediff.GetTooltip(Pawn, false), cumHediff.Label.GetHashCode());
+			}
+			else
+			{
+				CumHediff.Label = "";
+				CumHediff.FillPercent = 0f;
+				CumHediff.Tooltip = default;
 			}
 
 			float vulnerability = GetStatValue(xxx.vulnerability_stat);
 			string vulnerabilityLabel = xxx.vulnerability_stat.LabelCap + ": " + vulnerability.ToStringPercent();
 			TipSignal vulnerabilityTip = GetStatTooltip(xxx.vulnerability_stat, vulnerability);
 
-			Raped = new BarInfo(
-				label: String.Format(Keyed.RS_RapedSomeone + ": {0}", _history.RapedCount),
-				fillPercent: _history.RapedCount / 50,
-				fillTexture: HistoryUtility.Khorne,
-				tooltip: vulnerabilityTip,
-				labelRight: vulnerabilityLabel);
+			Raped.Label = string.Format(Keyed.RS_RapedSomeone + ": {0}", _history.RapedCount);
+			Raped.FillPercent = _history.RapedCount / 50f;
+			Raped.Tooltip = vulnerabilityTip;
+			Raped.LabelRight = vulnerabilityLabel;
 
-			BeenRaped = new BarInfo(
-				label: String.Format(Keyed.RS_BeenRaped + ": {0}", _history.BeenRapedCount),
-				fillPercent: _history.BeenRapedCount / 50,
-				fillTexture: Texture2D.grayTexture,
-				tooltip: vulnerabilityTip,
-				labelRight: vulnerabilityLabel);
+			BeenRaped.Label = string.Format(Keyed.RS_BeenRaped + ": {0}", _history.BeenRapedCount);
+			BeenRaped.FillPercent = _history.BeenRapedCount / 50f;
+			BeenRaped.Tooltip = vulnerabilityTip;
+			BeenRaped.LabelRight = vulnerabilityLabel;
 
 			float sexSatisfaction = GetStatValue(xxx.sex_satisfaction);
-			SexSatisfaction = new BarInfo(
-				label: xxx.sex_satisfaction.LabelCap + ": " + sexSatisfaction.ToStringPercent(),
-				fillPercent: sexSatisfaction / 2,
-				fillTexture: HistoryUtility.Satisfaction,
-				tooltip: GetStatTooltip(xxx.sex_satisfaction, sexSatisfaction));
+			SexSatisfaction.Label = xxx.sex_satisfaction.LabelCap + ": " + sexSatisfaction.ToStringPercent();
+			SexSatisfaction.FillPercent = sexSatisfaction / 2;
+			SexSatisfaction.Tooltip = GetStatTooltip(xxx.sex_satisfaction, sexSatisfaction);
 
 			SkillRecord skill = Pawn.skills?.GetSkill(RsDefOf.Skill.Sex);
 			float sexSkillLevel = skill?.Level ?? 0f;
 			float sexStat = Pawn.GetSexStat();
-			SexSkill = new BarInfo(
-				label: $"{Keyed.RS_SexSkill}: {sexSkillLevel}, {skill?.xpSinceLastLevel / skill?.XpRequiredForLevelUp:P2}",
-				fillPercent: sexSkillLevel / 20,
-				fillTexture: HistoryUtility.Tzeentch,
-				tooltip: GetStatTooltip(RsDefOf.Stat.SexAbility, sexStat),
-				labelRight: RsDefOf.Stat.SexAbility.LabelCap + ": " + sexStat.ToStringPercent(),
-				border: HistoryUtility.GetPassionBG(skill?.passion));
+			SexSkill.Label = $"{Keyed.RS_SexSkill}: {sexSkillLevel}, {skill?.xpSinceLastLevel / skill?.XpRequiredForLevelUp:P2}";
+			SexSkill.FillPercent = sexSkillLevel / 20;
+			SexSkill.Tooltip = GetStatTooltip(RsDefOf.Stat.SexAbility, sexStat);
+			SexSkill.LabelRight = RsDefOf.Stat.SexAbility.LabelCap + ": " + sexStat.ToStringPercent();
+			SexSkill.Border = HistoryUtility.GetPassionBG(skill?.passion);
 		}
 
 		private void UpdateQuirks()

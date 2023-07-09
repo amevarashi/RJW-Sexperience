@@ -8,7 +8,7 @@ namespace RJWSexperience.SexHistory.UI
 		public readonly string preferRaceLabel;
 		public readonly string preferRaceTypeLabel;
 		public readonly string sexCount;
-		public readonly BarInfo? barInfo;
+		public readonly BarInfo barInfo;
 		public readonly Func<Vector2, Texture> portraitGetter;
 
 		public PreferedRaceCard(SexHistoryComp sexHistory)

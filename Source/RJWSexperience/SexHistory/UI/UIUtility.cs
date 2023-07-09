@@ -52,22 +52,22 @@ namespace RJWSexperience.SexHistory.UI
 
 		public static void FillableBarLabeled(Rect rect, BarInfo context)
 		{
-			Widgets.FillableBar(rect, context.fillPercent, context.fillTexture, null, true);
+			Widgets.FillableBar(rect, context.FillPercent, context.FillTexture, null, true);
 			Rect labelRect = rect.ContractedBy(4f, 0f);
 			Text.Anchor = TextAnchor.MiddleLeft;
-			Widgets.Label(labelRect, context.label);
-			if (context.labelRight != "")
+			Widgets.Label(labelRect, context.Label);
+			if (context.LabelRight != "")
 			{
 				Text.Anchor = TextAnchor.MiddleRight;
-				Widgets.Label(labelRect, context.labelRight);
+				Widgets.Label(labelRect, context.LabelRight);
 			}
 			GenUI.ResetLabelAlign();
 			Widgets.DrawHighlightIfMouseover(rect);
-			TooltipHandler.TipRegion(rect, context.tooltip);
+			TooltipHandler.TipRegion(rect, context.Tooltip);
 
-			if (context.border != null)
+			if (context.Border != null)
 			{
-				rect.DrawBorder(context.border, 2f);
+				rect.DrawBorder(context.Border, 2f);
 			}
 		}
 

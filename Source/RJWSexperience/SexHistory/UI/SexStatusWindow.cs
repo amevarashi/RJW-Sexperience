@@ -240,7 +240,7 @@ namespace RJWSexperience.SexHistory.UI
 
 			if (preferedRaceCard.barInfo != null)
 			{
-				UIUtility.FillableBarLabeled(infoRect3, (BarInfo)preferedRaceCard.barInfo);
+				UIUtility.FillableBarLabeled(infoRect3, preferedRaceCard.barInfo);
 			}
 		}
 
@@ -304,7 +304,7 @@ namespace RJWSexperience.SexHistory.UI
 			listmain.FillableBarLabeled(_context.BestSextype);
 			listmain.FillableBarLabeled(_context.RecentSextype);
 
-			if (_context.Incest.fillPercent < _context.Necro.fillPercent)
+			if (_context.Incest.FillPercent < _context.Necro.FillPercent)
 			{
 				listmain.FillableBarLabeled(_context.Necro);
 			}
@@ -315,16 +315,16 @@ namespace RJWSexperience.SexHistory.UI
 
 			listmain.FillableBarLabeled(_context.ConsumedCum);
 
-			if (_context.CumHediff != null)
+			if (_context.CumHediff.Label != "")
 			{
-				listmain.FillableBarLabeled((BarInfo)_context.CumHediff);
+				listmain.FillableBarLabeled(_context.CumHediff);
 			}
 			else
 			{
 				listmain.Gap(FONTHEIGHT + 1f);
 			}
 
-			if (_context.Raped.fillPercent < _context.BeenRaped.fillPercent)
+			if (_context.Raped.FillPercent < _context.BeenRaped.FillPercent)
 			{
 				listmain.FillableBarLabeled(_context.BeenRaped);
 			}
