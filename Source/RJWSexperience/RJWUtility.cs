@@ -3,6 +3,7 @@ using rjw;
 using rjw.Modules.Interactions.Enums;
 using rjw.Modules.Interactions.Helpers;
 using rjw.Modules.Interactions.Objects;
+using RJWSexperience.Logs;
 using System.Collections.Generic;
 using Verse;
 using Verse.AI;
@@ -11,6 +12,7 @@ namespace RJWSexperience
 {
 	public static class RJWUtility
 	{
+		private static readonly rjw.Modules.Shared.Logs.ILog s_log = LogManager.GetLogger<DebugLogProvider>("RJWUtility");
 		/// <summary>
 		/// For ideo patch
 		/// </summary>
@@ -155,20 +157,27 @@ namespace RJWSexperience
 		public static Building_CumBucket FindClosestBucket(this Pawn pawn)
 		{
 			List<Building> buckets = pawn.Map.listerBuildings.allBuildingsColonist.FindAll(x => x is Building_CumBucket bucket && bucket.StoredStackCount < RsDefOf.Thing.GatheredCum.stackLimit);
-			if (buckets.NullOrEmpty())
+			if (buckets.Count == 0)
+			{
+				s_log.Message("FindClosestBucket: No buckets on the map or buckets are full");
 				return null;
+			}
 
 			Dictionary<Building, float> targets = new Dictionary<Building, float>();
 			for (int i = 0; i < buckets.Count; i++)
 			{
-				if (pawn.CanReach(buckets[i], PathEndMode.ClosestTouch, Danger.None))
+				if (pawn.CanReach(buckets[i], PathEndMode.ClosestTouch, Danger.Some))
 				{
 					targets.Add(buckets[i], pawn.Position.DistanceTo(buckets[i].Position));
 				}
 			}
-			if (!targets.NullOrEmpty())
+			if (targets.Count > 0)
 			{
 				return (Building_CumBucket)targets.MinBy(x => x.Value).Key;
+			}
+			else
+			{
+				s_log.Message("FindClosestBucket: No reachable buckets");
 			}
 			return null;
 		}

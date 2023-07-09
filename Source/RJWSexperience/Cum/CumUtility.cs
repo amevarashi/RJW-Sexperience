@@ -145,14 +145,15 @@ namespace RJWSexperience.Cum
 			if (!sexFillsCumbuckets)
 				return;
 
-			IEnumerable<Building_CumBucket> buckets = props.pawn.GetAdjacentBuildings<Building_CumBucket>();
+			// Enumerable throws System.InvalidOperationException: Collection was modified; enumeration operation may not execute.
+			List<Building_CumBucket> buckets = props.pawn.GetAdjacentBuildings<Building_CumBucket>().ToList();
 
-			if (buckets?.EnumerableCount() > 0)
+			if (buckets?.Count > 0)
 			{
-				var initialCum = CumUtility.GetCumVolume(props.pawn);
+				var initialCum = GetCumVolume(props.pawn);
 				foreach (Building_CumBucket bucket in buckets)
 				{
-					bucket.AddCum(initialCum / buckets.EnumerableCount());
+					bucket.AddCum(initialCum / buckets.Count);
 				}
 			}
 		}
