@@ -429,6 +429,8 @@ namespace RJWSexperience.SexHistory
 				icon = HistoryUtility.HistoryIcon,
 				defaultIconColor = HistoryUtility.HistoryColor,
 				hotKey = RsDefOf.KeyBinding.OpenSexStatistics,
+				shrinkable = true,
+				Order = 5,
 				action = () => UI.SexStatusWindow.ToggleWindow(this)
 			};
 		}
