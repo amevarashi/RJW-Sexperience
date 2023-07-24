@@ -1,3 +1,6 @@
+### 1.4.1.2
+* Fixed IsVirgin check for pawns with children
+
 ### 1.4.1.1
 * Fixed exception when pawn uses a bucket
 * Marked Sex History button shrinkable and lowered its UI order
