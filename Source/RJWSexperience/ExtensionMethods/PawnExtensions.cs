@@ -54,8 +54,8 @@ namespace RJWSexperience
 		/// </summary>
 		public static bool IsVirgin(this Pawn pawn)
 		{
-			return pawn.records.GetValue(RsDefOf.Record.VaginalSexCount) == 0 ||
-				pawn.relations?.ChildrenCount > 0; // Male is a virgins unless he stick into vagina? Not sure it should work this way
+			return pawn.records.GetValue(RsDefOf.Record.VaginalSexCount) == 0 &&
+				(pawn.relations?.ChildrenCount ?? 0) < 1; // Male is a virgins unless he stick into vagina? Not sure it should work this way
 		}
 
 		/// <summary>
