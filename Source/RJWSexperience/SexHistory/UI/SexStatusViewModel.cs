@@ -48,15 +48,31 @@ namespace RJWSexperience.SexHistory.UI
 			{
 				AgeAndTitle = Pawn.ageTracker.AgeBiologicalYears + ", " + Pawn.def.label;
 			}
+
+			for (int i = 0; i < Sextype.Length; i++)
+			{
+				int sexIndex = Sextype[i];
+				SexTypes.Add(new BarInfo(HistoryUtility.SextypeColor[sexIndex]));
+			}
+
+			InfoCards.Add(new InfoCard(Pawn, Keyed.RS_Recent_Sex_Partner, Keyed.RS_Recent_Sex_Partner_ToolTip));
+			InfoCards.Add(new InfoCard(Pawn, Keyed.RS_First_Sex_Partner, Keyed.RS_First_Sex_Partner_ToolTip));
+			InfoCards.Add(new InfoCard(Pawn, Keyed.RS_Most_Sex_Partner, Keyed.RS_Most_Sex_Partner_ToolTip));
+			InfoCards.Add(new InfoCard(Pawn, Keyed.RS_Best_Sex_Partner, Keyed.RS_Best_Sex_Partner_ToolTip));
+
+			SelectedPartnerCard = new InfoCard(Pawn, Keyed.RS_Selected_Partner, Keyed.RS_Selected_Partner);
+			PreferedRaceCard = new PreferedRaceCard(_history);
 		}
 
 		public Pawn Pawn => _history.ParentPawn;
 		public string Name { get; }
 		public string AgeAndTitle { get; }
 		public List<InfoCard> InfoCards { get; } = new List<InfoCard>();
-		public InfoCard SelectedPartnerCard { get; private set; }
-		public PreferedRaceCard PreferedRaceCard { get; private set; }
+		public InfoCard SelectedPartnerCard { get; }
+		public PreferedRaceCard PreferedRaceCard { get; }
 		public List<BarInfo> SexTypes { get; } = new List<BarInfo>();
+		public BarInfo PartnerCount { get; } = new BarInfo(HistoryUtility.Partners);
+		public BarInfo VirginsTaken { get; } = new BarInfo(HistoryUtility.Partners);
 		public BarInfo TotalSex { get; } = new BarInfo(HistoryUtility.TotalSex);
 		public BarInfo Lust { get; } = new BarInfo(HistoryUtility.Slaanesh);
 		public BarInfo BestSextype { get; } = new BarInfo();
@@ -87,7 +103,7 @@ namespace RJWSexperience.SexHistory.UI
 			UpdateBars();
 			UpdateQuirks();
 			UpdateVirginAndSexuality();
-			PreferedRaceCard = new PreferedRaceCard(_history);
+			PreferedRaceCard.Update();
 
 			int tickRateMultiplier = (int)Find.TickManager.TickRateMultiplier;
 			if (tickRateMultiplier == 0) // Paused
@@ -101,35 +117,21 @@ namespace RJWSexperience.SexHistory.UI
 
 		private void UpdateInfoCards()
 		{
-			InfoCards.Clear();
+			InfoCard recentSexPartner = InfoCards[0];
+			recentSexPartner.LastSexTime = UIUtility.GetSexDays(_history.RecentSexTickAbs);
+			recentSexPartner.UpdatePartnerRecord(_history.RecentPartnerRecord);
 
-			InfoCards.Add(new InfoCard(
-				pawn: Pawn,
-				partnerRecord: _history.RecentPartnerRecord,
-				label: Keyed.RS_Recent_Sex_Partner,
-				tooltipLabel: Keyed.RS_Recent_Sex_Partner_ToolTip,
-				lastSexTimeTicks: _history.RecentSexTickAbs));
+			InfoCard firstSexPartner = InfoCards[1];
+			firstSexPartner.LastSexTime = UIUtility.GetSexDays(_history.FirstSexTickAbs);
+			firstSexPartner.UpdatePartnerRecord(_history.FirstPartnerRecord);
 
-			InfoCards.Add(new InfoCard(
-				pawn: Pawn,
-				partnerRecord: _history.FirstPartnerRecord,
-				label: Keyed.RS_First_Sex_Partner,
-				tooltipLabel: Keyed.RS_First_Sex_Partner_ToolTip,
-				lastSexTimeTicks: _history.FirstSexTickAbs));
+			InfoCard mostSexPartner = InfoCards[2];
+			mostSexPartner.LastSexTime = UIUtility.GetSexDays(_history.MostSexTickAbs);
+			mostSexPartner.UpdatePartnerRecord(_history.MostPartnerRecord);
 
-			InfoCards.Add(new InfoCard(
-				pawn: Pawn,
-				partnerRecord: _history.MostPartnerRecord,
-				label: Keyed.RS_Most_Sex_Partner,
-				tooltipLabel: Keyed.RS_Most_Sex_Partner_ToolTip,
-				lastSexTimeTicks: _history.MostSexTickAbs));
-
-			InfoCards.Add(new InfoCard(
-				pawn: Pawn,
-				partnerRecord: _history.BestSexPartnerRecord,
-				label: Keyed.RS_Best_Sex_Partner,
-				tooltipLabel: Keyed.RS_Best_Sex_Partner_ToolTip,
-				lastSexTimeTicks: _history.BestSexTickAbs));
+			InfoCard bestSexPartner = InfoCards[3];
+			bestSexPartner.LastSexTime = UIUtility.GetSexDays(_history.BestSexTickAbs);
+			bestSexPartner.UpdatePartnerRecord(_history.BestSexPartnerRecord);
 
 			if (SelectedPartner != null)
 			{
@@ -145,34 +147,28 @@ namespace RJWSexperience.SexHistory.UI
 				maxSatisfaction = UIUtility.BASESAT;
 			}
 
-			SexTypes.Clear();
-
 			for (int i = 0; i < Sextype.Length; i++)
 			{
 				int sexIndex = Sextype[i];
 				float AverageSatisfaction = _history.GetAVGSat(sexIndex);
 				float relativeSat = AverageSatisfaction / maxSatisfaction;
 				float satisfactionRelativeToBase = AverageSatisfaction / UIUtility.BASESAT;
-				SexTypes.Add(new BarInfo(
-					label: Keyed.RS_SexInfo(Keyed.Sextype[sexIndex], _history.GetSexCount(sexIndex)),
-					fillPercent: relativeSat,
-					fillTexture: HistoryUtility.SextypeColor[sexIndex],
-					tooltip: Keyed.RS_LastSex + ": " + UIUtility.GetSexDays(_history.GetSextypeRecentTickAbs(sexIndex), true),
-					labelRight: Keyed.RS_SatAVG(satisfactionRelativeToBase)));
+
+				BarInfo sexTypeBar = SexTypes[i];
+				sexTypeBar.Label = Keyed.RS_SexInfo(Keyed.Sextype[sexIndex], _history.GetSexCount(sexIndex));
+				sexTypeBar.FillPercent = relativeSat;
+				sexTypeBar.Tooltip = Keyed.RS_LastSex + ": " + UIUtility.GetSexDays(_history.GetSextypeRecentTickAbs(sexIndex), true);
+				sexTypeBar.LabelRight = Keyed.RS_SatAVG(satisfactionRelativeToBase);
 			}
 
-			SexTypes.Add(new BarInfo(
-				label: string.Format(Keyed.RS_Sex_Partners + ": {0} ({1})", _history.PartnerCount, Pawn.records.GetValue(RsDefOf.Record.SexPartnerCount)),
-				fillPercent: _history.PartnerCount / 50,
-				fillTexture: HistoryUtility.Partners));
+			PartnerCount.Label = string.Format(Keyed.RS_Sex_Partners + ": {0} ({1})", _history.PartnerCount, Pawn.records.GetValue(RsDefOf.Record.SexPartnerCount));
+			PartnerCount.FillPercent = _history.PartnerCount / 50f;
 
-			SexTypes.Add(new BarInfo(
-				label: string.Format(Keyed.RS_VirginsTaken + ": {0:0}", _history.VirginsTaken),
-				fillPercent: _history.VirginsTaken / 100,
-				fillTexture: HistoryUtility.Partners));
+			VirginsTaken.Label = string.Format(Keyed.RS_VirginsTaken + ": {0:0}", _history.VirginsTaken);
+			VirginsTaken.FillPercent = _history.VirginsTaken / 100f;
 
 			TotalSex.Label = string.Format(Keyed.RS_TotalSexHad + ": {0:0} ({1:0})", _history.TotalSexHad, Pawn.records.GetValue(xxx.CountOfSex));
-			TotalSex.FillPercent = _history.TotalSexHad / 100;
+			TotalSex.FillPercent = _history.TotalSexHad / 100f;
 			TotalSex.LabelRight = Keyed.RS_SatAVG(_history.AVGSat);
 
 			float lust = Pawn.records.GetValue(RsDefOf.Record.Lust);
@@ -308,13 +304,13 @@ namespace RJWSexperience.SexHistory.UI
 					Partners = partners;
 					break;
 				case PartnerOrderMode.Recent:
-					Partners = partners.OrderBy(x => x.partnerRecord.RecentSexTickAbs);
+					Partners = partners.OrderBy(x => x.PartnerRecord.RecentSexTickAbs);
 					break;
 				case PartnerOrderMode.Most:
-					Partners = partners.OrderBy(x => x.partnerRecord.TotalSexCount);
+					Partners = partners.OrderBy(x => x.PartnerRecord.TotalSexCount);
 					break;
 				case PartnerOrderMode.Name:
-					Partners = partners.OrderBy(x => x.partnerRecord.Label);
+					Partners = partners.OrderBy(x => x.PartnerRecord.Label);
 					break;
 			}
 		}
@@ -327,18 +323,16 @@ namespace RJWSexperience.SexHistory.UI
 
 		private void UpdateSelectedPartnerCard()
 		{
+			SelectedPartnerCard.UpdatePartnerRecord(SelectedPartner);
+
 			if (SelectedPartner == null)
 			{
-				SelectedPartnerCard = default;
-				return;
+				SelectedPartnerCard.LastSexTime = null;
 			}
-
-			SelectedPartnerCard = new InfoCard(
-				pawn: Pawn,
-				partnerRecord: SelectedPartner,
-				label: Keyed.RS_Selected_Partner,
-				tooltipLabel: Keyed.RS_Selected_Partner,
-				lastSexTimeTicks: SelectedPartner.RecentSexTickAbs);
+			else
+			{
+				SelectedPartnerCard.LastSexTime = UIUtility.GetSexDays(SelectedPartner.RecentSexTickAbs);
+			}
 		}
 
 		private float GetStatValue(StatDef statDef) => Pawn.Dead ? 0f : Pawn.GetStatValue(statDef);

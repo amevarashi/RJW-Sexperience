@@ -1,86 +1,93 @@
 ﻿using RimWorld;
 using rjw;
-using System;
 using UnityEngine;
 using Verse;
 
 namespace RJWSexperience.SexHistory.UI
 {
-	public readonly struct InfoCard
+	public class InfoCard
 	{
-		public readonly SexPartnerHistoryRecord partnerRecord;
-		public readonly string label;
-		public readonly string lastSexTime;
-		public readonly string name;
-		public readonly string sexCount;
-		public readonly string orgasms;
-		public readonly string relations;
-		public readonly BarInfo bestSextype;
-		public readonly PartnerPortraitInfo portraitInfo;
-		public readonly TipSignal tooltip;
+		private readonly Pawn _pawn;
+		private readonly string _tooltipLabel;
 
-		public InfoCard(Pawn pawn, SexPartnerHistoryRecord partnerRecord, string label, string tooltipLabel, int lastSexTimeTicks)
+		public string Label { get; }
+		public string LastSexTime { get; set; }
+		public string Name { get; private set; }
+		public string SexCount { get; private set; }
+		public string Orgasms { get; private set; }
+		public string Relations { get; private set; }
+		public BarInfo BestSextype { get; }
+		public SexPartnerHistoryRecord PartnerRecord { get; private set; }
+		public PartnerPortraitInfo PortraitInfo { get; }
+		public TipSignal Tooltip { get; private set; }
+
+		public InfoCard(Pawn pawn, string label, string tooltipLabel)
 		{
-			this.partnerRecord = partnerRecord;
-			this.label = label;
+			Label = label;
+			_pawn = pawn;
+			_tooltipLabel = tooltipLabel;
+			BestSextype = new BarInfo();
+			PortraitInfo = new PartnerPortraitInfo(_pawn);
+		}
 
-			lastSexTime = UIUtility.GetSexDays(lastSexTimeTicks);
-			portraitInfo = new PartnerPortraitInfo(pawn, partnerRecord);
+		public void UpdatePartnerRecord(SexPartnerHistoryRecord partnerRecord)
+		{
+			PartnerRecord = partnerRecord;
+			PortraitInfo.UpdatePartnerRecord(partnerRecord);
 
-			if (partnerRecord != null)
+			if (partnerRecord == null)
 			{
-				name = partnerRecord.Partner?.Name?.ToStringFull ?? partnerRecord.Label.CapitalizeFirst();
-				sexCount = Keyed.RS_Sex_Count + partnerRecord.TotalSexCount;
+				Name = Keyed.Unknown;
+				SexCount = Keyed.RS_Sex_Count + "?";
+				Orgasms = Keyed.RS_Orgasms + "?";
+				Relations = string.Empty;
+				Tooltip = default;
 
-				if (partnerRecord.Raped > 0)
-				{
-					sexCount += " " + Keyed.RS_Raped + partnerRecord.Raped;
-				}
-				if (partnerRecord.RapedMe > 0)
-				{
-					sexCount += " " + Keyed.RS_RapedMe + partnerRecord.RapedMe;
-				}
-
-				orgasms = Keyed.RS_Orgasms + partnerRecord.OrgasmCount;
-				relations = pawn.GetRelationsString(partnerRecord.Partner);
-				tooltip = new TipSignal(() =>
-				{
-					string completeTip = tooltipLabel;
-
-						if (partnerRecord.Incest)
-						{
-							completeTip += " - " + Keyed.Incest;
-						}
-						if (partnerRecord.IamFirst)
-						{
-							completeTip += "\n" + Keyed.RS_LostVirgin(partnerRecord.Label, pawn.LabelShort);
-						}
-						if (partnerRecord.BestSexTickAbs != 0)
-						{
-							completeTip += "\n" + Keyed.RS_HadBestSexDaysAgo(partnerRecord.BestSexElapsedTicks.ToStringTicksToDays() + " " + Keyed.RS_Ago);
-						}
-					return completeTip;
-				}, tooltipLabel.GetHashCode());
-
-				float relativeBestSatisfaction = partnerRecord.BestSatisfaction / UIUtility.BASESAT;
-				bestSextype = new BarInfo(
-					label: Keyed.RS_Best_Sextype + ": " + Keyed.Sextype[(int)partnerRecord.BestSextype],
-					fillPercent: relativeBestSatisfaction / 2,
-					fillTexture: HistoryUtility.SextypeColor[(int)partnerRecord.BestSextype],
-					labelRight: relativeBestSatisfaction.ToStringPercent());
+				BestSextype.Label = Keyed.RS_Best_Sextype + ": " + Keyed.Sextype[(int)xxx.rjwSextype.None];
+				BestSextype.FillPercent = 0f;
+				BestSextype.FillTexture = Texture2D.linearGrayTexture;
+				BestSextype.LabelRight = "";
+				return;
 			}
-			else
+
+			Name = partnerRecord.Partner?.Name?.ToStringFull ?? partnerRecord.Label.CapitalizeFirst();
+			SexCount = Keyed.RS_Sex_Count + partnerRecord.TotalSexCount;
+
+			if (partnerRecord.Raped > 0)
 			{
-				name = Keyed.Unknown;
-				sexCount = Keyed.RS_Sex_Count + "?";
-				orgasms = Keyed.RS_Orgasms + "?";
-				relations = string.Empty;
-				tooltip = default;
-				bestSextype = new BarInfo(
-					label: String.Format(Keyed.RS_Best_Sextype + ": {0}", Keyed.Sextype[(int)xxx.rjwSextype.None]),
-					fillPercent: 0f,
-					fillTexture: Texture2D.linearGrayTexture);
+				SexCount += " " + Keyed.RS_Raped + partnerRecord.Raped;
 			}
+			if (partnerRecord.RapedMe > 0)
+			{
+				SexCount += " " + Keyed.RS_RapedMe + partnerRecord.RapedMe;
+			}
+
+			Orgasms = Keyed.RS_Orgasms + partnerRecord.OrgasmCount;
+			Relations = _pawn.GetRelationsString(partnerRecord.Partner);
+			Tooltip = new TipSignal(() =>
+			{
+				string completeTip = _tooltipLabel;
+
+				if (partnerRecord.Incest)
+				{
+					completeTip += " - " + Keyed.Incest;
+				}
+				if (partnerRecord.IamFirst)
+				{
+					completeTip += "\n" + Keyed.RS_LostVirgin(partnerRecord.Label, _pawn.LabelShort);
+				}
+				if (partnerRecord.BestSexTickAbs != 0)
+				{
+					completeTip += "\n" + Keyed.RS_HadBestSexDaysAgo(partnerRecord.BestSexElapsedTicks.ToStringTicksToDays() + " " + Keyed.RS_Ago);
+				}
+				return completeTip;
+			}, _tooltipLabel.GetHashCode());
+
+			float relativeBestSatisfaction = partnerRecord.BestSatisfaction / UIUtility.BASESAT;
+			BestSextype.Label = Keyed.RS_Best_Sextype + ": " + Keyed.Sextype[(int)partnerRecord.BestSextype];
+			BestSextype.FillPercent = relativeBestSatisfaction / 2;
+			BestSextype.FillTexture = HistoryUtility.SextypeColor[(int)partnerRecord.BestSextype];
+			BestSextype.LabelRight = relativeBestSatisfaction.ToStringPercent();
 		}
 	}
 }

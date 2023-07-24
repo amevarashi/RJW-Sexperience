@@ -47,25 +47,5 @@ namespace RJWSexperience.SexHistory.UI
 			_labelRight = "";
 			Border = null;
 		}
-
-		public BarInfo(string label, float fillPercent, Texture2D fillTexture, TipSignal tooltip, string labelRight = "", Texture2D border = null)
-		{
-			_label = label.CapitalizeFirst();
-			_fillPercent = Mathf.Clamp01(fillPercent);
-			FillTexture = fillTexture;
-			Tooltip = tooltip;
-			_labelRight = labelRight.CapitalizeFirst();
-			Border = border;
-		}
-
-		public BarInfo(string label, float fillPercent, Texture2D fillTexture, string labelRight = "")
-		{
-			_label = label.CapitalizeFirst();
-			_fillPercent = Mathf.Clamp01(fillPercent);
-			FillTexture = fillTexture;
-			Tooltip = default;
-			_labelRight = labelRight.CapitalizeFirst();
-			Border = null;
-		}
 	}
 }

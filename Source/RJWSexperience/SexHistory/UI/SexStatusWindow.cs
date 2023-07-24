@@ -161,13 +161,13 @@ namespace RJWSexperience.SexHistory.UI
 			Rect sexinfoRect2 = new Rect(rect.x + portraitRect.width, rect.y + (FONTHEIGHT * 2), rect.width - portraitRect.width, FONTHEIGHT);
 			Rect bestsexRect = new Rect(rect.x + 2f, rect.y + (FONTHEIGHT * 3), rect.width - 4f, FONTHEIGHT - 2f);
 
-			if (context.partnerRecord != null)
+			if (context.PartnerRecord != null)
 			{
-				DrawPartnerPortrait(portraitRect, context.portraitInfo);
+				DrawPartnerPortrait(portraitRect, context.PortraitInfo);
 				Widgets.DrawHighlightIfMouseover(portraitRect);
 				if (Widgets.ButtonInvisible(portraitRect))
 				{
-					SexHistoryComp partnerHistory = context.partnerRecord.Partner?.TryGetComp<SexHistoryComp>();
+					SexHistoryComp partnerHistory = context.PartnerRecord.Partner?.TryGetComp<SexHistoryComp>();
 					if (partnerHistory != null)
 					{
 						ChangePawn(partnerHistory);
@@ -179,24 +179,24 @@ namespace RJWSexperience.SexHistory.UI
 					}
 				}
 
-				GUI.Label(sexinfoRect2, context.relations + " ", fontStyleRight);
-				TooltipHandler.TipRegion(rect, context.tooltip);
+				GUI.Label(sexinfoRect2, context.Relations + " ", fontStyleRight);
+				TooltipHandler.TipRegion(rect, context.Tooltip);
 			}
 			else
 			{
 				Widgets.DrawTextureFitted(portraitRect, HistoryUtility.UnknownPawn, 1.0f);
 			}
-			Widgets.Label(nameRect, context.name);
-			Widgets.Label(sexinfoRect, context.sexCount);
-			Widgets.Label(sexinfoRect2, context.orgasms);
-			UIUtility.FillableBarLabeled(bestsexRect, context.bestSextype);
+			Widgets.Label(nameRect, context.Name);
+			Widgets.Label(sexinfoRect, context.SexCount);
+			Widgets.Label(sexinfoRect2, context.Orgasms);
+			UIUtility.FillableBarLabeled(bestsexRect, context.BestSextype);
 		}
 
 		protected void DrawSexInfoCard(Rect rect, InfoCard context)
 		{
 			rect.SplitHorizontally(FONTHEIGHT, out Rect labelRect, out Rect infoRect);
-			GUI.Label(labelRect, context.label, fontStyleLeft);
-			GUI.Label(labelRect, context.lastSexTime, fontStyleRight);
+			GUI.Label(labelRect, context.Label, fontStyleLeft);
+			GUI.Label(labelRect, context.LastSexTime, fontStyleRight);
 			DrawInfoWithPortrait(infoRect, context);
 		}
 
@@ -225,22 +225,22 @@ namespace RJWSexperience.SexHistory.UI
 			Rect infoRect2 = new Rect(infoRect.x, infoRect.y + FONTHEIGHT, infoRect.width, FONTHEIGHT);
 			Rect infoRect3 = new Rect(infoRect.x, infoRect.y + (FONTHEIGHT * 2), infoRect.width - 2f, FONTHEIGHT);
 
-			Widgets.DrawTextureFitted(portraitRect, preferedRaceCard.portraitGetter(portraitRect.size), 1.0f);
-			GUI.Label(infoRect1, preferedRaceCard.preferRaceLabel, fontStyleLeft);
+			Widgets.DrawTextureFitted(portraitRect, preferedRaceCard.PortraitGetter(portraitRect.size), 1.0f);
+			GUI.Label(infoRect1, preferedRaceCard.PreferRaceLabel, fontStyleLeft);
 
-			if (preferedRaceCard.preferRaceTypeLabel != null)
+			if (preferedRaceCard.PreferRaceTypeLabel != null)
 			{
-				GUI.Label(infoRect1, preferedRaceCard.preferRaceTypeLabel + " ", fontStyleRight);
+				GUI.Label(infoRect1, preferedRaceCard.PreferRaceTypeLabel + " ", fontStyleRight);
 			}
 
-			if (preferedRaceCard.sexCount != null)
+			if (preferedRaceCard.SexCount != null)
 			{
-				GUI.Label(infoRect2, preferedRaceCard.sexCount, fontStyleLeft);
+				GUI.Label(infoRect2, preferedRaceCard.SexCount, fontStyleLeft);
 			}
 
-			if (preferedRaceCard.barInfo != null)
+			if (preferedRaceCard.BarInfo.Label != null)
 			{
-				UIUtility.FillableBarLabeled(infoRect3, preferedRaceCard.barInfo);
+				UIUtility.FillableBarLabeled(infoRect3, preferedRaceCard.BarInfo);
 			}
 		}
 
@@ -390,6 +390,9 @@ namespace RJWSexperience.SexHistory.UI
 				listmain.FillableBarLabeled(_context.SexTypes[i]);
 			}
 
+			listmain.FillableBarLabeled(_context.PartnerCount);
+			listmain.FillableBarLabeled(_context.VirginsTaken);
+
 			//Partner list
 			Rect listLabelRect = listmain.GetRect(FONTHEIGHT);
 			Rect sortbtnRect = new Rect(listLabelRect.xMax - 80f, listLabelRect.y, 80f, listLabelRect.height);
@@ -429,13 +432,13 @@ namespace RJWSexperience.SexHistory.UI
 
 				DrawPartnerPortrait(pawnRect, partner);
 				Widgets.DrawHighlightIfMouseover(pawnRect);
-				GUI.Label(labelRect, partner.partnerRecord.Label, fontStyleCenter);
+				GUI.Label(labelRect, partner.PartnerRecord.Label, fontStyleCenter);
 				if (Widgets.ButtonInvisible(pawnRect))
 				{
-					_context.SetSelectedPartner(partner.partnerRecord);
+					_context.SetSelectedPartner(partner.PartnerRecord);
 					SoundDefOf.Click.PlayOneShotOnCamera();
 				}
-				if (partner.partnerRecord == _context.SelectedPartner)
+				if (partner.PartnerRecord == _context.SelectedPartner)
 				{
 					Widgets.DrawHighlightSelected(pawnRect);
 				}
@@ -447,22 +450,22 @@ namespace RJWSexperience.SexHistory.UI
 		protected void DrawPartnerPortrait(Rect rect, PartnerPortraitInfo context)
 		{
 			Rect iconRect = new Rect(rect.x + (rect.width * 3 / 4), rect.y, rect.width / 4, rect.height / 4);
-			Texture img = context.portraitGetter(rect.size);
+			Texture img = context.PortraitGetter(rect.size);
 
-			if (context.partnerRecord.IamFirst)
+			if (context.PartnerRecord.IamFirst)
 			{
 				GUI.color = HistoryUtility.HistoryColor;
 				Widgets.DrawTextureFitted(rect, HistoryUtility.FirstOverlay, 1.0f);
 				GUI.color = Color.white;
 			}
 
-			if (context.partnerRecord.Incest)
+			if (context.PartnerRecord.Incest)
 			{
 				Widgets.DrawTextureFitted(iconRect, HistoryUtility.Incest, 1.0f);
 				iconRect.x -= iconRect.width;
 			}
 			Widgets.DrawTextureFitted(rect, img, 1.0f);
-			if (context.lover)
+			if (context.Lover)
 			{
 				Widgets.DrawTextureFitted(iconRect, HistoryUtility.Heart, 1.0f);
 			}

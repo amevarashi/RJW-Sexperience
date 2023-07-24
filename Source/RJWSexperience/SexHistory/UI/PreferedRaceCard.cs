@@ -3,53 +3,58 @@ using UnityEngine;
 
 namespace RJWSexperience.SexHistory.UI
 {
-	public readonly struct PreferedRaceCard
+	public class PreferedRaceCard
 	{
-		public readonly string preferRaceLabel;
-		public readonly string preferRaceTypeLabel;
-		public readonly string sexCount;
-		public readonly BarInfo barInfo;
-		public readonly Func<Vector2, Texture> portraitGetter;
+		private readonly SexHistoryComp _sexHistory;
+
+		public string PreferRaceLabel { get; private set; }
+		public string PreferRaceTypeLabel { get; private set; }
+		public string SexCount { get; private set; }
+		public BarInfo BarInfo { get; } = new BarInfo(Texture2D.linearGrayTexture);
+		public Func<Vector2, Texture> PortraitGetter { get; private set; }
 
 		public PreferedRaceCard(SexHistoryComp sexHistory)
 		{
-			if (sexHistory.PreferRace == null)
+			_sexHistory = sexHistory;
+		}
+
+		public void Update()
+		{
+			if (_sexHistory.PreferRace == null)
 			{
-				preferRaceLabel = Keyed.None;
-				preferRaceTypeLabel = null;
-				sexCount = null;
-				barInfo = null;
-				portraitGetter = (_) => HistoryUtility.UnknownPawn;
+				PreferRaceLabel = Keyed.None;
+				PreferRaceTypeLabel = null;
+				SexCount = null;
+				BarInfo.Label = null;
+				BarInfo.FillPercent = 0f;
+				PortraitGetter = (_) => HistoryUtility.UnknownPawn;
 				return;
 			}
 
-			preferRaceLabel = sexHistory.PreferRace.LabelCap;
-			sexCount = Keyed.RS_Sex_Count + sexHistory.PreferRaceSexCount;
-			portraitGetter = (size) => UIUtility.GetRaceIcon(sexHistory.PreferRacePawn, size);
+			PreferRaceLabel = _sexHistory.PreferRace.LabelCap;
+			SexCount = Keyed.RS_Sex_Count + _sexHistory.PreferRaceSexCount;
+			PortraitGetter = (size) => UIUtility.GetRaceIcon(_sexHistory.PreferRacePawn, size);
 
-			if (sexHistory.PreferRace != sexHistory.ParentPawn.def)
+			if (_sexHistory.PreferRace != _sexHistory.ParentPawn.def)
 			{
-				if (sexHistory.PreferRace.race.Animal != sexHistory.ParentPawn.def.race.Animal)
+				if (_sexHistory.PreferRace.race.Animal != _sexHistory.ParentPawn.def.race.Animal)
 				{
-					preferRaceTypeLabel = Keyed.RS_Bestiality;
-					barInfo = new BarInfo(
-						label: Keyed.RS_SexInfo(Keyed.RS_Bestiality, sexHistory.BestialityCount),
-						fillPercent: sexHistory.BestialityCount / 100f,
-						fillTexture: Texture2D.linearGrayTexture);
+					PreferRaceTypeLabel = Keyed.RS_Bestiality;
+					BarInfo.Label = Keyed.RS_SexInfo(Keyed.RS_Bestiality, _sexHistory.BestialityCount);
+					BarInfo.FillPercent = _sexHistory.BestialityCount / 100f;
 				}
 				else
 				{
-					preferRaceTypeLabel = Keyed.RS_Interspecies;
-					barInfo = new BarInfo(
-						label: Keyed.RS_SexInfo(Keyed.RS_Interspecies, sexHistory.InterspeciesCount),
-						fillPercent: sexHistory.InterspeciesCount / 100f,
-						fillTexture: Texture2D.linearGrayTexture);
+					PreferRaceTypeLabel = Keyed.RS_Interspecies;
+					BarInfo.Label = Keyed.RS_SexInfo(Keyed.RS_Interspecies, _sexHistory.InterspeciesCount);
+					BarInfo.FillPercent = _sexHistory.InterspeciesCount / 100f;
 				}
 			}
 			else
 			{
-				preferRaceTypeLabel = null;
-				barInfo = null;
+				PreferRaceTypeLabel = null;
+				BarInfo.Label = null;
+				BarInfo.FillPercent = 0f;
 			}
 		}
 	}
