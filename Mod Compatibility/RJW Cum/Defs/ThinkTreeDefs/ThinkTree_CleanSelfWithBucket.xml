@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Defs>
+    <ThinkTreeDef>
+        <defName>CleanSelfWithBucket</defName>
+        <insertTag>Humanlike_PostDuty</insertTag>
+        <insertPriority>100</insertPriority>
+        <thinkRoot Class="ThinkNode_Priority">
+            <subNodes>
+                <li Class="ThinkNode_ConditionalPrisoner">
+                    <leaveJoinableLordIfIssuesJob>true</leaveJoinableLordIfIssuesJob>
+                    <subNodes>
+                        <li Class="RJWSexperienceCum.JobGiver_CleanSelfWithBucket"/>
+                    </subNodes>
+                </li>
+            </subNodes>
+        </thinkRoot>
+    </ThinkTreeDef>
+</Defs>
