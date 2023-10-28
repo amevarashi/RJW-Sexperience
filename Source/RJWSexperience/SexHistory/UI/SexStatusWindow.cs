@@ -17,9 +17,6 @@ namespace RJWSexperience.SexHistory.UI
 		public const float BASESAT = UIUtility.BASESAT;
 		public const float ICONSIZE = UIUtility.ICONSIZE;
 
-		private static GUIStyle fontStyleCenter;
-		private static GUIStyle fontStyleRight;
-		private static GUIStyle fontStyleLeft;
 		private static GUIStyle boxStyle;
 		private static GUIStyle buttonStyle;
 
@@ -32,17 +29,13 @@ namespace RJWSexperience.SexHistory.UI
 
 		private static void InitStyles()
 		{
-			if (fontStyleCenter != null)
+			if (boxStyle != null)
 			{
 				return;
 			}
 
-			GUIStyleState fontStyleState = new GUIStyleState() { textColor = Color.white };
 			GUIStyleState boxStyleState = GUI.skin.textArea.normal;
 			GUIStyleState buttonStyleState = GUI.skin.button.normal;
-			fontStyleCenter = new GUIStyle() { alignment = TextAnchor.MiddleCenter, normal = fontStyleState };
-			fontStyleRight = new GUIStyle() { alignment = TextAnchor.MiddleRight, normal = fontStyleState };
-			fontStyleLeft = new GUIStyle() { alignment = TextAnchor.MiddleLeft, normal = fontStyleState };
 			boxStyle = new GUIStyle(GUI.skin.textArea) { hover = boxStyleState, onHover = boxStyleState, onNormal = boxStyleState };
 			buttonStyle = new GUIStyle(GUI.skin.button) { hover = buttonStyleState, onHover = buttonStyleState, onNormal = buttonStyleState };
 		}
@@ -179,7 +172,9 @@ namespace RJWSexperience.SexHistory.UI
 					}
 				}
 
-				GUI.Label(sexinfoRect2, context.Relations + " ", fontStyleRight);
+				Text.Anchor = TextAnchor.MiddleRight;
+				Widgets.Label(sexinfoRect2, context.Relations + " ");
+				GenUI.ResetLabelAlign();
 				TooltipHandler.TipRegion(rect, context.Tooltip);
 			}
 			else
@@ -195,8 +190,11 @@ namespace RJWSexperience.SexHistory.UI
 		protected void DrawSexInfoCard(Rect rect, InfoCard context)
 		{
 			rect.SplitHorizontally(FONTHEIGHT, out Rect labelRect, out Rect infoRect);
-			GUI.Label(labelRect, context.Label, fontStyleLeft);
-			GUI.Label(labelRect, context.LastSexTime, fontStyleRight);
+			Text.Anchor = TextAnchor.MiddleLeft;
+			Widgets.Label(labelRect, context.Label);
+			Text.Anchor = TextAnchor.MiddleRight;
+			Widgets.Label(labelRect, context.LastSexTime);
+			GenUI.ResetLabelAlign();
 			DrawInfoWithPortrait(infoRect, context);
 		}
 
@@ -211,7 +209,9 @@ namespace RJWSexperience.SexHistory.UI
 			{
 				DrawSexInfoCard(listmain.GetRect(CARDHEIGHT), infoCard);
 			}
-			GUI.Label(listmain.GetRect(FONTHEIGHT), Keyed.RS_PreferRace, fontStyleLeft);
+			Text.Anchor = TextAnchor.MiddleLeft;
+			listmain.Label(Keyed.RS_PreferRace);
+			GenUI.ResetLabelAlign();
 			DrawPreferRace(listmain.GetRect(66f + 15f), _context.PreferedRaceCard);
 			listmain.End();
 		}
@@ -226,16 +226,21 @@ namespace RJWSexperience.SexHistory.UI
 			Rect infoRect3 = new Rect(infoRect.x, infoRect.y + (FONTHEIGHT * 2), infoRect.width - 2f, FONTHEIGHT);
 
 			Widgets.DrawTextureFitted(portraitRect, preferedRaceCard.PortraitGetter(portraitRect.size), 1.0f);
-			GUI.Label(infoRect1, preferedRaceCard.PreferRaceLabel, fontStyleLeft);
 
-			if (preferedRaceCard.PreferRaceTypeLabel != null)
-			{
-				GUI.Label(infoRect1, preferedRaceCard.PreferRaceTypeLabel + " ", fontStyleRight);
-			}
+			Text.Anchor = TextAnchor.MiddleLeft;
+			Widgets.Label(infoRect1, preferedRaceCard.PreferRaceLabel);
 
 			if (preferedRaceCard.SexCount != null)
 			{
-				GUI.Label(infoRect2, preferedRaceCard.SexCount, fontStyleLeft);
+				Widgets.Label(infoRect2, preferedRaceCard.SexCount);
+			}
+
+			GenUI.ResetLabelAlign();
+
+			if (preferedRaceCard.PreferRaceTypeLabel != null)
+			{
+				Text.Anchor = TextAnchor.MiddleRight;
+				Widgets.Label(infoRect1, preferedRaceCard.PreferRaceTypeLabel + " ");
 			}
 
 			if (preferedRaceCard.BarInfo.Label != null)
@@ -280,8 +285,10 @@ namespace RJWSexperience.SexHistory.UI
 			}
 
 			GUI.Box(nameRect, "", boxStyle);
-			GUI.Label(nameRect.TopHalf(), _context.Name, fontStyleCenter);
-			GUI.Label(nameRect.BottomHalf(), _context.AgeAndTitle, fontStyleCenter);
+			Text.Anchor = TextAnchor.MiddleCenter;
+			Widgets.Label(nameRect.TopHalf(), _context.Name);
+			Widgets.Label(nameRect.BottomHalf(), _context.AgeAndTitle);
+			GenUI.ResetLabelAlign();
 
 			Listing_Standard listmain = new Listing_Standard();
 			listmain.Begin(infoRect);
@@ -292,7 +299,9 @@ namespace RJWSexperience.SexHistory.UI
 				GUI.color = Color.red;
 				GUI.Box(tmp, "", boxStyle);
 				GUI.color = Color.white;
-				GUI.Label(tmp, _context.VirginLabel, fontStyleCenter);
+				Text.Anchor = TextAnchor.MiddleCenter;
+				Widgets.Label(tmp, _context.VirginLabel);
+				GenUI.ResetLabelAlign();
 				listmain.Gap(1f);
 			}
 			else
@@ -382,7 +391,9 @@ namespace RJWSexperience.SexHistory.UI
 			listmain.Begin(rect);
 
 			//Sex statistics
-			GUI.Label(listmain.GetRect(FONTHEIGHT), " " + Keyed.RS_Statistics, fontStyleLeft);
+			Text.Anchor = TextAnchor.MiddleLeft;
+			listmain.Label(" " + Keyed.RS_Statistics);
+			GenUI.ResetLabelAlign();
 			listmain.Gap(1f);
 
 			for (int i = 0; i < _context.SexTypes.Count; i++)
@@ -396,7 +407,9 @@ namespace RJWSexperience.SexHistory.UI
 			//Partner list
 			Rect listLabelRect = listmain.GetRect(FONTHEIGHT);
 			Rect sortbtnRect = new Rect(listLabelRect.xMax - 80f, listLabelRect.y, 80f, listLabelRect.height);
-			GUI.Label(listLabelRect, " " + Keyed.RS_PartnerList, fontStyleLeft);
+			Text.Anchor = TextAnchor.MiddleLeft;
+			Widgets.Label(listLabelRect, " " + Keyed.RS_PartnerList);
+			GenUI.ResetLabelAlign();
 			if (Widgets.ButtonText(sortbtnRect, orderMode.Translate()))
 			{
 				SoundDefOf.Click.PlayOneShotOnCamera();
@@ -432,7 +445,11 @@ namespace RJWSexperience.SexHistory.UI
 
 				DrawPartnerPortrait(pawnRect, partner);
 				Widgets.DrawHighlightIfMouseover(pawnRect);
-				GUI.Label(labelRect, partner.PartnerRecord.Label, fontStyleCenter);
+
+				Text.Anchor = TextAnchor.MiddleCenter;
+				Widgets.Label(labelRect, partner.PartnerRecord.Label);
+				GenUI.ResetLabelAlign();
+
 				if (Widgets.ButtonInvisible(pawnRect))
 				{
 					_context.SetSelectedPartner(partner.PartnerRecord);
