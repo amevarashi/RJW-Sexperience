@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Big thanks to HERAJIKA for RJW Japanese translation. Many parts are taken from their translation -->
+  <RS_Mod_Title>RJW Sexperience</RS_Mod_Title>
+
+  <!-- Sex status screen -->
+  <RSTotalGatheredCum>合計集まった精液: </RSTotalGatheredCum>
+  <RS_LostVirgin>{1}は{0}の初めてを取りました</RS_LostVirgin>
+  <RS_Best_Sextype>最高のタイプ</RS_Best_Sextype>
+  <RS_Recent_Sextype>最近のタイプ</RS_Recent_Sextype>
+  <!-- <RS_Sex_Partners>Sex partners</RS_Sex_Partners>
+  <RS_Cum_Swallowed>Cum swallowed</RS_Cum_Swallowed>
+  <RS_Selected_Partner>Selected Partner's Info</RS_Selected_Partner> -->
+  <RS_Sex_Info>{0}: {1}回</RS_Sex_Info>
+  <RS_SAT_AVG>平均: {0}</RS_SAT_AVG>
+  <RS_Sex_Count>セックス回数: </RS_Sex_Count>
+  <RS_Orgasms>オガズム回数: </RS_Orgasms>
+  <RS_Recent_Sex_Partner>最近の相手</RS_Recent_Sex_Partner>
+  <!-- <RS_Recent_Sex_Partner_ToolTip>A recent sex partner.</RS_Recent_Sex_Partner_ToolTip> -->
+  <RS_First_Sex_Partner>初めての相手</RS_First_Sex_Partner>
+  <!-- <RS_First_Sex_Partner_ToolTip>The first sex partner.</RS_First_Sex_Partner_ToolTip> -->
+  <RS_Most_Sex_Partner>最回の相手</RS_Most_Sex_Partner>
+  <!-- <RS_Most_Sex_Partner_ToolTip>The most sex partner.</RS_Most_Sex_Partner_ToolTip> -->
+  <RS_Best_Sex_Partner>最高の相手</RS_Best_Sex_Partner>
+  <!-- <RS_Best_Sex_Partner_ToolTip>The partner who had most satisfying sex.</RS_Best_Sex_Partner_ToolTip>
+  <RS_VirginsTaken>Taken virgins</RS_VirginsTaken> -->
+  <RS_TotalSexHad>合計セックス回数</RS_TotalSexHad>
+  <RS_TotalSexHad_ToolTip>セックスした回数。</RS_TotalSexHad_ToolTip>
+  <RS_Raped>強姦: </RS_Raped>
+  <RS_RapedMe>強姦した: </RS_RapedMe>
+  <!-- <RS_Sex_History>Sex History</RS_Sex_History> -->
+  <RS_Statistics>セックス統計</RS_Statistics>
+  <RS_PartnerList>相手リスト</RS_PartnerList>
+  <RS_Sexuality>セクシャリティ</RS_Sexuality>
+  <RS_BeenRaped>レイプされた</RS_BeenRaped>
+  <RS_RapedSomeone>レイプした</RS_RapedSomeone>
+  <RS_PreferRace>種族の好み</RS_PreferRace>
+  <RS_Bestiality>獣姦</RS_Bestiality>
+  <RS_Interspecies>種間</RS_Interspecies>
+  <!-- <RS_Normal>Normal</RS_Normal> -->
+  <RS_Necrophile>死姦</RS_Necrophile>
+  <!-- <RS_SexSkill>Sex skill</RS_SexSkill> -->
+  <RS_NumofTimes>回</RS_NumofTimes>
+  <RS_Ago>前</RS_Ago>
+  <!-- <RS_LastSex>last sex</RS_LastSex>
+  <RS_HadBestSexDaysAgo>Had best sex {0}.</RS_HadBestSexDaysAgo>
+  <RS_PawnLockDesc>Lock displayed pawn.\n\nWhen unlocked, window will automatically switch to a currently selected pawn.</RS_PawnLockDesc> -->
+
+  <!-- Settings tab labels -->
+  <RSTabLabelMain>メイン</RSTabLabelMain>
+  <RSTabLabelHistory>セックス記録</RSTabLabelHistory>
+  <RSTabLabelDebug>デバッグ</RSTabLabelDebug>
+
+  <!-- Mod settings: Main -->
+  <!-- <RSOption_2_Label>Lust effect power</RSOption_2_Label>
+  <RSOption_2_Desc>Set how much lust affect to sex drive.</RSOption_2_Desc>
+  <RSOption_8_Label>Lust Limit</RSOption_8_Label>
+  <RSOption_8_Desc>Set limitation of lust.\nIf absolute value of lust close to or larger than this value, lust will be less likely to change.</RSOption_8_Desc>
+  <RSOption_MaxSingleLustChange_Label>Maximum lust change per sex</RSOption_MaxSingleLustChange_Label>
+  <RSOption_MaxSingleLustChange_Desc>Set how much lust can change from a single sex act</RSOption_MaxSingleLustChange_Desc>
+  <RSOption_SexCanFillBuckets_Label>Sex can fill buckets</RSOption_SexCanFillBuckets_Label>
+  <RSOption_SexCanFillBuckets_Desc>If enabled boobjobs, footjobs and handjobs that happens near cum bucket will fill it</RSOption_SexCanFillBuckets_Desc> -->
+
+  <!-- Mod settings: Sex records -->
+  <!-- <RSOption_1_Label>Enable record randomizer</RSOption_1_Label>
+  <RSOption_1_Desc>Randomize pawn's sex records.</RSOption_1_Desc>
+  <RSOption_3_Label>Maximum lust deviation</RSOption_3_Label>
+  <RSOption_3_Desc>Set maximum deviation of lust.\nThe lust value can be negative depending on its average.</RSOption_3_Desc>
+  <RSOption_4_Label>Average Lust</RSOption_4_Label>
+  <RSOption_4_Desc>Set average of lust.</RSOption_4_Desc>
+  <RSOption_5_Label>Maximum sex count deviation</RSOption_5_Label>
+  <RSOption_5_Desc>Set maximum deviation of sex count.</RSOption_5_Desc>
+  <RSOption_6_Label>Average sex count per year</RSOption_6_Label>
+  <RSOption_6_Desc>Set average sex count.</RSOption_6_Desc>
+  <RSOption_7_Label>Enable slaves get raped experience</RSOption_7_Label>
+  <RSOption_7_Desc>Slaves will have experience of being raped</RSOption_7_Desc>
+  <RSOption_9_Label>Minimum age can have sex</RSOption_9_Label>
+  <RSOption_9_Desc>Set minimum sexable age.&#10;This value is not related to RJW's minimum sex age. Only used for generating records.</RSOption_9_Desc>
+  <RSOption_10_Label>Virgin ratio</RSOption_10_Label>
+  <RSOption_10_Desc>Set probability of virgin regardless of age.</RSOption_10_Desc>
+  <RSOption_MinSexableFromLifestage_Label>Minimum sexable age from life stages</RSOption_MinSexableFromLifestage_Label>
+  <RSOption_MinSexableFromLifestage_Desc>Only used for generating records. Get minimum sexable age from the first reproductive life stage. Works better for races with a long lifespan</RSOption_MinSexableFromLifestage_Desc>
+  <RSOption_EnableBastardRelation_Label>Enable Bastard relation</RSOption_EnableBastardRelation_Label>
+  <RSOption_EnableBastardRelation_Desc>Child is marked as a bastard if they have only one parent or their parents are not (or was not) married</RSOption_EnableBastardRelation_Desc>
+  <RSOption_EnableSexHistory_Label>[警告] Sex Historyを有効にする*</RSOption_EnableSexHistory_Label> -->
+  <RSOption_EnableSexHistory_Desc>* ゲームの再起動が必要\n\nEnables Sex History window, information collection for the said window and save/load of this information. Also enables sex partners count in pawn's records.\n\n[警告] Disabling this mid save will result in the loss of previously collected histories.</RSOption_EnableSexHistory_Desc>
+  <!-- <RSOption_HideGizmoWhenDrafted_Label>Hide Sex History button when drafted</RSOption_HideGizmoWhenDrafted_Label>
+  <RSOption_HideGizmoWhenDrafted_Desc>Hides Sex History Gizmo for currently drafted pawns</RSOption_HideGizmoWhenDrafted_Desc> -->
+
+  <!-- Mod settings: Debug -->
+  <!-- <RSOption_Debug_Label>Debug</RSOption_Debug_Label>
+  <RSOption_Debug_Desc>Enable debug logs</RSOption_Debug_Desc> -->
+
+  <Button_ResetToDefault>デフォルトにリセット</Button_ResetToDefault>
+
+  <!-- Sex types -->
+  <Vaginal>膣挿入</Vaginal>
+  <Anal>肛門挿入</Anal>
+  <Oral>Oral</Oral>
+  <Masturbation>オナニー</Masturbation>
+  <DoublePenetration>二穴挿入</DoublePenetration>
+  <Boobjob>パイズリ</Boobjob>
+  <Handjob>手コキ</Handjob>
+  <Footjob>足コキ</Footjob>
+  <Fingering>手マン</Fingering>
+  <Scissoring>シザリング</Scissoring>
+  <MutualMasturbation>相互オナニー</MutualMasturbation>
+  <Fisting>アナルフィスティング</Fisting>
+  <MechImplant>メカノイドインプラント</MechImplant>
+  <Rimming>アナル舐め</Rimming>
+  <Fellatio>フェラチオ</Fellatio>
+  <Cunnilingus>クンニ</Cunnilingus>
+  <Sixtynine>69</Sixtynine>
+
+  <!-- Sexuality -->
+  <None>None</None>
+  <Asexual>無性愛者</Asexual>
+  <!-- <Pansexual>Pansexual</Pansexual> -->
+  <Heterosexual>異性愛者</Heterosexual>
+  <!-- <MostlyHeterosexual>Mostly hetero</MostlyHeterosexual>
+  <LeaningHeterosexual>Bisexual, leaning hetero</LeaningHeterosexual> -->
+  <Bisexual>両性愛者</Bisexual>
+  <!-- <LeaningHomosexual>Bisexual, leaning gay</LeaningHomosexual> -->
+  <MostlyHomosexual>Mostly gay</MostlyHomosexual>
+  <Homosexual>同性愛者</Homosexual>
+
+  <!-- Misc -->
+  <Lust>性欲</Lust>
+  <Unknown>不明</Unknown>
+  <Incest>近親相姦</Incest> <!--Konshinsōkan-->
+
+  <!-- Order mode -->
+  <RS_PONormal>順序不同</RS_PONormal> <!--Junjofudō-->
+  <RS_PoRecent>最近</RS_PoRecent>
+  <RS_PoMost>最回</RS_PoMost>
+  <RS_PoName>名前</RS_PoName>
+</LanguageData>
