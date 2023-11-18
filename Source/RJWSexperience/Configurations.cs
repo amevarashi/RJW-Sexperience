@@ -25,6 +25,9 @@ namespace RJWSexperience
 		public readonly SettingHandle<bool> EnableSexHistory = new SettingHandle<bool>("EnableSexHistory", true);
 		public readonly SettingHandle<bool> HideGizmoWhenDrafted = new SettingHandle<bool>("HideGizmoWhenDrafted", true);
 
+		public readonly SettingHandle<bool> VirginityCheck_M2M_Anal = new SettingHandle<bool>("VirginityCheck_M2M_Anal", true);
+		public readonly SettingHandle<bool> VirginityCheck_F2F_Scissoring = new SettingHandle<bool>("VirginityCheck_F2F_Scissoring", false);
+		
 		public readonly SettingHandle<bool> DevMode = new SettingHandle<bool>("DevMode", false);
 
 		public readonly SettingHandle<bool> SelectionLocked = new SettingHandle<bool>("SelectionLocked", false);

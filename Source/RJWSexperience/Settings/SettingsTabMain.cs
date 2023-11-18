@@ -15,6 +15,8 @@ namespace RJWSexperience.Settings
 				settings.LustLimit,
 				settings.MaxSingleLustChange,
 				settings.SexCanFillBuckets,
+				settings.VirginityCheck_M2M_Anal,
+				settings.VirginityCheck_F2F_Scissoring
 				}
 			) { }
 
@@ -27,6 +29,8 @@ namespace RJWSexperience.Settings
 			listmain.SliderOption(Keyed.Option_MaxSingleLustChange_Label + " {0}", Keyed.Option_MaxSingleLustChange_Desc, settings.MaxSingleLustChange, new FloatRange(0f, 10f), 0.05f);
 			listmain.CheckboxLabeled(Keyed.Option_EnableBastardRelation_Label, settings.EnableBastardRelation, Keyed.Option_EnableBastardRelation_Desc);
 			listmain.CheckboxLabeled(Keyed.Option_SexCanFillBuckets_Label, settings.SexCanFillBuckets, Keyed.Option_SexCanFillBuckets_Desc);
+			listmain.CheckboxLabeled(Keyed.Option_VirginityCheck_M2M_Label, settings.VirginityCheck_M2M_Anal, Keyed.Option_VirginityCheck_M2M_Desc);
+			listmain.CheckboxLabeled(Keyed.Option_VirginityCheck_F2F_Label, settings.VirginityCheck_F2F_Scissoring, Keyed.Option_VirginityCheck_F2F_Desc);
 
 			if (settings.DevMode)
 				LustUtility.DrawGraph(listmain.GetRect(300f));

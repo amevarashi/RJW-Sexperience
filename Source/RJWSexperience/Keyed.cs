@@ -98,6 +98,10 @@ namespace RJWSexperience
 		public static readonly string Option_HideGizmoWithRJW_Label = "RSOption_HideGizmoWithRJW_Label".Translate();
 		public static readonly string Option_HideGizmoWithRJW_Desc = "RSOption_HideGizmoWithRJW_Desc".Translate();
 		public static readonly string Button_ResetToDefault = "Button_ResetToDefault".Translate();
+		public static readonly string Option_VirginityCheck_M2M_Label = "RSOption_VirginityCheck_M2M_Label".Translate();
+		public static readonly string Option_VirginityCheck_M2M_Desc = "RSOption_VirginityCheck_M2M_Desc".Translate();
+		public static readonly string Option_VirginityCheck_F2F_Label = "RSOption_VirginityCheck_F2F_Label".Translate();
+		public static readonly string Option_VirginityCheck_F2F_Desc = "RSOption_VirginityCheck_F2F_Desc".Translate();
 
 		public static string Translate(this PartnerOrderMode mode)
 		{

@@ -31,7 +31,9 @@ namespace RJWSexperience.Settings
 				settings.VirginRatio,
 				settings.SlavesBeenRapedExp,
 				settings.EnableSexHistory,
-				settings.HideGizmoWhenDrafted
+				settings.HideGizmoWhenDrafted,
+				settings.VirginityCheck_M2M_Anal,
+				settings.VirginityCheck_F2F_Scissoring
 				}
 			);
 	}

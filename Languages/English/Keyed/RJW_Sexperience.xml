@@ -85,6 +85,10 @@
   <RSOption_EnableSexHistory_Desc>* Needs a game restart\n\nEnables Sex History window, information collection for the said window and save/load of this information. Also enables sex partners count in the pawn's records.\n\n[Caution] Disabling this mid save will result in the loss of previously collected histories.</RSOption_EnableSexHistory_Desc>
   <RSOption_HideGizmoWhenDrafted_Label>Hide Sex History button when drafted</RSOption_HideGizmoWhenDrafted_Label>
   <RSOption_HideGizmoWhenDrafted_Desc>Hides Sex History Gizmo for currently drafted pawns</RSOption_HideGizmoWhenDrafted_Desc>
+  <RSOption_VirginityCheck_M2M_Label>Remove virginity with anal sex (for male/male sex)</RSOption_VirginityCheck_M2M_Label>
+  <RSOption_VirginityCheck_M2M_Desc>Remove virginity with anal sex (for male/male sex)</RSOption_VirginityCheck_M2M_Desc>
+  <RSOption_VirginityCheck_F2F_Label>Remove virginity with scissoring sex (for female/female sex)</RSOption_VirginityCheck_F2F_Label>
+  <RSOption_VirginityCheck_F2F_Desc>Remove virginity with scissoring sex (for female/female sex)</RSOption_VirginityCheck_F2F_Desc>
 
   <!-- Mod settings: Debug -->
   <RSOption_Debug_Label>Debug</RSOption_Debug_Label>
