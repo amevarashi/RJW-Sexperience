@@ -101,7 +101,16 @@ namespace RJWSexperience
 				{
 					__instance.pawn.TryRemoveVirginity(__instance.Partner, __instance.Sexprops);
 					__instance.Partner.TryRemoveVirginity(__instance.pawn, __instance.Sexprops);
-				} 
+				} else if(__instance.Sexprops.sexType == xxx.rjwSextype.Fisting)
+				{
+					//check if receiver is a virgin female..
+					Pawn receiver = __instance.Sexprops.IsInitiator() ? __instance.Partner : __instance.pawn;
+					if (receiver != null && receiver.gender == Gender.Female && receiver.IsVirgin())
+					{
+						Pawn initiator = __instance.Sexprops.IsInitiator() ? __instance.pawn : __instance.Partner;
+						receiver.TryRemoveVirginity(initiator, __instance.Sexprops);
+					}
+				}
 				else
                 {
 					// check if both pawn are male -> anal used as alternative virginity remover
