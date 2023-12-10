@@ -4,6 +4,7 @@ using Verse;
 using RimWorld;
 using UnityEngine;
 using RJWSexperience.Logs;
+using System.Collections.Generic;
 
 namespace RJWSexperience.SexHistory
 {
@@ -17,137 +18,167 @@ namespace RJWSexperience.SexHistory
 		{
 			log.Message($"Randomize request for {pawn.NameShortColored}");
 
-			int avgsex = -500;
-			bool isvirgin = Rand.Chance(Settings.VirginRatio);
-			int totalsex = 0;
-			int totalbirth = 0;
+			int avgSexPerYear = -500;
+			bool isVirgin = Rand.Chance(Settings.VirginRatio);
 
-			if (isvirgin)
+			if (isVirgin)
 				log.Message("Rand.Chance rolled virgin");
 
-			if (pawn.story != null)
+			if (pawn.story == null)
 			{
-				int sexableage = 0;
-				int minsexage = 0;
-				if (Settings.MinSexableFromLifestage)
-				{
-					LifeStageAge lifeStageAges = pawn.RaceProps.lifeStageAges.Find(x => x.def.reproductive);
-					if (lifeStageAges == null)
-					{
-						log.Message($"No reproductive life stage! {pawn.NameShortColored}'s randomization cancelled");
-						return false;
-					}
-					minsexage = (int)lifeStageAges.minAge;
-				}
-				else
-				{
-					minsexage = (int)(pawn.RaceProps.lifeExpectancy * Settings.MinSexablePercent);
-				}
-
-				log.Message($"Min sex age is {minsexage}");
-
-				float lust = RandomizeLust(pawn);
-				log.Message($"Lust set to {lust}");
-
-				if (pawn.ageTracker.AgeBiologicalYears > minsexage)
-				{
-					sexableage = pawn.ageTracker.AgeBiologicalYears - minsexage;
-					avgsex = (int)(sexableage * Settings.SexPerYear * LustUtility.GetLustFactor(lust));
-				}
-
-				log.Message($"Generating {sexableage} years of sex life");
-				log.Message($"Average sex/year: {avgsex}");
-
-				if (pawn.relations != null && pawn.gender == Gender.Female)
-				{
-					totalbirth += pawn.relations.ChildrenCount;
-					totalsex += totalbirth;
-					pawn.records?.AddTo(xxx.CountOfSexWithHumanlikes, totalbirth);
-					pawn.records?.SetTo(xxx.CountOfBirthHuman, totalbirth);
-					if (totalbirth > 0) isvirgin = false;
-				}
-				if (!isvirgin)
-				{
-					totalsex += GeneratePartnerTypeRecords(pawn, avgsex);
-
-					if (Settings.SlavesBeenRapedExp && pawn.IsSlave)
-					{
-						totalsex += RandomizeRecord(pawn, xxx.CountOfBeenRapedByAnimals, Rand.Range(-50, 10), Rand.Range(0, 10) * sexableage);
-						totalsex += RandomizeRecord(pawn, xxx.CountOfBeenRapedByHumanlikes, 0, Rand.Range(0, 100) * sexableage);
-					}
-				}
+				log.Error("Tried to randomize records for a pawn without a story");
+				return false;
 			}
-			pawn.records?.SetTo(xxx.CountOfSex, totalsex);
-			log.Message($"Splitting {totalsex} sex acts between sex types");
-			GenerateSextypeRecords(pawn, totalsex);
+
+			int sexLifeYears = 0;
+			int minsexage = GetMinSexAge(pawn, out string errorMessage);
+
+			if (minsexage < 0)
+			{
+				log.Error(errorMessage);
+				return false;
+			}
+
+			log.Message($"Min sex age is {minsexage}");
+
+			float lust = RandomizeLust(pawn);
+			log.Message($"Lust set to {lust}");
+
+			if (pawn.ageTracker.AgeBiologicalYears > minsexage)
+			{
+				sexLifeYears = pawn.ageTracker.AgeBiologicalYears - minsexage;
+				avgSexPerYear = (int)(sexLifeYears * Settings.SexPerYear * LustUtility.GetLustFactor(lust));
+			}
+
+			log.Message($"Generating {sexLifeYears} years of sex life");
+			log.Message($"Average sex/year: {avgSexPerYear}");
+
+			int totalSexCount = 0;
+
+			if (pawn.relations != null && pawn.gender == Gender.Female)
+			{
+				// Make sure pawn had at least as much sex as ChildrenCount
+				// TODO: make sure the sex is vaginal
+				// TODO: children may be not humanlike
+				totalSexCount += pawn.relations.ChildrenCount;
+				pawn.records.AddTo(xxx.CountOfSexWithHumanlikes, pawn.relations.ChildrenCount);
+				pawn.records.Set(xxx.CountOfBirthHuman, pawn.relations.ChildrenCount);
+
+				if (pawn.relations.ChildrenCount > 0)
+					isVirgin = false;
+			}
+
+			if (!isVirgin)
+			{
+				Dictionary<RecordDef, int> generatedRecords = GeneratePartnerTypeRecords(pawn, avgSexPerYear, sexLifeYears);
+
+				foreach(KeyValuePair<RecordDef, int> record in generatedRecords)
+				{
+					pawn.records.Set(record.Key, record.Value);
+					totalSexCount += record.Value;
+				}
+
+				if (totalSexCount > 0)
+					pawn.records.AddTo(RsDefOf.Record.SexPartnerCount, Math.Max(1, Rand.Range(0, totalSexCount / 7)));
+			}
+
+			pawn.records.Set(xxx.CountOfSex, totalSexCount);
+			log.Message($"Splitting {totalSexCount} sex acts between sex types");
+			GenerateSextypeRecords(pawn, totalSexCount);
 			log.Message($"{pawn.NameShortColored} randomized");
 			return true;
 		}
 
+		/// <summary>
+		/// Assign a new random value to the Lust record of the <paramref name="pawn"/>
+		/// </summary>
+		/// <param name="pawn"></param>
+		/// <returns>Assigned value</returns>
 		public static float RandomizeLust(Pawn pawn)
 		{
 			float value = Utility.RandGaussianLike(Settings.AvgLust - Settings.MaxLustDeviation, Settings.AvgLust + Settings.MaxLustDeviation);
-			float minValue;
 
 			if (xxx.is_nympho(pawn))
-				minValue = 0;
-			else
-				minValue = float.MinValue;
+				value = Mathf.Clamp(value, 0, float.MaxValue);
 
-			value = Mathf.Clamp(value, minValue, float.MaxValue);
-			float recordvalue = pawn.records.GetValue(RsDefOf.Record.Lust);
-			pawn.records.AddTo(RsDefOf.Record.Lust, value - recordvalue);
+			pawn.records.SetTo(RsDefOf.Record.Lust, value);
 
 			return value;
 		}
 
-		private static int RandomizeRecord(Pawn pawn, RecordDef record, int avg, int dist, int min = 0, int max = int.MaxValue)
+		/// <summary>
+		/// Get minimal biological age the pawn can begin sex life
+		/// </summary>
+		/// <param name="pawn"></param>
+		/// <param name="errorMessage">null if no error</param>
+		/// <returns>-1 means error. <paramref name="errorMessage"/> should be not null in that case</returns>
+		private static int GetMinSexAge(Pawn pawn, out string errorMessage)
 		{
-			int value = (int)Mathf.Clamp(Utility.RandGaussianLike(avg - dist, avg + dist), min, max);
-			int recordvalue = pawn.records.GetAsInt(record);
-			pawn.records.AddTo(record, value - recordvalue);
+			errorMessage = null;
 
-			return value;
+			if (!Settings.MinSexableFromLifestage)
+			{
+				// Legacy approach. Does not account for long-lived races with human-like aging curve
+				return (int)(pawn.RaceProps.lifeExpectancy * Settings.MinSexablePercent);
+			}
+
+			LifeStageAge lifeStageAges = pawn.RaceProps.lifeStageAges.Find(x => x.def.reproductive);
+			if (lifeStageAges == null)
+			{
+				errorMessage = $"No reproductive life stage! {pawn.NameShortColored}'s randomization cancelled";
+				return -1;
+			}
+			return (int)lifeStageAges.minAge;
 		}
 
-		private static int GeneratePartnerTypeRecords(Pawn pawn, int avgsex)
+		private static int Randomize(int avg, int dist, int min = 0, int max = int.MaxValue) => (int)Mathf.Clamp(Utility.RandGaussianLike(avg - dist, avg + dist), min, max);
+
+		private static Dictionary<RecordDef, int> GeneratePartnerTypeRecords(Pawn pawn, int avgSexPerYear, int sexLifeYears)
 		{
+			Dictionary<RecordDef, int> generatedRecords = new Dictionary<RecordDef, int>();
 			int deviation = (int)Settings.MaxSexCountDeviation;
-			int totalSexCount = 0;
 
 			if (xxx.is_rapist(pawn))
 			{
 				if (xxx.is_zoophile(pawn))
 				{
-					if (pawn.Has(Quirk.ChitinLover)) totalSexCount += RandomizeRecord(pawn, xxx.CountOfRapedInsects, avgsex, deviation);
-					else totalSexCount += RandomizeRecord(pawn, xxx.CountOfRapedAnimals, avgsex, deviation);
+					if (pawn.Has(Quirk.ChitinLover))
+						generatedRecords.Add(xxx.CountOfRapedInsects, Randomize(avgSexPerYear, deviation));
+					else
+						generatedRecords.Add(xxx.CountOfRapedAnimals, Randomize(avgSexPerYear, deviation));
 				}
 				else
 				{
-					totalSexCount += RandomizeRecord(pawn, xxx.CountOfRapedHumanlikes, avgsex, deviation);
+					generatedRecords.Add(xxx.CountOfRapedHumanlikes, Randomize(avgSexPerYear, deviation));
 				}
 
-				avgsex /= 8;
+				avgSexPerYear /= 8;
 			}
 
 			if (xxx.is_zoophile(pawn))
 			{
-				if (pawn.Has(Quirk.ChitinLover)) totalSexCount += RandomizeRecord(pawn, xxx.CountOfRapedInsects, avgsex, deviation);
-				else totalSexCount += RandomizeRecord(pawn, xxx.CountOfSexWithAnimals, avgsex, deviation);
-				avgsex /= 10;
+				if (pawn.Has(Quirk.ChitinLover))
+					generatedRecords.Add(xxx.CountOfRapedInsects, Randomize(avgSexPerYear, deviation));
+				else
+					generatedRecords.Add(xxx.CountOfSexWithAnimals, Randomize(avgSexPerYear, deviation));
+
+				avgSexPerYear /= 10;
 			}
 			else if (xxx.is_necrophiliac(pawn))
 			{
-				totalSexCount += RandomizeRecord(pawn, xxx.CountOfSexWithCorpse, avgsex, deviation);
-				avgsex /= 4;
+				generatedRecords.Add(xxx.CountOfSexWithCorpse, Randomize(avgSexPerYear, deviation));
+				avgSexPerYear /= 4;
 			}
 
-			totalSexCount += RandomizeRecord(pawn, xxx.CountOfSexWithHumanlikes, avgsex, deviation);
+			generatedRecords.Add(xxx.CountOfSexWithHumanlikes, Randomize(avgSexPerYear, deviation));
 
-			if (totalSexCount > 0)
-				pawn.records.AddTo(RsDefOf.Record.SexPartnerCount, Math.Max(1, Rand.Range(0, totalSexCount / 7)));
+			if (Settings.SlavesBeenRapedExp && pawn.IsSlave)
+			{
+				generatedRecords.Add(xxx.CountOfBeenRapedByAnimals, Randomize(Rand.Range(-50, 10), Rand.Range(0, 10) * sexLifeYears));
+				generatedRecords.Add(xxx.CountOfBeenRapedByHumanlikes, Randomize(0, Rand.Range(0, 100) * sexLifeYears));
+			}
 
-			return totalSexCount;
+			return generatedRecords;
 		}
 
 		private static void GenerateSextypeRecords(Pawn pawn, int totalsex)
@@ -238,10 +269,7 @@ namespace RJWSexperience.SexHistory
 			if (xxx.is_homosexual(pawn))
 				return pawn.gender;
 
-			if (pawn.gender == Gender.Male)
-				return Gender.Female;
-			else
-				return Gender.Male;
+			return pawn.gender.Opposite();
 		}
 	}
 }

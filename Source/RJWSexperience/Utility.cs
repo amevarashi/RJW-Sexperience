@@ -18,11 +18,23 @@ namespace RJWSexperience
 
 			return ((float)res).Denormalization(min, max);
 		}
-
+		
+		/// <summary>
+		/// Set exact <paramref name="value"/> for the <paramref name="record"/>
+		/// </summary>
 		public static void SetTo(this Pawn_RecordsTracker records, RecordDef record, float value)
 		{
 			float recordval = records.GetValue(record);
 			records.AddTo(record, value - recordval);
+		}
+
+		/// <summary>
+		/// Set exact <paramref name="value"/> for the <paramref name="record"/>
+		/// </summary>
+		public static void Set(this Pawn_RecordsTracker records, RecordDef record, int value)
+		{
+			int currentValue = records.GetAsInt(record);
+			records.AddTo(record, value - currentValue);
 		}
 
 		public static float Normalization(this float num, float min, float max)
