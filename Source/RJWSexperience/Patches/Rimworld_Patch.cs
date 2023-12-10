@@ -27,16 +27,25 @@ namespace RJWSexperience
 	[HarmonyPatch(typeof(ParentRelationUtility), nameof(ParentRelationUtility.SetMother))]
 	public static class Rimworld_Patch_RemoveVirginOnSetMother
 	{
+		/// <summary>
+		/// Retcon virginity if game desides to generate a child for the pawn
+		/// </summary>
 		public static void Postfix(Pawn pawn, Pawn newMother)
 		{
 			if (!pawn.relations.DirectRelationExists(PawnRelationDefOf.Parent, newMother))
-				return;
+				return; // Failed to add relation?
 
 			Trait virgin = newMother.story?.traits?.GetTrait(RsDefOf.Trait.Virgin, Virginity.TraitDegree.FemaleVirgin);
 			if (virgin != null)
 			{
 				newMother.story.traits.RemoveTrait(virgin);
-				newMother.story.traits.GainTrait(new Trait(RsDefOf.Trait.Virgin, Virginity.TraitDegree.FemaleAfterSurgery));
+
+				// Player may notice the missing trait on their pawns.
+				// Doing this for all pawns results in up to a half of tribal raid generating with "virgin?"
+				if (newMother.IsColonist || newMother.IsPrisonerOfColony)
+				{
+					newMother.story.traits.GainTrait(new Trait(RsDefOf.Trait.Virgin, Virginity.TraitDegree.FemaleAfterSurgery));
+				}
 			}
 		}
 	}

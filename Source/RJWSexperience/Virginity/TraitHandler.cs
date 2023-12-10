@@ -14,7 +14,9 @@ namespace RJWSexperience.Virginity
 
 			if (pawn.gender == Gender.Female && !pawn.IsVirgin())
 			{
-				if (Rand.Chance(hymenSurgeryChance))
+				TechLevel techLevel = pawn.Faction?.def.techLevel ?? TechLevel.Industrial;
+
+				if (techLevel >= TechLevel.Industrial && Rand.Chance(hymenSurgeryChance))
 				{
 					Trait virgin = new Trait(RsDefOf.Trait.Virgin, TraitDegree.FemaleAfterSurgery, true);
 					pawn.story.traits.GainTrait(virgin);
