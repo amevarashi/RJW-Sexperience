@@ -118,6 +118,7 @@ namespace RJWSexperience.SexHistory.UI
 		{
 			Find.Selector.ClearSelection();
 			_context = new SexStatusViewModel(history, orderMode);
+			_context.Update();
 			if (!_context.Pawn.DestroyedOrNull() && Find.CurrentMap == _context.Pawn.Map)
 			{
 				Find.Selector.Select(_context.Pawn);
