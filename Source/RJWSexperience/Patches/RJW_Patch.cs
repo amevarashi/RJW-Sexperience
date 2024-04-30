@@ -94,10 +94,43 @@ namespace RJWSexperience
 	{
 		public static void Postfix(JobDriver_SexBaseInitiator __instance)
 		{
-			if (__instance.Sexprops.hasPartner() && __instance.Sexprops.sexType == xxx.rjwSextype.Vaginal)
+			if (__instance.Sexprops.hasPartner())
 			{
-				__instance.pawn.TryRemoveVirginity(__instance.Partner, __instance.Sexprops);
-				__instance.Partner.TryRemoveVirginity(__instance.pawn, __instance.Sexprops);
+				// remove hetero virginity
+				if((__instance.Sexprops.sexType == xxx.rjwSextype.Vaginal || __instance.Sexprops.sexType == xxx.rjwSextype.DoublePenetration))
+				{
+					__instance.pawn.TryRemoveVirginity(__instance.Partner, __instance.Sexprops);
+					__instance.Partner.TryRemoveVirginity(__instance.pawn, __instance.Sexprops);
+				} else if(__instance.Sexprops.sexType == xxx.rjwSextype.Fisting)
+				{
+					//check if receiver is a virgin female..
+					Pawn receiver = __instance.Sexprops.IsInitiator() ? __instance.Partner : __instance.pawn;
+					if (receiver != null && receiver.gender == Gender.Female && receiver.IsVirgin())
+					{
+						Pawn initiator = __instance.Sexprops.IsInitiator() ? __instance.pawn : __instance.Partner;
+						receiver.TryRemoveVirginity(initiator, __instance.Sexprops);
+					}
+				}
+				else
+                {
+					// check if both pawn are male -> anal used as alternative virginity remover
+					if(SexperienceMod.Settings.VirginityCheck_M2M_Anal &&
+					   __instance.Sexprops.sexType == xxx.rjwSextype.Anal
+					   && __instance.pawn.gender == Gender.Male && __instance.Partner.gender == Gender.Male)
+					{
+						__instance.pawn.TryRemoveVirginity(__instance.Partner, __instance.Sexprops);
+						__instance.Partner.TryRemoveVirginity(__instance.pawn, __instance.Sexprops);
+					}
+					
+					// check if both pawn are female -> scissoring used as alternative virginity remover
+					if(SexperienceMod.Settings.VirginityCheck_F2F_Scissoring &&
+					   __instance.Sexprops.sexType == xxx.rjwSextype.Scissoring
+					   && __instance.pawn.gender == Gender.Female && __instance.Partner.gender == Gender.Female)
+					{
+						__instance.pawn.TryRemoveVirginity(__instance.Partner, __instance.Sexprops);
+						__instance.Partner.TryRemoveVirginity(__instance.pawn, __instance.Sexprops);
+					}
+                }
 			}
 		}
 	}

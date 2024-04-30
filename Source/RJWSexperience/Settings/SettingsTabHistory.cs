@@ -21,7 +21,9 @@ namespace RJWSexperience.Settings
 				settings.VirginRatio,
 				settings.SlavesBeenRapedExp,
 				settings.EnableSexHistory,
-				settings.HideGizmoWhenDrafted
+				settings.HideGizmoWhenDrafted,
+				settings.VirginityCheck_M2M_Anal,
+				settings.VirginityCheck_F2F_Scissoring
 			}
 		) { }
 
@@ -63,6 +65,9 @@ namespace RJWSexperience.Settings
 			{
 				listmain.CheckboxLabeled(Keyed.Option_HideGizmoWhenDrafted_Label, settings.HideGizmoWhenDrafted, Keyed.Option_HideGizmoWhenDrafted_Desc);
 			}
+			
+			listmain.CheckboxLabeled(Keyed.Option_VirginityCheck_M2M_Label, settings.VirginityCheck_M2M_Anal, Keyed.Option_VirginityCheck_M2M_Desc);
+			listmain.CheckboxLabeled(Keyed.Option_VirginityCheck_F2F_Label, settings.VirginityCheck_F2F_Scissoring, Keyed.Option_VirginityCheck_F2F_Label);
 
 			if (listmain.ButtonText(Keyed.Button_ResetToDefault))
 			{
